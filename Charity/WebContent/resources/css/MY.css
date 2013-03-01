@@ -1,0 +1,92 @@
+@CHARSET "UTF-8";
+
+.mydc {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+}
+
+.sss {
+	background-image: url("/resources/images/imamAliAn'naghi.jpg");
+}
+
+.sz {
+	width: 100px;
+}
+
+.leftDIR {
+	direction: rtl;
+}
+
+.HED {
+	font-style: normal;
+	font-size: large;
+}
+
+.centerPage {
+	position: absolute;
+	right: 10px;
+	top: 5px;
+	width: 1000px;
+	size: auto;
+}
+
+.center {
+	text-align: center;
+}
+
+.left {
+	text-align: left;
+}
+
+.fontSize {
+	font-size: 12px;
+}
+
+table.innertable td {
+	border: 0;
+}
+
+.blue {
+	color: blue;
+}
+
+.bg {
+	background-color: blue;
+}
+
+.myLayoutStyleClass .ui-layout-unit-content {
+	background: #eeeeee;
+}
+
+.red {
+	color: red;
+}
+
+.purple {
+	color: purple;
+}
+
+.mess {
+	background-color: Red
+}
+
+.displayed {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+}
+
+.dtPnl {
+	text-align: center;
+	height: 175px;
+	width: 350px
+}
+
+.logoo {
+	float: left;
+	position: absolute;
+	left: 20px;
+	top: 0px;
+}

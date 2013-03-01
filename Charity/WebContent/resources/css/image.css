@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+.ui-icon-commandbutton-btnSave {
+	background-image: url("#{resource['image/ajax-loader.gif']}") !important;
+}
+
+.ui-icon-menuitem-itmCompany {
+	margin-left:5px;
+	margin-right:5px;
+	background-image: url("#{resource['image/icon/menu/profile.png']}") !important;
+}

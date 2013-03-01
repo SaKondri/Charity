@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:tr="http://myfaces.apache.org/trinidad">
+<f:view contentType="text/html">
+	<h:head>
+		<title><ui:insert name="title" /></title>
+		<h:outputStylesheet name="default.css" library="css" />
+		<h:outputStylesheet name="MY.css" library="css" />
+		<h:outputStylesheet name="image.css" library="css" />
+		<h:outputStylesheet name="dialog.js" library="js" />
+		<script type="text/javascript"
+			src="#{request.contextPath}/javax.faces.resource/calendar.all.js.xhtml?ln=primefaces" />
+		<script type="text/javascript"
+			src="#{request.contextPath}/javax.faces.resource/calendar.js.xhtml?ln=primefaces" />
+		<script type="text/javascript"
+			src="#{request.contextPath}/javax.faces.resource/jquery.ui.datepicker-cc.js.xhtml?ln=primefaces" />
+		<script type="text/javascript"
+			src="#{request.contextPath}/javax.faces.resource/jquery.ui.datepicker-cc-fa.js.xhtml?ln=primefaces" />
+
+
+
+	</h:head>
+	<h:body>
+		<p:growl id="growl" globalOnly="false" showDetail="true" />
+		<ui:insert name="content" />
+		<ui:insert name="dialog" />
+	</h:body>
+</f:view>
+</html>
