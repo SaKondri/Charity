@@ -7,6 +7,6 @@ import com.friends.charity.model.BaseEntity;
 
 @Entity
 @Table(name = "GOZARESHE_MAMORIN_TAHGHIGH")
-public class GozareshMamorinTahghigh extends BaseEntity {
+public class GozareshMamorinTahghigh extends BaseEntity {//?
 
 }

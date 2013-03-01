@@ -22,7 +22,7 @@ public class BargehTahghighateMojadad extends BaseEntity {
 	@Temporal(TemporalType.DATE)
 	private Calendar date;
 	@Column(name = "DAEM")
-	private boolean daem;
+	private boolean daem;//?
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)// login bahsad va cascade bayad fargh konad
 	private MoshakhasateMotaghazi moshakhasateMotaghazi;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
