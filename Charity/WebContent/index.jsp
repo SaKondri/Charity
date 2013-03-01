@@ -1,1 +1,1 @@
-<%response.sendRedirect(""); %>
+<%response.sendRedirect("pages/test.xhtml"); %>

@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:head>
+	</h:head>
+	<h:form>
+		<div align="center">
+			<p:dialog widgetVar="loginDlg" modal="true" resizable="false">
+				<f:facet name="header">
+					<h:outputText styleClass="HED" value="ورود" />
+				</f:facet>
+				<p:panelGrid id="pnl" columns="3">
+					<f:facet name="footer">
+						<p:commandButton value="پاک کردن" type="reset" />
+						<p:commandButton value="تایید" update="pnl" />
+					</f:facet>
+					<h:message errorStyle="color:red; display:block" for="myInput" />
+					<h:inputText id="myInput" required="true" styleClass="leftDIR"
+						requiredMessage="نام کاربری را پر کنید" />
+					<h:outputText styleClass="leftDIR" value=":&nbsp;*نام کاربری " />
+					<h:message errorStyle="color:red; display:block" for="myInputt" />
+					<h:inputText id="myInputt" styleClass="leftDIR" required="true"
+						requiredMessage="کلید واژه را پر کنید" />
+					<h:outputText styleClass="leftDIR" value=":&nbsp;*کلید واژه" />
+				</p:panelGrid>
+			</p:dialog>
+		</div>
+	</h:form>
+</ui:composition>

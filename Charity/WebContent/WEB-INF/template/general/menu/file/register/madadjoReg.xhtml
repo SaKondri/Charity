@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:head>
+	</h:head>
+	<h:form>
+		<div align="center">
+			<p:dialog widgetVar="madadRegDlg" modal="true" resizable="false">
+				<f:facet name="header">
+					<h:outputText styleClass="HED" value="ثبت نام" />
+				</f:facet>
+				<p:panelGrid id="pnl" columns="3">
+					<f:facet name="footer">
+						<p:commandButton value="پاک کردن" type="reset" />
+						<p:commandButton value="تایید" update="pnl"
+							actionListener="#{GeneralTemplatePage.menuPage.madadjoPage.btn}" />
+					</f:facet>
+					<h:message errorStyle="color:red; display:block" for="firstname" />
+					<h:inputText id="firstname" required="true" styleClass="leftDIR"
+						requiredMessage="نام را پر کنید" />
+					<h:outputText styleClass="leftDIR" value=":&nbsp;*نام" />
+
+					<h:message errorStyle="color:red; display:block" for="lastname" />
+					<h:inputText id="lastname" styleClass="leftDIR" required="true"
+						requiredMessage="نام خانوادگی را پر کنید" />
+					<h:outputText styleClass="leftDIR" value=":&nbsp;*نام خانوادگی" />
+
+					<p:calendar locale="fa" navigator="true"
+						showButtonPanel="true"
+						valu="#{GeneralTemplatePage.menuPage.madadjoPage.date1}">
+						<p:ajax event="dateSelect"
+							listener="#{GeneralTemplatePage.menuPage.madadjoPage.handleDateSelect}" />
+					</p:calendar>
+				</p:panelGrid>
+			</p:dialog>
+		</div>
+	</h:form>
+
+</ui:composition>
