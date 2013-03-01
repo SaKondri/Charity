@@ -1,4 +1,4 @@
-package org.test;
+package com.friends.charity.test;
 
 import com.util.validate.ann.NationalId;
 import com.util.validate.cheker.NationalIdCheck;

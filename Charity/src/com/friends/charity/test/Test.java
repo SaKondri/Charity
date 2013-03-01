@@ -1,4 +1,4 @@
-package org.test;
+package com.friends.charity.test;
 
 public class Test {
 
