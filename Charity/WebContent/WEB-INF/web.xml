@@ -30,6 +30,6 @@
 	</session-config>
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
-		<param-value>aristo-rtl</param-value>
+		<param-value>redmond-rtl</param-value>
 	</context-param>
 </web-app>
