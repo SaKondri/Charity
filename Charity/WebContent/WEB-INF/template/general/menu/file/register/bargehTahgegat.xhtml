@@ -3,7 +3,11 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/mainTemplate.xhtml">
+	
+	<ui:define name="content">
+	<div align="center">
 	<h:form>
 		<p:wizard>
 		
@@ -143,10 +147,114 @@
 						<p:message for="childSkill" />
 						<p:inputText styleClass="leftDIR" id="childSkill" />
 						<h:outputLabel value=":مهارت فرزند" styleClass="leftDIR" />
-						
 					</h:panelGrid>
+						<div align="center">
+							<p:button value="ثبت"></p:button>
+						</div>
+						<p:dataTable id="Childs" var="child"  editable="true" editMode="cell" >
+							<f:facet name="header">
+								<h:outputLabel value="مشخصات فرزندان" />
+							</f:facet>
+						
+							<p:column headerText="مهارت">
+								<p:cellEditor>
+									<f:facet name="output"></f:facet>
+									<f:facet name="input"></f:facet>
+								</p:cellEditor>
+							</p:column>
+							
+							<p:column headerText="شغل">
+								<p:cellEditor>
+									<f:facet name="output"></f:facet>
+									<f:facet name="input"></f:facet>
+								</p:cellEditor>
+							</p:column>
+							
+							
+							<p:column headerText="جنسیت">
+								<p:cellEditor>
+									<f:facet name="output"></f:facet>
+									<f:facet name="input"></f:facet>
+								</p:cellEditor>
+							</p:column>
+							
+							<p:column headerText="تاریخ تولد">
+								<p:cellEditor>
+									<f:facet name="output"></f:facet>
+									<f:facet name="input"></f:facet>
+								</p:cellEditor>
+							</p:column>
+							
+							<p:column headerText="نام خانوادگی">
+								<p:cellEditor>
+									<f:facet name="output"></f:facet>
+									<f:facet name="input"></f:facet>
+								</p:cellEditor>
+							</p:column>
+							
+							<p:column headerText="نام">
+								<p:cellEditor>
+									<f:facet name="output"></f:facet>
+									<f:facet name="input"></f:facet>
+								</p:cellEditor>
+							</p:column>
+						</p:dataTable>
 				</p:panel>
 			</p:tab>
+			<p:tab title="نیاز متقاضی">
+				<p:panel header="نیاز متقاضی">
+					<h:panelGrid columns="3">
+					<p:message for="chbNeyazMoteghazi"/>
+						<p:selectManyCheckbox id="chbNeyazMoteghazi" styleClass="leftDIR" required="true" requiredMessage="نیاز متقاضی را وارد کنید">
+							<f:selectItem itemLabel="مسکن" itemValue="HOME"/>
+							<f:selectItem itemLabel="بیماری" itemValue="BIMARI"/>
+							<f:selectItem itemLabel="جهیزیه" itemValue="JAHAZIYE"/>
+							<f:selectItem itemLabel="کسر خرج" itemValue="KASRE_KHARJ"/>
+							<f:selectItem itemLabel="وام" itemValue="VAAM"/>
+							<f:selectItem itemLabel="غیره" itemValue="ETC"/>
+						</p:selectManyCheckbox>
+						<h:outputLabel value=":نیاز متضاضی" />
+					</h:panelGrid>
+				</p:panel>
+				</p:tab>
+				
+			<p:tab title="گزارش مامورین تحقیق">
+				<p:panel header="گزارش مامورین تحقیق">
+				<p:editor styleClass="leftDIR"></p:editor>
+				</p:panel>
+			</p:tab>
+			
+			<p:tab title="مصوبات هیت مدیره">
+				<p:panel header="مصوبات هیت مدیره">
+				<p:editor styleClass="leftDIR"></p:editor>
+				</p:panel>
+			</p:tab>
+			
+			<p:tab title="مشخصات معرف">
+				<p:panel header="مشخصات معرف">
+				<h:panelGrid columns="3">
+					<p:message for="txtFMoaref"/>
+					<p:inputText styleClass="leftDIR" id="txtFMoaref"/>
+					<h:outputLabel value=":نام معرف" />
+					
+					<p:message for="txtLMoaref"/>
+					<p:inputText styleClass="leftDIR" id="txtLMoaref"/>
+					<h:outputLabel value=":نام خانوادگی معرف" />
+				</h:panelGrid>
+				</p:panel>
+			</p:tab>
+			
+			<p:tab title="مشخصات کنترل کننده">
+				<p:panel header="مشخصات کنترل کننده">
+					<p:message for="ctrlName"/>
+					<p:inputText id="ctrlName" styleClass="leftDIR" required="true" requiredMessage="نام کنترل کننده را وارد کنید"/>
+					<h:outputText value=":نام کنترل کننده"  />
+				</p:panel>
+			</p:tab>
+			
 		</p:wizard>
 	</h:form>
+	</div>
+	</ui:define>
+	
 	</ui:composition>
