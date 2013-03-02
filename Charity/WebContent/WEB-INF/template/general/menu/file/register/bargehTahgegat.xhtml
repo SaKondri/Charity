@@ -21,7 +21,7 @@
 				<h:outputLabel value=":شماره" styleClass="leftDIR" />
 				
 				<p:message for="date"></p:message>
-				<p:calendar required="true" id="date" requiredMessage="تاریخ را وارد کنید"></p:calendar>
+				<p:calendar  required="true" id="date" pattern="dd/MM/yyyy" requiredMessage="تاریخ را وارد کنید"></p:calendar>
 				<h:outputLabel value=":تاریخ" styleClass="leftDIR" />
 				
 				<p:message for="chbDaem" />
@@ -43,7 +43,7 @@
 					<h:outputLabel value=":نام خانوادگی" />
 					
 					<p:message for="dateMoteghazi"></p:message>
-					<p:calendar required="true" id="dateMoteghazi" requiredMessage="تاریخ تولد خود را وارد کنید"></p:calendar>
+					<p:calendar  pattern="dd/MM/yyyy" required="true" id="dateMoteghazi" requiredMessage="تاریخ تولد خود را وارد کنید"></p:calendar>
 					<h:outputLabel value=":تاریخ تولد" styleClass="leftDIR" />
 					
 					<p:message for="txtFhamsar" />
@@ -55,7 +55,7 @@
 					<h:outputLabel value=":نام خانوادگی همسر" />
 					
 					<p:message for="brtHasmsar" />
-					<p:calendar required="true" id="brtHasmsar" requiredMessage="تاریخ تولد همسر خود را وارد کنید" />
+					<p:calendar  pattern="dd/MM/yyyy" required="true" id="brtHasmsar" requiredMessage="تاریخ تولد همسر خود را وارد کنید" />
 					<h:outputLabel value=":تاریخ تولد همسر" styleClass="leftDIR" />
 					
 					<p:message for="txtShogl" />
@@ -129,7 +129,7 @@
 						
 						
 						<p:message for="childBirth" />
-						<p:calendar styleClass="leftDIR" id="childBirth" />
+						<p:calendar  pattern="dd/MM/yyyy" styleClass="leftDIR" id="childBirth" />
 						<h:outputLabel value=":تاریخ تولد فرزند" styleClass="leftDIR" />
 						
 						<p:message for="txtChilDit" />
@@ -246,14 +246,19 @@
 			
 			<p:tab title="مشخصات کنترل کننده">
 				<p:panel header="مشخصات کنترل کننده">
+				<h:panelGrid columns="3">
 					<p:message for="ctrlName"/>
 					<p:inputText id="ctrlName" styleClass="leftDIR" required="true" requiredMessage="نام کنترل کننده را وارد کنید"/>
 					<h:outputText value=":نام کنترل کننده"  />
+				</h:panelGrid>
+				
+					<p:commandButton value="ثبت پرونده"/>
 				</p:panel>
 			</p:tab>
 			
 		</p:wizard>
 	</h:form>
+		
 	</div>
 	</ui:define>
 	
