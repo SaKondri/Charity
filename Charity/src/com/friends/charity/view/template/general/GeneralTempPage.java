@@ -3,6 +3,8 @@ package com.friends.charity.view.template.general;
 import java.io.Serializable;
 
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -30,6 +32,12 @@ public class GeneralTempPage implements Serializable {
 
 	public void setGalleriaPage(GalleriaPage galleriaPage) {
 		this.galleriaPage = galleriaPage;
+	}
+
+	public void changeCenterPage(ActionEvent actionEvent) {
+		String page = (String) FacesContext.getCurrentInstance()
+				.getExternalContext().getRequestMap().get("madadjo");
+		setChangePage(page);
 	}
 
 }

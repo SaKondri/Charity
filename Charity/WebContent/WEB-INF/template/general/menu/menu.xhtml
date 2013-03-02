@@ -10,7 +10,11 @@
 		<p:menubar>
 			<p:submenu label="پرونده" icon="ui-icon-document">
 				<p:submenu label="ثبت نام" icon="ui-icon-contact">
-					<p:menuitem value="مددجو" url="/pages/file/menu/barghehTahgigat/bargehTahgigat.xhtml"/>
+					<p:menuitem value="مددجو"
+						url="/pages/file/menu/barghehTahgigat/bargehTahgigat.xhtml">
+						<f:param name="madadjo"
+							value="/WEB-INF/template/general/menu/file/register/bargehTahgegat.xhtml" />
+					</p:menuitem>
 					<p:menuitem value="مددکار" url="#" />
 				</p:submenu>
 				<p:menuitem value="ورود"
@@ -24,7 +28,7 @@
 			</p:submenu>
 		</p:menubar>
 		<div class="logoo">
-			<p:graphicImage value="/resources/images/logooCharity.png"/>
+			<p:graphicImage value="/resources/images/logooCharity.png" />
 		</div>
 	</h:form>
 

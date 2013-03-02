@@ -8,7 +8,6 @@ import javax.annotation.PostConstruct;
 import javax.inject.Named;
 
 @Named
-
 public class GalleriaPage implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private List<String> images;
@@ -18,9 +17,6 @@ public class GalleriaPage implements Serializable {
 		images = new ArrayList<>();
 		for (int i = 1; i <= 4; i++) {
 			images.add("galleria" + i + ".jpg");
-		}
-		for (String iterable : images) {
-			System.out.println(iterable);
 		}
 	}
 
