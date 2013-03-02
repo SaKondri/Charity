@@ -37,7 +37,6 @@ public class GeneralDao {
 		return t;
 	}
 
-	@SuppressWarnings("unchecked")
 	public <T> T delete(T t) throws Exception {
 		try {
 			Transaction transaction = session.beginTransaction();
