@@ -2,16 +2,19 @@ package com.friends.charity.view.template.general;
 
 import java.io.Serializable;
 
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
 
 import com.friends.charity.view.template.general.pic.GalleriaPage;
 
 @Named
-@ViewScoped
+@RequestScoped
 public class GeneralTempPage implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String changePage = "/WEB-INF/template/general/pic/galleria.xhtml";
@@ -35,9 +38,10 @@ public class GeneralTempPage implements Serializable {
 	}
 
 	public void changeCenterPage(ActionEvent actionEvent) {
-		String page = (String) FacesContext.getCurrentInstance()
-				.getExternalContext().getRequestMap().get("madadjo");
+		String page = ((HttpServletRequest) FacesContext.getCurrentInstance()
+				.getExternalContext().getRequest()).getParameter("madadjo");
 		setChangePage(page);
+		System.out.println(getChangePage());
 	}
 
 }

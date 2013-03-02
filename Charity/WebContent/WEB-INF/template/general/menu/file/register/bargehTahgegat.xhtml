@@ -3,195 +3,209 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui"
-	template="/WEB-INF/template/mainTemplate.xhtml">
-	
-	<ui:define name="content">
-	<div align="center">
+	xmlns:p="http://primefaces.org/ui">
 	<h:form>
-		<p:wizard>
-		
-			<p:tab  title="برگه تحقیقات مجدد">
-			<p:panel header="برگه تحقیقات مجدد">
-			<h:panelGrid columns="3">
-			
-				
-				<p:message for="shomarehParvandeh"></p:message>
-				<p:inputText styleClass="leftDIR" id="shomarehParvandeh" required="true" requiredMessage=" شماره پرونده را وارد کنید"/>
-				<h:outputLabel value=":شماره" styleClass="leftDIR" />
-				
-				<p:message for="date"></p:message>
-				<p:calendar  required="true" id="date" pattern="dd/MM/yyyy" requiredMessage="تاریخ را وارد کنید"></p:calendar>
-				<h:outputLabel value=":تاریخ" styleClass="leftDIR" />
-				
-				<p:message for="chbDaem" />
-				<h:selectBooleanCheckbox id="chbDaem" />
-				<h:outputLabel styleClass="leftDIR" value=":موقتی"/>
-			</h:panelGrid>
-			</p:panel>
-			</p:tab>
-			
-			<p:tab title="مشخصات متقاضی">
-				<p:panel header="مشخصات متقاضی">
-				<h:panelGrid columns="6">
-					<p:message for="txtFname" />
-					<p:inputText styleClass="leftDIR" id="txtFname" required="true" requiredMessage="نام خود را وارد کنید"/>
-					<h:outputLabel value=":نام" />
-					
-					<p:message for="txtLname" />
-					<p:inputText styleClass="leftDIR" id="txtLname" required="true" requiredMessage="نام خانوادگی خود را وارد کنید"/>
-					<h:outputLabel value=":نام خانوادگی" />
-					
-					<p:message for="dateMoteghazi"></p:message>
-					<p:calendar  pattern="dd/MM/yyyy" required="true" id="dateMoteghazi" requiredMessage="تاریخ تولد خود را وارد کنید"></p:calendar>
-					<h:outputLabel value=":تاریخ تولد" styleClass="leftDIR" />
-					
-					<p:message for="txtFhamsar" />
-					<p:inputText styleClass="leftDIR" id="txtFhamsar" required="true" requiredMessage="نام همسر خود را وارد کنید"/>
-					<h:outputLabel value=":نام همسر" />
-					
-					<p:message for="txtLhamsar" />
-					<p:inputText styleClass="leftDIR" id="txtLhamsar" required="true" requiredMessage="نام خانوادگی همسر خود را وارد کنید"/>
-					<h:outputLabel value=":نام خانوادگی همسر" />
-					
-					<p:message for="brtHasmsar" />
-					<p:calendar  pattern="dd/MM/yyyy" required="true" id="brtHasmsar" requiredMessage="تاریخ تولد همسر خود را وارد کنید" />
-					<h:outputLabel value=":تاریخ تولد همسر" styleClass="leftDIR" />
-					
-					<p:message for="txtShogl" />
-					<p:inputText styleClass="leftDIR" id="txtShogl" />
-					<h:outputLabel value=":شغل" />
-					
-					<p:message for="txtDaramad" />
-					<p:inputText styleClass="leftDIR" id="txtDaramad" required="true" requiredMessage="درآمد ماهیانه را وارد کنید "/>
-					<h:outputLabel value=":درآمد ماهیانه" />
-					
-					<p:message for="txtMaskan" />
-						<p:selectOneMenu id="txtMaskan" styleClass="leftDIR" required="true" requiredMessage="نوع مسکن را وارد کنید">
-							<f:selectItem  itemLabel="نوع مسکن را وارد کنید" itemValue=""/>
-							<f:selectItem itemLabel="شخصی" itemValue="SHAKHSI"/>
-							<f:selectItem itemLabel="رهن" itemValue="RAHN"/>
-							<f:selectItem itemLabel="استیجاری" itemValue="ESTIJARI"/>
-						</p:selectOneMenu>
-					<h:outputLabel value=":نوع مسکن" />
-					
-					<p:message for="txtEjareh" />
-					<p:inputText styleClass="leftDIR" id="txtEjareh" required="true" requiredMessage="اجاره ماهیانه را وارد کنید "/>
-					<h:outputLabel value=":اجاره ماهیانه" />
-					
-					<p:message for="txtBemeh" />
-					<p:inputText styleClass="leftDIR" id="txtBemeh" />
-					<h:outputLabel value=":نوع بیمه" />
-					
-					
-					<p:message for="txtHomeAdd" />
-					<p:inputText styleClass="leftDIR" id="txtHomeAdd" required="true" requiredMessage="نشانی دقیق منزل را وارد کنید"/>
-					<h:outputLabel value=":نشانی دقیق منزل" />
-					
-					<p:message for="txtJobAdd" />
-					<p:inputText styleClass="leftDIR" id="txtJobAdd" />
-					<h:outputLabel value=":نشانی دقیق محل کار" />
-					
-					<p:message for="nationalID" />
-					<p:inputText styleClass="leftDIR" id="nationalID" required="true" requiredMessage="کد ملی را وارد کنید"/>
-					<h:outputLabel value=":کد ملی" />
-					
-					<p:message for="postalCode" />
-					<p:inputText styleClass="leftDIR" id="postalCode" required="true" requiredMessage="کد پستی را وارد کنید"/>
-					<h:outputLabel value=":کد پستی" />
-					
-					<p:message for="homePhone" />
-					<p:inputText styleClass="leftDIR" id="homePhone" />
-					<h:outputLabel value=":تلفن منزل" />
-					
-					<p:message for="JobPhone" />
-					<p:inputText styleClass="leftDIR" id="JobPhone" />
-					<h:outputLabel value=":تلفن محل کار" />
-					
-					
-					
-				</h:panelGrid>
-				</p:panel>
-			</p:tab>
-			
-			<p:tab title="مشخصات فرزندان متقاضی">
-				<p:panel header="مشخصات فرزندان متقاضی">
-					<h:panelGrid columns="6">
-					
-						
-						<p:message for="txtLChild" />
-						<p:inputText styleClass="leftDIR" id="txtLChild" />
-						<h:outputLabel value=":نام خانوادگی" />
-						
-						<p:message for="txtFChild" />
-						<p:inputText styleClass="leftDIR" id="txtFChild" />
-						<h:outputLabel value=":نام" />
-						
-						
-						<p:message for="childBirth" />
-						<p:calendar  pattern="dd/MM/yyyy" styleClass="leftDIR" id="childBirth" />
-						<h:outputLabel value=":تاریخ تولد فرزند" styleClass="leftDIR" />
-						
-						<p:message for="txtChilDit" />
-						<p:selectOneMenu id="txtChilDit" styleClass="leftDIR" >
-							<f:selectItem  itemLabel="جنسیت فرزند را وارد کنید" itemValue="None"/>
-							<f:selectItem itemLabel="پسر" itemValue="Boy"/>
-							<f:selectItem itemLabel="دختر" itemValue="Girl"/>
-						</p:selectOneMenu>
-						<h:outputLabel value=":جنسیت فرزند" />
-						
-						<p:message for="childJob" />
-						<p:inputText styleClass="leftDIR" id="childJob" />
-						<h:outputLabel value=":شغل فرزند" styleClass="leftDIR" />
-						
-						<p:message for="childSkill" />
-						<p:inputText styleClass="leftDIR" id="childSkill" />
-						<h:outputLabel value=":مهارت فرزند" styleClass="leftDIR" />
-					</h:panelGrid>
+		<div align="center">
+			<p:wizard>
+
+				<p:tab title="برگه تحقیقات مجدد">
+					<p:panel header="برگه تحقیقات مجدد">
+						<h:panelGrid columns="3">
+
+
+							<p:message for="shomarehParvandeh"></p:message>
+							<p:inputText styleClass="leftDIR" id="shomarehParvandeh"
+								required="true" requiredMessage=" شماره پرونده را وارد کنید" />
+							<h:outputLabel value=":شماره" styleClass="leftDIR" />
+
+							<p:message for="date"></p:message>
+							<p:calendar required="true" id="date" pattern="dd/MM/yyyy"
+								requiredMessage="تاریخ را وارد کنید"></p:calendar>
+							<h:outputLabel value=":تاریخ" styleClass="leftDIR" />
+
+							<p:message for="chbDaem" />
+							<h:selectBooleanCheckbox id="chbDaem" />
+							<h:outputLabel styleClass="leftDIR" value=":موقتی" />
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+
+				<p:tab title="مشخصات متقاضی">
+					<p:panel header="مشخصات متقاضی">
+						<h:panelGrid columns="6">
+							<p:message for="txtFname" />
+							<p:inputText styleClass="leftDIR" id="txtFname" required="true"
+								requiredMessage="نام خود را وارد کنید" />
+							<h:outputLabel value=":نام" />
+
+							<p:message for="txtLname" />
+							<p:inputText styleClass="leftDIR" id="txtLname" required="true"
+								requiredMessage="نام خانوادگی خود را وارد کنید" />
+							<h:outputLabel value=":نام خانوادگی" />
+
+							<p:message for="dateMoteghazi"></p:message>
+							<p:calendar pattern="dd/MM/yyyy" required="true"
+								id="dateMoteghazi" requiredMessage="تاریخ تولد خود را وارد کنید"></p:calendar>
+							<h:outputLabel value=":تاریخ تولد" styleClass="leftDIR" />
+
+							<p:message for="txtFhamsar" />
+							<p:inputText styleClass="leftDIR" id="txtFhamsar" required="true"
+								requiredMessage="نام همسر خود را وارد کنید" />
+							<h:outputLabel value=":نام همسر" />
+
+							<p:message for="txtLhamsar" />
+							<p:inputText styleClass="leftDIR" id="txtLhamsar" required="true"
+								requiredMessage="نام خانوادگی همسر خود را وارد کنید" />
+							<h:outputLabel value=":نام خانوادگی همسر" />
+
+							<p:message for="brtHasmsar" />
+							<p:calendar pattern="dd/MM/yyyy" required="true" id="brtHasmsar"
+								requiredMessage="تاریخ تولد همسر خود را وارد کنید" />
+							<h:outputLabel value=":تاریخ تولد همسر" styleClass="leftDIR" />
+
+							<p:message for="txtShogl" />
+							<p:inputText styleClass="leftDIR" id="txtShogl" />
+							<h:outputLabel value=":شغل" />
+
+							<p:message for="txtDaramad" />
+							<p:inputText styleClass="leftDIR" id="txtDaramad" required="true"
+								requiredMessage="درآمد ماهیانه را وارد کنید " />
+							<h:outputLabel value=":درآمد ماهیانه" />
+
+							<p:message for="txtMaskan" />
+							<p:selectOneMenu id="txtMaskan" styleClass="leftDIR"
+								required="true" requiredMessage="نوع مسکن را وارد کنید">
+								<f:selectItem itemLabel="نوع مسکن را وارد کنید" itemValue="" />
+								<f:selectItem itemLabel="شخصی" itemValue="SHAKHSI" />
+								<f:selectItem itemLabel="رهن" itemValue="RAHN" />
+								<f:selectItem itemLabel="استیجاری" itemValue="ESTIJARI" />
+							</p:selectOneMenu>
+							<h:outputLabel value=":نوع مسکن" />
+
+							<p:message for="txtEjareh" />
+							<p:inputText styleClass="leftDIR" id="txtEjareh" required="true"
+								requiredMessage="اجاره ماهیانه را وارد کنید " />
+							<h:outputLabel value=":اجاره ماهیانه" />
+
+							<p:message for="txtBemeh" />
+							<p:inputText styleClass="leftDIR" id="txtBemeh" />
+							<h:outputLabel value=":نوع بیمه" />
+
+
+							<p:message for="txtHomeAdd" />
+							<p:inputText styleClass="leftDIR" id="txtHomeAdd" required="true"
+								requiredMessage="نشانی دقیق منزل را وارد کنید" />
+							<h:outputLabel value=":نشانی دقیق منزل" />
+
+							<p:message for="txtJobAdd" />
+							<p:inputText styleClass="leftDIR" id="txtJobAdd" />
+							<h:outputLabel value=":نشانی دقیق محل کار" />
+
+							<p:message for="nationalID" />
+							<p:inputText styleClass="leftDIR" id="nationalID" required="true"
+								requiredMessage="کد ملی را وارد کنید" />
+							<h:outputLabel value=":کد ملی" />
+
+							<p:message for="postalCode" />
+							<p:inputText styleClass="leftDIR" id="postalCode" required="true"
+								requiredMessage="کد پستی را وارد کنید" />
+							<h:outputLabel value=":کد پستی" />
+
+							<p:message for="homePhone" />
+							<p:inputText styleClass="leftDIR" id="homePhone" />
+							<h:outputLabel value=":تلفن منزل" />
+
+							<p:message for="JobPhone" />
+							<p:inputText styleClass="leftDIR" id="JobPhone" />
+							<h:outputLabel value=":تلفن محل کار" />
+
+
+
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+
+				<p:tab title="مشخصات فرزندان متقاضی">
+					<p:panel header="مشخصات فرزندان متقاضی">
+						<h:panelGrid columns="6">
+
+
+							<p:message for="txtLChild" />
+							<p:inputText styleClass="leftDIR" id="txtLChild" />
+							<h:outputLabel value=":نام خانوادگی" />
+
+							<p:message for="txtFChild" />
+							<p:inputText styleClass="leftDIR" id="txtFChild" />
+							<h:outputLabel value=":نام" />
+
+
+							<p:message for="childBirth" />
+							<p:calendar pattern="dd/MM/yyyy" styleClass="leftDIR"
+								id="childBirth" />
+							<h:outputLabel value=":تاریخ تولد فرزند" styleClass="leftDIR" />
+
+							<p:message for="txtChilDit" />
+							<p:selectOneMenu id="txtChilDit" styleClass="leftDIR">
+								<f:selectItem itemLabel="جنسیت فرزند را وارد کنید"
+									itemValue="None" />
+								<f:selectItem itemLabel="پسر" itemValue="Boy" />
+								<f:selectItem itemLabel="دختر" itemValue="Girl" />
+							</p:selectOneMenu>
+							<h:outputLabel value=":جنسیت فرزند" />
+
+							<p:message for="childJob" />
+							<p:inputText styleClass="leftDIR" id="childJob" />
+							<h:outputLabel value=":شغل فرزند" styleClass="leftDIR" />
+
+							<p:message for="childSkill" />
+							<p:inputText styleClass="leftDIR" id="childSkill" />
+							<h:outputLabel value=":مهارت فرزند" styleClass="leftDIR" />
+						</h:panelGrid>
 						<div align="center">
 							<p:button value="ثبت"></p:button>
 						</div>
-						<p:dataTable id="Childs" var="child"  editable="true" editMode="cell" >
+						<p:dataTable id="Childs" var="child" editable="true"
+							editMode="cell">
 							<f:facet name="header">
 								<h:outputLabel value="مشخصات فرزندان" />
 							</f:facet>
-						
+
 							<p:column headerText="مهارت">
 								<p:cellEditor>
 									<f:facet name="output"></f:facet>
 									<f:facet name="input"></f:facet>
 								</p:cellEditor>
 							</p:column>
-							
+
 							<p:column headerText="شغل">
 								<p:cellEditor>
 									<f:facet name="output"></f:facet>
 									<f:facet name="input"></f:facet>
 								</p:cellEditor>
 							</p:column>
-							
-							
+
+
 							<p:column headerText="جنسیت">
 								<p:cellEditor>
 									<f:facet name="output"></f:facet>
 									<f:facet name="input"></f:facet>
 								</p:cellEditor>
 							</p:column>
-							
+
 							<p:column headerText="تاریخ تولد">
 								<p:cellEditor>
 									<f:facet name="output"></f:facet>
 									<f:facet name="input"></f:facet>
 								</p:cellEditor>
 							</p:column>
-							
+
 							<p:column headerText="نام خانوادگی">
 								<p:cellEditor>
 									<f:facet name="output"></f:facet>
 									<f:facet name="input"></f:facet>
 								</p:cellEditor>
 							</p:column>
-							
+
 							<p:column headerText="نام">
 								<p:cellEditor>
 									<f:facet name="output"></f:facet>
@@ -199,67 +213,67 @@
 								</p:cellEditor>
 							</p:column>
 						</p:dataTable>
-				</p:panel>
-			</p:tab>
-			<p:tab title="نیاز متقاضی">
-				<p:panel header="نیاز متقاضی">
-					<h:panelGrid columns="3">
-					<p:message for="chbNeyazMoteghazi"/>
-						<p:selectManyCheckbox id="chbNeyazMoteghazi" styleClass="leftDIR" required="true" requiredMessage="نیاز متقاضی را وارد کنید">
-							<f:selectItem itemLabel="مسکن" itemValue="HOME"/>
-							<f:selectItem itemLabel="بیماری" itemValue="BIMARI"/>
-							<f:selectItem itemLabel="جهیزیه" itemValue="JAHAZIYE"/>
-							<f:selectItem itemLabel="کسر خرج" itemValue="KASRE_KHARJ"/>
-							<f:selectItem itemLabel="وام" itemValue="VAAM"/>
-							<f:selectItem itemLabel="غیره" itemValue="ETC"/>
-						</p:selectManyCheckbox>
-						<h:outputLabel value=":نیاز متضاضی" />
-					</h:panelGrid>
-				</p:panel>
+					</p:panel>
 				</p:tab>
-				
-			<p:tab title="گزارش مامورین تحقیق">
-				<p:panel header="گزارش مامورین تحقیق">
-				<p:editor styleClass="leftDIR"></p:editor>
-				</p:panel>
-			</p:tab>
-			
-			<p:tab title="مصوبات هیت مدیره">
-				<p:panel header="مصوبات هیت مدیره">
-				<p:editor styleClass="leftDIR"></p:editor>
-				</p:panel>
-			</p:tab>
-			
-			<p:tab title="مشخصات معرف">
-				<p:panel header="مشخصات معرف">
-				<h:panelGrid columns="3">
-					<p:message for="txtFMoaref"/>
-					<p:inputText styleClass="leftDIR" id="txtFMoaref"/>
-					<h:outputLabel value=":نام معرف" />
-					
-					<p:message for="txtLMoaref"/>
-					<p:inputText styleClass="leftDIR" id="txtLMoaref"/>
-					<h:outputLabel value=":نام خانوادگی معرف" />
-				</h:panelGrid>
-				</p:panel>
-			</p:tab>
-			
-			<p:tab title="مشخصات کنترل کننده">
-				<p:panel header="مشخصات کنترل کننده">
-				<h:panelGrid columns="3">
-					<p:message for="ctrlName"/>
-					<p:inputText id="ctrlName" styleClass="leftDIR" required="true" requiredMessage="نام کنترل کننده را وارد کنید"/>
-					<h:outputText value=":نام کنترل کننده"  />
-				</h:panelGrid>
-				
-					<p:commandButton value="ثبت پرونده"/>
-				</p:panel>
-			</p:tab>
-			
-		</p:wizard>
+				<p:tab title="نیاز متقاضی">
+					<p:panel header="نیاز متقاضی">
+						<h:panelGrid columns="3">
+							<p:message for="chbNeyazMoteghazi" />
+							<p:selectManyCheckbox id="chbNeyazMoteghazi" styleClass="leftDIR"
+								required="true" requiredMessage="نیاز متقاضی را وارد کنید">
+								<f:selectItem itemLabel="مسکن" itemValue="HOME" />
+								<f:selectItem itemLabel="بیماری" itemValue="BIMARI" />
+								<f:selectItem itemLabel="جهیزیه" itemValue="JAHAZIYE" />
+								<f:selectItem itemLabel="کسر خرج" itemValue="KASRE_KHARJ" />
+								<f:selectItem itemLabel="وام" itemValue="VAAM" />
+								<f:selectItem itemLabel="غیره" itemValue="ETC" />
+							</p:selectManyCheckbox>
+							<h:outputLabel value=":نیاز متضاضی" />
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+
+				<p:tab title="گزارش مامورین تحقیق">
+					<p:panel header="گزارش مامورین تحقیق">
+						<p:editor styleClass="leftDIR"></p:editor>
+					</p:panel>
+				</p:tab>
+
+				<p:tab title="مصوبات هیت مدیره">
+					<p:panel header="مصوبات هیت مدیره">
+						<p:editor styleClass="leftDIR"></p:editor>
+					</p:panel>
+				</p:tab>
+
+				<p:tab title="مشخصات معرف">
+					<p:panel header="مشخصات معرف">
+						<h:panelGrid columns="3">
+							<p:message for="txtFMoaref" />
+							<p:inputText styleClass="leftDIR" id="txtFMoaref" />
+							<h:outputLabel value=":نام معرف" />
+
+							<p:message for="txtLMoaref" />
+							<p:inputText styleClass="leftDIR" id="txtLMoaref" />
+							<h:outputLabel value=":نام خانوادگی معرف" />
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+
+				<p:tab title="مشخصات کنترل کننده">
+					<p:panel header="مشخصات کنترل کننده">
+						<h:panelGrid columns="3">
+							<p:message for="ctrlName" />
+							<p:inputText id="ctrlName" styleClass="leftDIR" required="true"
+								requiredMessage="نام کنترل کننده را وارد کنید" />
+							<h:outputText value=":نام کنترل کننده" />
+						</h:panelGrid>
+
+						<p:commandButton value="ثبت پرونده" />
+					</p:panel>
+				</p:tab>
+
+			</p:wizard>
+		</div>
 	</h:form>
-		
-	</div>
-	</ui:define>
-	
-	</ui:composition>
+
+</ui:composition>
