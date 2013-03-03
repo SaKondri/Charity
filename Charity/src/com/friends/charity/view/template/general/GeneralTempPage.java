@@ -2,7 +2,9 @@ package com.friends.charity.view.template.general;
 
 import java.io.Serializable;
 
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
@@ -36,7 +38,8 @@ public class GeneralTempPage implements Serializable {
 	}
 
 	public void changeCenterPage(ActionEvent actionEvent) {
-		String page = ((HttpServletRequest) FacesContext.getCurrentInstance()
+		
+	String page = ((HttpServletRequest) FacesContext.getCurrentInstance()
 				.getExternalContext().getRequest()).getParameter("madadjo");
 		setChangePage(page);
 

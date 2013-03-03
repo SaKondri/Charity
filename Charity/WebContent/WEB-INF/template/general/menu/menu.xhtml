@@ -19,8 +19,10 @@
 					<p:menuitem value="مددکار" url="#" />
 				</p:submenu>
 				<p:menuitem value="ورود"
-					actionListener="#{GeneralTemplatePage.changePage}"
-					onclick="madadRegDlg.show()">
+					actionListener="#{generalTempPage.changeCenterPage}" update=":changePage"
+						process="@form">
+						<f:param name="madadjo"
+					value="/WEB-INF/template/general/pic/galleria.xhtml"/>
 				</p:menuitem>
 			</p:submenu>
 			<p:submenu label="ارتباط با ما">
@@ -32,4 +34,5 @@
 			<p:graphicImage value="/resources/images/logooCharity.png" />
 		</div>
 	</h:form>
+	
 </ui:composition>

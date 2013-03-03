@@ -90,3 +90,6 @@ table.innertable td {
 	left: 20px;
 	top: 0px;
 }
+.ui-notificationbar { 
+z-index: 999; 
+} 

@@ -1,5 +1,7 @@
 package com.friends.charity.test;
 
+import com.util.validate.scr.NationalIdScr;
+
 
 public class Test {
 
@@ -14,6 +16,7 @@ public class Test {
 //			e.printStackTrace();
 //		}
 		System.out.println("sSS");
+		System.out.println(NationalIdScr.getValidNationalId("0451725913"));
 	}
 
 }

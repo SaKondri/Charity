@@ -5,7 +5,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 		<h:form>
-		<p:wizard>
+		<p:wizard id="wizz">
 	
 			<p:tab title="برگه تحقیقات مجدد">
 				<p:panel header="برگه تحقیقات مجدد">
@@ -18,7 +18,7 @@
 						<h:outputLabel value=":شماره" styleClass="leftDIR" />
 
 						<p:message for="date"></p:message>
-						<p:calendar required="true" id="date" pattern="dd/MM/yyyy"
+						<p:calendar required="true" id="date" effect="drop" pattern="dd/MM/yyyy"
 							requiredMessage="تاریخ را وارد کنید"></p:calendar>
 						<h:outputLabel value=":تاریخ" styleClass="leftDIR" />
 
@@ -43,7 +43,7 @@
 						<h:outputLabel value=":نام خانوادگی" />
 
 						<p:message for="dateMoteghazi"></p:message>
-						<p:calendar pattern="dd/MM/yyyy" required="true"
+						<p:calendar effect="drop" pattern="dd/MM/yyyy" required="true"
 							id="dateMoteghazi" requiredMessage="تاریخ تولد خود را وارد کنید"></p:calendar>
 						<h:outputLabel value=":تاریخ تولد" styleClass="leftDIR" />
 
@@ -58,7 +58,7 @@
 						<h:outputLabel value=":نام خانوادگی همسر" />
 
 						<p:message for="brtHasmsar" />
-						<p:calendar pattern="dd/MM/yyyy" required="true" id="brtHasmsar"
+						<p:calendar effect="drop" pattern="dd/MM/yyyy" required="true" id="brtHasmsar"
 							requiredMessage="تاریخ تولد همسر خود را وارد کنید" />
 						<h:outputLabel value=":تاریخ تولد همسر" styleClass="leftDIR" />
 
@@ -139,7 +139,7 @@
 
 
 						<p:message for="childBirth" />
-						<p:calendar pattern="dd/MM/yyyy" styleClass="leftDIR"
+						<p:calendar effect="drop" pattern="dd/MM/yyyy" styleClass="leftDIR"
 							id="childBirth" />
 						<h:outputLabel value=":تاریخ تولد فرزند" styleClass="leftDIR" />
 
@@ -267,7 +267,9 @@
 						<h:outputText value=":نام کنترل کننده" />
 					</h:panelGrid>
 
-					<p:commandButton value="ثبت پرونده" />
+					<p:commandButton id="btnSabt" value="ثبت پرونده" />
+						
+					 <p:blockUI block="wizz" trigger="btnSabt" /> 
 				</p:panel>
 			</p:tab>
 			
