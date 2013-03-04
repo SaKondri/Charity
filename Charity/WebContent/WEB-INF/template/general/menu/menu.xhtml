@@ -30,9 +30,22 @@
 				<p:menuitem value="تلفن" url="#" />
 			</p:submenu>
 		</p:menubar>
-		<div class="logoo">
-			<p:graphicImage value="/resources/images/logooCharity.png" />
-		</div>
+		
+			  
+  			  <p:themeSwitcher value="#{themeSwitcherBean.theme}" style="width:175px;" effect="fade" var="t">
+                        <f:selectItem itemLabel="Choose Theme" itemValue="" />
+                        <f:selectItems value="#{themeSwitcherBean.advancedThemes}" var="theme" itemLabel="#{theme.name}" itemValue="#{theme}"/>
+                        <p:ajax listener="#{themeSwitcherBean.saveTheme}" />
+                        
+                        <p:column>
+                            <h:graphicImage name="images/themes/#{t.image}" />
+                        </p:column>
+                        
+                        <p:column>
+                            #{t.name}
+                        </p:column>
+                    </p:themeSwitcher>
+        
 	</h:form>
 	
 </ui:composition>

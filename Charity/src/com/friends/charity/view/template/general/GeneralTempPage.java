@@ -20,7 +20,7 @@ public class GeneralTempPage implements Serializable {
 	private String changePage = "/WEB-INF/template/general/pic/galleria.xhtml";
 	@Inject
 	private GalleriaPage galleriaPage;
-
+	
 	public String getChangePage() {
 		return changePage;
 	}

@@ -28,8 +28,9 @@
 	<session-config>
 		<session-timeout>10</session-timeout>
 	</session-config>
+	
 	<context-param>
-		<param-name>primefaces.THEME</param-name>
-		<param-value>redmond-rtl</param-value>
-	</context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>#{GuestPreferences.theme}</param-value>
+    </context-param>
 </web-app>
