@@ -10,7 +10,7 @@ import javax.faces.context.FacesContext;
 @ManagedBean(name="GuestPreferences")
 public class GuestPreferences implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private String theme = "redmond"; //default
+	private String theme = "redmond-rtl"; //default
 
 	public String getTheme() {
 		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();

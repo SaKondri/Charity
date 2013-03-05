@@ -84,11 +84,11 @@ table.innertable td {
 	width: 350px
 }
 
-.logoo {
+.themSwitcher {
 	float: left;
 	position: absolute;
-	left: 20px;
-	top: 0px;
+	left: 2px;
+	top: 3px;
 }
 .ui-notificationbar { 
 z-index: 999; 

@@ -31,7 +31,7 @@
 			</p:submenu>
 		</p:menubar>
 		
-			  
+			  <div class="themSwitcher"> 
   			  <p:themeSwitcher value="#{themeSwitcherBean.theme}" styleClass="leftDIR" style="width:175px;" effect="fade" var="t">
                         <f:selectItem itemLabel="Choose Theme" itemValue="" />
                         <f:selectItems value="#{themeSwitcherBean.advancedThemes}" var="theme" itemLabel="#{theme.name}" itemValue="#{theme}"/>
@@ -45,7 +45,7 @@
                             #{t.name}
                         </p:column>
                     </p:themeSwitcher>
-        
+        </div>
 	</h:form>
 	
 </ui:composition>
