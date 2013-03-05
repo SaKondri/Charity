@@ -4,9 +4,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import javax.annotation.PostConstruct;
-import javax.inject.Inject;
-
-import com.friends.charity.view.template.them.GuestPreferences;
 import com.friends.charity.view.template.them.Theme;
 
 public class ThemeSwitcherBean {
@@ -16,15 +13,13 @@ public class ThemeSwitcherBean {
     private List<Theme> advancedThemes;
     
     private String theme;
-    @Inject
+    
     private GuestPreferences gp;
 
     public void setGp(GuestPreferences gp) {
         this.gp = gp;
     }
-    public GuestPreferences getGp() {
-		return gp;
-	}
+    
     public Map<String, String> getThemes() {
         return themes;
     }
