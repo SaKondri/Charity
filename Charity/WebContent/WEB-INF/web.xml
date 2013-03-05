@@ -31,6 +31,8 @@
 	
 	<context-param>
         <param-name>primefaces.THEME</param-name>
-        <param-value>#{guestPreferences.theme}</param-value>
+        <param-value>#{GuestPreferences.theme}</param-value>
+        
     </context-param>
+   	
 </web-app>

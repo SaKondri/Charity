@@ -32,11 +32,11 @@
 		</p:menubar>
 		
 			  
-  			  <p:themeSwitcher value="#{themeSwitcherBean.theme}" style="width:175px;" effect="fade" var="t">
+  			  <p:themeSwitcher value="#{themeSwitcherBean.theme}" styleClass="leftDIR" style="width:175px;" effect="fade" var="t">
                         <f:selectItem itemLabel="Choose Theme" itemValue="" />
                         <f:selectItems value="#{themeSwitcherBean.advancedThemes}" var="theme" itemLabel="#{theme.name}" itemValue="#{theme}"/>
                         <p:ajax listener="#{themeSwitcherBean.saveTheme}" />
-                        
+                         
                         <p:column>
                             <h:graphicImage name="images/themes/#{t.image}" />
                         </p:column>

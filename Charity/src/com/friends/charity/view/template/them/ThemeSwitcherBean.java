@@ -4,8 +4,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import javax.annotation.PostConstruct;
-import com.friends.charity.view.template.them.Theme;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 
+import com.friends.charity.view.template.them.Theme;
+@ManagedBean(name="themeSwitcherBean")
 public class ThemeSwitcherBean {
         
     private Map<String, String> themes;
@@ -13,7 +16,7 @@ public class ThemeSwitcherBean {
     private List<Theme> advancedThemes;
     
     private String theme;
-    
+    @ManagedProperty(value="#{GuestPreferences}")
     private GuestPreferences gp;
 
     public void setGp(GuestPreferences gp) {
