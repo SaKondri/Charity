@@ -17,19 +17,11 @@ import com.friends.charity.view.template.general.pic.GalleriaPage;
 @SessionScoped
 public class GeneralTempPage implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private String changePage = "/WEB-INF/template/general/pic/galleria.xhtml";
+
 	@Inject
 	private GalleriaPage galleriaPage;
 	@Inject
 	private GeneralEvent event;
-
-	public String getChangePage() {
-		return changePage;
-	}
-
-	public void setChangePage(String changePage) {
-		this.changePage = changePage;
-	}
 
 	public GalleriaPage getGalleriaPage() {
 		return galleriaPage;
@@ -45,12 +37,6 @@ public class GeneralTempPage implements Serializable {
 
 	public void setEvent(GeneralEvent event) {
 		this.event = event;
-	}
-
-	public void changeCenterPage(ActionEvent actionEvent) {
-		String page = ((HttpServletRequest) FacesContext.getCurrentInstance()
-				.getExternalContext().getRequest()).getParameter("madadjo");
-		setChangePage(page);
 	}
 
 }

@@ -6,18 +6,27 @@ import java.net.URL;
 
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 
 @Named
 public class GeneralEvent implements Serializable {
 	private static final long serialVersionUID = 1L;
+	private String changePage = "/WEB-INF/template/general/pic/galleria.xhtml";
 	private String url;
 
 	// @PostConstruct
 	// public void init() {
 	// getUrlPge();
 	// }
+	public String getChangePage() {
+		return changePage;
+	}
+
+	public void setChangePage(String changePage) {
+		this.changePage = changePage;
+	}
 
 	public String getUrl() throws MalformedURLException {
 		getUrlPge();
@@ -26,6 +35,12 @@ public class GeneralEvent implements Serializable {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public void changeCenterPage(ActionEvent actionEvent) {
+		String page = ((HttpServletRequest) FacesContext.getCurrentInstance()
+				.getExternalContext().getRequest()).getParameter("madadjo");
+		setChangePage(page);
 	}
 
 	public void getUrlPge() throws MalformedURLException {

@@ -6,32 +6,33 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/template/mainTemplate.xhtml">
 	<h:head>
-	
+
 	</h:head>
-	
+
 	<ui:define name="content">
-		
-			<p:layout fullPage="true">
-				<p:layoutUnit position="north" size="40">
-					<ui:include src="/WEB-INF/template/general/menu/menu.xhtml" />
-				</p:layoutUnit>
-				<p:layoutUnit position="center" styleClass="myLayoutStyleClass">
-					<div align="center">
-						<h:panelGroup id="changePage">
-							<ui:include src="#{generalTempPage.changePage}" />
-						</h:panelGroup>
-					</div>
-				</p:layoutUnit>
+
+		<p:layout fullPage="true">
+			<p:layoutUnit position="north" size="40">
+				<ui:include src="/WEB-INF/template/general/menu/menu.xhtml" />
+			</p:layoutUnit>
+			<p:layoutUnit position="center" styleClass="myLayoutStyleClass">
 				<div align="center">
-					<p:layoutUnit position="south" size="25">  
-      					  <p:commandLink value="درباره ما" onclick="bar.show()" />  
-   					 </p:layoutUnit> 
-   				 </div>
-			</p:layout>
-			 
+					<h:panelGroup id="changePage">
+						<ui:include src="#{generalTempPage.event.changePage}" />
+					</h:panelGroup>
+				</div>
+			</p:layoutUnit>
+			<div align="center">
+				<p:layoutUnit position="south" size="25">
+					<p:commandLink value="درباره ما" onclick="bar.show()" />
+				</p:layoutUnit>
+			</div>
+		</p:layout>
+
 	</ui:define>
-	<ui:define name="dialog" >
-			<ui:insert name="dialog" />
-			<ui:include src="/WEB-INF/template/general/menu/bottom/notificationBar.xhtml" />
+	<ui:define name="dialog">
+		<ui:insert name="dialog" />
+		<ui:include
+			src="/WEB-INF/template/general/menu/bottom/notificationBar.xhtml" />
 	</ui:define>
 </ui:composition>

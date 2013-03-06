@@ -21,7 +21,7 @@
 			<p:submenu label="پرونده" icon="ui-icon-document">
 				<p:submenu label="ثبت نام" icon="ui-icon-contact">
 					<p:menuitem value="مددجو"
-						actionListener="#{generalTempPage.changeCenterPage}"
+						actionListener="#{generalTempPage.event.changeCenterPage}"
 						update=":changePage" process="@form">
 						<f:param name="madadjo"
 							value="/WEB-INF/template/general/menu/file/register/madamJo.xhtml" />
@@ -29,7 +29,7 @@
 					<p:menuitem value="مددکار" url="#" />
 				</p:submenu>
 				<p:menuitem value="ورود"
-					actionListener="#{generalTempPage.changeCenterPage}"
+					actionListener="#{generalTempPage.event.changeCenterPage}"
 					update=":changePage" process="@form">
 					<f:param name="madadjo"
 						value="/WEB-INF/template/general/pic/galleria.xhtml" />
@@ -37,7 +37,7 @@
 			</p:submenu>
 			<p:submenu label="ارتباط با ما">
 				<p:menuitem value="آدرس"
-					actionListener="#{generalTempPage.changeCenterPage}"
+					actionListener="#{generalTempPage.event.changeCenterPage}"
 					process="@form" update=":changePage">
 					<f:param name="madadjo" value="/pages/home.xhtml" />
 				</p:menuitem>
