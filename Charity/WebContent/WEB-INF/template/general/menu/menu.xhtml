@@ -7,6 +7,16 @@
 	<h:head>
 	</h:head>
 	<h:form>
+		<p:ajaxStatus
+			style="width:64px;height:64px;position:fixed;right:5px;bottom:50px">
+			<f:facet name="start">
+				<p:graphicImage value="/resources/images/ajax-loader.gif" />
+			</f:facet>
+
+			<f:facet name="complete">
+				<h:outputText value="#{generalTempPage.event.url}" />
+			</f:facet>
+		</p:ajaxStatus>
 		<p:menubar>
 			<p:submenu label="پرونده" icon="ui-icon-document">
 				<p:submenu label="ثبت نام" icon="ui-icon-contact">
@@ -14,7 +24,7 @@
 						actionListener="#{generalTempPage.changeCenterPage}"
 						update=":changePage" process="@form">
 						<f:param name="madadjo"
-							value="/WEB-INF/template/general/menu/file/register/bargehTahgegat.xhtml" />
+							value="/WEB-INF/template/general/menu/file/register/madamJo.xhtml" />
 					</p:menuitem>
 					<p:menuitem value="مددکار" url="#" />
 				</p:submenu>
@@ -26,7 +36,11 @@
 				</p:menuitem>
 			</p:submenu>
 			<p:submenu label="ارتباط با ما">
-				<p:menuitem value="آدرس" url="#" />
+				<p:menuitem value="آدرس"
+					actionListener="#{generalTempPage.changeCenterPage}"
+					process="@form" update=":changePage">
+					<f:param name="madadjo" value="/pages/home.xhtml" />
+				</p:menuitem>
 				<p:menuitem value="تلفن" url="#" />
 			</p:submenu>
 		</p:menubar>
