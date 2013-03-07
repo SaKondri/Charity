@@ -5,7 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
+
+import com.friends.charity.view.template.general.pic.event.GalleriaEvent;
 
 @Named
 public class GalleriaPage implements Serializable {
@@ -16,7 +21,7 @@ public class GalleriaPage implements Serializable {
 	public void init() {
 		images = new ArrayList<>();
 		for (int i = 1; i <= 4; i++) {
-			images.add("galleria" + i + ".jpg");
+			images.add("charity" + i + ".jpg");
 		}
 	}
 

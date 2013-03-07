@@ -7,9 +7,18 @@
 	<h:form>
 		<div align="center">
 			<p:galleria value="#{generalTempPage.galleriaPage.images}"
-				var="image" frameWidth="64" frameHeight="87" panelWidth="400"
-				panelHeight="300" effect="slide" effectSpeed="1000" transitionInterval="3000">
-				<p:graphicImage value="/resources/images/galleria/#{image}" />
+				var="image" frameWidth="60" frameHeight="40" panelWidth="500"
+				panelHeight="400" effect="slide" effectSpeed="1000"
+				filmstripPosition="top" transitionInterval="3000"
+				showCaptions="true" showOverlays="true">
+
+				<p:graphicImage value="/resources/images/galleria/charity/#{image}">
+				</p:graphicImage>
+				<p:galleriaOverlay>
+					<h:outputText value="World Help" rendered="#{image.equals('charity1.jpg')}"/>
+					<h:outputText value="Give" rendered="#{image.equals('charity2.jpg')}"/>
+					<h:outputText value="Please Give" rendered="#{image.equals('charity3.jpg')}"/>
+				</p:galleriaOverlay>
 			</p:galleria>
 		</div>
 	</h:form>

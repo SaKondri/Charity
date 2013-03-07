@@ -17,7 +17,6 @@ import com.friends.charity.view.template.general.pic.GalleriaPage;
 @SessionScoped
 public class GeneralTempPage implements Serializable {
 	private static final long serialVersionUID = 1L;
-
 	@Inject
 	private GalleriaPage galleriaPage;
 	@Inject
