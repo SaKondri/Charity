@@ -100,7 +100,7 @@ table.innertable td {
 	width:167px;
 	height:173px;
 	position:fixed;
-	right:5px;
-	bottom:5px;
+	right:0px;
+	bottom:0px;
 	z-index: 999;
 }
