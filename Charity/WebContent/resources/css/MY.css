@@ -91,7 +91,9 @@ table.innertable td {
 	top: 3px;
 }
 .ui-notificationbar { 
-z-index: 999; 
+	color:#FFCC00;
+	font-size:36px;
+	z-index: 999; 
 }
 .ajaxStatus{
 	
