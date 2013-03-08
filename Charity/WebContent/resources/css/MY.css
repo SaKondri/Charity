@@ -92,4 +92,13 @@ table.innertable td {
 }
 .ui-notificationbar { 
 z-index: 999; 
-} 
+}
+.ajaxStatus{
+	
+	width:167px;
+	height:173px;
+	position:fixed;
+	right:5px;
+	bottom:5px;
+	z-index: 999;
+}
