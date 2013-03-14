@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 
+import com.friends.charity.view.template.general.menu.MenuBean;
 import com.friends.charity.view.template.general.pic.GalleriaPage;
 
 @Named
@@ -21,6 +22,8 @@ public class GeneralTempPage implements Serializable {
 	private GalleriaPage galleriaPage;
 	@Inject
 	private GeneralEvent event;
+	@Inject
+	private MenuBean menuBean;
 
 	public GalleriaPage getGalleriaPage() {
 		return galleriaPage;
@@ -36,6 +39,14 @@ public class GeneralTempPage implements Serializable {
 
 	public void setEvent(GeneralEvent event) {
 		this.event = event;
+	}
+
+	public MenuBean getMenuBean() {
+		return menuBean;
+	}
+
+	public void setMenuBean(MenuBean menuBean) {
+		this.menuBean = menuBean;
 	}
 
 }

@@ -10,11 +10,14 @@
 	</h:head>
 
 	<ui:define name="content">
+		<ui:include
+			src="/WEB-INF/template/general/ajaxStatus/ajaxStatus.html.xhtml" />
 
 		<p:layout fullPage="true">
 			<p:layoutUnit position="north" size="40">
 				<ui:include src="/WEB-INF/template/general/menu/menu.xhtml" />
 			</p:layoutUnit>
+
 			<p:layoutUnit position="center" styleClass="myLayoutStyleClass">
 				<div align="center">
 					<h:panelGroup id="changePage">
@@ -22,17 +25,20 @@
 					</h:panelGroup>
 				</div>
 			</p:layoutUnit>
+
 			<div align="center">
 				<p:layoutUnit position="south" size="25">
 					<p:commandLink value="درباره ما" onclick="bar.show()" />
 				</p:layoutUnit>
 			</div>
+
 		</p:layout>
-		<ui:include src="/WEB-INF/template/general/ajaxStatus/ajaxStatus.html.xhtml" />
 	</ui:define>
+
 	<ui:define name="dialog">
 		<ui:insert name="dialog" />
 		<ui:include
 			src="/WEB-INF/template/general/menu/bottom/notificationBar.xhtml" />
 	</ui:define>
+
 </ui:composition>

@@ -10,9 +10,12 @@
 				<p:panel header="مشخصات متقاضی">
 					<h:panelGrid columns="9">
 						<p:message for="dateMoteghazi"></p:message>
-						<p:calendar styleClass="leftDIR" effect="drop"
+						<p:calendar navigator="true" effect="drop"
+							value="#{generalTempPage.menuBean.madadJoPage.date}"
 							pattern="dd/MM/yyyy" required="true" id="dateMoteghazi"
-							requiredMessage="تاریخ تولد خود را وارد کنید"></p:calendar>
+							requiredMessage="تاریخ تولد خود را وارد کنید">
+							<f:converter converterId="CalendarConvertor" />
+						</p:calendar>
 						<h:outputLabel value=":تاریخ تولد" styleClass="leftDIR" />
 
 						<p:message for="txtLname" />
@@ -88,6 +91,7 @@
 						<h:panelGroup></h:panelGroup>
 						<h:panelGroup></h:panelGroup>
 						<h:panelGroup></h:panelGroup>
+
 						<p:inputText styleClass="leftDIR" id="JobPhone" />
 						<h:outputLabel value=":تلفن محل کار" />
 

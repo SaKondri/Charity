@@ -4,10 +4,24 @@ import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
-@ManagedBean(name="MenuBean")
+import com.friends.charity.view.template.general.menu.file.register.MadadJoPage;
+
 @ViewScoped
-public class MenuBean implements Serializable{
+@Named
+public class MenuBean implements Serializable {
 	private static final long serialVersionUID = 1L;
+	@Inject
+	private MadadJoPage madadJoPage;
+
+	public MadadJoPage getMadadJoPage() {
+		return madadJoPage;
+	}
+
+	public void setMadadJoPage(MadadJoPage madadJoPage) {
+		this.madadJoPage = madadJoPage;
+	}
 
 }

@@ -1,26 +1,24 @@
 package com.friends.charity.test;
 
-import com.util.validate.scr.NationalIdScr;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 
 public class Test {
 
 	public static void main(String[] args) {
-		// GeneralDao dao = new GeneralDao();
-		// MoshakhasateMotaghazi moshakhasateMotaghazi = new
-		// MoshakhasateMotaghazi();
-		// moshakhasateMotaghazi.setCodeMelli("111");
-		// try {
-		// dao.save(moshakhasateMotaghazi);
-		// } catch (Exception e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		String s = "http://stackoverflow.com/questions/6196501/";
-		String ss[];
-		ss = (s.split("/"));
-		for (String string : ss) {
-			System.out.print(string);
-		}
+		Calendar c=Calendar.getInstance();
+//		Calendar rs=Calendar.getInstance();
+//		Date date=new Date();
+//		date=c.getTime();
+//		DateFormat format=new SimpleDateFormat("yyyy/mm/dd");
+//		format.format(date);
+//		rs=format.getCalendar();
+//		Date dx=rs.getTime();
+//		System.out.println(rs.getTime());
+		
+		
 	}
-
 }

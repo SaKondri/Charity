@@ -42,6 +42,9 @@ public class User extends BaseEntity {
 	}
 
 	public Calendar getBirthday() {
+		if (birthday == null) {
+			birthday = Calendar.getInstance();
+		}
 		return birthday;
 	}
 
