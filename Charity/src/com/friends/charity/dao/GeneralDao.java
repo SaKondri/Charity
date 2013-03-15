@@ -1,5 +1,7 @@
 package com.friends.charity.dao;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -25,26 +27,40 @@ public class GeneralDao {
 	}
 
 	public <T> T save(T t) throws Exception {
+		Transaction transaction = null;
 		try {
-			Transaction transaction = session.beginTransaction();
+			transaction = session.beginTransaction();
 			session.save(t);
 			transaction.commit();
 			session.flush();
 			session.clear();
 		} catch (Exception e) {
+			transaction.rollback();
 			throw new Exception();
+		}
+		return t;
+	}
+
+	public <T> T update(T t) {
+		Transaction transaction;
+		try {
+			transaction = session.beginTransaction();
+			session.update(t);
+			transaction.commit();
+			session.flush();
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			session.clear();
 		}
 		return t;
 	}
 
 	public <T> T delete(T t) throws Exception {
 		try {
-			Transaction transaction = session.beginTransaction();
 			t = load(t);
 			session.delete(t);
-			transaction.commit();
 			session.flush();
-
 		} catch (Exception e) {
 			throw new Exception();
 		} finally {
@@ -60,17 +76,13 @@ public class GeneralDao {
 
 	@SuppressWarnings("unchecked")
 	public <T> T select(String queryName, long id) {
-		Transaction transaction = null;
 		T t = null;
 		try {
-			transaction = session.beginTransaction();
 			Query query = session.createQuery(queryName);
 			query.setParameter("id", id);
 			t = (T) query.uniqueResult();
-			transaction.commit();
 			session.flush();
 		} catch (Exception e) {
-			transaction.rollback();
 		} finally {
 			session.clear();
 		}
@@ -79,23 +91,61 @@ public class GeneralDao {
 
 	@SuppressWarnings("unchecked")
 	public <T> T select(String queryName, Map<String, Object> params) {
-		Transaction transaction = null;
 		T t = null;
 		try {
-			transaction = session.beginTransaction();
 			Query query = session.createQuery(queryName);
 			for (Entry<String, Object> entry : params.entrySet()) {
 				query.setParameter(entry.getKey(), entry.getValue());
 			}
 			t = (T) query.uniqueResult();
-			transaction.commit();
 			session.flush();
 		} catch (Exception e) {
-			transaction.rollback();
 		} finally {
 			session.clear();
 		}
 		return t;
 	}
 
+	@SuppressWarnings("unchecked")
+	public <T> List<T> selectList(String queryName, Map<String, Object> params) {
+		List<T> result = new ArrayList<>();
+		try {
+			Query query = session.createQuery(queryName);
+			for (Entry<String, Object> ent : params.entrySet()) {
+				query.setParameter(ent.getKey(), ent.getValue());
+			}
+			result = query.list();
+			session.flush();
+		} catch (Exception e) {
+		} finally {
+			session.clear();
+		}
+		return result;
+
+	}
+
+	@SuppressWarnings("unchecked")
+	public <T> List<T> selectList(String queryName, Map<String, Object> params,
+			Integer first, Integer max) {
+		List<T> result = new ArrayList<>();
+		try {
+			Query query = session.createQuery(queryName);
+			for (Entry<String, Object> ent : params.entrySet()) {
+				query.setParameter(ent.getKey(), ent.getValue());
+			}
+			if (first != null) {
+				query.setFirstResult(first);
+			}
+			if (max != null) {
+				query.setMaxResults(max);
+			}
+			result = query.list();
+			session.flush();
+		} catch (Exception e) {
+		} finally {
+			session.clear();
+		}
+		return result;
+
+	}
 }
