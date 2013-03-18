@@ -13,11 +13,12 @@ import com.sahandrc.calendar.PersianDateParser;
 @FacesConverter(value = "CalendarConvertor")
 public class CalendarConvertor implements Converter {
 	private Date rsDate;
+	private String str;
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component,
 			String value) {
-
+		setStr(value);
 		String date[] = rond(value);
 		PersianCalendar persianCalendar;
 		persianCalendar = new PersianDateParser(date[0] + "/" + date[1] + "/"
@@ -30,7 +31,7 @@ public class CalendarConvertor implements Converter {
 	@Override
 	public String getAsString(FacesContext context, UIComponent component,
 			Object value) {
-		return value.toString();
+		return getStr();
 	}
 
 	public String[] rond(String value) {
@@ -49,6 +50,14 @@ public class CalendarConvertor implements Converter {
 
 	public void setRsDate(Date rsDate) {
 		this.rsDate = rsDate;
+	}
+
+	public String getStr() {
+		return str;
+	}
+
+	public void setStr(String str) {
+		this.str = str;
 	}
 
 }

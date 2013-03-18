@@ -1,6 +1,7 @@
 package com.friends.charity.model.farzand;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Proxy;
 
@@ -35,8 +37,10 @@ public class Farzandan extends BaseEntity {
 	private String shoghl;
 	@Column(name = "MAHARAT")
 	private String maharat;
-//	@ManyToOne
-//	private MoshakhasateMotaghazi user;
+	// @ManyToOne
+	// private MoshakhasateMotaghazi user;
+	@Transient
+	private Date date;
 
 	public String getFirstname() {
 		return firstname;
@@ -86,15 +90,23 @@ public class Farzandan extends BaseEntity {
 		this.maharat = maharat;
 	}
 
-//	public MoshakhasateMotaghazi getUser() {
-//		if (user == null) {
-//			user = new MoshakhasateMotaghazi();
-//		}
-//		return user;
-//	}
-//
-//	public void setUser(MoshakhasateMotaghazi user) {
-//		this.user = user;
-//	}
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	// public MoshakhasateMotaghazi getUser() {
+	// if (user == null) {
+	// user = new MoshakhasateMotaghazi();
+	// }
+	// return user;
+	// }
+	//
+	// public void setUser(MoshakhasateMotaghazi user) {
+	// this.user = user;
+	// }
 
 }

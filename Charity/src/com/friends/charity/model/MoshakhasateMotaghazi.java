@@ -2,6 +2,7 @@ package com.friends.charity.model;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -16,6 +17,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import com.friends.charity.model.farzand.Farzandan;
 
@@ -56,6 +58,8 @@ public class MoshakhasateMotaghazi extends User {
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "sarparast_ID", referencedColumnName = "ID")
 	private List<Farzandan> farzandans;
+	@Transient
+	private Date date;
 
 	public String getHamsarFirstname() {
 		return hamsarFirstname;
@@ -178,6 +182,14 @@ public class MoshakhasateMotaghazi extends User {
 
 	public void setFarzandans(List<Farzandan> farzandans) {
 		this.farzandans = farzandans;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 }
