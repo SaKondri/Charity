@@ -1,1 +1,1 @@
-<%response.sendRedirect("pages/home.xhtml"); %>
+<%request.getRequestDispatcher("/pages/home.xhtml").forward(request, response);%>
