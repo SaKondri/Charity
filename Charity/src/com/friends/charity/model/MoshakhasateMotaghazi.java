@@ -12,6 +12,8 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -19,11 +21,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import com.friends.charity.business.logic.CalendarFormat;
 import com.friends.charity.model.farzand.Farzandan;
 
 @Entity
 @Table(name = "MOSHAKHASATE_MOTAGHAZI")
 @PrimaryKeyJoinColumn(name = "ID")
+@NamedQueries({ @NamedQuery(name = "selectUsers", query = "Select usr from MoshakhasateMotaghazi usr") })
 public class MoshakhasateMotaghazi extends User {
 	@Column(name = "HAMSAR_FIRST_NAME")
 	private String hamsarFirstname;
@@ -59,7 +63,13 @@ public class MoshakhasateMotaghazi extends User {
 	@JoinColumn(name = "sarparast_ID", referencedColumnName = "ID")
 	private List<Farzandan> farzandans;
 	@Transient
-	private Date date;
+	private Date mySelfDate;
+	@Transient
+	private Date myWifeDate;
+	@Transient
+	private String mySelfStrDate;
+	@Transient
+	private String myWifeStrDate;
 
 	public String getHamsarFirstname() {
 		return hamsarFirstname;
@@ -184,12 +194,40 @@ public class MoshakhasateMotaghazi extends User {
 		this.farzandans = farzandans;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getMySelfDate() {
+		return mySelfDate;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setMySelfDate(Date mySelfDate) {
+		this.mySelfDate = mySelfDate;
+	}
+
+	public Date getMyWifeDate() {
+		return myWifeDate;
+	}
+
+	public void setMyWifeDate(Date myWifeDate) {
+		this.myWifeDate = myWifeDate;
+	}
+
+	public String getMySelfStrDate() {
+		mySelfStrDate = CalendarFormat.getStrForDT(getMySelfDate());
+		return mySelfStrDate;
+	}
+
+	public void setMySelfStrDate(String mySelfStrDate) {
+		this.mySelfStrDate = mySelfStrDate;
+	}
+
+	public String getMyWifeStrDate() {
+		if (getMyWifeDate() != null) {
+			myWifeStrDate = CalendarFormat.getStrForDT(getMyWifeDate());
+		}
+		return myWifeStrDate;
+	}
+
+	public void setMyWifeStrDate(String myWifeStrDate) {
+		this.myWifeStrDate = myWifeStrDate;
 	}
 
 }

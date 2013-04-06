@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -16,6 +18,7 @@ import org.hibernate.annotations.Proxy;
 @Table(name = "USERS")
 @Inheritance(strategy = InheritanceType.JOINED)
 @Proxy(lazy = false)
+
 public class User extends BaseEntity {
 	@Column(name = "FIRST_NAME")
 	private String firstname;

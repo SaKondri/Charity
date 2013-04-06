@@ -37,9 +37,9 @@ public class CalendarConvertor implements Converter {
 	public String[] rond(String value) {
 		String result[] = new String[3];
 		String str[] = value.split("/");
-		result[0] = str[2];
+		result[0] = str[0];
 		result[1] = str[1];
-		result[2] = str[0];
+		result[2] = str[2];
 		return result;
 
 	}

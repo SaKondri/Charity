@@ -3,11 +3,16 @@ package com.friends.charity.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "LOGIN")
+@NamedQueries({ @NamedQuery(name = "u", query = "select u from Login as u"),
+
+})
 public class Login extends BaseEntity {
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private User user;

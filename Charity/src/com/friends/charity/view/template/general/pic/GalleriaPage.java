@@ -5,14 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.context.FacesContext;
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.servlet.http.HttpServletRequest;
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedBean;
 
-import com.friends.charity.view.template.general.pic.event.GalleriaEvent;
-
-@Named
+@ManagedBean
+@SessionScoped
 public class GalleriaPage implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private List<String> images;

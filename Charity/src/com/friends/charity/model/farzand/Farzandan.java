@@ -16,6 +16,7 @@ import javax.persistence.Transient;
 
 import org.hibernate.annotations.Proxy;
 
+import com.friends.charity.business.logic.CalendarFormat;
 import com.friends.charity.model.BaseEntity;
 
 @Entity
@@ -41,6 +42,8 @@ public class Farzandan extends BaseEntity {
 	// private MoshakhasateMotaghazi user;
 	@Transient
 	private Date date;
+	@Transient
+	private String strDate;
 
 	public String getFirstname() {
 		return firstname;
@@ -96,6 +99,15 @@ public class Farzandan extends BaseEntity {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	public String getStrDate() {
+		strDate = CalendarFormat.getStrForDT(getDate());
+		return strDate;
+	}
+
+	public void setStrDate(String strDate) {
+		this.strDate = strDate;
 	}
 
 	// public MoshakhasateMotaghazi getUser() {
