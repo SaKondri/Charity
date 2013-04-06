@@ -14,6 +14,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.friends.charity.model.Login;
+
 public class GeneralDao {
 	private EntityManagerFactory entityManagerFactory;
 	private EntityManager entityManager;
@@ -147,5 +149,14 @@ public class GeneralDao {
 		}
 		return result;
 
+	}
+	public Login getUsernamePassword(String username,String password){
+		Login login = null;
+		
+		Query query = session.getNamedQuery("selectUsernamePassword");
+		query.setParameter("username", username);
+		query.setParameter("password",password );
+		login = (Login) query.uniqueResult();
+		return login;
 	}
 }
