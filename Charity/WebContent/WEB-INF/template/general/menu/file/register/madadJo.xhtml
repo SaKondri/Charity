@@ -5,52 +5,178 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 	<h:form>
-		<p:wizard id="mdWizard" style="width:80%">
+		<p:wizard id="mdWizard" style="width:80%" widgetVar="wiz">
+			<p:tab title="مشخصات متقاضی">
+				<p:panel id="pnl" header="مشخصات متقاضی">
+					<h:panelGrid columns="9">
+						<p:message for="dateMoteghazi" styleClass="leftDIR" />
+						<p:calendar effect="drop" navigator="true" pattern="yyyy/MM/dd"
+							value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.mySelfDate}"
+							required="true" id="dateMoteghazi"
+							requiredMessage="تاریخ تولد خود را وارد کنید">
+							<f:converter converterId="CalendarConvertor" />
+						</p:calendar>
+						<h:outputLabel value=":تاریخ تولد" styleClass="leftDIR" />
+
+						<p:message for="txtLname" />
+						<p:inputText styleClass="leftDIR" id="txtLname" required="true"
+							requiredMessage="نام خانوادگی خود را وارد کنید"
+							value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.lastname}" />
+						<h:outputLabel value=":نام خانوادگی" />
+
+						<p:message for="txtFname" />
+						<p:inputText styleClass="leftDIR" id="txtFname" required="true"
+							requiredMessage="نام خود را وارد کنید"
+							value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.firstname}" />
+						<h:outputLabel value=":نام" />
+
+						<h:panelGroup></h:panelGroup>
+						<p:calendar effect="drop" navigator="true" pattern="yyyy/MM/dd"
+							id="brtHasmsar"
+							value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.myWifeDate}">
+							<f:converter converterId="CalendarConvertor" />
+						</p:calendar>
+						<h:outputLabel value=":تاریخ تولد همسر" styleClass="leftDIR" />
+
+						<h:panelGroup></h:panelGroup>
+						<p:inputText styleClass="leftDIR" id="txtLhamsar"
+							value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.hamsarLastname}" />
+						<h:outputLabel value=":نام خانوادگی همسر" />
+
+						<h:panelGroup></h:panelGroup>
+						<p:inputText styleClass="leftDIR" id="txtFhamsar"
+							value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.hamsarFirstname}" />
+						<h:outputLabel value=":نام همسر" />
+
+						<p:message for="txtMaskan" />
+						<p:selectOneMenu id="txtMaskan" styleClass="leftDIR"
+							required="true" requiredMessage="نوع مسکن را وارد کنید"
+							value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.maskanType}">
+							<f:converter converterId="securityRoleConverter" />
+
+							<f:selectItems
+								value="#{generalTempPage.menuBean
+									.madadJoPage.event.maskanValue}" />
+
+						</p:selectOneMenu>
+						<h:outputLabel value=":نوع مسکن" />
+
+						<p:message for="txtDaramad" />
+						<p:inputText styleClass="leftDIR" id="txtDaramad" required="true"
+							requiredMessage="درآمد ماهیانه را وارد کنید "
+							value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.daramad}" />
+						<h:outputLabel value=":درآمد ماهیانه" />
+
+						<p:message for="txtShogl" />
+						<p:inputText styleClass="leftDIR" id="txtShogl"
+							value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.shoghl}" />
+						<h:outputLabel value=":شغل" />
+
+						<p:message for="homePhone" />
+						<p:inputText styleClass="leftDIR" id="homePhone"
+							value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.homeNumber}" />
+						<h:outputLabel value=":تلفن منزل" />
+
+						<h:panelGroup></h:panelGroup>
+						<p:inputText styleClass="leftDIR" id="txtBemeh"
+							value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.noeBimehVaSabegheh}" />
+						<h:outputLabel value=":نوع بیمه" />
+
+						<p:message for="txtEjareh" />
+						<p:inputText styleClass="leftDIR" id="txtEjareh" required="true"
+							requiredMessage="اجاره ماهیانه را وارد کنید "
+							value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.ejareMahiyaneh}" />
+						<h:outputLabel value=":اجاره ماهیانه" />
+
+						<h:panelGroup></h:panelGroup>
+						<p:inputText styleClass="leftDIR" id="postalCode"
+							value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.codePosti}" />
+						<h:outputLabel value=":کد پستی" />
+
+						<p:message for="nationalID" />
+						<p:inputText styleClass="leftDIR" id="nationalID" required="true"
+							requiredMessage="کد ملی را وارد کنید"
+							value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.codeMelli}" />
+						<h:outputLabel value=":کد ملی" />
+
+						<h:panelGroup></h:panelGroup>
+						<p:inputText styleClass="leftDIR" id="JobPhone"
+							value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.jobNumber}" />
+						<h:outputLabel value=":تلفن محل کار" />
+
+
+						<h:panelGroup></h:panelGroup>
+						<h:panelGroup></h:panelGroup>
+						<h:panelGroup></h:panelGroup>
+
+
+						<h:panelGroup></h:panelGroup>
+						<p:inputTextarea styleClass="leftDIR" id="txtJobAdd"
+							value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.jobAddress}" />
+						<h:outputLabel value=":نشانی دقیق محل کار" />
+
+						<p:message for="txtHomeAdd" />
+						<p:inputTextarea styleClass="leftDIR" id="txtHomeAdd"
+							required="true" size="20"
+							requiredMessage="نشانی دقیق منزل را وارد کنید"
+							value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.homeAddress}" />
+						<h:outputLabel value=":نشانی دقیق منزل" />
+					</h:panelGrid>
+				</p:panel>
+			</p:tab>
+
 			<p:tab title="مشخصات فرزندان متقاضی">
-				<p:panel header="مشخصات فرزندان متقاضی">
+				<p:panel id="pnll" header="مشخصات فرزندان متقاضی">
 					<h:panelGrid columns="6">
 
 						<p:message for="txtLChild" />
 						<p:inputText styleClass="leftDIR" id="txtLChild"
 							value="#{generalTempPage.menuBean.madadJoPage
-								.event.farzandan.lastname}" />
+ 									.event.farzandan.lastname}" />
 						<h:outputLabel value=":نام خانوادگی" />
 
 						<p:message for="txtFChild" />
 						<p:inputText styleClass="leftDIR" id="txtFChild"
 							value="#{generalTempPage.menuBean.madadJoPage
-								.event.farzandan.firstname}" />
+ 									.event.farzandan.firstname}" />
 						<h:outputLabel value=":نام" />
 
 						<p:message for="childBirth" />
-						<p:calendar effect="drop" pattern="dd/MM/yyyy"
-							styleClass="leftDIR" id="childBirth"
+						<p:calendar navigator="true" effect="drop" pattern="yyyy/MM/dd"
+							id="childBirth"
 							value="#{generalTempPage.menuBean.madadJoPage
-								.event.farzandan.date}" />
+ 									.event.farzandan.date}">
+							<f:converter converterId="CalendarConvertor" />
+						</p:calendar>
 						<h:outputLabel value=":تاریخ تولد فرزند" styleClass="leftDIR" />
 
 
 						<p:message for="childJob" />
 						<p:inputText styleClass="leftDIR" id="childJob"
 							value="#{generalTempPage.menuBean.madadJoPage
-								.event.farzandan.shoghl}" />
+ 									.event.farzandan.shoghl}" />
 						<h:outputLabel value=":شغل فرزند" styleClass="leftDIR" />
 
+						<h:panelGroup></h:panelGroup>
+						<h:panelGroup></h:panelGroup>
+						<h:panelGroup></h:panelGroup>
 						<p:message for="childSkill" />
 						<p:inputText styleClass="leftDIR" id="childSkill"
 							value="#{generalTempPage.menuBean.madadJoPage
-								.event.farzandan.maharat}" />
+ 									.event.farzandan.maharat}" />
 						<h:outputLabel value=":مهارت فرزند" styleClass="leftDIR" />
 					</h:panelGrid>
 
 					<div align="center">
-						<p:commandButton value="ثبت" update="Childs" process="@form"
+						<p:commandButton value="ثبت"
+							update="Childs,txtLChild,txtFChild,childBirth,childJob,childSkill"
+							process="@form"
 							actionListener="#{generalTempPage.menuBean.madadJoPage.event.btnSubmit}" />
 					</div>
 					<p:dataTable id="Childs" var="child" editable="true"
 						editMode="cell"
 						value="#{generalTempPage.menuBean.madadJoPage
-								.event.farzandans}">
+ 									.event.farzandans}">
 						<f:facet name="header">
 							<h:outputLabel value="مشخصات فرزندان" />
 						</f:facet>
@@ -78,26 +204,15 @@
 						</p:column>
 
 
-						<p:column headerText="جنسیت">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{child.gender}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText value="#{child.gender}" style="width:96%" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-
 						<p:column headerText="تاریخ تولد">
 							<p:cellEditor>
 								<f:facet name="output">
-									<h:outputText value="#{child.birthday.time.toString()}" />
+									<h:outputText value="#{child.strDate}" />
 								</f:facet>
 								<f:facet name="input">
 									<p:calendar effect="drop" styleClass="leftDIR" id="childBirth"
 										value="#{generalTempPage.menuBean.madadJoPage
-										.event.farzandan.date}" />
+ 											.event.farzandan.birthday.time}" />
 								</f:facet>
 							</p:cellEditor>
 						</p:column>
@@ -125,6 +240,201 @@
 							</p:cellEditor>
 						</p:column>
 					</p:dataTable>
+
+				</p:panel>
+			</p:tab>
+
+			<p:tab title="شناسه کاربری">
+				<p:panel header="شناسه کاربری">
+
+					<h:panelGrid columns="3">
+						<p:message for="username" />
+						<p:inputText id="username" styleClass="leftDIR" required="true"
+							requiredMessage=".نام کاربری را وارد کنید "
+							value="#{generalTempPage.menuBean.madadJoPage.event.login.usernamePassword.username}">
+						</p:inputText>
+						<h:outputLabel value=": نام کاربری" />
+
+						<p:message for="pass1" />
+						<p:password id="pass1" styleClass="leftDIR"
+							promptLabel="لطفا گذر واژه را وارد کنید"
+							weakLabel=" گذر واژه ضعیف" goodLabel="گذر واژه خوب"
+							strongLabel="گذر واژه قوی" feedback="true" required="true"
+							match="pass2" requiredMessage=".گذر واژه را وارد کنید "
+							validatorMessage=" خطا در هماهنگ بودن گذر واژه"
+							value="#{generalTempPage.menuBean.madadJoPage.event.login.usernamePassword.password}" />
+						<h:outputLabel value=": گذر واژه" />
+
+
+						<p:message for="pass2" />
+						<p:password id="pass2" styleClass="leftDIR" required="true"
+							requiredMessage="گذر واژه را مجدد وارد نمائید"
+							value="#{generalTempPage.menuBean.madadJoPage.event.login.usernamePassword
+							.password}" />
+						<h:outputLabel value=": تکرار گذر واژه" />
+					</h:panelGrid>
+				</p:panel>
+			</p:tab>
+
+			<p:tab title="تائیدیه">
+				<p:panel header="تائیدیه">
+					<p:panelGrid styleClass="algRgt" style="margin-top:20px">
+
+						<f:facet name="footer">
+							<p:row>
+								<p:column colspan="6">
+									<p:commandButton value="ذخیره"
+										actionListener="#{generalTempPage.menuBean.madadJoPage.saved}"
+										update=":growl"
+										oncomplete="wiz.loadStep(wiz.cfg.steps[0], true)" />
+								</p:column>
+							</p:row>
+						</f:facet>
+
+						<p:row>
+							<p:column>
+								<h:outputText styleClass="bold"
+									value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.mySelfStrDate}" />
+							</p:column>
+							<p:column>
+								<h:outputText value=": تاریخ تولد " />
+							</p:column>
+							<p:column>
+								<h:outputText styleClass="leftDIR"
+									value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.lastname}" />
+							</p:column>
+							<p:column>
+								<h:outputText styleClass="leftDIR ‌algRgt"
+									value=": نام خانوادگی" />
+							</p:column>
+							<p:column>
+								<h:outputText
+									value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.firstname}" />
+							</p:column>
+							<p:column>
+								<h:outputText value=": نام" />
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column>
+								<h:outputText styleClass="bold"
+									value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.myWifeStrDate}" />
+							</p:column>
+							<p:column>
+								<h:outputText value=": تاریخ تولد همسر " />
+							</p:column>
+							<p:column>
+								<h:outputText
+									value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.hamsarLastname}" />
+							</p:column>
+							<p:column>
+								<h:outputText value=": نام خانوادگی همسر" />
+							</p:column>
+							<p:column>
+								<h:outputText
+									value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.hamsarFirstname}" />
+							</p:column>
+							<p:column>
+								<h:outputText value=": نام همسر" />
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column>
+								<h:outputText
+									value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.maskanType.type}" />
+							</p:column>
+							<p:column>
+								<h:outputText value=": نوع مسکن" />
+							</p:column>
+							<p:column>
+								<h:outputText
+									value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.daramad}" />
+							</p:column>
+							<p:column>
+								<h:outputText value=": درآمد ماهیانه" />
+							</p:column>
+							<p:column>
+								<h:outputText
+									value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.shoghl}" />
+							</p:column>
+							<p:column>
+								<h:outputText value=": شغل" />
+							</p:column>
+						</p:row>
+
+
+						<p:row>
+							<p:column>
+								<h:outputText
+									value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.homeNumber}" />
+							</p:column>
+							<p:column>
+								<h:outputText value=": تلفن منزل" />
+							</p:column>
+							<p:column>
+								<h:outputText
+									value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.noeBimehVaSabegheh}" />
+							</p:column>
+							<p:column>
+								<h:outputText value=": نوع بیمه" />
+							</p:column>
+							<p:column>
+								<h:outputText
+									value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.ejareMahiyaneh}" />
+							</p:column>
+							<p:column>
+								<h:outputText value=": اجاره ماهیانه" />
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column>
+								<h:outputText
+									value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.codePosti}" />
+							</p:column>
+							<p:column>
+								<h:outputText value=": کد پستی" />
+							</p:column>
+							<p:column>
+								<h:outputText
+									value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.codeMelli}" />
+							</p:column>
+							<p:column>
+								<h:outputText value=": کد ملی" />
+							</p:column>
+							<p:column>
+								<h:outputText
+									value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.jobNumber}" />
+							</p:column>
+							<p:column>
+								<h:outputText value=": تلفن محل کار" />
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column colspan="5">
+								<h:outputText
+									value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.homeAddress}" />
+							</p:column>
+							<p:column>
+								<h:outputLabel value=": نشانی دقیق منزل" />
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column colspan="5">
+								<h:outputText
+									value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.jobAddress}" />
+							</p:column>
+							<p:column>
+								<h:outputLabel value=": نشانی دقیق محل کار" />
+							</p:column>
+						</p:row>
+
+
+					</p:panelGrid>
 				</p:panel>
 			</p:tab>
 		</p:wizard>
