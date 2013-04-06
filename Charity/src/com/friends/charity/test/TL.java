@@ -1,8 +1,14 @@
 package com.friends.charity.test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+
+import com.friends.charity.dao.GeneralDao;
+import com.friends.charity.model.Login;
 
 @WebListener
 public class TL implements ServletContextListener {
@@ -15,6 +21,16 @@ public class TL implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
+		GeneralDao loginService = new GeneralDao();
+		List<Login> l = new ArrayList<>();
+		l = loginService.selectList("u", null);
+		if (l != null) {
+			for (Login login : l) {
+				System.out.println(login.getUsernamePassword().getUsername());
+			}
+		} else {
+			System.out.println("sddddddddddddddddddddddddddddddddddddddd");
+		}
 //		GeneralDao dao = new GeneralDao();
 //		MoshakhasateMotaghazi user = new MoshakhasateMotaghazi();
 //		user.setFirstname("fath");
