@@ -29,31 +29,32 @@ public class TL implements ServletContextListener {
 				System.out.println(login.getUsernamePassword().getUsername());
 			}
 		} else {
-			System.out.println("sddddddddddddddddddddddddddddddddddddddd");
+			System.out.println("sddddddddddddddddddddddddddddddddddddddd"
+					+ "dsdsd");
 		}
-//		GeneralDao dao = new GeneralDao();
-//		MoshakhasateMotaghazi user = new MoshakhasateMotaghazi();
-//		user.setFirstname("fath");
-//		user.setBirthday(Calendar.getInstance());
-//		Dokhtar dokhtar = new Dokhtar();
-//		Pesar pesar = new Pesar();
-//		dokhtar.setFirstname("popo");
-//		pesar.setFirstname("sdfjkn");
-//		user.setMaskanType(MaskanType.ESTIJARI);
-//		user.setCodeMelli("0012624691");
-//		List<Farzandan> farzandans = new ArrayList<>();
-//		farzandans.add(pesar);
-//		farzandans.add(dokhtar);
-//
-//		user.setFarzandans(farzandans);
-//		BargehTahghighateMojadad mojadad = new BargehTahghighateMojadad();
-//		mojadad.setMoshakhasateMotaghazi(user);
-//		try {
-//			dao.save(mojadad);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		// GeneralDao dao = new GeneralDao();
+		// MoshakhasateMotaghazi user = new MoshakhasateMotaghazi();
+		// user.setFirstname("fath");
+		// user.setBirthday(Calendar.getInstance());
+		// Dokhtar dokhtar = new Dokhtar();
+		// Pesar pesar = new Pesar();
+		// dokhtar.setFirstname("popo");
+		// pesar.setFirstname("sdfjkn");
+		// user.setMaskanType(MaskanType.ESTIJARI);
+		// user.setCodeMelli("0012624691");
+		// List<Farzandan> farzandans = new ArrayList<>();
+		// farzandans.add(pesar);
+		// farzandans.add(dokhtar);
+		//
+		// user.setFarzandans(farzandans);
+		// BargehTahghighateMojadad mojadad = new BargehTahghighateMojadad();
+		// mojadad.setMoshakhasateMotaghazi(user);
+		// try {
+		// dao.save(mojadad);
+		// } catch (Exception e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
 
 	}
 
