@@ -111,8 +111,10 @@ public class GeneralDao {
 		List<T> result = new ArrayList<>();
 		try {
 			Query query = session.createQuery(queryName);
-			for (Entry<String, Object> ent : params.entrySet()) {
-				query.setParameter(ent.getKey(), ent.getValue());
+			if (params != null) {
+				for (Entry<String, Object> ent : params.entrySet()) {
+					query.setParameter(ent.getKey(), ent.getValue());
+				}
 			}
 			result = query.list();
 			session.flush();
