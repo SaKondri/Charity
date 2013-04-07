@@ -44,7 +44,7 @@ public class GeneralService {
 	}
 
 	public <T> List<T> selectList(String queryName, Map<String, Object> params,
-			Integer first, Integer max) {
+			Integer first, Integer max) throws Exception {
 		return getDao().selectList(queryName, params, first, max);
 	}
 }
