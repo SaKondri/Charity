@@ -24,6 +24,8 @@
 	<h:body>
 		<p:growl id="growl" globalOnly="false" showDetail="true" />
 		<ui:insert name="content" />
+		<ui:include src="/WEB-INF/template/general/ajaxStatus/ajaxStatus.xhtml" />
+		
 		<ui:insert name="dialog" />
 	</h:body>
 </f:view>

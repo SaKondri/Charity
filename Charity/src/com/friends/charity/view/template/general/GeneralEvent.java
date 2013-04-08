@@ -15,7 +15,8 @@ public class GeneralEvent implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String changePage = "/WEB-INF/template/general/pic/galleria.xhtml";
 	private String url;
-
+	private String adminChangePage = "/WEB-INF/template/admin/protect/login/adminLogin.xhtml";
+	private String adminChangePageHome = "";
 	// @PostConstruct
 	// public void init() {
 	// getUrlPge();
@@ -23,7 +24,12 @@ public class GeneralEvent implements Serializable {
 	public String getChangePage() {
 		return changePage;
 	}
-
+	public void setAdminChangePage(String adminChangePage) {
+		this.adminChangePage = adminChangePage;
+	}
+	public String getAdminChangePage() {
+		return adminChangePage;
+	}
 	public void setChangePage(String changePage) {
 		this.changePage = changePage;
 	}
@@ -42,7 +48,12 @@ public class GeneralEvent implements Serializable {
 				.getExternalContext().getRequest()).getParameter("madadjo");
 		setChangePage(page);
 	}
-
+	public String getAdminChangePageHome() {
+		return adminChangePageHome;
+	}
+	public void setAdminChangePageHome(String adminChangePageHome) {
+		this.adminChangePageHome = adminChangePageHome;
+	}
 	public void getUrlPge() throws MalformedURLException {
 		HttpServletRequest request = ((HttpServletRequest) FacesContext
 				.getCurrentInstance().getExternalContext().getRequest());
@@ -51,5 +62,15 @@ public class GeneralEvent implements Serializable {
 		// URL newUrl = new URL(url.getProtocol(), url.getHost(), url.getPort(),
 		// request.getContextPath());
 		setUrl(url.getPath());
+	}
+	public void changeCenterPageAdmin(ActionEvent actionEvent) {
+		String page = ((HttpServletRequest) FacesContext.getCurrentInstance()
+				.getExternalContext().getRequest()).getParameter("madadjo");
+		setAdminChangePage(page);
+	}
+	public void changeCenterPageAdminHome(ActionEvent actionEvent) {
+		String page = ((HttpServletRequest) FacesContext.getCurrentInstance()
+				.getExternalContext().getRequest()).getParameter("madadjo");
+		setAdminChangePageHome(page);
 	}
 }

@@ -1,0 +1,22 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form>
+		<p:menubar>
+			<p:submenu label="عکس ها">
+				<p:menuitem value="عکس های صفحه اصلی"
+					actionListener="#{generalTempPage.event.changeCenterPageAdminHome}"
+					update=":pnlChange" process="@form">
+					<f:param name="madadjo"
+							value="/WEB-INF/template/admin/protect/menu/file/addPicture.xhtml" />
+				</p:menuitem>
+				
+			</p:submenu>
+		</p:menubar>
+		<div class="themSwitcher">
+			<ui:include src="/WEB-INF/template/general/themSwitcher/themSwitcher.xhtml" />
+		</div>
+	</h:form>
+</ui:composition>
