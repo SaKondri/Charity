@@ -41,19 +41,19 @@ public class TL implements ServletContextListener {
 		// }
 
 		// //////////////////////2////////////////
-		GeneralDao dao = new GeneralDao();
-		List<Login> result = new ArrayList<>();
-		Map<String, Object> map = new HashMap<>();
-		map.put("username", "s");
-		map.put("password", "s");
-		try {
-			result = dao.selectList("selectUsernamePassword", map, null, null);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		for (Login login : result) {
-			System.out.println(login.getUsernamePassword().getUsername());
-		}
+//		GeneralDao dao = new GeneralDao();
+//		List<Login> result = new ArrayList<>();
+//		Map<String, Object> map = new HashMap<>();
+//		map.put("username", "s");
+//		map.put("password", "s");
+//		try {
+//			result = dao.selectList("selectUsernamePassword", map, null, null);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		for (Login login : result) {
+//			System.out.println(login.getUsernamePassword().getUsername());
+//		}
 	}
 
 }

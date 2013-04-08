@@ -1,7 +1,9 @@
 package com.friends.charity.business.service.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.friends.charity.business.service.GeneralService;
 import com.friends.charity.model.Login;
@@ -16,9 +18,11 @@ public class LoginService {
 		return generalService;
 	}
 
-	public List<Login> getCorrectUsername(String username) {
-		List<Login> login = new ArrayList<>();
-		login = getGeneralService().selectList("u", null);
+	public Login getCorrectUsername(String username) {
+		Login login = null;
+		Map<String, Object> params = new HashMap<>();
+		params.put("username", username);
+		login = getGeneralService().select("selectUsernamePassword", params);
 		return login;
 	}
 

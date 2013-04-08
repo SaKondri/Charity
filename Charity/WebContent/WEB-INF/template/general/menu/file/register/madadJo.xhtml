@@ -82,9 +82,8 @@
 							value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.noeBimehVaSabegheh}" />
 						<h:outputLabel value=":نوع بیمه" />
 
-						<p:message for="txtEjareh" />
-						<p:inputText styleClass="leftDIR" id="txtEjareh" required="true"
-							requiredMessage="اجاره ماهیانه را وارد کنید "
+						<h:panelGroup></h:panelGroup>
+						<p:inputText styleClass="leftDIR" id="txtEjareh"
 							value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.ejareMahiyaneh}" />
 						<h:outputLabel value=":اجاره ماهیانه" />
 
@@ -247,11 +246,12 @@
 			<p:tab title="شناسه کاربری">
 				<p:panel header="شناسه کاربری">
 
-					<h:panelGrid columns="3">
+					<h:panelGrid id="png" columns="3">
 						<p:message for="username" />
 						<p:inputText id="username" styleClass="leftDIR" required="true"
 							requiredMessage=".نام کاربری را وارد کنید "
-							value="#{generalTempPage.menuBean.madadJoPage.event.login.usernamePassword.username}">
+							value="#{generalTempPage.menuBean.madadJoPage.event.username}">
+							<p:ajax event="blur" update=":growl username" />
 						</p:inputText>
 						<h:outputLabel value=": نام کاربری" />
 

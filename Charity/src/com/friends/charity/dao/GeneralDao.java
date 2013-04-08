@@ -110,19 +110,17 @@ public class GeneralDao {
 
 	@SuppressWarnings("unchecked")
 	public <T> List<T> selectList(String queryName, Map<String, Object> params) {
-		// List<T> result = new ArrayList<>();
-		// Query query = session.getNamedQuery(queryName);
-		// if (params != null) {
-		// for (Entry<String, Object> ent : params.entrySet()) {
-		// query.setParameter(ent.getKey(), ent.getValue());
-		// }
-		// }
-		// result = query.list();
-		// session.flush();
-		// session.clear();
-		// return result;
-		return null;
-
+		List<T> result = new ArrayList<>();
+		Query query = session.getNamedQuery(queryName);
+		if (params != null) {
+			for (Entry<String, Object> ent : params.entrySet()) {
+				query.setParameter(ent.getKey(), ent.getValue());
+			}
+		}
+		result = query.list();
+		session.flush();
+		session.clear();
+		return result;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -169,8 +167,8 @@ public class GeneralDao {
 		for (Entry<String, Object> t : params.entrySet()) {
 			query.setParameter(t.getKey(), t.getValue());
 		}
-//		query.setParameter("username", "Ali");
-//		query.setParameter("password", "Alavi");
+		// query.setParameter("username", "Ali");
+		// query.setParameter("password", "Alavi");
 		result = query.list();
 		return result;
 	}

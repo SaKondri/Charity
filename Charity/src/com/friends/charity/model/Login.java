@@ -10,8 +10,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "LOGIN")
-@NamedQueries({ @NamedQuery(name = "selectUsernamePassword", query = "select u from Login  u where u.usernamePassword.username=:username and u.usernamePassword.password=:password"),
-	@NamedQuery(name="all",query="select u from Login u")
+@NamedQueries({
+		@NamedQuery(name = "selectUsernamePassword", query = "select u from Login  u where u.usernamePassword.username=:username"),
+		@NamedQuery(name = "all", query = "select u from Login u")
 
 })
 public class Login extends BaseEntity {
