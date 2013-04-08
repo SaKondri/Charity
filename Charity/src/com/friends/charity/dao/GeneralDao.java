@@ -80,7 +80,7 @@ public class GeneralDao {
 	public <T> T select(String queryName, long id) {
 		T t = null;
 		try {
-			Query query = session.createQuery(queryName);
+			Query query = session.getNamedQuery(queryName);
 			query.setParameter("id", id);
 			t = (T) query.uniqueResult();
 			session.flush();
@@ -95,7 +95,7 @@ public class GeneralDao {
 	public <T> T select(String queryName, Map<String, Object> params) {
 		T t = null;
 		try {
-			Query query = session.createQuery(queryName);
+			Query query = session.getNamedQuery(queryName);
 			for (Entry<String, Object> entry : params.entrySet()) {
 				query.setParameter(entry.getKey(), entry.getValue());
 			}
@@ -111,29 +111,28 @@ public class GeneralDao {
 	@SuppressWarnings("unchecked")
 	public <T> List<T> selectList(String queryName, Map<String, Object> params) {
 		List<T> result = new ArrayList<>();
-		try {
-			Query query = session.createQuery(queryName);
+		Query query = session.getNamedQuery(queryName);
+		if (params != null) {
 			for (Entry<String, Object> ent : params.entrySet()) {
 				query.setParameter(ent.getKey(), ent.getValue());
 			}
-			result = query.list();
-			session.flush();
-		} catch (Exception e) {
-		} finally {
-			session.clear();
 		}
+		result = query.list();
+		session.flush();
+		session.clear();
 		return result;
-
 	}
 
 	@SuppressWarnings("unchecked")
 	public <T> List<T> selectList(String queryName, Map<String, Object> params,
-			Integer first, Integer max) {
+			Integer first, Integer max) throws Exception {
 		List<T> result = new ArrayList<>();
 		try {
-			Query query = session.createQuery(queryName);
-			for (Entry<String, Object> ent : params.entrySet()) {
-				query.setParameter(ent.getKey(), ent.getValue());
+			Query query = session.getNamedQuery(queryName);
+			if (params != null) {
+				for (Entry<String, Object> e : params.entrySet()) {
+					query.setParameter(e.getKey(), e.getValue());
+				}
 			}
 			if (first != null) {
 				query.setFirstResult(first);
@@ -144,19 +143,33 @@ public class GeneralDao {
 			result = query.list();
 			session.flush();
 		} catch (Exception e) {
+			throw e;
 		} finally {
 			session.clear();
 		}
 		return result;
-
 	}
-	public Login getUsernamePassword(String username,String password){
-		Login login = null;
-		
-		Query query = session.getNamedQuery("selectUsernamePassword");
-		query.setParameter("username", username);
-		query.setParameter("password",password );
-		login = (Login) query.uniqueResult();
-		return login;
+
+	// public Login getUsernamePassword(String username, String password) {
+	// Login login = null;
+	//
+	// Query query = session.getNamedQuery("selectUsernamePassword");
+	// query.setParameter("username", username);
+	// query.setParameter("password", password);
+	// login = (Login) query.uniqueResult();
+	// return login;
+	// }
+
+	@SuppressWarnings("unchecked")
+	public <T> List<T> getAll(String namedQuery, Map<String, Object> params) {
+		List<T> result = new ArrayList<>();
+		Query query = session.getNamedQuery(namedQuery);
+		for (Entry<String, Object> t : params.entrySet()) {
+			query.setParameter(t.getKey(), t.getValue());
+		}
+		// query.setParameter("username", "Ali");
+		// query.setParameter("password", "Alavi");
+		result = query.list();
+		return result;
 	}
 }
