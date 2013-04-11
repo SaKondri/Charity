@@ -10,7 +10,7 @@
 	</h:head>
 
 	<ui:define name="content">
-		
+
 
 		<p:layout fullPage="true">
 			<p:layoutUnit position="north" size="40">
@@ -23,6 +23,10 @@
 						<ui:include src="#{generalTempPage.event.changePage}" />
 					</h:panelGroup>
 				</div>
+			</p:layoutUnit>
+
+			<p:layoutUnit position="east" size="165">
+				<ui:include src="/WEB-INF/template/general/menu/east/eastMenu.xhtml" />
 			</p:layoutUnit>
 
 			<div align="center">

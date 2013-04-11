@@ -17,24 +17,17 @@
 			</p:menuitem>
 			<p:submenu label="پرونده" icon="ui-icon-document">
 				<p:submenu label="ثبت نام" icon="ui-icon-contact">
-					<p:menuitem value="مددجو"
+					<p:menuitem value="نیازمند"
 						actionListener="#{generalTempPage.event.changeCenterPage}"
 						update=":changePage" process="@form">
 						<f:param name="madadjo"
 							value="/WEB-INF/template/general/menu/file/register/madadJo.xhtml" />
 					</p:menuitem>
-					<p:menuitem value="مددکار" url="#" />
+					<p:menuitem value="خیر" url="#" />
 				</p:submenu>
 				<p:menuitem value="ورود"  url="#">
 					
 				</p:menuitem>
-			</p:submenu>
-			<p:submenu label="ارتباط با ما">
-				<p:menuitem value="آدرس"  url="#">
-					
-					
-				</p:menuitem>
-				<p:menuitem value="تلفن" url="#" />
 			</p:submenu>
 		</p:menubar>
 
