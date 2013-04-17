@@ -10,6 +10,7 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 import com.friends.charity.business.service.GeneralService;
+import com.friends.charity.business.service.model.LoginService;
 import com.friends.charity.dao.GeneralDao;
 import com.friends.charity.model.Login;
 import com.friends.charity.model.User;
@@ -41,19 +42,21 @@ public class TL implements ServletContextListener {
 		// }
 
 		// //////////////////////2////////////////
-//		GeneralDao dao = new GeneralDao();
-//		List<Login> result = new ArrayList<>();
-//		Map<String, Object> map = new HashMap<>();
-//		map.put("username", "s");
-//		map.put("password", "s");
-//		try {
-//			result = dao.selectList("selectUsernamePassword", map, null, null);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		for (Login login : result) {
-//			System.out.println(login.getUsernamePassword().getUsername());
-//		}
+		GeneralDao dao = new GeneralDao();
+		LoginService loginService = new LoginService();
+		GeneralService generalService = new GeneralService();
+		Login result = null;
+		Map<String, Object> map = new HashMap<>();
+		map.put("username", "s");
+		map.put("password", "s");
+		try {
+			result = loginService.getLoginTest("q", "qq");
+			System.out.println(result.getUsernamePassword().getUsername() + "	"
+					 +"sddddddddddddddddd####sss######");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -118,15 +118,20 @@ public class MadadJoEvent implements Serializable {
 	public void setUsername(String username) {
 		this.username = username;
 		Login login = null;
-		login = getLoginService().getCorrectUsername(username);
-		if (login != null) {
-			FacesContext.getCurrentInstance().addMessage(
-					null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "خطا",
-							"...نام کاربری موجود میباشد"));
-			setUsername(null);
-		} else {
-			getLogin().getUsernamePassword().setUsername(getUsername());
+		try {
+			login = getLoginService().getCorrectUsername(username);
+			if (login != null) {
+				FacesContext.getCurrentInstance().addMessage(
+						null,
+						new FacesMessage(FacesMessage.SEVERITY_ERROR, "خطا",
+								"...نام کاربری موجود میباشد"));
+				setUsername(null);
+			} else {
+				getLogin().getUsernamePassword().setUsername(getUsername());
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 

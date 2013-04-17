@@ -7,12 +7,12 @@
 	<h:head>
 	</h:head>
 	<h:form>
-		
+
 		<p:menubar>
 			<p:menuitem value="خانه" icon="ui-icon-home"
 				actionListener="#{generalTempPage.event.changeCenterPage}"
 				process="@form" update=":changePage">
-				<f:param name="madadjo"
+				<f:param name="page"
 					value="/WEB-INF/template/general/pic/galleria.xhtml" />
 			</p:menuitem>
 			<p:submenu label="پرونده" icon="ui-icon-document">
@@ -20,19 +20,18 @@
 					<p:menuitem value="نیازمند"
 						actionListener="#{generalTempPage.event.changeCenterPage}"
 						update=":changePage" process="@form">
-						<f:param name="madadjo"
+						<f:param name="page"
 							value="/WEB-INF/template/general/menu/file/register/madadJo.xhtml" />
 					</p:menuitem>
 					<p:menuitem value="خیر" url="#" />
 				</p:submenu>
-				<p:menuitem value="ورود"  url="#">
-					
-				</p:menuitem>
+				<p:menuitem value="ورود" onclick="loginDlg.show();" />
 			</p:submenu>
 		</p:menubar>
 
 		<div class="themSwitcher">
-			<ui:include src="/WEB-INF/template/general/themSwitcher/themSwitcher.xhtml" />
+			<ui:include
+				src="/WEB-INF/template/general/themSwitcher/themSwitcher.xhtml" />
 		</div>
 	</h:form>
 

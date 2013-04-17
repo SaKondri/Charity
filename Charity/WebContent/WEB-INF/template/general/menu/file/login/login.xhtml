@@ -15,15 +15,21 @@
 				<p:panelGrid id="pnl" columns="3">
 					<f:facet name="footer">
 						<p:commandButton value="پاک کردن" type="reset" />
-						<p:commandButton value="تایید" update="pnl" />
+						<p:commandButton value="تایید" update="pnl :growl myInput myInputt"
+							action="#{generalTempPage.menuBean.loginPage.btnSubmit()}"
+							oncomplete="loginDlg.hide();" />
 					</f:facet>
 					<h:message errorStyle="color:red; display:block" for="myInput" />
-					<h:inputText id="myInput" required="true" styleClass="leftDIR"
-						requiredMessage="نام کاربری را پر کنید" />
+					<p:inputText id="myInput" required="true" styleClass="leftDIR"
+						requiredMessage="نام کاربری را پر کنید"
+						value="#{generalTempPage.menuBean.loginPage.event
+						.username}" />
 					<h:outputText styleClass="leftDIR" value=":&nbsp;*نام کاربری " />
 					<h:message errorStyle="color:red; display:block" for="myInputt" />
-					<h:inputText id="myInputt" styleClass="leftDIR" required="true"
-						requiredMessage="کلید واژه را پر کنید" />
+					<p:password id="myInputt" styleClass="leftDIR" required="true"
+						requiredMessage="کلید واژه را پر کنید"
+						value="#{generalTempPage.menuBean.loginPage.event
+						.password}" />
 					<h:outputText styleClass="leftDIR" value=":&nbsp;*کلید واژه" />
 				</p:panelGrid>
 			</p:dialog>

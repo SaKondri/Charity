@@ -3,50 +3,54 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	
+
 	<div style="width: 50%">
 		<p:panel header="عکس های صفحه نخست">
 			<h:form>
 				<p:fileUpload id="imgImage"
-						fileUploadListener="#{addPicture.fileUpload}" auto="true"
-						 allowTypes="/(\.|\/)(gif|jpe?g|png)$/" update="@form,:growl,:pnlChange">
-						
-						 </p:fileUpload>
-				
-				
-			
-				
-				
-				
+					fileUploadListener="#{addPicture.fileUpload}" auto="true"
+					allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+					update="@form,:growl,:pnlChange">
+
+				</p:fileUpload>
+
+
+
+
+
+
 				<p:galleria value="#{addPicture.imageNames}" var="image"
 					frameWidth="48" frameHeight="65" panelWidth="250" panelHeight="200"
 					effect="clip" effectSpeed="1000" filmstripPosition="top"
-					transitionInterval="3000" showCaptions="true" showOverlays="true" >
-					
-							
-								
-									<p:graphicImage value="#{addPicture.getImage(image)}"/>
-								
-							
+					transitionInterval="3000" showCaptions="true" showOverlays="true">
+
+
+
+					<p:graphicImage value="#{addPicture.image}">
+						<f:param name="imageName" value="#{image}" />
+					</p:graphicImage>
+
+
 				</p:galleria>
-           
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-             
-				<p:commandButton value="ثبت" actionListener="#{addPicture.btnAdd}" update="@form,:growl" />
-				
-				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<p:commandButton value="ثبت" actionListener="#{addPicture.btnAdd}"
+					update="@form,:growl" />
+
+
 			</h:form>
 		</p:panel>
 	</div>

@@ -35,7 +35,7 @@ public class GeneralService {
 		return getDao().select(queryName, id);
 	}
 
-	public <T> T select(String queryName, Map<String, Object> params) {
+	public <T> T select(String queryName, Map<String, Object> params) throws Exception {
 		return getDao().select(queryName, params);
 	}
 

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AdminFilter implements Filter{
 	@SuppressWarnings("unused")
 	private FilterConfig filterConfig;
+	
 	@Override
 	public void destroy() {
 		this.filterConfig =null;

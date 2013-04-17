@@ -14,8 +14,6 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.friends.charity.model.Login;
-
 public class GeneralDao {
 	private EntityManagerFactory entityManagerFactory;
 	private EntityManager entityManager;
@@ -92,7 +90,8 @@ public class GeneralDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T> T select(String queryName, Map<String, Object> params) {
+	public <T> T select(String queryName, Map<String, Object> params)
+			throws Exception {
 		T t = null;
 		try {
 			Query query = session.getNamedQuery(queryName);

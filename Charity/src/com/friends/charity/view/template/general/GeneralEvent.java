@@ -45,7 +45,7 @@ public class GeneralEvent implements Serializable {
 
 	public void changeCenterPage(ActionEvent actionEvent) {
 		String page = ((HttpServletRequest) FacesContext.getCurrentInstance()
-				.getExternalContext().getRequest()).getParameter("madadjo");
+				.getExternalContext().getRequest()).getParameter("page");
 		setChangePage(page);
 	}
 	public String getAdminChangePageHome() {
