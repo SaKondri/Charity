@@ -34,4 +34,10 @@ public class LoginService {
 		return login;
 	}
 
+	public long selectfromId(long id) {
+		Login login = null;
+		login = getGeneralService().select("byId", id);
+		return login.getId();
+	}
+
 }

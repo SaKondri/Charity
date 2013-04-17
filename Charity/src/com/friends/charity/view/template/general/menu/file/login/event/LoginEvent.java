@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
 
 import com.friends.charity.business.service.model.LoginService;
 import com.friends.charity.model.Login;
@@ -54,7 +55,10 @@ public class LoginEvent implements Serializable {
 			if (login != null) {
 				if (login.getUser() instanceof MoshakhasateMotaghazi) {
 					nullFields();
-					return "/pages/privatee/login.xhtml?faces-redirect=true";
+					((HttpServletRequest) FacesContext.getCurrentInstance()
+							.getExternalContext().getRequest()).getSession()
+							.setAttribute("login", login);
+					return "/pages/private/login.xhtml?faces-redirect=true";
 				}
 			} else if (login == null) {
 				nullFields();
