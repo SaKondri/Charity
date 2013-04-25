@@ -23,6 +23,10 @@
 	font-size: large;
 }
 
+.acceptColor {
+	color: navy;
+}
+
 .centerPage {
 	position: absolute;
 	right: 10px;
@@ -90,17 +94,18 @@ table.innertable td {
 	left: 2px;
 	top: 3px;
 }
-.ui-notificationbar { 
-	color:#FFCC00;
-	font-size:36px;
-	z-index: 999; 
+
+.ui-notificationbar {
+	color: #FFCC00;
+	font-size: 36px;
+	z-index: 999;
 }
-.ajaxStatus{
-	
-	width:90px;
-	height:90px;
-	position:fixed;
-	right:0px;
-	bottom:0px;
+
+.ajaxStatus {
+	width: 90px;
+	height: 90px;
+	position: fixed;
+	right: 0px;
+	bottom: 0px;
 	z-index: 999;
 }

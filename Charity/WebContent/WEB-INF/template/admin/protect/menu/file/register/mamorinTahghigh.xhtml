@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form>
+
+		<p:wizard id="mtWizard" style="width:80%" widgetVar="wizz">
+			<p:tab title="مشخصات مأمور">
+				<p:panel id="pnl1" header="مشخصات مأمور">
+					<h:panelGrid columns="8">
+
+						<p:inputText styleClass="leftDIR"
+							value="#{adminMenuBean.mamorinTahghighPage.event.mamorinTahghigh.code}" />
+						<h:outputLabel styleClass="leftDIR" value=":کد " />
+
+						<p:calendar effect="drop" navigator="true" pattern="yyyy/MM/dd"
+							value="#{adminMenuBean.mamorinTahghighPage.event.mamorinTahghigh.date}"
+							id="dateMoteghazi">
+							<f:converter converterId="CalendarConvertor" />
+						</p:calendar>
+						<h:outputLabel value=":تاریخ تولد" styleClass="leftDIR" />
+
+
+						<p:inputText styleClass="leftDIR"
+							value="#{adminMenuBean.mamorinTahghighPage.event.mamorinTahghigh.lastname}" />
+						<h:outputLabel styleClass="leftDIR" value=": نام خانوادگی " />
+
+						<p:inputText styleClass="leftDIR"
+							value="#{adminMenuBean.mamorinTahghighPage.event.mamorinTahghigh.firstname}" />
+						<h:outputLabel styleClass="leftDIR" value=":نام " />
+
+					</h:panelGrid>
+				</p:panel>
+			</p:tab>
+
+			<p:tab title="شناسه کاربری">
+				<p:panel header="شناسه کاربری">
+					<h:panelGrid id="png" columns="3">
+						<p:message for="username" />
+						<p:inputText id="username" styleClass="leftDIR" required="true"
+							requiredMessage=".نام کاربری را وارد کنید "
+							value="#{adminMenuBean.mamorinTahghighPage.event.username}">
+							<p:ajax event="blur" update=":growl username" />
+						</p:inputText>
+						<h:outputLabel value=": نام کاربری" />
+
+						<p:message for="pass1" />
+						<p:password id="pass1" styleClass="leftDIR"
+							promptLabel="لطفا گذر واژه را وارد کنید"
+							weakLabel=" گذر واژه ضعیف" goodLabel="گذر واژه خوب"
+							strongLabel="گذر واژه قوی" feedback="true" required="true"
+							match="pass2" requiredMessage=".گذر واژه را وارد کنید "
+							validatorMessage=" خطا در هماهنگ بودن گذر واژه"
+							value="#{adminMenuBean.mamorinTahghighPage.event.login.usernamePassword.password}" />
+						<h:outputLabel value=": گذر واژه" />
+
+
+						<p:message for="pass2" />
+						<p:password id="pass2" styleClass="leftDIR" required="true"
+							requiredMessage="گذر واژه را مجدد وارد نمائید"
+							value="#{adminMenuBean.mamorinTahghighPage.event.login.usernamePassword.password}" />
+						<h:outputLabel value=": تکرار گذر واژه" />
+					</h:panelGrid>
+
+				</p:panel>
+			</p:tab>
+
+
+
+
+
+
+			<p:tab title="تأییدیه">
+				<p:panel id="pnl2" header="تأییدیه مشخصات">
+					<p:panelGrid styleClass="algRgt" style="margin-top:20px">
+
+						<f:facet name="footer">
+							<p:row>
+								<p:column colspan="8">
+									<p:commandButton value="ذخیره" update=":growl"
+										actionListener="#{adminMenuBean.mamorinTahghighPage.btnSaved}"
+										oncomplete="mtWizard.loadStep(wiz.cfg.steps[0], true)" />
+								</p:column>
+							</p:row>
+						</f:facet>
+						<p:row>
+							<p:column>
+								<h:outputText styleClass="bold acceptColor"
+									value="#{adminMenuBean.mamorinTahghighPage.event.mamorinTahghigh.code}" />
+							</p:column>
+							<p:column>
+								<h:outputLabel styleClass="leftDIR" value=":کد " />
+							</p:column>
+
+							<p:column>
+								<h:outputText styleClass="bold acceptColor"
+									value="#{adminMenuBean.mamorinTahghighPage.event.mamorinTahghigh.strDate}" />
+							</p:column>
+							<p:column>
+								<h:outputLabel styleClass="leftDIR" value=":تاریخ تولد" />
+							</p:column>
+
+
+							<p:column>
+								<h:outputText styleClass="bold acceptColor"
+									value="#{adminMenuBean.mamorinTahghighPage.event.mamorinTahghigh.lastname}" />
+							</p:column>
+							<p:column>
+								<h:outputLabel styleClass="leftDIR" value=":نام خانوادگی" />
+							</p:column>
+
+
+							<p:column>
+								<h:outputText styleClass="bold acceptColor"
+									value="#{adminMenuBean.mamorinTahghighPage.event.mamorinTahghigh.firstname}" />
+							</p:column>
+							<p:column>
+								<h:outputLabel styleClass="leftDIR" value=":نام" />
+							</p:column>
+
+						</p:row>
+
+						<p:row>
+							<p:column></p:column>
+							<p:column></p:column>
+							<p:column></p:column>
+							<p:column></p:column>
+
+							<p:column>
+								<h:outputLabel styleClass="bold acceptColor"
+									value="#{adminMenuBean.mamorinTahghighPage.event.login.usernamePassword.username}" />
+							</p:column>
+							<p:column>
+								<h:outputLabel styleClass="leftDIR" value=":نام کاربری" />
+							</p:column>
+
+							<p:column>
+								<h:outputLabel styleClass="bold acceptColor"
+									value="#{adminMenuBean.mamorinTahghighPage.event.login.usernamePassword.username}" />
+							</p:column>
+							<p:column>
+								<h:outputLabel styleClass="leftDIR" value=":گذر واژه" />
+							</p:column>
+						</p:row>
+					</p:panelGrid>
+
+				</p:panel>
+			</p:tab>
+		</p:wizard>
+
+	</h:form>
+</ui:composition>

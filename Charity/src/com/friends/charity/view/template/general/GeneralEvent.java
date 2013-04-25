@@ -65,12 +65,12 @@ public class GeneralEvent implements Serializable {
 	}
 	public void changeCenterPageAdmin(ActionEvent actionEvent) {
 		String page = ((HttpServletRequest) FacesContext.getCurrentInstance()
-				.getExternalContext().getRequest()).getParameter("madadjo");
+				.getExternalContext().getRequest()).getParameter("page");
 		setAdminChangePage(page);
 	}
 	public void changeCenterPageAdminHome(ActionEvent actionEvent) {
 		String page = ((HttpServletRequest) FacesContext.getCurrentInstance()
-				.getExternalContext().getRequest()).getParameter("madadjo");
+				.getExternalContext().getRequest()).getParameter("page");
 		setAdminChangePageHome(page);
 	}
 }

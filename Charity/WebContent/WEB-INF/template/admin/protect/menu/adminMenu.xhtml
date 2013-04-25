@@ -5,18 +5,32 @@
 	xmlns:p="http://primefaces.org/ui">
 	<h:form>
 		<p:menubar>
-			<p:submenu label="عکس ها">
-				<p:menuitem value="عکس های صفحه اصلی"
-					actionListener="#{generalTempPage.event.changeCenterPageAdminHome}"
-					update=":pnlChange" process="@form">
-					<f:param name="madadjo"
+			<p:submenu label="پرونده">
+				
+				<p:submenu label="ثبت نام">
+					<p:menuitem value="ثبت مامورین تحقیق"
+						actionListener="#{generalTempPage.event.changeCenterPageAdminHome}"
+						update=":pnlChange" process="@form">
+						<f:param name="page"
+							value="/WEB-INF/template/admin/protect/menu/file/register/mamorinTahghigh.xhtml" />
+					</p:menuitem>
+				</p:submenu>
+				
+				<p:submenu label="عکس ها">
+					<p:menuitem value="عکس های صفحه اصلی"
+						actionListener="#{generalTempPage.event.changeCenterPageAdminHome}"
+						update=":pnlChange" process="@form">
+						<f:param name="page"
 							value="/WEB-INF/template/admin/protect/menu/file/addPicture.xhtml" />
-				</p:menuitem>
+					</p:menuitem>
+				
+				</p:submenu>
 				
 			</p:submenu>
 		</p:menubar>
 		<div class="themSwitcher">
-			<ui:include src="/WEB-INF/template/general/themSwitcher/themSwitcher.xhtml" />
+			<ui:include
+				src="/WEB-INF/template/general/themSwitcher/themSwitcher.xhtml" />
 		</div>
 	</h:form>
 </ui:composition>

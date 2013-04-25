@@ -20,43 +20,16 @@ import com.friends.charity.model.UsernamePassword;
 public class TL implements ServletContextListener {
 
 	@Override
-	public void contextDestroyed(ServletContextEvent sce) {
+	public void contextDestroyed(ServletContextEvent arg0) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void contextInitialized(ServletContextEvent sce) {
-
-		// /////////////////////1/////////////////////////////
-		// Login login = new Login();
-		// UsernamePassword usernamePassword = new UsernamePassword();
-		// usernamePassword.setUsername("Ali");
-		// usernamePassword.setPassword("Alavi");
-		// login.setUsernamePassword(usernamePassword);
-		// try {
-		// new GeneralService().save(login);
-		// } catch (Exception e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-
-		// //////////////////////2////////////////
-		GeneralDao dao = new GeneralDao();
-		LoginService loginService = new LoginService();
-		GeneralService generalService = new GeneralService();
-		Login result = null;
-		Map<String, Object> map = new HashMap<>();
-		map.put("username", "s");
-		map.put("password", "s");
-		try {
-			result = loginService.getLoginTest("q", "qq");
-			System.out.println(result.getUsernamePassword().getUsername() + "	"
-					 +"sddddddddddddddddd####sss######");
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public void contextInitialized(ServletContextEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
+
 
 }
