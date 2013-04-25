@@ -64,13 +64,13 @@ public class LoginEvent implements Serializable {
 				nullFields();
 				message.setSeverity(FacesMessage.SEVERITY_ERROR);
 				message.setDetail("خطا");
-				message.setSummary(".چنین کاربری موجود نمی باشد");
+				message.setSummary("چنین کاربری موجود نمی باشد.");
 				context.addMessage(null, message);
 			}
 		} catch (Exception e) {
 			message.setSeverity(FacesMessage.SEVERITY_ERROR);
 			message.setDetail("خطا");
-			message.setSummary(".خطای سیستمی");
+			message.setSummary("خطای سیستمی.");
 			context.addMessage(null, message);
 			e.printStackTrace();
 		}

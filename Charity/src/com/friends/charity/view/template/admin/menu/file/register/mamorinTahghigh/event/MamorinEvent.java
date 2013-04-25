@@ -79,7 +79,7 @@ public class MamorinEvent implements Serializable {
 				FacesContext.getCurrentInstance().addMessage(
 						null,
 						new FacesMessage(FacesMessage.SEVERITY_ERROR, "خطا",
-								"...نام کاربری موجود میباشد"));
+								"نام کاربری موجود میباشد..."));
 				setUsername(null);
 			} else {
 				getLogin().getUsernamePassword().setUsername(getUsername());
@@ -101,12 +101,13 @@ public class MamorinEvent implements Serializable {
 			getGeneralService().save(getLogin());
 			message.setSeverity(FacesMessage.SEVERITY_INFO);
 			message.setDetail("ذخیره");
-			message.setSummary(".اطلاعات شما با موفقیت ذخیره شد");
+			message.setSummary("اطلاعات شما با موفقیت ذخیره شد.");
 			context.addMessage(null, message);
+			nullEntity();
 		} catch (Exception e) {
 			message.setSeverity(FacesMessage.SEVERITY_FATAL);
 			message.setDetail("خطا");
-			message.setSummary(".مجددا امتحان فرمائید");
+			message.setSummary("مجددا امتحان فرمائید.");
 			nullEntity();
 			context.addMessage(null, message);
 			e.printStackTrace();

@@ -14,23 +14,27 @@
 				</f:facet>
 				<p:panelGrid id="pnl" columns="3">
 					<f:facet name="footer">
+						<p:commandButton value="تایید"
+							update="pnl :growl myInput myInputt"
+							action="#{generalTempPage.menuBean.loginPage.btnSubmit}"
+							onblur="loginDlg.hide();" />
 						<p:commandButton value="پاک کردن" type="reset" />
-						<p:commandButton value="تایید" update="pnl :growl myInput myInputt"
-							action="#{generalTempPage.menuBean.loginPage.btnSubmit()}"
-							oncomplete="loginDlg.hide();" />
 					</f:facet>
-					<h:message errorStyle="color:red; display:block" for="myInput" />
-					<p:inputText id="myInput" required="true" styleClass="leftDIR"
-						requiredMessage="نام کاربری را پر کنید"
+
+					<h:outputText value="نام کاربری:" />
+					<p:inputText id="myInput" dir="ltr" required="true"
+						requiredMessage="نام کاربری را پر کنید."
 						value="#{generalTempPage.menuBean.loginPage.event
 						.username}" />
-					<h:outputText styleClass="leftDIR" value=":&nbsp;*نام کاربری " />
-					<h:message errorStyle="color:red; display:block" for="myInputt" />
-					<p:password id="myInputt" styleClass="leftDIR" required="true"
-						requiredMessage="کلید واژه را پر کنید"
+					<h:message errorStyle="color:red; display:block" for="myInput" />
+
+
+					<h:outputText value="کلید واژه:" />
+					<p:password id="myInputt" dir="ltr" required="true"
+						requiredMessage="کلید واژه را پر کنید."
 						value="#{generalTempPage.menuBean.loginPage.event
 						.password}" />
-					<h:outputText styleClass="leftDIR" value=":&nbsp;*کلید واژه" />
+					<h:message errorStyle="color:red; display:block" for="myInputt" />
 				</p:panelGrid>
 			</p:dialog>
 		</div>

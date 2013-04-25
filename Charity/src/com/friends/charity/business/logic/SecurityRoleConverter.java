@@ -1,4 +1,4 @@
-package com.friends.charity.view.template.general.menu.file.register.event;
+package com.friends.charity.business.logic;
 
 import javax.faces.convert.EnumConverter;
 import javax.faces.convert.FacesConverter;

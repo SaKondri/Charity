@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html dir="rtl" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -24,8 +24,9 @@
 	<h:body>
 		<p:growl id="growl" globalOnly="false" showDetail="true" />
 		<ui:insert name="content" />
-		<ui:include src="/WEB-INF/template/general/ajaxStatus/ajaxStatus.xhtml" />
-		
+		<ui:include
+			src="/WEB-INF/template/general/ajaxStatus/ajaxStatus.xhtml" />
+
 		<ui:insert name="dialog" />
 	</h:body>
 </f:view>

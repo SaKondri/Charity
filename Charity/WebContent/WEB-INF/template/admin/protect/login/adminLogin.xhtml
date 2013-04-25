@@ -3,29 +3,34 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	
+
 	<div align="center">
-	<h:form id="frmAdminLogin">
-		<div style="width: 25%" >
-			<p:panel header="ورود مدیر">
-				<f:facet name="footer">
-					<p:messages for="frmAdminLogin" showDetail="true"/>
-				</f:facet>
-				<h:panelGrid columns="2">
-					
-					<p:inputText id="txtUsername" required="true" styleClass="leftDIR" value="#{adminLoginPage.username}"/>
-					<p:outputLabel value=":شناسه" for="txtUsername"/>
-					
-					
-					<p:password id="txtPassword" required="true"  styleClass="leftDIR" value="#{adminLoginPage.password}"/>
-					<p:outputLabel value=":کلمه عبور" for="txtPassword"/>
-					
-					
-				</h:panelGrid>
-				<p:commandButton value="ورود"  update="@form ,:changePage" actionListener="#{adminLoginPage.btnLogin}"/>
-			</p:panel>
-		</div>
-	</h:form>
+		<h:form id="frmAdminLogin">
+			<div style="width: 25%">
+				<p:panel header="ورود مدیر">
+					<f:facet name="footer">
+						<p:messages for="frmAdminLogin" showDetail="true" />
+						<div align="center">
+							<p:commandButton value="ورود" update="@form ,:changePage"
+								actionListener="#{adminLoginPage.btnLogin}" />
+						</div>
+					</f:facet>
+					<h:panelGrid columns="2">
+
+						<p:outputLabel value="شناسه:" for="txtUsername" />
+						<p:inputText id="txtUsername" required="true" dir="ltr"
+							value="#{adminLoginPage.username}" />
+
+						<p:outputLabel value="کلمه عبور:" for="txtPassword" />
+						<p:password id="txtPassword" required="true" dir="ltr"
+							value="#{adminLoginPage.password}" />
+
+
+					</h:panelGrid>
+
+				</p:panel>
+			</div>
+		</h:form>
 	</div>
 
 </ui:composition>
