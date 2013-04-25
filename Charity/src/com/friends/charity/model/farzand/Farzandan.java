@@ -102,7 +102,9 @@ public class Farzandan extends BaseEntity {
 	}
 
 	public String getStrDate() {
-		strDate = CalendarFormat.getStrForDT(getDate());
+		if (getDate() != null) {
+			strDate = CalendarFormat.getStrForDT(getDate());
+		}
 		return strDate;
 	}
 
