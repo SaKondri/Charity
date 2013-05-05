@@ -23,7 +23,14 @@
 						<f:param name="page"
 							value="/WEB-INF/template/admin/protect/menu/file/addPicture.xhtml" />
 					</p:menuitem>
-				
+					</p:submenu>
+				<p:submenu label="درباره ما">
+					<p:menuitem value="تاریخچه"
+						actionListener="#{generalTempPage.event.changeCenterPageAdminHome}"
+						update=":pnlChange" process="@form">
+						<f:param name="page"
+							value="/WEB-INF/template/admin/protect/menu/file/about/tarikhche.xhtml" />
+					</p:menuitem>
 				</p:submenu>
 				
 			</p:submenu>

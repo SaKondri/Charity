@@ -1,0 +1,21 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+		<div style="width: 50%">
+		<p:panel header="تاریخچه">
+		<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="عنوان:" />
+			<p:inputText value="#{tariekhchePage.tariekhche.title}"/> 
+			<h:outputLabel value="شرح:"/>
+			<p:editor value="#{tariekhchePage.tariekhche.description}"/>
+		</h:panelGrid>
+			
+		<p:commandButton action="#{tariekhchePage.}"/>
+		</h:form>
+		
+		</p:panel>
+		</div>
+</ui:composition>
