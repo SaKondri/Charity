@@ -18,30 +18,24 @@ import com.friends.charity.business.service.GeneralService;
 import com.friends.charity.dao.GeneralDao;
 import com.friends.charity.model.Login;
 import com.friends.charity.model.UsernamePassword;
+import com.friends.charity.model.admin.about.Tariekhche;
 import com.friends.charity.view.template.admin.menu.addpicture.model.AddPictureModel;
 
 public class Test {
 
 	public static void main(String[] args) {
-		AddPictureModel model = new AddPictureModel();
-		List<AddPictureModel> list = new ArrayList<>();
-		model.setName("saeed");
-		model.setDescription("amini");
-		list.add(model);
-		AddPictureModel model1 = new AddPictureModel();
-		model.setName("sina");
-		model.setDescription("maliki");
-		list.add(model1);
-		for (AddPictureModel addPictureModel : list) {
-			try {
-				if(addPictureModel.getName().equals("saeed")){
-					System.out.println(addPictureModel.getDescription());
-			}
-				} catch (Exception e) {
-				System.out.println(e.getMessage());
-			}
-			
+		GeneralService service = new GeneralService();
+		Tariekhche tariekhche = new Tariekhche();
+		tariekhche.setDescription("okey");
+		tariekhche.setTitle("dsa");
+		try {
+			service.save(tariekhche);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+			
+		
 	
 }
 }
