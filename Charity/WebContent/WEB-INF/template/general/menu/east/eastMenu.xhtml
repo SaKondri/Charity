@@ -9,7 +9,12 @@
 		<p:menu>
 
 			<p:submenu label="درباره ی ما">
-				<p:menuitem value="تاریخچه" />
+				<p:menuitem value="تاریخچه" actionListener="#{generalTempPage.event.changeCenterPage}"
+						update=":changePage" process="@form" >
+						<f:param name="page"
+							value="/WEB-INF/template/general/menu/east/about/tarikhche.xhtml" />
+					
+				</p:menuitem>
 				<p:menuitem value="فعالیت ها" />
 				<p:menuitem value="اهداف" />
 				<p:menuitem value="آدرس و نحوه ارتباط با خیریه" />

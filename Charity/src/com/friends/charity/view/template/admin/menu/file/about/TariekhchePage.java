@@ -4,14 +4,18 @@ import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.event.ActionEvent;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.friends.charity.business.service.GeneralService;
 import com.friends.charity.model.admin.about.Tariekhche;
+import com.friends.charity.view.template.general.GeneralEvent;
+import com.friends.charity.view.template.general.GeneralTempPage;
 @Named
 @RequestScoped
 public class TariekhchePage implements Serializable{
-
+	@Inject
+	private GeneralEvent page;
 	private static final long serialVersionUID = 1L;
 	private GeneralService dao;
 	private Tariekhche tariekhche;
@@ -47,5 +51,18 @@ public class TariekhchePage implements Serializable{
 			setTariekhche(null);
 		}
 		return null;
+	}
+	public String showTarikhche(ActionEvent actionEvent){
+			try {
+				setTariekhche((Tariekhche) getDao().select("showTarikhche", null));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		return "/";
+	}
+	public void goToTarikhche(ActionEvent actionEvent){
+		page.setChangePage("/WEB-INF/template/general/menu/east/about/tarikhche.xhtml");
+		
 	}
 }
