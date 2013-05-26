@@ -26,8 +26,8 @@
 
 
 
-					<p:graphicImage value="#{addPicture.image}">
-						<f:param name="imageName" value="#{image}" />
+					<p:graphicImage value="#{addPicture.findPictureName(image)}">
+						
 					</p:graphicImage>
 
 
@@ -47,7 +47,7 @@
 
 
 
-				<p:commandButton value="ثبت" actionListener="#{addPicture.btnAdd}"
+				<p:commandButton value="ثبت" actionListener="#{addPicture.btnEqulas}"
 					update="@form,:growl" />
 
 

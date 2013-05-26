@@ -1,7 +1,10 @@
 package com.friends.charity.view.template.admin.menu.file.about;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
@@ -14,8 +17,7 @@ import com.friends.charity.view.template.general.GeneralTempPage;
 @Named
 @RequestScoped
 public class TariekhchePage implements Serializable{
-	@Inject
-	private GeneralEvent page;
+	
 	private static final long serialVersionUID = 1L;
 	private GeneralService dao;
 	private Tariekhche tariekhche;
@@ -36,6 +38,7 @@ public class TariekhchePage implements Serializable{
 		}
 		return tariekhche;
 	}
+	
 	public void setTariekhche(Tariekhche tariekhche) {
 		this.tariekhche = tariekhche;
 	}
@@ -52,17 +55,19 @@ public class TariekhchePage implements Serializable{
 		}
 		return null;
 	}
+	
 	public String showTarikhche(ActionEvent actionEvent){
-			try {
-				setTariekhche((Tariekhche) getDao().select("showTarikhche", null));
+		List<Tariekhche> tariekhches = new ArrayList<>();	
+		try {
+			   tariekhches.add( (Tariekhche) getDao().select("showTarikhche", null));
+			   setTariekhche(tariekhches.get(1));
+				
+				System.out.println("================================="+getTariekhche().getDescription());
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("eeeeeerrrrrrrrrrrrrrrooooorrrr"+e.getMessage());
 			}
-		return "/";
+		return null;
 	}
-	public void goToTarikhche(ActionEvent actionEvent){
-		page.setChangePage("/WEB-INF/template/general/menu/east/about/tarikhche.xhtml");
-		
-	}
+	
 }

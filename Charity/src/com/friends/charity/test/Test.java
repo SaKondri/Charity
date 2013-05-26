@@ -12,6 +12,7 @@ import java.util.Map.Entry;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.jboss.weld.context.beanstore.HashMapBeanStore;
 import org.primefaces.model.StreamedContent;
 
 import com.friends.charity.business.service.GeneralService;
@@ -22,20 +23,24 @@ import com.friends.charity.model.admin.about.Tariekhche;
 import com.friends.charity.view.template.admin.menu.addpicture.model.AddPictureModel;
 
 public class Test {
-
+	
 	public static void main(String[] args) {
-		GeneralService service = new GeneralService();
+		List<Tariekhche> list = new ArrayList<>();
 		Tariekhche tariekhche = new Tariekhche();
-		tariekhche.setDescription("okey");
-		tariekhche.setTitle("dsa");
+		GeneralService service = new GeneralService();
+		int i=0;
 		try {
-			service.save(tariekhche);
+			list = service.selectList("showTarikhche", null);
+//			for (Tariekhche t : list) {
+//				
+//				System.out.println(t.getDescription());
+//				System.out.println(i);
+//			}
+			System.out.println(list.get(0).getDescription());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
-			
-		
-	
-}
+                
+     }   
 }

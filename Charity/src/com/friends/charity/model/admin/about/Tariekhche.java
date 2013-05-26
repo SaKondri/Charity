@@ -6,25 +6,23 @@ import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
-
-import org.hibernate.annotations.Type;
 
 import com.friends.charity.model.BaseEntity;
 @NamedQueries({
 	
-			@NamedQuery(name = "showTarikhche" , query = "select t from Tariekhche t")})
-
-@Entity
+			
+			@NamedQuery(name = "showTarikhche" , query = "select t from Tariekhche t ")})
+@Entity													  
 @Table(name = "TARIEKHCHE")
 public class Tariekhche extends BaseEntity {
 	
-	@Column(name = "TITLE" , length = 2000000000)
+	@Column(name = "TITLE" )
 	private String title;
 	
 	
-	@Lob
-	@Column(name = "DESCRIPTION" , length=2000000000)
+	
+	
+	@Column(name = "DESCRIPTION" , columnDefinition = "text")
 	private String description;
 
 	public String getTitle() {

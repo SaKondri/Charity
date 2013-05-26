@@ -3,5 +3,13 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	<h:outputLabel value="salam" />
+		<div style="width: 75%">
+		<h:form>
+			
+			<p:panel header="#{tariekhcheShow.tariekhche.title}">
+				<h:outputLabel value="#{tariekhcheShow.tariekhche.description}" escape="false"/>
+			</p:panel>
+			
+		</h:form>
+		</div>
 </ui:composition>

@@ -81,9 +81,10 @@ public class GeneralDao {
 			Query query = session.getNamedQuery(queryName);
 			query.setParameter("id", id);
 			t = (T) query.uniqueResult();
-			session.flush();
+			
 		} catch (Exception e) {
 		} finally {
+			session.flush();
 			session.clear();
 		}
 		return t;

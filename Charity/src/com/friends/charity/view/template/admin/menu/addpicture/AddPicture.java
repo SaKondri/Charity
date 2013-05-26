@@ -2,6 +2,7 @@ package com.friends.charity.view.template.admin.menu.addpicture;
 
 import java.io.ByteArrayInputStream;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,6 +30,27 @@ public class AddPicture implements Serializable {
 	private String test;
 	private List<String> imageNames;
 	private String iamgeView;
+	///////////////
+	private String fileNameTest;
+	private String systemNameTest;
+	
+	
+	
+	public String getFileNameTest() {
+		return fileNameTest;
+	}
+
+	public void setFileNameTest(String fileNameTest) {
+		this.fileNameTest = fileNameTest;
+	}
+
+	public String getSystemNameTest() {
+		return systemNameTest;
+	}
+
+	public void setSystemNameTest(String systemNameTest) {
+		this.systemNameTest = systemNameTest;
+	}
 
 	public String getIamgeView() {
 		return iamgeView;
@@ -108,11 +130,12 @@ public class AddPicture implements Serializable {
 		return null;
 	}
 
-	public void fileUpload(FileUploadEvent event) {
+	public void fileUpload(FileUploadEvent event) throws UnsupportedEncodingException {
 		setImageNames(null);
 		setPictureModel(new AddPictureModel());
 		getPictureModel().setPicture(event.getFile().getContents());
-		getPictureModel().setName(event.getFile().getFileName());
+		getPictureModel().setName(getUtf_8(event.getFile().getFileName()));
+		setFileNameTest(getUtf_8(event.getFile().getFileName()));
 		getPictures().add(getPictureModel());
 		getNameInList();
 		getPictre();
@@ -150,14 +173,22 @@ public class AddPicture implements Serializable {
 		return params;
 	}
 
-	public StreamedContent findPictureName() {
-		String iamgeName = ((HttpServletRequest) FacesContext
-				.getCurrentInstance().getExternalContext().getRequest())
-				.getParameter("imageName");
-		System.out.println("Paaaaaaaaaaaraaaaaaaaammmmm" + iamgeName);
-		StreamedContent s = new DefaultStreamedContent();
+	public StreamedContent findPictureName(String str) throws UnsupportedEncodingException {
+//		String iamgeName = ((HttpServletRequest) FacesContext
+//				.getCurrentInstance().getExternalContext().getRequest())
+//				.getParameter("imageName");
+		
+		setSystemNameTest(str);
 
+		return new DefaultStreamedContent(new ByteArrayInputStream(getPictre().get(getUtf_8(str))));
+	}
+	
+	public  String getUtf_8(String str) throws UnsupportedEncodingException{
+		String s=new String(str.getBytes("ISO-8859-1"),"UTF-8");
 		return s;
 	}
-
+	public void btnEqulas(ActionEvent actionEvent){
+		if(getFileNameTest().equals(getSystemNameTest()));
+		System.out.println("=================================================== Okey Equals");
+	}
 }

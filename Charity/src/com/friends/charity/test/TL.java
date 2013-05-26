@@ -15,6 +15,7 @@ import com.friends.charity.dao.GeneralDao;
 import com.friends.charity.model.Login;
 import com.friends.charity.model.User;
 import com.friends.charity.model.UsernamePassword;
+import com.friends.charity.view.template.general.menu.right.about.TariekhcheShow;
 
 @WebListener
 public class TL implements ServletContextListener {
@@ -27,7 +28,7 @@ public class TL implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
-		// TODO Auto-generated method stub
+		new TariekhcheShow();
 		
 	}
 
