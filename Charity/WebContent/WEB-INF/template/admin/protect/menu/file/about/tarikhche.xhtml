@@ -3,18 +3,38 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-		<div style="width: 50%">
-		<p:panel header="تاریخچه">
-		<h:form>
-		<h:panelGrid columns="2">
-			<h:outputLabel value="عنوان:" />
-			<p:inputText value="#{tariekhchePage.tariekhche.title}"/> 
-			<h:outputLabel value="شرح:"/>
-			<p:editor value="#{tariekhchePage.tariekhche.description}"/>
-		</h:panelGrid>
-			
-		<p:commandButton  actionListener="#{tariekhchePage.btnSave}" value="sava" update="@form" />
-		</h:form>
-		</p:panel>
+
+
+	<h:form id="tarikhcheForm">
+		<div style="width: 75%">
+			<p:panel header="تاریخچه">
+				<h:panelGrid columns="2">
+					<h:outputLabel value="عنوان:" />
+					<p:inputText value="#{tariekhchePage.tariekhche.title}" />
+					<h:outputLabel value="شرح:" />
+					<p:editor value="#{tariekhchePage.tariekhche.description}"
+						width="700"/>
+				</h:panelGrid>
+
+				<p:commandButton 
+					value="ذخیره"  onclick="dlgHistoryQuestion.show()"/>
+				<p:commandButton value="نمایش تاریخچه ثبت شده"
+					onclick="dlgHistory.show()" update="@form"/>
+				<p:commandButton value="ویرایش تاریخچه ثبت شده"
+					actionListener="#{tariekhchePage.btnEditHistore}" update="@form" />
+			</p:panel>
 		</div>
+	<p:dialog widgetVar="dlgHistoryQuestion" >
+		
+			<p:panel header="آیا موافقید تغیرات ذخیره شود؟">
+				<p:commandButton value="بله" onclick="dlgHistoryQuestion.hide()"
+					actionListener="#{tariekhchePage.btnSave}"
+					update=":growl @form"/>
+				<p:commandButton value="خیر" onclick="dlgHistoryQuestion.hide()" />
+			</p:panel>
+		
+	</p:dialog>
+	</h:form>
+
+
 </ui:composition>

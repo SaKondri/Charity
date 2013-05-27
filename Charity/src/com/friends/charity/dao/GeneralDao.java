@@ -14,6 +14,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+
+
 public class GeneralDao {
 	private EntityManagerFactory entityManagerFactory;
 	private EntityManager entityManager;
@@ -25,7 +27,23 @@ public class GeneralDao {
 		entityManager = entityManagerFactory.createEntityManager();
 		session = entityManager.unwrap(Session.class);
 	}
-
+	public <T> T saveOrUpdate(T t)throws Exception{
+		Transaction transaction = null;
+		try {
+			transaction = session.beginTransaction();
+			session.saveOrUpdate(t);
+			transaction.commit();
+			
+		} catch (Exception e) {
+			transaction.rollback();
+			throw new Exception();
+		}finally{
+			session.flush();
+			session.clear();
+		}
+		return t;
+	}
+	
 	public <T> T save(T t) throws Exception {
 		Transaction transaction = null;
 		try {

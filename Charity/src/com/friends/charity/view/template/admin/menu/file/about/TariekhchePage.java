@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -14,6 +16,7 @@ import com.friends.charity.business.service.GeneralService;
 import com.friends.charity.model.admin.about.Tariekhche;
 import com.friends.charity.view.template.general.GeneralEvent;
 import com.friends.charity.view.template.general.GeneralTempPage;
+import com.friends.charity.view.template.general.menu.right.about.TariekhcheShow;
 @Named
 @RequestScoped
 public class TariekhchePage implements Serializable{
@@ -21,8 +24,15 @@ public class TariekhchePage implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private GeneralService dao;
 	private Tariekhche tariekhche;
+	@Inject
+	private TariekhcheShow show;
 	
-	
+	public TariekhcheShow getShow() {
+		return show;
+	}
+	public void setShow(TariekhcheShow show) {
+		this.show = show;
+	}
 	public GeneralService getDao() {
 		if(dao == null){
 			dao = new GeneralService();
@@ -45,17 +55,28 @@ public class TariekhchePage implements Serializable{
 	
 	public String btnSave(ActionEvent actionEvent){
 		try {
-			getDao().save(getTariekhche());
-			//FacesContext.getCurrentInstance().getExternalContext().
+			
+			getTariekhche().setId(getShow().getTariekhche().getId());
+			if(getShow().getTariekhche().getId() >0){
+				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"ویرایش","تاریخچه سایت با موفقیت ویرایش شد"));
+				getDao().saveOrUpdate(getTariekhche());
+			}else {
+				getDao().saveOrUpdate(getTariekhche());
+				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"ذخیره","تاریخچه سایت با موفقیت ذخیره شد"));
+			}
+			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_FATAL,"خطا","تاریخچه سایت با موفقیت ذخیره نشد"));
 		}finally{
 			setTariekhche(null);
 		}
 		return null;
 	}
-	
+	public String btnEditHistore(ActionEvent actionEvent){
+		
+		setTariekhche(getShow().getTariekhche());
+		return null;
+	}
 	public String showTarikhche(ActionEvent actionEvent){
 		List<Tariekhche> tariekhches = new ArrayList<>();	
 		try {
@@ -64,8 +85,7 @@ public class TariekhchePage implements Serializable{
 				
 				System.out.println("================================="+getTariekhche().getDescription());
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				System.out.println("eeeeeerrrrrrrrrrrrrrrooooorrrr"+e.getMessage());
+				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_FATAL,"خطا",e.getMessage()));
 			}
 		return null;
 	}

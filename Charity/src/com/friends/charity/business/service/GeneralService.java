@@ -47,4 +47,7 @@ public class GeneralService {
 			Integer first, Integer max) throws Exception {
 		return getDao().selectList(queryName, params, first, max);
 	}
+	public <T> T saveOrUpdate(T t)throws Exception{
+		return getDao().saveOrUpdate(t);
+	}
 }
