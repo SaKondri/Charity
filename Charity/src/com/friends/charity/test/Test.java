@@ -25,22 +25,7 @@ import com.friends.charity.view.template.admin.menu.addpicture.model.AddPictureM
 public class Test {
 	
 	public static void main(String[] args) {
-		List<Tariekhche> list = new ArrayList<>();
-		Tariekhche tariekhche = new Tariekhche();
-		GeneralService service = new GeneralService();
-		int i=0;
-		try {
-			list = service.selectList("showTarikhche", null);
-//			for (Tariekhche t : list) {
-//				
-//				System.out.println(t.getDescription());
-//				System.out.println(i);
-//			}
-			System.out.println(list.get(0).getDescription());
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-		}
-                
+		long i = 0;
+		
      }   
 }

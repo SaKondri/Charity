@@ -109,3 +109,27 @@ table.innertable td {
 	bottom: 0px;
 	z-index: 999;
 }
+.fieldset{
+	width: 700px;
+}
+.btnQestion{
+	position: fixed;
+	top: 200px;
+	left: -5px
+}
+.outPutQestion{
+	font-size: 14px;
+}
+.inputQuestion{
+	width: 306px;
+	height: 22px;
+	font-size: 18px;
+}
+.inputQuestionArea{
+	width: 306px;
+	height: 150px;
+	font-size: 20px;
+}
+.outPutQestionRisght{
+	text-align: right;
+}

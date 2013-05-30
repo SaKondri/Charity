@@ -82,8 +82,6 @@ public class TariekhchePage implements Serializable{
 		try {
 			   tariekhches.add( (Tariekhche) getDao().select("showTarikhche", null));
 			   setTariekhche(tariekhches.get(1));
-				
-				System.out.println("================================="+getTariekhche().getDescription());
 			} catch (Exception e) {
 				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_FATAL,"خطا",e.getMessage()));
 			}

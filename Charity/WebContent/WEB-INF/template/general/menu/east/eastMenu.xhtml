@@ -26,7 +26,12 @@
 			<p:submenu label="سوالات متداول">
 				<p:menuitem value="نکات ذکر شده برای خییرین" />
 				<p:menuitem value="نکات ذکر شده برای نیازمندان" />
-				<p:menuitem value="پرسش و پاسخ" />
+				<p:menuitem value="پرسش و پاسخ" actionListener="#{generalTempPage.event.changeCenterPage}"
+				
+						update=":changePage" process="@form" >
+						<f:param name="page"
+							value="/WEB-INF/template/general/menu/east/about/porseshOpasokh/porseshVaPasokh.xhtml" />
+				</p:menuitem>
 			</p:submenu>
 
 		</p:menu>
