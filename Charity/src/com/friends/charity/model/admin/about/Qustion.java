@@ -2,15 +2,25 @@ package com.friends.charity.model.admin.about;
 
 import java.io.UnsupportedEncodingException;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.servlet.http.HttpServletResponse;
 
 import com.friends.charity.business.logic.Utils;
 import com.friends.charity.model.BaseEntity;
 
 @Entity
 @Table(name = "QUSTION")
+@NamedQueries({
+	@NamedQuery (name ="allQustions" , query = "select q from Qustion q")
+	
+})
 public class Qustion extends BaseEntity {
 	@Column(name = "TITLE")
 	private String title;
@@ -22,7 +32,18 @@ public class Qustion extends BaseEntity {
 	private String fName;
 	@Column(name = "LAST_NAME")
 	private String lName;
-
+	@OneToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+	private Response response;
+	
+	public Response getResponse() {
+		if(response == null){
+			response = new Response();
+		}
+		return response;
+	}
+	public void setResponse(Response response) {
+		this.response = response;
+	}
 	public String getfName() {
 		return fName;
 	}

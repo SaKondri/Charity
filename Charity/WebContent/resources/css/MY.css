@@ -111,6 +111,12 @@ table.innertable td {
 }
 .fieldset{
 	width: 700px;
+	float: right;
+	
+}
+.fieldsetReq{
+	width: 400px;
+	float: left;
 }
 .btnQestion{
 	position: fixed;
@@ -119,6 +125,7 @@ table.innertable td {
 }
 .outPutQestion{
 	font-size: 14px;
+	float: right;
 }
 .inputQuestion{
 	width: 306px;

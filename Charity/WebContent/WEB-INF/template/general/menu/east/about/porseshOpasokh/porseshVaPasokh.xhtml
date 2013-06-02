@@ -5,20 +5,27 @@
 	xmlns:p="http://primefaces.org/ui">
 	<p:panel header="پرسش و پاسخ">
 	<h:form>
-		<ui:repeat var="qu" value="#{qustionPage.qustionList.qustions}">
+		<ui:repeat var="qu" value="#{qustionPage.qustionList.qustions}" varStatus="status">
 		<p:fieldset styleClass="fieldset"
 			legend="#{qu.title}" toggleable="true"
-			toggleSpeed="700">
+			toggleSpeed="700" >
 			<h:panelGrid columns="1" cellpadding="10">
-			
+				
 				<h:outputLabel styleClass="outPutQestion" value="#{qu.fName}" dir="rtl"/>
 				<h:outputLabel value="#{qu.description}" dir="rtl" />
 			
 			</h:panelGrid>
+			<p:fieldset toggleable="true" styleClass="fieldsetReq" legend="پاسخ" rendered="#{qu.response.id > 0 }">
+				<h:outputLabel value="پاسخ" />
+			</p:fieldset>
+			<p:commandButton value="پاسخ" onclick="dlgRespForQustion.show()" actionListener="#{qustionPage.btnResponce}">
+				<f:param name="idRequest" value="#{qu.id}"/>
+			</p:commandButton>
 		</p:fieldset>
+		
 		</ui:repeat>
 		<div Class="btnQestion">
-
+		
 			<p:commandButton value="ایجاد پرسش" onclick="dlgQuestion.show()" />
 
 		</div>

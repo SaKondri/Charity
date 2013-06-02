@@ -19,13 +19,25 @@ import com.friends.charity.business.service.GeneralService;
 import com.friends.charity.dao.GeneralDao;
 import com.friends.charity.model.Login;
 import com.friends.charity.model.UsernamePassword;
+import com.friends.charity.model.admin.about.Qustion;
+import com.friends.charity.model.admin.about.Response;
 import com.friends.charity.model.admin.about.Tariekhche;
 import com.friends.charity.view.template.admin.menu.addpicture.model.AddPictureModel;
 
 public class Test {
 	
 	public static void main(String[] args) {
-		long i = 0;
+		Response response = new Response();
 		
+		response.setResponseForQustion("javab12");
+		Qustion qustion = new Qustion();
+		qustion.setId(12);
+		qustion.setResponse(response);
+		try {
+			new GeneralService().saveOrUpdate(qustion);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
      }   
 }

@@ -9,32 +9,39 @@
 		<h:form id="frmMenuQuestion">
 			<h:panelGrid columns="2">
 				<h:outputLabel styleClass="outPutQestion" value="نام" for="n" />
-				<p:inputText styleClass="inputQuestion" required="true" id="name" value="#{qustionPage.qustion.fName}"/>
+				<p:inputText styleClass="inputQuestion" required="true" id="name"
+					value="#{qustionPage.qustion.fName}" />
 				<h:outputLabel styleClass="outPutQestion" value="موضوع سوال"
 					for="titleQestion" />
 				<p:inputText styleClass="inputQuestion" required="true"
-					id="titleQestion" value="#{qustionPage.qustion.title}"/>
+					id="titleQestion" value="#{qustionPage.qustion.title}" />
 				<h:outputLabel styleClass="outPutQestion" value="شرح سوال"
 					for="desQustion" />
 				<p:inputTextarea styleClass="inputQuestionArea" required="true"
-					id="desQustion" value="#{qustionPage.qustion.description}"/>
-				<h:outputLabel styleClass="outPutQestion" value="کد امنیتی"
-					for="cpchCode" />
-				<h:panelGroup id="pnlCap">
-					<p:captcha label="Captcha" language="en" theme="white"
-						required="true" id="cpchCode" />
-				</h:panelGroup>
+					id="desQustion" value="#{qustionPage.qustion.description}" />
+
 			</h:panelGrid>
 			<div align="center">
 				<p:commandButton value="پاک کردن فرم" />
 				<p:commandButton actionListener="#{qustionPage.btnCreateQuestion}"
-					onstart="doSomething()" ajax="true"
-					 value="ایجاد پرسش"
-					update="pnlCap" />
+					onstart="doSomething()" ajax="true" value="ایجاد پرسش" />
 			</div>
 			<f:facet name="footer">
 				<p:messages for="frmMenuQuestion" showDetail="true" />
 			</f:facet>
+		</h:form>
+	</p:dialog>
+
+	<p:dialog resizable="false" widgetVar="dlgRespForQustion" modal="true">
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="پاسخ" />
+				<p:editor value="#{qustionPage.response.responseForQustion}" />
+			</h:panelGrid>
+			<div align="center">
+				<p:commandButton value="ثبت" onclick="dlgRespForQustion.hide()"
+				actionListener="#{qustionPage.btnResponseforQustion}" update=":changePage"/>
+			</div>
 		</h:form>
 	</p:dialog>
 
