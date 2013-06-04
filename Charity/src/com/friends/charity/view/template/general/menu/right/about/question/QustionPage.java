@@ -70,7 +70,7 @@ public class QustionPage implements Serializable {
 			}
 		}
 		FacesContext.getCurrentInstance().addMessage(
-				"frmMenuQuestion",
+				null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO, "پرسش",
 						"با موفقیت ارسال شد"));
 		
@@ -84,8 +84,12 @@ public class QustionPage implements Serializable {
 		for (Qustion qu : qustionList.getQustions()) {
 			try {
 				if(qu.getId() == id){
+					getResponse().setId(qu.getResponse().getId());
+					System.out.println("qu.getResponse().getId()==========>"+qu.getResponse().getId());
 					qu.setResponse(getResponse());
 					getDao().saveOrUpdate(qu);
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,qu.getfName(),"پرسش "+qu.getfName()+" با موفقیت پاسخ داده شد"));
+					setResponse(new Response());
 				}
 					
 				

@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,8 +22,8 @@ import com.friends.charity.model.BaseEntity;
 	@NamedQuery (name ="allQustions" , query = "select q from Qustion q")
 	
 })
-public class Qustion extends BaseEntity {
-	@Column(name = "TITLE")
+public class Qustion extends BaseEntity{
+	@Column(name = "TITLE" , columnDefinition = "text")
 	private String title;
 	@Column(name = "DESCRIPTION", columnDefinition = "text")
 	private String description;
@@ -84,5 +85,6 @@ public class Qustion extends BaseEntity {
 	public void setCodePeygiry(long codePeygiry) {
 		this.codePeygiry = codePeygiry;
 	}
+
 
 }

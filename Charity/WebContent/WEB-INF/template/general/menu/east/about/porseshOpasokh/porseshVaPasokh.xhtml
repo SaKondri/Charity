@@ -10,13 +10,14 @@
 			legend="#{qu.title}" toggleable="true"
 			toggleSpeed="700" >
 			<h:panelGrid columns="1" cellpadding="10">
-				
+				<div align="right" style="float: right ; margin-left: 700px">
 				<h:outputLabel styleClass="outPutQestion" value="#{qu.fName}" dir="rtl"/>
+				</div>
 				<h:outputLabel value="#{qu.description}" dir="rtl" />
 			
 			</h:panelGrid>
 			<p:fieldset toggleable="true" styleClass="fieldsetReq" legend="پاسخ" rendered="#{qu.response.id > 0 }">
-				<h:outputLabel value="پاسخ" />
+				<h:outputLabel value="#{qu.response.responseForQustion}" escape="false"/>
 			</p:fieldset>
 			<p:commandButton value="پاسخ" onclick="dlgRespForQustion.show()" actionListener="#{qustionPage.btnResponce}">
 				<f:param name="idRequest" value="#{qu.id}"/>
