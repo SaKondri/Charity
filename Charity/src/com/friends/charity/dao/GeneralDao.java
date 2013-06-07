@@ -9,10 +9,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.hibernate.Criteria;
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
+
+import com.friends.charity.model.admin.about.Qustion;
 
 
 
@@ -159,15 +163,31 @@ public class GeneralDao {
 				query.setMaxResults(max);
 			}
 			result = query.list();
-			session.flush();
+			
 		} catch (Exception e) {
 			throw e;
 		} finally {
+			session.flush();
 			session.clear();
 		}
 		return result;
 	}
-
+	public <T> Long  tableSize(String namedQuery){
+		Query query = session.getNamedQuery(namedQuery);
+		Long result = (Long) query.uniqueResult();
+		return result;
+	}
+	@SuppressWarnings("unchecked")
+	public List<Qustion> selectListValue(Integer first , Integer max ){
+		List<Qustion> list = new ArrayList<>();
+		Criteria criteria = session.createCriteria(Qustion.class);
+		criteria.setFirstResult(first).setMaxResults(max);
+		criteria.addOrder(Order.desc("id"));
+		list=criteria.list();
+		session.flush();
+		session.close();
+		return list;
+	}
 	// public Login getUsernamePassword(String username, String password) {
 	// Login login = null;
 	//

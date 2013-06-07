@@ -19,11 +19,11 @@ import com.friends.charity.model.BaseEntity;
 @Entity
 @Table(name = "QUSTION")
 @NamedQueries({
-	@NamedQuery (name ="allQustions" , query = "select q from Qustion q")
-	
+	@NamedQuery (name ="allQustions" , query = "select q from Qustion q order by q.id"),
+	@NamedQuery (name = "qustionTableSize" , query = "select count(q) from Qustion q")
 })
 public class Qustion extends BaseEntity{
-	@Column(name = "TITLE" , columnDefinition = "text")
+	@Column(name = "TITLE" , columnDefinition = "text" )
 	private String title;
 	@Column(name = "DESCRIPTION", columnDefinition = "text")
 	private String description;

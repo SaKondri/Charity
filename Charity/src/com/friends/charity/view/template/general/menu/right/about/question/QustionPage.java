@@ -23,27 +23,33 @@ public class QustionPage implements Serializable {
 	@Inject
 	private QustionList qustionList;
 	private Response response;
+
 	public Response getResponse() {
-		if(response == null){
+		if (response == null) {
 			response = new Response();
 		}
 		return response;
 	}
+
 	public void setResponse(Response response) {
 		this.response = response;
 	}
+
 	public GeneralService getDao() {
-		if(dao == null){
+		if (dao == null) {
 			dao = new GeneralService();
 		}
 		return dao;
 	}
+
 	public void setDao(GeneralService dao) {
 		this.dao = dao;
 	}
+
 	public QustionList getQustionList() {
 		return qustionList;
 	}
+
 	public void setQustionList(QustionList qustionList) {
 		this.qustionList = qustionList;
 	}
@@ -58,7 +64,8 @@ public class QustionPage implements Serializable {
 	public void setQustion(Qustion qustion) {
 		this.qustion = qustion;
 	}
-	//ایجاد پرسش
+
+	// ایجاد پرسش
 	public String btnCreateQuestion(ActionEvent actionEvent) {
 		qustionList.getQustions().add(getQustion());
 		for (Qustion qu : qustionList.getQustions()) {
@@ -73,43 +80,52 @@ public class QustionPage implements Serializable {
 				null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO, "پرسش",
 						"با موفقیت ارسال شد"));
-		
+
 		setQustion(new Qustion());
+		qustionList.getQustions();
 		return null;
 	}
-	//ثبت
-	public String btnResponseforQustion(ActionEvent actionEvent){
-		HttpServletRequest request=(HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-		Long id=(Long) request.getSession().getAttribute("idRequest");
+
+	// ثبت
+	public String btnResponseforQustion(ActionEvent actionEvent) {
+		HttpServletRequest request = (HttpServletRequest) FacesContext
+				.getCurrentInstance().getExternalContext().getRequest();
+		Long id = (Long) request.getSession().getAttribute("idRequest");
 		for (Qustion qu : qustionList.getQustions()) {
 			try {
-				if(qu.getId() == id){
+				if (qu.getId() == id) {
 					getResponse().setId(qu.getResponse().getId());
-					System.out.println("qu.getResponse().getId()==========>"+qu.getResponse().getId());
 					qu.setResponse(getResponse());
 					getDao().saveOrUpdate(qu);
-					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,qu.getfName(),"پرسش "+qu.getfName()+" با موفقیت پاسخ داده شد"));
-					setResponse(new Response());
+					FacesContext.getCurrentInstance().addMessage(
+							null,
+							new FacesMessage(FacesMessage.SEVERITY_INFO, qu
+									.getfName(), "پرسش " + qu.getfName()
+									+ " با موفقیت پاسخ داده شد"));
+
 				}
-					
-				
+
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				System.out.println(e.getMessage());
 			}
 		}
+
 		return null;
 	}
-	//پاسخ
-	public void btnResponce(ActionEvent actionEvent){
-		HttpServletRequest request=(HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+
+	// پاسخ
+	public void btnResponce(ActionEvent actionEvent) {
 		reqId();
-		
+
 	}
-	public void reqId(){
-		String id=((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getParameter("idRequest");
-		Long i =Long.parseLong(id);
-		HttpServletRequest request=(HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+
+	public void reqId() {
+		String id = ((HttpServletRequest) FacesContext.getCurrentInstance()
+				.getExternalContext().getRequest()).getParameter("idRequest");
+		Long i = Long.parseLong(id);
+		HttpServletRequest request = (HttpServletRequest) FacesContext
+				.getCurrentInstance().getExternalContext().getRequest();
 		request.getSession(true).setAttribute("idRequest", i);
 	}
 }

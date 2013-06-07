@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.friends.charity.dao.GeneralDao;
+import com.friends.charity.model.admin.about.Qustion;
 
 public class GeneralService {
 	private GeneralDao dao;
@@ -49,5 +50,11 @@ public class GeneralService {
 	}
 	public <T> T saveOrUpdate(T t)throws Exception{
 		return getDao().saveOrUpdate(t);
+	}
+	public  List<Qustion> selectListValue(Integer first , Integer max){
+		return getDao().selectListValue(first, max);
+	}
+	public <T> Long  tableSize(String namedQuery){
+		return getDao().tableSize(namedQuery);
 	}
 }
