@@ -59,7 +59,7 @@ public class TariekhcheShow implements Serializable {
 		// gotoTarikhche(actionEvent);
 		setAdminChangePageHome(page);
 	}
-	
+	@PostConstruct
 	public String showTarikhche() {
 
 		List<Tariekhche> tariekhches = new ArrayList<>();
