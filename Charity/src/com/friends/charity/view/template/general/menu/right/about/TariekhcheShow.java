@@ -44,6 +44,7 @@ public class TariekhcheShow implements Serializable {
 	public Tariekhche getTariekhche() {
 		if (tariekhche == null) {
 			tariekhche = new Tariekhche();
+			
 		}
 		return tariekhche;
 	}
@@ -58,13 +59,13 @@ public class TariekhcheShow implements Serializable {
 		// gotoTarikhche(actionEvent);
 		setAdminChangePageHome(page);
 	}
-	@PostConstruct
+	
 	public String showTarikhche() {
 
 		List<Tariekhche> tariekhches = new ArrayList<>();
 		try {
 			tariekhches =getDao().selectList("showTarikhche", null);
-			setTariekhche(tariekhches.get(0));
+		setTariekhche(tariekhches.get(0));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println("eeeeeerrrrrrrrrrrrrrrooooorrrr"

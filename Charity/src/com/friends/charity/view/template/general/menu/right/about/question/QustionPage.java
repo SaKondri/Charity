@@ -3,6 +3,7 @@ package com.friends.charity.view.template.general.menu.right.about.question;
 import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
@@ -10,6 +11,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 
+import com.friends.charity.business.logic.Utils;
 import com.friends.charity.business.service.GeneralService;
 import com.friends.charity.model.admin.about.Qustion;
 import com.friends.charity.model.admin.about.Response;
@@ -22,15 +24,23 @@ public class QustionPage implements Serializable {
 	private GeneralService dao;
 	@Inject
 	private QustionList qustionList;
+	@Inject
+	private QustionChangePage qustionChangePage;
 	private Response response;
 
+	public QustionChangePage getQustionChangePage() {
+		return qustionChangePage;
+	}
+	public void setQustionChangePage(QustionChangePage qustionChangePage) {
+		this.qustionChangePage = qustionChangePage;
+	}
 	public Response getResponse() {
 		if (response == null) {
 			response = new Response();
 		}
 		return response;
 	}
-
+	
 	public void setResponse(Response response) {
 		this.response = response;
 	}
@@ -67,22 +77,27 @@ public class QustionPage implements Serializable {
 
 	// ایجاد پرسش
 	public String btnCreateQuestion(ActionEvent actionEvent) {
-		qustionList.getQustions().add(getQustion());
-		for (Qustion qu : qustionList.getQustions()) {
+		//qustionList.getQustions().add(getQustion());
+	//	for (Qustion qu : qustionList.getQustions()) {
 			try {
-				getDao().saveOrUpdate(qu);
+				getDao().save(getQustion());
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+	//	}
+		getQustionChangePage().btnUpdate();
 		FacesContext.getCurrentInstance().addMessage(
 				null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO, "پرسش",
 						"با موفقیت ارسال شد"));
-
+		HttpServletRequest request = (HttpServletRequest) FacesContext
+				.getCurrentInstance().getExternalContext().getRequest();
+		request.getSession().setAttribute("btnValue", 0);
+		getQustionChangePage().btnUpdate();
+		
 		setQustion(new Qustion());
-		qustionList.getQustions();
+		
 		return null;
 	}
 
@@ -91,26 +106,20 @@ public class QustionPage implements Serializable {
 		HttpServletRequest request = (HttpServletRequest) FacesContext
 				.getCurrentInstance().getExternalContext().getRequest();
 		Long id = (Long) request.getSession().getAttribute("idRequest");
-		for (Qustion qu : qustionList.getQustions()) {
-			try {
-				if (qu.getId() == id) {
-					getResponse().setId(qu.getResponse().getId());
-					qu.setResponse(getResponse());
-					getDao().saveOrUpdate(qu);
-					FacesContext.getCurrentInstance().addMessage(
-							null,
-							new FacesMessage(FacesMessage.SEVERITY_INFO, qu
-									.getfName(), "پرسش " + qu.getfName()
-									+ " با موفقیت پاسخ داده شد"));
-
-				}
-
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				System.out.println(e.getMessage());
-			}
+		setQustion((Qustion) getDao().select("selectById", id));
+		getQustion().setResponse(getResponse());
+		try {
+			getDao().saveOrUpdate(getQustion());
+			getQustionChangePage().btnUpdate();
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, getQustion()
+							.getfName(), "پرسش " + getQustion().getfName()
+							+ " با موفقیت پاسخ داده شد"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
 		return null;
 	}
 
@@ -127,5 +136,6 @@ public class QustionPage implements Serializable {
 		HttpServletRequest request = (HttpServletRequest) FacesContext
 				.getCurrentInstance().getExternalContext().getRequest();
 		request.getSession(true).setAttribute("idRequest", i);
+		
 	}
 }

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 
 import com.friends.charity.business.service.GeneralService;
@@ -32,7 +34,9 @@ public class QustionList implements Serializable {
 	public List<Qustion> getQustions() {
 		if (qustions == null) {
 			qustions = new ArrayList<>();
-			qustions = getDao().selectListValue(0, 10);
+			if(qustions.size() == 0){
+				qustions = getDao().selectListValue(0, 10);
+			}
 
 		}
 		return qustions;

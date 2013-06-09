@@ -5,8 +5,8 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<h:form id="frmPorsesh">
-	<div style="margin-right: 70px">
-	
+		<div style="margin-right: 70px">
+
 			<ui:repeat var="qu" value="#{qustionPage.qustionList.qustions}">
 				<p:fieldset styleClass="fieldset" legend="#{qu.title}"
 					toggleable="true" toggleSpeed="700">
@@ -19,8 +19,9 @@
 						<h:outputLabel value="#{qu.description}" dir="rtl" />
 
 					</h:panelGrid>
-					<p:fieldset toggleable="true" styleClass="fieldsetReq"
-						legend="پاسخ" rendered="#{qu.response.id > 0 }">
+					<p:fieldset id="fieldResponse" toggleable="true"
+						styleClass="fieldsetReq" legend="پاسخ"
+						rendered="#{qu.response.id > 0 }">
 						<h:outputLabel value="#{qu.response.responseForQustion}"
 							escape="false" />
 					</p:fieldset>
@@ -33,18 +34,18 @@
 			</ui:repeat>
 
 
-	</div>
-		<div style="float : left; margin: 40px 75px 90px 600px">
-			
-				<ui:repeat var="btn" value="#{qustionChangePage.buttonName}">
+		</div>
+		<div style="float: left; margin: 40px 75px 90px 600px">
 
-					<p:commandButton value="#{btn}"
-						actionListener="#{qustionChangePage.btnPage}" update="@form">
-						<f:param name="btnName" value="#{btn}" />
-					</p:commandButton>
+			<ui:repeat var="btn" value="#{qustionChangePage.buttonName}">
 
-				</ui:repeat>
-			
+				<p:commandButton value="#{btn}"
+					actionListener="#{qustionChangePage.btnPage}" update="@form">
+					<f:param name="btnName" value="#{btn}" />
+				</p:commandButton>
+
+			</ui:repeat>
+
 		</div>
 
 		<div Class="btnQestion">

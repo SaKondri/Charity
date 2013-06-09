@@ -37,13 +37,13 @@ public class GeneralDao {
 			transaction = session.beginTransaction();
 			session.saveOrUpdate(t);
 			transaction.commit();
-			
+			session.flush();
+			session.clear();
 		} catch (Exception e) {
 			transaction.rollback();
 			throw new Exception();
 		}finally{
-			session.flush();
-			session.clear();
+			
 		}
 		return t;
 	}
