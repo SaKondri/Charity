@@ -13,6 +13,8 @@ import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 import javax.inject.Named;
 
+import org.primefaces.event.FileUploadEvent;
+
 import com.friends.charity.business.logic.CalendarFormat;
 import com.friends.charity.business.service.GeneralService;
 import com.friends.charity.business.service.model.LoginService;
@@ -147,6 +149,26 @@ public class MadadJoEvent implements Serializable {
 		}
 		return items;
 	}
+	
+	public void imageEvent(FileUploadEvent event){
+		FacesMessage message = new FacesMessage();
+		FacesContext context = FacesContext.getCurrentInstance();
+		try {
+			getMotaghazi().getUserImage().setPicName(event.getFile().getFileName());
+			getMotaghazi().getUserImage().setImage(event.getFile().getContents());
+			message.setDetail("ذخیره عکس");
+			message.setSummary(".عکس شما با موفقیت ذخیره شد");
+			message.setSeverity(FacesMessage.SEVERITY_INFO);
+			context.addMessage(null, message);
+		} catch (Exception e) {
+			message.setDetail("ذخیره عکس");
+			message.setSummary(".عکس شما بارگذاری نشد");
+			message.setSeverity(FacesMessage.SEVERITY_ERROR);
+			context.addMessage(null, message);
+		}
+		
+		
+	}
 
 	/**
 	 * .برای دکمه ثبت
@@ -185,7 +207,7 @@ public class MadadJoEvent implements Serializable {
 			nullEntity();
 			message.setSeverity(FacesMessage.SEVERITY_INFO);
 			message.setDetail("ذخیره");
-			message.setSummary("اطلاعات شما با موفقیت ذخیره شد.");
+			message.setSummary("اطلاعات شما با موفقیت ذخیره شد");
 			context.addMessage(null, message);
 		} catch (Exception e) {
 			message.setSeverity(FacesMessage.SEVERITY_FATAL);

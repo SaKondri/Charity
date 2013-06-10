@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -62,6 +63,8 @@ public class MoshakhasateMotaghazi extends User {
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "sarparast_ID", referencedColumnName = "ID")
 	private List<Farzandan> farzandans;
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private UserImage userImage;
 	@Transient
 	private Date mySelfDate;
 	@Transient
@@ -228,6 +231,17 @@ public class MoshakhasateMotaghazi extends User {
 
 	public void setMyWifeStrDate(String myWifeStrDate) {
 		this.myWifeStrDate = myWifeStrDate;
+	}
+
+	public UserImage getUserImage() {
+		if (userImage == null) {
+			userImage = new UserImage();
+		}
+		return userImage;
+	}
+
+	public void setUserImage(UserImage userImage) {
+		this.userImage = userImage;
 	}
 
 }

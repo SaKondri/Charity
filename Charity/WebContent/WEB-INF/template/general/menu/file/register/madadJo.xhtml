@@ -122,6 +122,18 @@
 				</p:panel>
 			</p:tab>
 
+			<p:tab title="عکس">
+				<p:panel id="imgPnl" header="عکس">
+					<h:panelGrid columns="1">
+						<p:fileUpload
+							fileUploadListener="#{generalTempPage.menuBean.madadJoPage.event.imageEvent}"
+							mode="advanced" multiple="true" sizeLimit="200000"
+							update=":growl" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />   />
+					</h:panelGrid>
+				</p:panel>
+
+			</p:tab>
+
 			<p:tab title="مشخصات فرزندان متقاضی">
 				<p:panel id="pnll" header="مشخصات فرزندان متقاضی">
 					<h:panelGrid columns="6">
