@@ -86,7 +86,7 @@ public class QustionPage implements Serializable {
 				e.printStackTrace();
 			}
 	//	}
-		getQustionChangePage().btnUpdate();
+		
 		FacesContext.getCurrentInstance().addMessage(
 				null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO, "پرسش",
@@ -111,6 +111,7 @@ public class QustionPage implements Serializable {
 		try {
 			getDao().saveOrUpdate(getQustion());
 			getQustionChangePage().btnUpdate();
+			getQustionChangePage().listSize();
 			FacesContext.getCurrentInstance().addMessage(
 					null,
 					new FacesMessage(FacesMessage.SEVERITY_INFO, getQustion()

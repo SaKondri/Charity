@@ -175,6 +175,8 @@ public class GeneralDao {
 	public <T> Long  tableSize(String namedQuery){
 		Query query = session.getNamedQuery(namedQuery);
 		Long result = (Long) query.uniqueResult();
+		session.flush();
+		session.clear();
 		return result;
 	}
 	@SuppressWarnings("unchecked")
