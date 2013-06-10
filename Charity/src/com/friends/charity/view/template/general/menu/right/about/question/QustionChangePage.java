@@ -85,8 +85,6 @@ public class QustionChangePage implements Serializable {
 				.getCurrentInstance().getExternalContext().getRequest();
 		Integer btnValue = Integer.parseInt(req.getParameter("btnName"));
 		req.getSession().setAttribute("btnValue", btnValue);
-		// qustionList.setQustions(getGeneralService().selectListValue((btnValue*10)-10,
-		// 10));
 		Long size = getGeneralService().tableSize("qustionTableSize");
 		Integer mod = (int) (size % 10);
 		Integer first = btnValue * 10;
@@ -106,10 +104,8 @@ public class QustionChangePage implements Serializable {
 				.getCurrentInstance().getExternalContext().getRequest();
 		
 		Integer btnValue = (Integer) req.getSession().getAttribute("btnValue");
-		System.out.println("bbbbbbbbbbbtttttttttttnnnnnnnnnvalue"+btnValue);
 		if (btnValue == null || btnValue == 0) {
 			btnValue = 1;
-			System.out.println("PAYEN bbbbbbbbbbbtttttttttttnnnnnnnnnvalue"+btnValue);
 		}
 			long size = getGeneralService().tableSize("qustionTableSize");
 			Integer mod = (int) (size % 10);

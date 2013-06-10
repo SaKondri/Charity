@@ -31,16 +31,18 @@ public class QustionPage implements Serializable {
 	public QustionChangePage getQustionChangePage() {
 		return qustionChangePage;
 	}
+
 	public void setQustionChangePage(QustionChangePage qustionChangePage) {
 		this.qustionChangePage = qustionChangePage;
 	}
+
 	public Response getResponse() {
 		if (response == null) {
 			response = new Response();
 		}
 		return response;
 	}
-	
+
 	public void setResponse(Response response) {
 		this.response = response;
 	}
@@ -77,16 +79,12 @@ public class QustionPage implements Serializable {
 
 	// ایجاد پرسش
 	public String btnCreateQuestion(ActionEvent actionEvent) {
-		//qustionList.getQustions().add(getQustion());
-	//	for (Qustion qu : qustionList.getQustions()) {
-			try {
-				getDao().save(getQustion());
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	//	}
-		
+		try {
+			getDao().save(getQustion());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		FacesContext.getCurrentInstance().addMessage(
 				null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO, "پرسش",
@@ -95,9 +93,9 @@ public class QustionPage implements Serializable {
 				.getCurrentInstance().getExternalContext().getRequest();
 		request.getSession().setAttribute("btnValue", 0);
 		getQustionChangePage().btnUpdate();
-		
+
 		setQustion(new Qustion());
-		
+
 		return null;
 	}
 
@@ -111,7 +109,7 @@ public class QustionPage implements Serializable {
 		try {
 			getDao().saveOrUpdate(getQustion());
 			getQustionChangePage().btnUpdate();
-			getQustionChangePage().listSize();
+		//	getQustionChangePage().listSize();
 			FacesContext.getCurrentInstance().addMessage(
 					null,
 					new FacesMessage(FacesMessage.SEVERITY_INFO, getQustion()
@@ -137,6 +135,6 @@ public class QustionPage implements Serializable {
 		HttpServletRequest request = (HttpServletRequest) FacesContext
 				.getCurrentInstance().getExternalContext().getRequest();
 		request.getSession(true).setAttribute("idRequest", i);
-		
+
 	}
 }
