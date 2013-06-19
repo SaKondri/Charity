@@ -4,10 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
+import javax.inject.Singleton;
 import javax.servlet.http.HttpServletRequest;
 
 import com.friends.charity.business.service.GeneralService;
@@ -19,9 +19,10 @@ public class TariekhcheShow implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Tariekhche tariekhche;
-	private GeneralService dao;
+	
 	private String adminChangePageHome;
-
+	
+	
 	public String getAdminChangePageHome() {
 		return adminChangePageHome;
 	}
@@ -30,17 +31,7 @@ public class TariekhcheShow implements Serializable {
 		this.adminChangePageHome = adminChangePageHome;
 	}
 
-	public GeneralService getDao() {
-		if (dao == null) {
-			dao = new GeneralService();
-		}
-		return dao;
-	}
-
-	public void setDao(GeneralService dao) {
-		this.dao = dao;
-	}
-
+	
 	public Tariekhche getTariekhche() {
 		if (tariekhche == null) {
 			tariekhche = new Tariekhche();
@@ -59,12 +50,13 @@ public class TariekhcheShow implements Serializable {
 		// gotoTarikhche(actionEvent);
 		setAdminChangePageHome(page);
 	}
-	@PostConstruct
+	@Singleton
 	public String showTarikhche() {
-
+		
 		List<Tariekhche> tariekhches = new ArrayList<>();
 		try {
-			tariekhches =getDao().selectList("showTarikhche", null);
+			GeneralService dao = new GeneralService();
+			tariekhches =dao.selectList("showTarikhche", null);
 		setTariekhche(tariekhches.get(0));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

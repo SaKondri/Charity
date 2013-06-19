@@ -5,9 +5,15 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<p:dialog resizable="false" header="ایجاد پرسش" widgetVar="dlgQuestion"
-		modal="true">
+		modal="true" >
 		<h:form id="frmMenuQuestion">
 			<h:panelGrid columns="2">
+				<h:outputLabel value="حالت سوال" styleClass="outPutQestion" />
+				<p:selectOneMenu >
+					<f:selectItem itemLabel="عمومی" itemValue="public" />
+					<f:selectItem itemLabel="خصوصی" itemValue="private" />
+				</p:selectOneMenu>
+
 				<h:outputLabel styleClass="outPutQestion" value="نام" for="n" />
 				<p:inputText styleClass="inputQuestion" required="true" id="name"
 					value="#{qustionPage.qustion.fName}" />
@@ -22,8 +28,10 @@
 
 			</h:panelGrid>
 			<div align="center">
-				<p:commandButton value="پاک کردن فرم" type="reset"/>
-				<p:commandButton actionListener="#{qustionPage.btnCreateQuestion}" update=":changePage :growl" value="ایجاد پرسش" onclick="dlgQuestion.hide()"/>
+				<p:commandButton value="پاک کردن فرم" type="reset" />
+				<p:commandButton actionListener="#{qustionPage.btnCreateQuestion}"
+					update=":changePage :growl" value="ایجاد پرسش"
+					onclick="dlgQuestion.hide()" />
 			</div>
 			<f:facet name="footer">
 				<p:messages for="frmMenuQuestion" showDetail="true" />
@@ -39,7 +47,8 @@
 			</h:panelGrid>
 			<div align="center">
 				<p:commandButton value="ثبت" onclick="dlgRespForQustion.hide()"
-				actionListener="#{qustionPage.btnResponseforQustion}" update=":growl :changePage"/>
+					actionListener="#{qustionPage.btnResponseforQustion}"
+					update=":growl :changePage" />
 			</div>
 		</h:form>
 	</p:dialog>

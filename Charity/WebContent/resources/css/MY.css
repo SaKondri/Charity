@@ -140,3 +140,16 @@ table.innertable td {
 .outPutQestionRisght{
 	text-align: right;
 }
+.notfication {
+	
+	position: fixed;
+	margin : 4px 0 0 670px;
+	top: 4px;
+	z-index: 999;
+}
+.notValue {
+   background: url('1') no-repeat; 
+    height:16px;
+    width:16px;
+   
+}

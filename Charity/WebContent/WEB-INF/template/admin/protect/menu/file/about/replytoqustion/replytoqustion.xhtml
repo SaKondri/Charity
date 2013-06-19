@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form>
+		<div style="width: 75%">
+			<p:panel header="پاسخ به سوالات جواب داده نشده">
+				<p:dataGrid value="#{replyToQustion.event.dataModel}" var="qu" rows="10"  rowsPerPageTemplate="5,10,15"
+					columns="1" paginator="true"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+					<p:fieldset legend="#{qu.title}" toggleable="true">
+						<h:panelGrid columns="1">
+							<h:outputLabel value="#{qu.fName}" />
+							<h:outputLabel value="#{qu.description}" />
+							<p:commandButton value="پاسخ"
+								actionListener="#{replyToQustion.event.getReqId}"
+								onclick="dlgReplyToQustion.show()">
+								<f:param name="btnQustionID" value="#{qu.id}" />
+							</p:commandButton>
+						</h:panelGrid>
+					</p:fieldset>
+				</p:dataGrid>
+			</p:panel>
+		</div>
+	</h:form>
+
+</ui:composition>

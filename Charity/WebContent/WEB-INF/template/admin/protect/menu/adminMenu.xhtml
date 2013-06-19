@@ -6,7 +6,7 @@
 	<h:form>
 		<p:menubar>
 			<p:submenu label="پرونده">
-				
+
 				<p:submenu label="ثبت نام">
 					<p:menuitem value="ثبت مامورین تحقیق"
 						actionListener="#{generalTempPage.event.changeCenterPageAdminHome}"
@@ -15,7 +15,7 @@
 							value="/WEB-INF/template/admin/protect/menu/file/register/mamorinTahghigh.xhtml" />
 					</p:menuitem>
 				</p:submenu>
-				
+
 				<p:submenu label="عکس ها">
 					<p:menuitem value="عکس های صفحه اصلی"
 						actionListener="#{generalTempPage.event.changeCenterPageAdminHome}"
@@ -23,7 +23,7 @@
 						<f:param name="page"
 							value="/WEB-INF/template/admin/protect/menu/file/addPicture.xhtml" />
 					</p:menuitem>
-					</p:submenu>
+				</p:submenu>
 				<p:submenu label="درباره ما">
 					<p:menuitem value="تاریخچه"
 						actionListener="#{generalTempPage.event.changeCenterPageAdminHome}"
@@ -31,10 +31,28 @@
 						<f:param name="page"
 							value="/WEB-INF/template/admin/protect/menu/file/about/tarikhche.xhtml" />
 					</p:menuitem>
+					<p:submenu label="سوالات">
+						<p:menuitem value="پاسخ به پرسشهای عمومی  #{replyToQustion.event.qustionPublicSize}"
+							actionListener="#{generalTempPage.event.changeCenterPageAdminHome}"
+							update=":pnlChange" process="@form">
+							<f:param name="page"
+								value="/WEB-INF/template/admin/protect/menu/file/about/replytoqustion/replytoqustion.xhtml" />
+
+
+						</p:menuitem >
+						<p:menuitem  value="پاسخ به پرسشهای خصوصی" 
+							actionListener="#{generalTempPage.event.changeCenterPageAdminHome}"
+							update=":pnlChange" process="@form">
+							<f:param name="page"
+								value="/WEB-INF/template/admin/protect/menu/file/about/tarikhche.xhtml" />
+							
+							
+						</p:menuitem>
+					</p:submenu>
 				</p:submenu>
-				
 			</p:submenu>
 		</p:menubar>
+		
 		<div class="themSwitcher">
 			<ui:include
 				src="/WEB-INF/template/general/themSwitcher/themSwitcher.xhtml" />

@@ -28,20 +28,19 @@
 	<session-config>
 		<session-timeout>10</session-timeout>
 	</session-config>
-	
+
 	<context-param>
-        <param-name>primefaces.THEME</param-name>
-        <param-value>#{GuestPreferences.theme}</param-value>
-    </context-param>
-    
-    <context-param>
-        <param-name>primefaces.PUBLIC_CAPTCHA_KEY</param-name>
-        <param-value>6Ld7pMESAAAAAHd1VihJkqPUXAJVwU3Cghc8fzrq</param-value>
-    </context-param>
-   
-    <context-param>
-        <param-name>primefaces.PRIVATE_CAPTCHA_KEY</param-name>
-        <param-value>6Ld7pMESAAAAAMhr5WSk5bcRrff8Y08NtDi8Buoq</param-value>
-    </context-param>
-   	
+		<param-name>primefaces.THEME</param-name>
+		<param-value>#{GuestPreferences.theme}</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>primefaces.PUBLIC_CAPTCHA_KEY</param-name>
+		<param-value>6Ld7pMESAAAAAHd1VihJkqPUXAJVwU3Cghc8fzrq</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>primefaces.PRIVATE_CAPTCHA_KEY</param-name>
+		<param-value>6Ld7pMESAAAAAMhr5WSk5bcRrff8Y08NtDi8Buoq</param-value>
+	</context-param>
 </web-app>

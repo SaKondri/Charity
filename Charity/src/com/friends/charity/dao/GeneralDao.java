@@ -37,13 +37,13 @@ public class GeneralDao {
 			transaction = session.beginTransaction();
 			session.saveOrUpdate(t);
 			transaction.commit();
-			session.flush();
-			session.clear();
+			
 		} catch (Exception e) {
 			transaction.rollback();
 			throw new Exception();
 		}finally{
-			
+			session.flush();
+			session.clear();
 		}
 		return t;
 	}
@@ -55,10 +55,12 @@ public class GeneralDao {
 			session.save(t);
 			transaction.commit();
 			session.flush();
-			session.clear();
+			
 		} catch (Exception e) {
 			transaction.rollback();
 			throw new Exception();
+		}finally{
+			session.clear();
 		}
 		return t;
 	}
@@ -180,7 +182,7 @@ public class GeneralDao {
 		return result;
 	}
 	@SuppressWarnings("unchecked")
-	public List<Qustion> selectListValue(Integer first , Integer max ){
+	public List<Qustion> selectListValue(Integer first , Integer max){
 		List<Qustion> list = new ArrayList<>();
 		Criteria criteria = session.createCriteria(Qustion.class);
 		criteria.setFirstResult(first).setMaxResults(max);

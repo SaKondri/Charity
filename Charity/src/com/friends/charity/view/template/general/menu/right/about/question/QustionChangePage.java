@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.friends.charity.business.service.GeneralService;
 
 @Named
-@RequestScoped
+
 public class QustionChangePage implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Inject

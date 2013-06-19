@@ -1,0 +1,18 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<p:dialog widgetVar="dlgReplyToQustion" modal="true">
+		<h:form>
+			<p:panel header="پاسخ" >
+				<h:panelGrid columns="2">
+					<h:outputLabel value="شرح پاسخ" />
+					<p:editor value="#{replyToQustion.event.response.responseForQustion}" />
+				</h:panelGrid>
+				<p:commandButton actionListener="#{replyToQustion.event.btnReplyToQustion}" onclick="dlgReplyToQustion.hide()" value="پاسخ" update=":growl :changePage"/>
+			</p:panel>
+		</h:form>
+	</p:dialog>
+</ui:composition>
