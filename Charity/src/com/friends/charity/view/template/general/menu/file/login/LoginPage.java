@@ -3,7 +3,6 @@ package com.friends.charity.view.template.general.menu.file.login;
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 

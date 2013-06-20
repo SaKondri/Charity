@@ -2,6 +2,7 @@ package com.friends.charity.view.template.general.menu.file.register.event;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -149,13 +150,15 @@ public class MadadJoEvent implements Serializable {
 		}
 		return items;
 	}
-	
-	public void imageEvent(FileUploadEvent event){
+
+	public void imageEvent(FileUploadEvent event) {
 		FacesMessage message = new FacesMessage();
 		FacesContext context = FacesContext.getCurrentInstance();
 		try {
-			getMotaghazi().getUserImage().setPicName(event.getFile().getFileName());
-			getMotaghazi().getUserImage().setImage(event.getFile().getContents());
+			getMotaghazi().getUserImage().setPicName(
+					event.getFile().getFileName());
+			getMotaghazi().getUserImage().setImage(
+					event.getFile().getContents());
 			message.setDetail("ذخیره عکس");
 			message.setSummary(".عکس شما با موفقیت ذخیره شد");
 			message.setSeverity(FacesMessage.SEVERITY_INFO);
@@ -166,8 +169,7 @@ public class MadadJoEvent implements Serializable {
 			message.setSeverity(FacesMessage.SEVERITY_ERROR);
 			context.addMessage(null, message);
 		}
-		
-		
+
 	}
 
 	/**
@@ -201,7 +203,15 @@ public class MadadJoEvent implements Serializable {
 			}
 		}
 		getMotaghazi().setFarzandans(getFarzandans());
+		// sabte tarikheh sabtename karbar.
+		getMotaghazi().getTarikhSabteNameKarbar().setTarikhehSabt(
+				Calendar.getInstance());
+		getMotaghazi().getTarikhSabteNameKarbar().setDate(
+				Calendar.getInstance().getTime());
+		// gheyre fa al ast madadjo dar lahze aval
+		getMotaghazi().getUserActive().setActive(false);
 		getLogin().setUser(getMotaghazi());
+
 		try {
 			getGeneralService().save(getLogin());
 			nullEntity();

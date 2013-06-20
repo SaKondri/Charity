@@ -1,5 +1,14 @@
 @CHARSET "UTF-8";
 
+.custom .fileupload-content {
+	display: inline-table;
+}
+
+.custom .fileupload-buttonbar {
+	background: transparent;
+	border: none;
+}
+
 .mydc {
 	position: absolute;
 	top: 5px;
@@ -109,47 +118,53 @@ table.innertable td {
 	bottom: 0px;
 	z-index: 999;
 }
-.fieldset{
+
+.fieldset {
 	width: 700px;
 	float: right;
-	
 }
-.fieldsetReq{
+
+.fieldsetReq {
 	width: 400px;
 	float: left;
 }
-.btnQestion{
+
+.btnQestion {
 	position: fixed;
 	top: 200px;
 	left: -5px
 }
-.outPutQestion{
+
+.outPutQestion {
 	font-size: 14px;
 	float: right;
 }
-.inputQuestion{
+
+.inputQuestion {
 	width: 306px;
 	height: 22px;
 	font-size: 18px;
 }
-.inputQuestionArea{
+
+.inputQuestionArea {
 	width: 306px;
 	height: 150px;
 	font-size: 20px;
 }
-.outPutQestionRisght{
+
+.outPutQestionRisght {
 	text-align: right;
 }
+
 .notfication {
-	
 	position: fixed;
-	margin : 4px 0 0 670px;
+	margin: 4px 0 0 670px;
 	top: 4px;
 	z-index: 999;
 }
+
 .notValue {
-   background: url('1') no-repeat; 
-    height:16px;
-    width:16px;
-   
+	background: url('1') no-repeat;
+	height: 16px;
+	width: 16px;
 }

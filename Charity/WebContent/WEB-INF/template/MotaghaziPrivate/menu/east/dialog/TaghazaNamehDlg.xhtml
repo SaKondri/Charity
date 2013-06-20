@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form>
+		<div align="center">
+			<p:dialog header="برگه مخصوص تقاضا نامه" widgetVar="tghDlg"
+				modal="true" resizable="false">
+				<f:facet name="footer">
+					<p:commandButton value="ارسال"
+						actionListener="#{taghazaNamehDlgPage.event.btnSend}"
+						update="pnl :growl" oncomplete="tghDlg.hide();" />
+				</f:facet>
+				<p:panelGrid id="pnl">
+					<p:row>
+						<p:column>
+							<h:outputText value="شماره پرونده:" />
+						</p:column>
+						<p:column>
+							<p:inputText
+								value="#{taghazaNamehDlgPage.event.nameh.shomarehParvandeh}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="تاریخ:" />
+						</p:column>
+						<p:column>
+							<p:calendar effect="drop" navigator="true" pattern="yyyy/MM/dd"
+								dir="ltr" value="#{taghazaNamehDlgPage.event.nameh.tempDate}">
+								<f:converter converterId="CalendarConvertor" />
+							</p:calendar>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column>
+							<h:outputText value="نام:" />
+						</p:column>
+						<p:column colspan="3">
+							<p:inputText
+								value="#{taghazaNamehDlgPage.event.nameh.firstNameMotaghazi}" />
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column>
+							<h:outputText value="نام خانوادگی:" />
+						</p:column>
+						<p:column colspan="3">
+							<p:inputText
+								value="#{taghazaNamehDlgPage.event.nameh.lastNameMotaghazi}" />
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column>
+							<h:outputText value="موضوع تقاضا:" />
+						</p:column>
+						<p:column colspan="3">
+							<p:inputText size="30"
+								value="#{taghazaNamehDlgPage.event.nameh.mozoyeTaghaza}" />
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column>
+							<h:outputText value="شرح درخواست:" />
+						</p:column>
+						<p:column colspan="3">
+							<p:editor widgetVar="editor" width="600"
+								value="#{taghazaNamehDlgPage.event.nameh.sharh}" />
+
+							<p:commandButton type="button" value="پاک کردن"
+								onclick="editor.clear()" icon="ui-icon-close" />
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column>
+							<h:outputText value="تلفن:" />
+						</p:column>
+						<p:column colspan="3">
+							<p:inputText value="#{taghazaNamehDlgPage.event.nameh.telephon}" />
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column>
+							<h:outputText value="آدرس:" />
+						</p:column>
+						<p:column colspan="3">
+							<p:inputText size="100"
+								value="#{taghazaNamehDlgPage.event.nameh.address}" />
+						</p:column>
+					</p:row>
+				</p:panelGrid>
+			</p:dialog>
+		</div>
+	</h:form>
+</ui:composition>

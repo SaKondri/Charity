@@ -3,6 +3,21 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
+	<p:ajaxStatus styleClass="ajaxStatus">
+			
+			<f:facet name="start">
+				<p:graphicImage styleClass="ajaxStatus" value="/resources/images/301.gif" />
+			</f:facet>
+			<f:facet name="complete">
+				<h:outputText value="" />
+			</f:facet>
+		</p:ajaxStatus>
+	</ui:composition>
+<!-- <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
 	<p:ajaxStatus onstart="statusDialog.show();"
 		onsuccess="statusDialog.hide();" >
@@ -13,4 +28,4 @@
 			value="/resources/images/301.gif" />
 	</p:dialog>
 	</p:ajaxStatus>
-</ui:composition>
+</ui:composition> -->

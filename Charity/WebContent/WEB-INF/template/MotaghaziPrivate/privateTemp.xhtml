@@ -17,25 +17,25 @@
 
 			<p:layoutUnit position="center" styleClass="myLayoutStyleClass">
 				<div align="center">
-					<h:panelGroup id="changePage">
-					s
+					<h:panelGroup id="changePagePrivate">
+						<ui:include
+							src="#{generalMoPrivatePage.generalEventPrivate.changePage}" />
 					</h:panelGroup>
 				</div>
 			</p:layoutUnit>
 
 			<p:layoutUnit position="east" size="165">
+				<ui:include
+					src="/WEB-INF/template/MotaghaziPrivate/menu/east/eastMenu.xhtml" />
 			</p:layoutUnit>
-
-			<div align="center">
-				<p:layoutUnit position="south" size="25">
-				</p:layoutUnit>
-			</div>
 
 		</p:layout>
 
 	</ui:define>
 
 	<ui:define name="dialog">
+		<ui:include
+			src="/WEB-INF/template/MotaghaziPrivate/menu/east/dialog/TaghazaNamehDlg.xhtml" />
 	</ui:define>
 
 </ui:composition>

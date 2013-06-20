@@ -1,0 +1,325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<div style="display: inline-block; float: right">
+		<h:form id="prflId">
+			<p:fieldset legend="مشخصات شخصی" toggleable="true" toggleSpeed="500">
+				<p:panelGrid>
+					<f:facet name="header">
+						<p:row>
+							<p:column colspan="6">مشخصات شخصی</p:column>
+						</p:row>
+					</f:facet>
+					<f:facet name="footer">
+						<p:row>
+							<p:column colspan="6">
+								<h:outputText style="color:yellow;font-size:medium"
+									value="جهت ویرایش اطلاعات،می توانید روی قسمت مورد نظر کلیک کرده و سپس مراحل ویرایش را انجام دهید!" />
+							</p:column>
+						</p:row>
+					</f:facet>
+					<p:row>
+						<p:column colspan="6">
+							<p:graphicImage value="#{profilePage.event.image}" width="110"
+								height="110" />
+							<p:fileUpload widgetVar="upload" styleClass="custom" cancelLabel="مردود"
+								uploadLabel="بارگذاری" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+								showButtons="false" label="ویرایش عکس"
+								fileUploadListener="#{profilePage.event.imageEvent}"
+								oncomplete="#{profilePage.event.savedEditeHandle()}"
+								update=":growl prflId" />
+
+							<h:outputText value="شماره پرونده"
+								style="position:fixed;top:19%;left:40%;" />
+							<h:outputText
+								style="position:fixed;top:22%;left:42%;color:blue;font-size: 12px"
+								value="#{profilePage.event.motaghazi.tarikhSabteNameKarbar.id}" />
+
+							<h:outputText value="تاریخ ثبت تقاضا"
+								style="position:fixed;top:25%;left:40%;" />
+							<h:outputText
+								style="position:fixed;top:28%;left:42%;color:blue;font-size: 12px"
+								value="#{profilePage.event.motaghazi.tarikhSabteNameKarbar.strDate}" />
+
+							<h:outputText value="وضعیت"
+								style="position:fixed;top:31%;left:40%;" />
+							<h:outputText
+								style="position:fixed;top:34%;left:42%;color:blue;font-size: 12px"
+								value="فعال"
+								rendered="#{profilePage.event.motaghazi.userActive.active}" />
+							<h:outputText
+								style="position:fixed;top:34%;left:42%;color:red;font-size: 12px"
+								value="غیر فعال"
+								rendered="#{!profilePage.event.motaghazi.userActive.active}" />
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column>
+							<h:outputText value="نام:" />
+						</p:column>
+
+						<p:column>
+							<p:inplace editor="true">
+								<p:ajax event="save"
+									listener="#{profilePage.event.savedEditeHandle}"
+									update=":growl" />
+								<p:inputText value="#{profilePage.event.motaghazi.firstname}" />
+							</p:inplace>
+						</p:column>
+
+						<p:column>
+							<h:outputText value="نام خانوادگی:" />
+						</p:column>
+
+						<p:column>
+							<p:inplace editor="true">
+								<p:ajax event="save"
+									listener="#{profilePage.event.savedEditeHandle}"
+									update=":growl" />
+								<p:inputText value="#{profilePage.event.motaghazi.lastname}" />
+							</p:inplace>
+						</p:column>
+
+						<p:column>
+							<h:outputText value="تاریخ تولد:" />
+						</p:column>
+
+						<p:column>
+							<p:inplace editor="true"
+								emptyLabel="#{profilePage.event.motaghazi.mySelfStrDate}">
+								<p:ajax event="save"
+									listener="#{profilePage.event.editCalendar}" update=":growl" />
+								<p:calendar effect="drop" navigator="true" pattern="yyyy/MM/dd"
+									dir="ltr" value="#{profilePage.event.motaghazi.mySelfDate}">
+									<f:converter converterId="CalendarConvertor" />
+								</p:calendar>
+							</p:inplace>
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column>
+							<h:outputText value="نام همسر:" />
+						</p:column>
+
+						<p:column>
+							<p:inplace editor="true">
+								<p:ajax event="save"
+									listener="#{profilePage.event.savedEditeHandle}"
+									update=":growl" />
+								<p:inputText styleClass="bold"
+									value="#{profilePage.event.motaghazi.hamsarFirstname}" />
+							</p:inplace>
+						</p:column>
+
+						<p:column>
+							<h:outputText value="نام خانوادگی همسر:" />
+						</p:column>
+
+						<p:column>
+							<p:inplace editor="true">
+								<p:ajax event="save"
+									listener="#{profilePage.event.savedEditeHandle}"
+									update=":growl" />
+								<p:inputText styleClass="bold"
+									value="#{profilePage.event.motaghazi.hamsarLastname}" />
+							</p:inplace>
+						</p:column>
+
+						<p:column>
+							<h:outputText value="تاریخ تولد همسر:" />
+						</p:column>
+
+						<p:column>
+							<p:inplace editor="true"
+								emptyLabel="#{profilePage.event.motaghazi.myWifeStrDate}">
+								<p:ajax event="save"
+									listener="#{profilePage.event.editCalendar}" update=":growl" />
+								<p:calendar effect="drop" navigator="true" pattern="yyyy/MM/dd"
+									id="brtHasmsar" dir="ltr"
+									value="#{profilePage.event.motaghazi.myWifeDate}">
+									<f:converter converterId="CalendarConvertor" />
+								</p:calendar>
+							</p:inplace>
+						</p:column>
+					</p:row>
+
+					<p:row>
+
+						<p:column>
+							<h:outputText value="شغل:" />
+						</p:column>
+
+						<p:column>
+							<p:inplace editor="true">
+								<p:ajax event="save"
+									listener="#{profilePage.event.savedEditeHandle}"
+									update=":growl" />
+								<p:inputText styleClass="bold"
+									value="#{profilePage.event.motaghazi.shoghl}" />
+							</p:inplace>
+						</p:column>
+
+						<p:column>
+							<h:outputText value="درآمد ماهیانه:" />
+						</p:column>
+
+						<p:column>
+							<p:inplace editor="true">
+								<p:ajax event="save"
+									listener="#{profilePage.event.savedEditeHandle}"
+									update=":growl" />
+								<p:inputText styleClass="bold"
+									value="#{profilePage.event.motaghazi.daramad}" />
+							</p:inplace>
+						</p:column>
+
+						<p:column>
+							<h:outputText value="نوع مسکن:" />
+						</p:column>
+
+						<p:column>
+							<p:inplace editor="true">
+								<p:ajax event="save"
+									listener="#{profilePage.event.savedEditeHandle}"
+									update=":growl" />
+								<p:selectOneMenu id="txtMaskan"
+									value="#{profilePage.event.motaghazi.maskanType}">
+									<f:converter converterId="securityRoleConverter" />
+									<f:selectItems
+										value="#{generalTempPage.menuBean
+									.madadJoPage.event.maskanValue}" />
+								</p:selectOneMenu>
+							</p:inplace>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column>
+							<h:outputText value="اجاره ماهیانه:" />
+						</p:column>
+
+						<p:column>
+							<p:inplace editor="true">
+								<p:ajax event="save"
+									listener="#{profilePage.event.savedEditeHandle}"
+									update=":growl" />
+								<p:inputText styleClass="bold"
+									value="#{profilePage.event.motaghazi.ejareMahiyaneh}" />
+							</p:inplace>
+						</p:column>
+
+						<p:column>
+							<h:outputText value="نوع بیمه:" />
+						</p:column>
+
+						<p:column>
+							<p:inplace editor="true">
+								<p:ajax event="save"
+									listener="#{profilePage.event.savedEditeHandle}"
+									update=":growl" />
+								<p:inputText styleClass="bold"
+									value="#{profilePage.event.motaghazi.noeBimehVaSabegheh}" />
+							</p:inplace>
+						</p:column>
+
+						<p:column>
+							<h:outputText value="تلفن منزل:" />
+						</p:column>
+
+						<p:column>
+							<p:inplace editor="true">
+								<p:ajax event="save"
+									listener="#{profilePage.event.savedEditeHandle}"
+									update=":growl" />
+								<p:inputText styleClass="bold"
+									value="#{profilePage.event.motaghazi.homeNumber}" />
+							</p:inplace>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column>
+							<h:outputText value="تلفن محل کار:" />
+						</p:column>
+
+						<p:column>
+							<p:inplace editor="true">
+								<p:ajax event="save"
+									listener="#{profilePage.event.savedEditeHandle}"
+									update=":growl" />
+								<p:inputText styleClass="bold"
+									value="#{profilePage.event.motaghazi.jobNumber}" />
+							</p:inplace>
+						</p:column>
+
+						<p:column>
+							<h:outputText value="کد ملی:" />
+						</p:column>
+
+						<p:column>
+							<p:inplace editor="true">
+								<p:ajax event="save"
+									listener="#{profilePage.event.savedEditeHandle}"
+									update=":growl" />
+								<p:inputText styleClass="bold"
+									value="#{profilePage.event.motaghazi.codeMelli}" />
+							</p:inplace>
+						</p:column>
+
+						<p:column>
+							<h:outputText value="کد پستی:" />
+						</p:column>
+
+						<p:column>
+							<p:inplace editor="true">
+								<p:ajax event="save"
+									listener="#{profilePage.event.savedEditeHandle}"
+									update=":growl" />
+								<p:inputText styleClass="bold"
+									value="#{profilePage.event.motaghazi.codePosti}" />
+							</p:inplace>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column>
+							<h:outputText value="نشانی دقیق محل کار:" />
+						</p:column>
+
+						<p:column colspan="5">
+							<p:inplace editor="true">
+								<p:ajax event="save"
+									listener="#{profilePage.event.savedEditeHandle}"
+									update=":growl" />
+								<p:inputText styleClass="bold"
+									value="#{profilePage.event.motaghazi.jobAddress}" />
+							</p:inplace>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column>
+							<h:outputText value="نشانی دقیق منزل:" />
+						</p:column>
+
+						<p:column colspan="5">
+							<p:inplace editor="true">
+								<p:ajax event="save"
+									listener="#{profilePage.event.savedEditeHandle}"
+									update=":growl" />
+								<p:inputText styleClass="bold"
+									value="#{profilePage.event.motaghazi.homeAddress}" />
+							</p:inplace>
+						</p:column>
+					</p:row>
+
+
+				</p:panelGrid>
+			</p:fieldset>
+		</h:form>
+	</div>
+</ui:composition>

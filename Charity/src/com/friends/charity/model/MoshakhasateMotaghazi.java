@@ -65,9 +65,13 @@ public class MoshakhasateMotaghazi extends User {
 	private List<Farzandan> farzandans;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private UserImage userImage;
-	@Transient
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private TarikhSabteNameKarbar tarikhSabteNameKarbar;
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private UserActive userActive;
+	@Column(name = "MY_SELF_DATE")
 	private Date mySelfDate;
-	@Transient
+	@Column(name = "MY_WIFE_DATE")
 	private Date myWifeDate;
 	@Transient
 	private String mySelfStrDate;
@@ -242,6 +246,29 @@ public class MoshakhasateMotaghazi extends User {
 
 	public void setUserImage(UserImage userImage) {
 		this.userImage = userImage;
+	}
+
+	public TarikhSabteNameKarbar getTarikhSabteNameKarbar() {
+		if (tarikhSabteNameKarbar == null) {
+			tarikhSabteNameKarbar = new TarikhSabteNameKarbar();
+		}
+		return tarikhSabteNameKarbar;
+	}
+
+	public void setTarikhSabteNameKarbar(
+			TarikhSabteNameKarbar tarikhSabteNameKarbar) {
+		this.tarikhSabteNameKarbar = tarikhSabteNameKarbar;
+	}
+
+	public UserActive getUserActive() {
+		if (userActive == null) {
+			userActive = new UserActive();
+		}
+		return userActive;
+	}
+
+	public void setUserActive(UserActive userActive) {
+		this.userActive = userActive;
 	}
 
 }
