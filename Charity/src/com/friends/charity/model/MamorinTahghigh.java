@@ -2,6 +2,7 @@ package com.friends.charity.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -12,7 +13,7 @@ import com.friends.charity.business.logic.CalendarFormat;
 @Table(name = "MAMORIN_TAHGHIGH")
 public class MamorinTahghigh extends User {
 	private String code;
-	@Transient
+	@Column(name = "My_DATE")
 	private Date date;
 	@Transient
 	private String strDate;
@@ -34,9 +35,7 @@ public class MamorinTahghigh extends User {
 	}
 
 	public String getStrDate() {
-		if (getDate() != null) {
-			strDate = CalendarFormat.getStrForDT(getDate());
-		}
+		strDate = CalendarFormat.getStrForDT(getDate());
 		return strDate;
 	}
 

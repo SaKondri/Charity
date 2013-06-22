@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.friends.charity.business.service.model.LoginService;
 import com.friends.charity.model.Login;
+import com.friends.charity.model.MamorinTahghigh;
 import com.friends.charity.model.MoshakhasateMotaghazi;
 
 @Named
@@ -59,6 +60,11 @@ public class LoginEvent implements Serializable {
 							.getExternalContext().getRequest()).getSession()
 							.setAttribute("login", login);
 					return "/pages/private/login.xhtml?faces-redirect=true";
+				} else if (login.getUser() instanceof MamorinTahghigh) {
+					((HttpServletRequest) FacesContext.getCurrentInstance()
+							.getExternalContext().getRequest()).getSession()
+							.setAttribute("mamorLogin", login);
+					return "/pages/mamorTahghigh/MamorPage.xhtml?faces-redirect=true";
 				}
 			} else if (login == null) {
 				nullFields();

@@ -44,6 +44,9 @@ public class MoshakhasateMotaghazi extends User {
 	@Column(name = "MASKAN_TYPE")
 	@Enumerated(EnumType.STRING)
 	private MaskanType maskanType;
+	@Column(name = "NIAZ_MOTAGHAZI")
+	@Enumerated(EnumType.STRING)
+	private NiazMotaghazii niazMotaghazii;
 	@Column(name = "EJAREH_MAHIYANEH")
 	private String ejareMahiyaneh;
 	@Column(name = "BIMEH")
@@ -124,6 +127,14 @@ public class MoshakhasateMotaghazi extends User {
 
 	public void setMaskanType(MaskanType maskanType) {
 		this.maskanType = maskanType;
+	}
+
+	public NiazMotaghazii getNiazMotaghazii() {
+		return niazMotaghazii;
+	}
+
+	public void setNiazMotaghazii(NiazMotaghazii niazMotaghazii) {
+		this.niazMotaghazii = niazMotaghazii;
 	}
 
 	public String getEjareMahiyaneh() {

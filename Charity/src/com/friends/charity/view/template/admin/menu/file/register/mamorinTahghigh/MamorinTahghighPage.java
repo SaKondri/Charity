@@ -2,7 +2,6 @@ package com.friends.charity.view.template.admin.menu.file.register.mamorinTahghi
 
 import java.io.Serializable;
 
-import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -20,10 +19,6 @@ public class MamorinTahghighPage implements Serializable {
 
 	public void setEvent(MamorinEvent event) {
 		this.event = event;
-	}
-
-	public void btnSaved(ActionEvent actionEvent) {
-		getEvent().btnSaved(actionEvent);
 	}
 
 }

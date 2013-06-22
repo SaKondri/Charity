@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<div style="display: inline-block; float: right">
+		<h:form id="prflMamorId">
+			<p:fieldset legend="مشخصات شخصی" toggleable="true" toggleSpeed="500">
+				<p:panelGrid>
+					<f:facet name="header">
+						<p:row>
+							<p:column colspan="6">مشخصات شخصی</p:column>
+						</p:row>
+					</f:facet>
+					<f:facet name="footer">
+						<p:row>
+							<p:column colspan="6">
+								<h:outputText style="color:yellow;font-size:medium"
+									value="جهت ویرایش اطلاعات،می توانید روی قسمت مورد نظر کلیک کرده و سپس مراحل ویرایش را انجام دهید!" />
+							</p:column>
+						</p:row>
+					</f:facet>
+					<p:row>
+						<p:column>
+							<h:outputText value="وضعیت" />
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column>
+							<h:outputText value="نام:" />
+						</p:column>
+
+						<p:column>
+							<p:inplace editor="true">
+								<p:ajax event="save"
+									listener="#{mamorProfilePage.event.savedEditeHandle}"
+									update=":growl" />
+								<p:inputText
+									value="#{mamorProfilePage.event.mamorinTahghigh.firstname}" />
+							</p:inplace>
+						</p:column>
+
+						<p:column>
+							<h:outputText value="نام خانوادگی:" />
+						</p:column>
+
+						<p:column>
+							<p:inplace editor="true">
+								<p:ajax event="save"
+									listener="#{mamorProfilePage.event.savedEditeHandle}"
+									update=":growl" />
+								<p:inputText
+									value="#{mamorProfilePage.event.mamorinTahghigh.lastname}" />
+							</p:inplace>
+						</p:column>
+
+						<p:column>
+							<h:outputText value="تاریخ تولد:" />
+						</p:column>
+
+						<p:column>
+							<p:inplace editor="true"
+								emptyLabel="#{mamorProfilePage.event.mamorinTahghigh.strDate}">
+								<p:ajax event="save"
+									listener="#{mamorProfilePage.event.editCalendar()}"
+									update=":growl" />
+								<p:calendar effect="drop" navigator="true" pattern="yyyy/MM/dd"
+									dir="ltr"
+									value="#{mamorProfilePage.event.mamorinTahghigh.date}">
+									<f:converter converterId="CalendarConvertor" />
+								</p:calendar>
+							</p:inplace>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column>
+							<h:outputLabel value="کد:" />
+						</p:column>
+						<p:column>
+							<p:inplace editor="true">
+								<p:ajax event="save"
+									listener="#{mamorProfilePage.event.savedEditeHandle}"
+									update=":growl" />
+								<p:inputText
+									value="#{mamorProfilePage.event.mamorinTahghigh.code}" />
+							</p:inplace>
+						</p:column>
+
+						<p:column>
+							<h:outputLabel value="نام کاربری:" />
+						</p:column>
+						<p:column>
+							<p:inplace editor="true">
+								<p:ajax event="save"
+									listener="#{mamorProfilePage.event.savedEditeHandle}"
+									update=":growl" />
+								<p:inputText
+									value="#{mamorProfilePage.event.login.usernamePassword.username}" />
+							</p:inplace>
+						</p:column>
+
+						<p:column>
+							<h:outputLabel value="گذر واژه:" />
+						</p:column>
+						<p:column>
+							<p:inplace editor="true">
+								<p:ajax event="save"
+									listener="#{mamorProfilePage.event.savedEditeHandle}"
+									update=":growl" />
+								<p:inputText
+									value="#{mamorProfilePage.event.login.usernamePassword.password}" />
+							</p:inplace>
+						</p:column>
+					</p:row>
+				</p:panelGrid>
+			</p:fieldset>
+		</h:form>
+	</div>
+</ui:composition>

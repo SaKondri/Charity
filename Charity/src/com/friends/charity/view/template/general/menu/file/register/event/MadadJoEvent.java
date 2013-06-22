@@ -1,10 +1,13 @@
 package com.friends.charity.view.template.general.menu.file.register.event;
 
+import java.io.ByteArrayInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import javassist.bytecode.ByteArray;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -15,6 +18,8 @@ import javax.faces.model.SelectItem;
 import javax.inject.Named;
 
 import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 import com.friends.charity.business.logic.CalendarFormat;
 import com.friends.charity.business.service.GeneralService;
@@ -22,6 +27,7 @@ import com.friends.charity.business.service.model.LoginService;
 import com.friends.charity.model.Login;
 import com.friends.charity.model.MaskanType;
 import com.friends.charity.model.MoshakhasateMotaghazi;
+import com.friends.charity.model.NiazMotaghazii;
 import com.friends.charity.model.farzand.Farzandan;
 
 @Named
@@ -151,6 +157,16 @@ public class MadadJoEvent implements Serializable {
 		return items;
 	}
 
+	public SelectItem[] getNiazMotaghazi() {
+		SelectItem[] items = new SelectItem[NiazMotaghazii.values().length];
+		int i = 0;
+		for (NiazMotaghazii niazMotaghazii : NiazMotaghazii.values()) {
+			items[i++] = new SelectItem(niazMotaghazii,
+					niazMotaghazii.getType());
+		}
+		return items;
+	}
+
 	public void imageEvent(FileUploadEvent event) {
 		FacesMessage message = new FacesMessage();
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -170,6 +186,17 @@ public class MadadJoEvent implements Serializable {
 			context.addMessage(null, message);
 		}
 
+	}
+
+	public StreamedContent getConfirmationImage() {
+		byte[] image = getMotaghazi().getUserImage().getImage();
+		if (image == null) {
+			return new DefaultStreamedContent();
+		} else {
+			StreamedContent content = new DefaultStreamedContent(
+					new ByteArrayInputStream(image));
+			return content;
+		}
 	}
 
 	/**

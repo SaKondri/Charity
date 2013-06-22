@@ -15,7 +15,6 @@ import org.hibernate.annotations.Synchronize;
 import com.friends.charity.view.template.general.menu.right.about.TariekhcheShow;
 
 @Named
-
 public class GeneralEvent implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String changePage = "/WEB-INF/template/general/pic/galleria.xhtml";

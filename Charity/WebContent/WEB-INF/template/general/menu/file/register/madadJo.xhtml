@@ -11,7 +11,6 @@
 					<h:panelGrid id="pngrid" columns="9">
 
 
-
 						<h:outputLabel value="نام:" />
 						<p:inputText id="txtFname" required="true"
 							requiredMessage="نام خود را وارد کنید"
@@ -122,10 +121,27 @@
 				</p:panel>
 			</p:tab>
 
+			<p:tab title="نیاز متقاضی">
+				<p:panel header="نیاز متقاضی">
+					<h:panelGrid columns="2">
+						<h:outputText value="نیاز متقاضی:" />
+						<p:spacer width="10" height="20" />
+						<p:selectOneMenu id="txtNiaz" style="width: 150px;"
+							value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.niazMotaghazii}">
+							<f:converter converterId="NizConv" />
+							<f:selectItems
+								value="#{generalTempPage.menuBean
+									.madadJoPage.event.niazMotaghazi}" />
+						</p:selectOneMenu>
+					</h:panelGrid>
+				</p:panel>
+			</p:tab>
+
 			<p:tab title="عکس">
 				<p:panel id="imgPnl" header="عکس">
 					<h:panelGrid columns="1">
-						<p:fileUpload
+						<p:fileUpload cancelLabel="لغو کردن" uploadLabel="بارگذاری"
+							label="انتخاب عکس"
 							fileUploadListener="#{generalTempPage.menuBean.madadJoPage.event.imageEvent}"
 							mode="advanced" sizeLimit="200000" update=":growl"
 							allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
@@ -299,6 +315,13 @@
 								</p:column>
 							</p:row>
 						</f:facet>
+						<p:row>
+							<p:column colspan="6">
+								<p:graphicImage
+									value="#{generalTempPage.menuBean.madadJoPage.event.confirmationImage}"
+									width="110" height="110" />
+							</p:column>
+						</p:row>
 
 						<p:row>
 							<p:column>
@@ -485,6 +508,15 @@
 							<p:column>
 								<h:outputText
 									value="#{generalTempPage.menuBean.madadJoPage.event.login.usernamePassword.password}" />
+							</p:column>
+
+							<p:column>
+								<h:outputLabel value="نیاز متقاضی:" />
+							</p:column>
+
+							<p:column>
+								<h:outputText
+									value="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.niazMotaghazii.type}" />
 							</p:column>
 						</p:row>
 					</p:panelGrid>

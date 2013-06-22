@@ -1,2 +1,3 @@
  create database charity DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+mysql -u root -p
 
