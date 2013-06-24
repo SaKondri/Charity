@@ -1,4 +1,4 @@
-package com.friends.charity.view.template.general.filter;
+package com.friends.charity.view.template.general.filter.mamorLogin;
 
 import java.io.IOException;
 
@@ -15,30 +15,30 @@ import javax.servlet.http.HttpServletResponse;
 import com.friends.charity.business.service.model.LoginService;
 import com.friends.charity.model.Login;
 
-@WebFilter(urlPatterns = "/pages/private/*")
-public class LoginFilter implements Filter {
+@WebFilter(urlPatterns = "/pages/mamorTahghigh/*")
+public class MamorFilter implements Filter {
 	@SuppressWarnings("unused")
-	private FilterConfig filterConfig;
-	private LoginService loginService;
+	private FilterConfig config;
+	private LoginService service;
 
 	@Override
 	public void destroy() {
-		this.filterConfig = null;
+		config = null;
 	}
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
-		long result;
+		Login login;
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
-		Login login = (Login) req.getSession().getAttribute("login");
+		login = (Login) req.getSession().getAttribute("mamorLogin");
 		if (login == null) {
 			resp.sendRedirect(req.getContextPath() + "/pages/home.xhtml");
 		} else if (login != null) {
 			long id = login.getId();
-			result = getLoginService().selectfromId(id);
-			if (id != result) {
+			long check = getService().selectfromId(id);
+			if (id != check) {
 				resp.sendRedirect(req.getContextPath() + "/pages/home.xhtml");
 				return;
 			}
@@ -48,18 +48,18 @@ public class LoginFilter implements Filter {
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		this.filterConfig = filterConfig;
+		this.config = filterConfig;
 	}
 
-	public LoginService getLoginService() {
-		if (loginService == null) {
-			loginService = new LoginService();
+	public LoginService getService() {
+		if (service == null) {
+			service = new LoginService();
 		}
-		return loginService;
+		return service;
 	}
 
-	public void setLoginService(LoginService loginService) {
-		this.loginService = loginService;
+	public void setService(LoginService service) {
+		this.service = service;
 	}
 
 }

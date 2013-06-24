@@ -74,6 +74,7 @@ public class ProfileEvent implements Serializable {
 					event.getFile().getFileName());
 			getMotaghazi().getUserImage().setImage(
 					event.getFile().getContents());
+			getMotaghazi().getUserImage().setHasPic(true);
 			message.setDetail("ویرایش عکس");
 			message.setSummary(".عکس شما با موفقیت ویرایش شد");
 			message.setSeverity(FacesMessage.SEVERITY_INFO);

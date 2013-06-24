@@ -13,8 +13,9 @@ public class ImageSwitcherEvent implements Serializable {
 
 	public ImageSwitcherEvent() {
 		images = new ArrayList<>();
-		images.add("image-slider-1.jpg");
-		images.add("image-slider-2.jpg");
+		images.add("charity-2.jpg");
+		images.add("charity-3.jpg");
+
 	}
 
 	public List<String> getImages() {

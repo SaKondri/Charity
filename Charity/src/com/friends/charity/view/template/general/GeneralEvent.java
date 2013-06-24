@@ -10,12 +10,11 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 
-import org.hibernate.annotations.Synchronize;
-
 import com.friends.charity.view.template.general.menu.right.about.TariekhcheShow;
 
 @Named
 public class GeneralEvent implements Serializable {
+	// /WEB-INF/template/general/pic/imageSwitcher.xhtml
 	private static final long serialVersionUID = 1L;
 	private String changePage = "/WEB-INF/template/general/pic/galleria.xhtml";
 	private String url;

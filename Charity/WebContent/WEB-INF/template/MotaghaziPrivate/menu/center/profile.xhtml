@@ -23,11 +23,26 @@
 					</f:facet>
 					<p:row>
 						<p:column colspan="6">
-							<p:graphicImage value="#{profilePage.event.image}" width="110"
-								height="110" />
-							<p:fileUpload widgetVar="upload" styleClass="custom" cancelLabel="لغو کردن"
-								uploadLabel="بارگذاری" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
-								showButtons="false" label="ویرایش عکس"
+							<p:graphicImage value="#{profilePage.event.image}"
+								style=" width:110;height:110;/* Make it the same size as your images */
+									background:#fff;
+									margin:0 auto;/*make the image slider center-aligned */
+    								box-shadow: 0px 1px 5px #999999;border:10px solid #DDD;"
+								rendered="#{profilePage.event.motaghazi.userImage.hasPic}"
+								width="110" height="110" />
+							<p:graphicImage
+								style=" width:110;height:110;/* Make it the same size as your images */
+									background:#fff;
+									margin:0 auto;/*make the image slider center-aligned */
+    								box-shadow: 0px 1px 5px #999999;border:10px solid #DDD;"
+								value="/resources/images/image2.jpg"
+								rendered="#{!profilePage.event.motaghazi.userImage.hasPic}"
+								width="110" height="110" />
+
+							<p:fileUpload widgetVar="upload" styleClass="custom"
+								cancelLabel="لغو کردن" uploadLabel="بارگذاری"
+								allowTypes="/(\.|\/)(gif|jpe?g|png)$/" showButtons="false"
+								label="ویرایش عکس"
 								fileUploadListener="#{profilePage.event.imageEvent}"
 								oncomplete="#{profilePage.event.savedEditeHandle()}"
 								update=":growl prflId" />

@@ -9,11 +9,11 @@
 			<p:imageSwitch effect="fade" slideshowSpeed="5000">
 				<ui:repeat var="img" value="#{imageSwitcherPage.event.images}">
 					<p:graphicImage
-						style=" width:680;height:306;/* Make it the same size as your images */
+						style=" width:700;height:306;/* Make it the same size as your images */
 					background:#fff;
 					margin:0 auto;/*make the image slider center-aligned */
     				box-shadow: 0px 1px 5px #999999;border:10px solid #DDD;"
-						value="/resources/images/galleria/charity/#{img}" />
+						value="/resources/images/galleria/#{img}" />
 				</ui:repeat>
 			</p:imageSwitch>
 		</div>

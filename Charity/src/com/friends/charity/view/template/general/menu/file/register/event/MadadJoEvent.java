@@ -175,6 +175,7 @@ public class MadadJoEvent implements Serializable {
 					event.getFile().getFileName());
 			getMotaghazi().getUserImage().setImage(
 					event.getFile().getContents());
+			getMotaghazi().getUserImage().setHasPic(true);
 			message.setDetail("ذخیره عکس");
 			message.setSummary(".عکس شما با موفقیت ذخیره شد");
 			message.setSeverity(FacesMessage.SEVERITY_INFO);
@@ -212,7 +213,7 @@ public class MadadJoEvent implements Serializable {
 		String str = date.toString();
 		return str;
 	}
-
+//TODO for setHasPic
 	public void saved(ActionEvent actionEvent) {
 		FacesMessage message = new FacesMessage();
 		FacesContext context = FacesContext.getCurrentInstance();

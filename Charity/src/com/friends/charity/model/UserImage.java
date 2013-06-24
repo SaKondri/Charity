@@ -13,6 +13,8 @@ public class UserImage extends BaseEntity {
 	private byte[] image;
 	@Column(name = "PIC_NAME")
 	private String picName;
+	@Column(name = "HAS_PIC")
+	private boolean hasPic;
 
 	public byte[] getImage() {
 		return image;
@@ -28,6 +30,14 @@ public class UserImage extends BaseEntity {
 
 	public void setPicName(String picName) {
 		this.picName = picName;
+	}
+
+	public boolean isHasPic() {
+		return hasPic;
+	}
+
+	public void setHasPic(boolean hasPic) {
+		this.hasPic = hasPic;
 	}
 
 }

@@ -318,7 +318,21 @@
 						<p:row>
 							<p:column colspan="6">
 								<p:graphicImage
+									rendered="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.userImage.hasPic}"
 									value="#{generalTempPage.menuBean.madadJoPage.event.confirmationImage}"
+									style=" width:110;height:110;/* Make it the same size as your images */
+									background:#fff;
+									margin:0 auto;/*make the image slider center-aligned */
+    								box-shadow: 0px 1px 5px #999999;border:10px solid #DDD;"
+									width="110" height="110" />
+
+								<p:graphicImage
+									style=" width:110;height:110;/* Make it the same size as your images */
+									background:#fff;
+									margin:0 auto;/*make the image slider center-aligned */
+    								box-shadow: 0px 1px 5px #999999;border:10px solid #DDD;"
+									value="/resources/images/image2.jpg"
+									rendered="#{!generalTempPage.menuBean.madadJoPage.event.motaghazi.userImage.hasPic}"
 									width="110" height="110" />
 							</p:column>
 						</p:row>
