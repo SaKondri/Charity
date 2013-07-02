@@ -14,12 +14,11 @@
 
 				</p:fileUpload>
 
-				<p:galleria value="#{addPicture.imageNames}" var="image"
+				<p:galleria value="#{addPicture.pictureModels.}" var="image"
 					frameWidth="48" frameHeight="65" panelWidth="250" panelHeight="200"
 					effect="clip" effectSpeed="1000" filmstripPosition="top"
 					transitionInterval="3000" showCaptions="true" showOverlays="true">
-					<p:graphicImage value="#{addPicture.findPictureName(image)}">
-					</p:graphicImage>
+					
 				</p:galleria>
 				
 				<p:commandButton value="ثبت" actionListener="#{addPicture.btnEqulas}"

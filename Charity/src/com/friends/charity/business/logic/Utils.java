@@ -2,6 +2,8 @@ package com.friends.charity.business.logic;
 
 import java.io.UnsupportedEncodingException;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.application.FacesMessage.Severity;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,4 +23,5 @@ public  class Utils {
 				.getCurrentInstance().getExternalContext().getRequest();
 		request.getSession().setAttribute(name, value);
 	}
+
 }

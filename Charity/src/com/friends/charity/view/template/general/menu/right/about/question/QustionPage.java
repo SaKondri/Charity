@@ -19,6 +19,7 @@ import org.jvnet.ws.databinding.DatabindingMode;
 import com.friends.charity.business.logic.Utils;
 import com.friends.charity.business.service.GeneralService;
 import com.friends.charity.model.admin.about.Qustion;
+import com.friends.charity.model.admin.about.QustionTemp;
 import com.friends.charity.model.admin.about.Response;
 
 @Named
@@ -26,13 +27,23 @@ import com.friends.charity.model.admin.about.Response;
 public class QustionPage implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Qustion qustion;
+	private QustionTemp qustionTemp;
 	private GeneralService dao;
 	@Inject
 	private QustionList qustionList;
 	@Inject
 	private QustionChangePage qustionChangePage;
 	private Response response;
-
+	
+	public QustionTemp getQustionTemp() {
+		if(qustionTemp == null){
+			qustionTemp = new QustionTemp();
+		}
+		return qustionTemp;
+	}
+	public void setQustionTemp(QustionTemp qustionTemp) {
+		this.qustionTemp = qustionTemp;
+	}
 	public QustionChangePage getQustionChangePage() {
 		return qustionChangePage;
 	}
@@ -85,7 +96,7 @@ public class QustionPage implements Serializable {
 	// ایجاد پرسش
 	public String btnCreateQuestion(ActionEvent actionEvent) {
 		try {
-			getDao().save(getQustion());
+			getDao().save(getQustionTemp());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -94,12 +105,12 @@ public class QustionPage implements Serializable {
 				null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO, "پرسش",
 						"با موفقیت ارسال شد"));
-		HttpServletRequest request = (HttpServletRequest) FacesContext
-				.getCurrentInstance().getExternalContext().getRequest();
-		request.getSession().setAttribute("btnValue", 0);
-		getQustionChangePage().btnUpdate();
+//		HttpServletRequest request = (HttpServletRequest) FacesContext
+	//			.getCurrentInstance().getExternalContext().getRequest();
+//		request.getSession().setAttribute("btnValue", 0);
+//		getQustionChangePage().btnUpdate();
 
-		setQustion(new Qustion());
+		setQustionTemp(new QustionTemp());
 
 		return null;
 	}

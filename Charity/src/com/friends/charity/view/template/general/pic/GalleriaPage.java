@@ -10,7 +10,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean
-@SessionScoped
+@javax.faces.bean.RequestScoped
 public class GalleriaPage implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private List<String> images;

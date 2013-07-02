@@ -5,6 +5,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/template/mainTemplate.xhtml">
+	
 		<ui:define name="content">
 			
 				<div align="center">
@@ -12,9 +13,10 @@
 						<ui:include src="#{generalTempPage.event.adminChangePage}" />
 					</h:panelGroup>
 				</div>
-					
 		</ui:define>
+		
 		<ui:define name="dialog">
 			<ui:include src="/WEB-INF/template/admin/protect/menu/file/about/dialog/dialogAdminAbout.xhtml" />
 		</ui:define>
+		
 </ui:composition>

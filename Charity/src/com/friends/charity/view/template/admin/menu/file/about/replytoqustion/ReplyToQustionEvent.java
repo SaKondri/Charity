@@ -10,28 +10,59 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import javax.inject.Inject;
 import javax.inject.Named;
-import javax.servlet.http.HttpServletRequest;
 
 import com.friends.charity.business.logic.Utils;
 import com.friends.charity.business.service.GeneralService;
 import com.friends.charity.model.admin.about.Qustion;
+import com.friends.charity.model.admin.about.QustionTemp;
 import com.friends.charity.model.admin.about.Response;
+import com.friends.charity.view.template.general.GeneralEvent;
 
 @Named
 public class ReplyToQustionEvent implements Serializable {
 	private static final long serialVersionUID = 1L;
+	@Inject
+	private GeneralEvent event;
 	private GeneralService generalService;
 	private String qustionPrivateSize;
 	private String qustionPublicSize ;
-	private DataModel<Qustion> dataModel;
-	public DataModel<Qustion> getDataModel() {
+	private DataModel<QustionTemp> dataModel;
+	private List<QustionTemp> qustionTemps;
+	private QustionTemp qustionTemp;
+	public QustionTemp getQustionTemp() {
+		if(qustionTemp == null){
+			qustionTemp = new QustionTemp();
+		}
+		return qustionTemp;
+	}
+	public void setQustionTemp(QustionTemp qustionTemp) {
+		this.qustionTemp = qustionTemp;
+	}
+	public List<QustionTemp> getQustionTemps() {
+		if(qustionTemps == null){
+			qustionTemps = new ArrayList<>();
+			qustionTemps = getQustionsNoReply();
+		}
+		return qustionTemps;
+	}
+	public void setQustionTemps(List<QustionTemp> qustionTemps) {
+		this.qustionTemps = qustionTemps;
+	}
+	public DataModel<QustionTemp> getDataModel() {
 		if(dataModel == null){
 			dataModel = new ListDataModel<>();
-			dataModel.setWrappedData(getQustions());
+			dataModel.setWrappedData(getQustionTemps());
 			
 		}
 		return dataModel;
+	}
+	public GeneralEvent getEvent() {
+		return event;
+	}
+	public void setEvent(GeneralEvent event) {
+		this.event = event;
 	}
 	public String getQustionPrivateSize() {
 		return qustionPrivateSize;
@@ -56,13 +87,7 @@ public class ReplyToQustionEvent implements Serializable {
 		size();
 		getQustionsNoReply();
 	}
-	public List<Qustion> getQustions() {
-		if(qustions == null){
-			qustions = new ArrayList<>();
-			qustions = getQustionsNoReply();
-		}
-		return qustions;
-	}
+	
 	public void setQustions(List<Qustion> qustions) {
 		this.qustions = qustions;
 	}
@@ -82,7 +107,7 @@ public class ReplyToQustionEvent implements Serializable {
 		this.response = response;
 	}
 	public Long size() {
-		Long size = getGeneralService().tableSize("selectDontReplayQustion");
+		Long size = getGeneralService().tableSize("sizeTempQustionTable");
 		return size;
 	}
 	
@@ -95,22 +120,38 @@ public class ReplyToQustionEvent implements Serializable {
 	public void setQustion(Qustion qustion) {
 		this.qustion = qustion;
 	}
-	public List<Qustion> getQustionsNoReply(){
-		List<Qustion> qustions = new ArrayList<>();
-		qustions = getGeneralService().selectList("qustionsNoReply", null);
-		return qustions;
+	public List<QustionTemp> getQustionsNoReply(){
+		List<QustionTemp> qustionTemps = new ArrayList<>();
+		qustionTemps = getGeneralService().selectList("allTempQustion", null);
+		return qustionTemps;
 	}
 	public String getReqId(ActionEvent actionEvent){
 		Utils.setSession("replyToQustionValue", getDataModel().getRowData());
 		return null;
 	}
-	public String btnReplyToQustion(ActionEvent actionEvent){
-		setQustion((Qustion) Utils.getSession("replyToQustionValue"));
-		getQustion().setResponse(getResponse());
+	public String btnDeleteQustion(ActionEvent actionEvent){
 		try {
-			getGeneralService().update(getQustion());
+			getGeneralService().delete(Utils.getSession("replyToQustionValue"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO , "", "پرسش با موفقیت حذف شد." ));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public String btnReplyToQustion(ActionEvent actionEvent){
+		setQustionTemp((QustionTemp) Utils.getSession("replyToQustionValue"));
+		getQustionTemp().setResponse(getResponse());
+		try {
+			getQustion().setfName(getQustionTemp().getfName());
+			getQustion().setTitle(getQustionTemp().getTitle());
+			getQustion().setDescription(getQustionTemp().getDescription());
+			getQustion().setResponse(getQustionTemp().getResponse());
+			getGeneralService().save(getQustion());
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO , "", "پرسش با موفقیت پاسخ داده شد." ));
-			
+			getGeneralService().delete(Utils.getSession("replyToQustionValue"));
+			getEvent().setAdminChangePageHome("/WEB-INF/template/admin/protect/menu/file/about/replytoqustion/replytoqustion.xhtml");
+		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

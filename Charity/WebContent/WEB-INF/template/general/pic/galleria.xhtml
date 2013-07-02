@@ -1,11 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
-	<h:form>
-		<div align="center">
+	xmlns:p="http://primefaces.org/ui"
+	 xmlns:c="http://java.sun.com/jsp/jstl/core">
+	
+		<div align="center" class="entry">
+		 <f:view>
 			<p:galleria value="#{galleriaPage.images}" var="image"
 				frameWidth="60" frameHeight="40" panelWidth="500" panelHeight="400"
 				effect="slide" effectSpeed="1000" filmstripPosition="top"
@@ -25,6 +26,7 @@
 
 				</p:galleriaOverlay>
 			</p:galleria>
+			</f:view>
 		</div>
-	</h:form>
+
 </ui:composition>

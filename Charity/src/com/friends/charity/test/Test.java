@@ -16,21 +16,18 @@ import javax.persistence.Persistence;
 
 import com.friends.charity.business.service.GeneralService;
 import com.friends.charity.model.admin.about.Qustion;
+import com.friends.charity.view.template.admin.menu.addpicture.model.AddPictureModel;
 
 
 public class Test  {
 	public static void main(String[] args) throws UnsupportedEncodingException {
-		Qustion qustion = new Qustion();
-		GeneralService generalService = new GeneralService();
-		qustion.setTitle("test");
-		try {
-			for (int i = 0; i <500; i++) {
-				generalService.save(qustion);
-			}
-		
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		List<String> list = new ArrayList<>();
+		List<AddPictureModel> models = new ArrayList<>();
+		AddPictureModel addPictureModel = new AddPictureModel();
+		addPictureModel.setName("1");
+		models.add(addPictureModel);
+		addPictureModel.setName("2");
+		models.add(addPictureModel);
+		System.out.println(models);
 	}
 }

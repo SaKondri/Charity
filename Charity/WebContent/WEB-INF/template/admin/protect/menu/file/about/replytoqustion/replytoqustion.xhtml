@@ -13,12 +13,19 @@
 						<h:panelGrid columns="1">
 							<h:outputLabel value="#{qu.fName}" />
 							<h:outputLabel value="#{qu.description}" />
+							</h:panelGrid>
+							<div align="center">
 							<p:commandButton value="پاسخ"
 								actionListener="#{replyToQustion.event.getReqId}"
 								onclick="dlgReplyToQustion.show()">
 								<f:param name="btnQustionID" value="#{qu.id}" />
 							</p:commandButton>
-						</h:panelGrid>
+							<p:commandButton value="حذف"
+								actionListener="#{replyToQustion.event.getReqId}"
+								onclick="dlgReplyToQustionDelete.show()">
+								<f:param name="btnQustionID" value="#{qu.id}" />
+							</p:commandButton>
+							</div>
 					</p:fieldset>
 				</p:dataGrid>
 			</p:panel>

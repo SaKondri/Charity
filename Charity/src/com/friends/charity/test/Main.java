@@ -14,7 +14,7 @@ import com.friends.charity.business.service.GeneralService;
 import com.friends.charity.dao.GeneralDao;
 import com.friends.charity.model.admin.about.Qustion;
 
-public class Main {
+public class Main {  
 	public static void main(String[] args) throws UnsupportedEncodingException {
 		Qustion qustion = new Qustion();
 		GeneralService generalService = new GeneralService();

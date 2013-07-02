@@ -20,8 +20,8 @@ import com.friends.charity.model.BaseEntity;
 		@NamedQuery(name = "allQustions", query = "select q from Qustion q order by q.id"),
 		@NamedQuery(name = "qustionTableSize", query = "select count(q) from Qustion q"),
 		@NamedQuery(name = "selectById", query = "select q from Qustion q where q.id = :id"),
-		@NamedQuery(name = "selectDontReplayQustion" , query = "select count(q) from Qustion q where q.response is null"),
-		@NamedQuery(name = "qustionsNoReply", query = "select q from Qustion q where q.response is null")})
+		@NamedQuery(name = "selectDontReplayQustion", query = "select count(q) from Qustion q where q.response is null"),
+		@NamedQuery(name = "qustionsNoReply", query = "select q from Qustion q where q.response is null") })
 public class Qustion extends BaseEntity {
 	@Column(name = "TITLE", columnDefinition = "text")
 	private String title;
@@ -31,8 +31,6 @@ public class Qustion extends BaseEntity {
 	private long codePeygiry;
 	@Column(name = "FIRST_NAME")
 	private String fName;
-	@Column(name = "LAST_NAME")
-	private String lName;
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Response response;
 
@@ -53,14 +51,6 @@ public class Qustion extends BaseEntity {
 
 	public void setfName(String fName) throws UnsupportedEncodingException {
 		this.fName = Utils.exportToUTF_8(fName);
-	}
-
-	public String getlName() {
-		return lName;
-	}
-
-	public void setlName(String lName) throws UnsupportedEncodingException {
-		this.lName = Utils.exportToUTF_8(lName);
 	}
 
 	public String getTitle() {

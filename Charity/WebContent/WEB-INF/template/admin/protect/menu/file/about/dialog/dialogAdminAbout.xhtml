@@ -3,15 +3,36 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	
-	<p:dialog widgetVar="dlgReplyToQustion" modal="true">
+
+	<p:dialog widgetVar="dlgReplyToQustion" modal="true" >
 		<h:form>
-			<p:panel header="پاسخ" >
+			<p:panel header="پاسخ">
 				<h:panelGrid columns="2">
 					<h:outputLabel value="شرح پاسخ" />
-					<p:editor value="#{replyToQustion.event.response.responseForQustion}" />
+					<p:editor
+						value="#{replyToQustion.event.response.responseForQustion}" />
 				</h:panelGrid>
-				<p:commandButton actionListener="#{replyToQustion.event.btnReplyToQustion}" onclick="dlgReplyToQustion.hide()" value="پاسخ" update=":growl :changePage"/>
+				<div align="center">
+					<p:commandButton
+						actionListener="#{replyToQustion.event.btnReplyToQustion}"
+						oncomplete="dlgReplyToQustion.hide()" value="پاسخ"
+						update=":growl" />
+				</div>
+			</p:panel>
+		</h:form>
+	</p:dialog>
+	<p:dialog widgetVar="dlgReplyToQustionDelete" modal="true" resizable="false">
+		<h:form>
+			<p:panel header="حذف">
+				<h:panelGrid columns="2">
+					<p:commandButton value="انصراف"
+						onclick="dlgReplyToQustionDelete.hide()" />
+					<p:commandButton
+						actionListener="#{replyToQustion.event.btnDeleteQustion}"
+						oncomplete="dlgReplyToQustionDelete.hide()" value="حذف"
+						update=":growl :mainTemplate" />
+				</h:panelGrid>
+
 			</p:panel>
 		</h:form>
 	</p:dialog>
