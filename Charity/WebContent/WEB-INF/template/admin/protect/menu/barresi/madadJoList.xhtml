@@ -1,12 +1,28 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	<h:form>
-		<p:dataTable value="madJo" >
-		
-		</p:dataTable>
+	<h:form id="form">
+		<div style="width: 75%">
+			<p:panel header="لیست مدد جویان">
+				<p:dataTable id="madTbl" var="mad"
+					value="#{testBean.event.list}"
+					emptyMessage="هیچ داده ای یافت نشد."
+					paginator="true" rows="10"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15" lazy="true">
+					<!-- style="width: 80%;margin-left: 10%;margin-right: 10%;" -->
+
+
+					<p:column headerText="s"> 
+						<h:outputText value="#{mad.firstname}" />
+					</p:column>
+
+				</p:dataTable>
+			</p:panel>
+		</div>
+
 	</h:form>
 </ui:composition>

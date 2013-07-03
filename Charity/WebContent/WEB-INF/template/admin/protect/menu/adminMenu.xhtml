@@ -54,7 +54,12 @@
 			</p:submenu>
 			<p:submenu label="بررسی">
 				<p:submenu label="مددجو">
-					<p:menuitem value="لیست ثبت نام کنندگان" />
+					<p:menuitem value="لیست ثبت نام کنندگان"
+						actionListener="#{generalTempPage.event.changeCenterPageAdminHome}"
+						update=":pnlChange" process="@form">
+						<f:param name="page"
+							value="/WEB-INF/template/admin/protect/menu/barresi/madadJoList.xhtml" />
+					</p:menuitem>
 				</p:submenu>
 			</p:submenu>
 		</p:menubar>
