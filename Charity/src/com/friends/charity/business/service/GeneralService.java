@@ -7,54 +7,41 @@ import com.friends.charity.dao.GeneralDao;
 import com.friends.charity.model.admin.about.Qustion;
 
 public class GeneralService {
-	private GeneralDao dao;
-
-	public GeneralDao getDao() {
-		if (dao == null) {
-			dao = new GeneralDao();
-		}
-		return dao;
-	}
-
-	public void setDao(GeneralDao dao) {
-		this.dao = dao;
-	}
-
 	public <T> T save(T t) throws Exception {
-		return getDao().save(t);
+		return GeneralDao.getGeneralDao().save(t);
 	}
 
 	public <T> T update(T t) {
-		return getDao().update(t);
+		return GeneralDao.getGeneralDao().update(t);
 	}
 
 	public <T> T delete(T t) throws Exception {
-		return getDao().delete(t);
+		return GeneralDao.getGeneralDao().delete(t);
 	}
 
 	public <T> T select(String queryName, long id) {
-		return getDao().select(queryName, id);
+		return GeneralDao.getGeneralDao().select(queryName, id);
 	}
 
 	public <T> T select(String queryName, Map<String, Object> params) throws Exception {
-		return getDao().select(queryName, params);
+		return GeneralDao.getGeneralDao().select(queryName, params);
 	}
 
 	public <T> List<T> selectList(String queryName, Map<String, Object> params) {
-		return getDao().selectList(queryName, params);
+		return GeneralDao.getGeneralDao().selectList(queryName, params);
 	}
 
 	public <T> List<T> selectList(String queryName, Map<String, Object> params,
 			Integer first, Integer max) throws Exception {
-		return getDao().selectList(queryName, params, first, max);
+		return GeneralDao.getGeneralDao().selectList(queryName, params, first, max);
 	}
 	public <T> T saveOrUpdate(T t)throws Exception{
-		return getDao().saveOrUpdate(t);
+		return GeneralDao.getGeneralDao().saveOrUpdate(t);
 	}
 	public  List<Qustion> selectListValue(Integer first , Integer max){
-		return getDao().selectListValue(first, max);
+		return GeneralDao.getGeneralDao().selectListValue(first, max);
 	}
 	public <T> Long  tableSize(String namedQuery){
-		return getDao().tableSize(namedQuery);
+		return GeneralDao.getGeneralDao().tableSize(namedQuery);
 	}
 }

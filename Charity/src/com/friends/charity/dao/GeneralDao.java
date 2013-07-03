@@ -21,15 +21,23 @@ import com.friends.charity.model.admin.about.Qustion;
 
 
 public class GeneralDao {
+	private static GeneralDao generalDao;
 	private EntityManagerFactory entityManagerFactory;
 	private EntityManager entityManager;
 	private Session session;
 
-	public GeneralDao() {
+	private GeneralDao() {
 		entityManagerFactory = Persistence
 				.createEntityManagerFactory("charity");
 		entityManager = entityManagerFactory.createEntityManager();
 		session = entityManager.unwrap(Session.class);
+		
+	}
+	public static synchronized GeneralDao getGeneralDao() {
+		if(generalDao == null){
+			generalDao = new GeneralDao();
+		}
+		return generalDao;
 	}
 	public <T> T saveOrUpdate(T t)throws Exception{
 		Transaction transaction = null;
@@ -172,9 +180,10 @@ public class GeneralDao {
 			session.flush();
 			session.clear();
 		}
-		return result;
+		return result;	
 	}
 	public <T> Long  tableSize(String namedQuery){
+		session = session.getSessionFactory().openSession();
 		Query query = session.getNamedQuery(namedQuery);
 		Long result = (Long) query.uniqueResult();
 		session.flush();

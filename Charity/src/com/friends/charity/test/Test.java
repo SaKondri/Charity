@@ -21,13 +21,15 @@ import com.friends.charity.view.template.admin.menu.addpicture.model.AddPictureM
 
 public class Test  {
 	public static void main(String[] args) throws UnsupportedEncodingException {
-		List<String> list = new ArrayList<>();
-		List<AddPictureModel> models = new ArrayList<>();
-		AddPictureModel addPictureModel = new AddPictureModel();
-		addPictureModel.setName("1");
-		models.add(addPictureModel);
-		addPictureModel.setName("2");
-		models.add(addPictureModel);
-		System.out.println(models);
-	}
+		Qustion qustion = new Qustion();
+		qustion.setTitle("test");
+		GeneralService service = new GeneralService();
+		for(int i= 0 ; i<100;i++){
+		try {
+			service.save(qustion);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}}
 }

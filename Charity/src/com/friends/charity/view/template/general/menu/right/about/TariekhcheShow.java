@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
@@ -50,7 +51,7 @@ public class TariekhcheShow implements Serializable {
 		// gotoTarikhche(actionEvent);
 		setAdminChangePageHome(page);
 	}
-	@Singleton
+	@PostConstruct
 	public String showTarikhche() {
 		
 		List<Tariekhche> tariekhches = new ArrayList<>();

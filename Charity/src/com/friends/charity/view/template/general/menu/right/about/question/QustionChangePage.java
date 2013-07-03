@@ -25,8 +25,8 @@ public class QustionChangePage implements Serializable {
 
 	private Long size;
 
-	@PostConstruct
-	public void init() {
+	
+	public QustionChangePage() {
 		listSize();
 	}
 
