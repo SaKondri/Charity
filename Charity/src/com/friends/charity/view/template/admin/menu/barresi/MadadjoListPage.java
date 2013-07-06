@@ -1,7 +1,5 @@
 package com.friends.charity.view.template.admin.menu.barresi;
 
-import java.io.Serializable;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
@@ -10,8 +8,7 @@ import com.friends.charity.view.template.admin.menu.barresi.event.MadadjoListEve
 
 @ManagedBean(name = "testBean")
 @ViewScoped
-public class MadadjoListPage implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class MadadjoListPage {
 	@Inject
 	private MadadjoListEvent event;
 

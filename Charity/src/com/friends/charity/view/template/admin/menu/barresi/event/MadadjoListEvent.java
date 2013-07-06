@@ -6,8 +6,15 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
+import org.hibernate.event.internal.OnReplicateVisitor;
+import org.primefaces.event.SelectEvent;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
 
@@ -17,70 +24,39 @@ import com.friends.charity.model.MoshakhasateMotaghazi;
 @Named
 public class MadadjoListEvent implements Serializable {
 	private static final long serialVersionUID = 1L;
-	// private LazyDataModel<MoshakhasateMotaghazi> lazyModel;
-	private GeneralService service;
-	private List<MoshakhasateMotaghazi> list;
+	private LazyDataModel<MoshakhasateMotaghazi> lazyMadadjoDataModel;
+	private MoshakhasateMotaghazi motaghazil;
 
 	@PostConstruct
 	public void init() {
-		new LazyDataModel<MoshakhasateMotaghazi>() {
-			private static final long serialVersionUID = 1L;
-			List<MoshakhasateMotaghazi> ls = new ArrayList<>();
+		List<MoshakhasateMotaghazi> list = new ArrayList<>();
+		lazyMadadjoDataModel = new LazyMadadjoDataModel(list);
+	}
 
-			public List<MoshakhasateMotaghazi> load(int startingAt,
-					int maxPerPage, String sortField, SortOrder sortOrder,
-					Map<String, String> filters) {
-				try {
-					ls = getService().selectList("selectUsers", null,
-							startingAt, maxPerPage);
-					for (MoshakhasateMotaghazi mm : ls) {
-						getList().add(mm);
-					}
+	public LazyDataModel<MoshakhasateMotaghazi> getLazyMadadjoDataModel() {
+		return lazyMadadjoDataModel;
+	}
 
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				setPageSize(maxPerPage);
-				return list;
-			}
+	public MoshakhasateMotaghazi getMotaghazil() {
+//		if (motaghazil == null) {
+//			motaghazil = new MoshakhasateMotaghazi();
+//		}
+		return motaghazil;
+	}
 
-			@Override
-			public Object getRowKey(MoshakhasateMotaghazi motaghazi) {
-				return motaghazi.getId();
-			}
-
-			@Override
-			public MoshakhasateMotaghazi getRowData(String motaghaziId) {
-				Integer id = Integer.valueOf(motaghaziId);
-
-				for (MoshakhasateMotaghazi motaghazi : getList()) {
-					if (id.equals(motaghazi.getId())) {
-						return motaghazi;
-					}
-				}
-
-				return null;
-			}
-		};
+	public void setMotaghazil(MoshakhasateMotaghazi motaghazil) {
+		this.motaghazil = motaghazil;
 
 	}
 
-	public List<MoshakhasateMotaghazi> getList() {
-		if (list == null) {
-			list = new ArrayList<>();
-		}
-		return list;
-	}
+	public void onRowSelect(SelectEvent event) {
+		FacesMessage msg = new FacesMessage("Car Unselected",
+				((MoshakhasateMotaghazi) event.getObject())
+						.getFirstname()
+						.concat(" ")
+						.concat(((MoshakhasateMotaghazi) event.getObject())
+								.getLastname()));
 
-	public GeneralService getService() {
-		if (service == null) {
-			service = new GeneralService();
-		}
-		return service;
-	}
-
-	public void setService(GeneralService service) {
-		this.service = service;
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 }
