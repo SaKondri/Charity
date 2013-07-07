@@ -7,14 +7,14 @@
 <f:view contentType="text/html">
 	<h:head>
 		<title>خیریه امام هادی علیه السلام<ui:insert name="title" /></title>
+
+		<h:outputStylesheet name="4.css" library="css" />
+		<h:outputScript name="1.js" library="js" />
+		<h:outputScript name="2.js" library="js" />
 		<h:outputStylesheet name="default.css" library="css" />
-		<h:outputStylesheet name="generic.css" library="css" />
-		<h:outputStylesheet name="flexslider.css" library="css"></h:outputStylesheet>
-		<h:outputStylesheet name="js-image-slider.css" library="css" />
 		<h:outputStylesheet name="MY.css" library="css" />
 		<h:outputStylesheet name="image.css" library="css" />
 		<h:outputStylesheet name="dialog.js" library="js" />
-		 <script type="text/javascript" src="http://d.yimg.com/mi/ono/ywa.js"></script>
 		<script type="text/javascript"
 			src="#{request.contextPath}/javax.faces.resource/calendar.all.js.xhtml?ln=primefaces" />
 		<script type="text/javascript"
@@ -23,26 +23,30 @@
 			src="#{request.contextPath}/javax.faces.resource/jquery.ui.datepicker-cc.js.xhtml?ln=primefaces" />
 		<script type="text/javascript"
 			src="#{request.contextPath}/javax.faces.resource/jquery.ui.datepicker-cc-fa.js.xhtml?ln=primefaces" />
-			 <script type="text/javascript">
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-12200033-3']);
-            _gaq.push(['_trackPageview']);
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push([ '_setAccount', 'UA-12200033-3' ]);
+			_gaq.push([ '_trackPageview' ]);
 
-            (function() {
-              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-	
-          </script>
- 
+			(function() {
+				var ga = document.createElement('script');
+				ga.type = 'text/javascript';
+				ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+						: 'http://www')
+						+ '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+
 	</h:head>
 	<h:body>
 		<p:growl id="growl" globalOnly="false" showDetail="true" />
-		<h:panelGroup id="mainTemplate">
-		<ui:insert name="content" />
-		</h:panelGroup>
 		
+			<ui:insert name="content" />
+		
+
 		<ui:include
 			src="/WEB-INF/template/general/ajaxStatus/ajaxStatus.xhtml" />
 

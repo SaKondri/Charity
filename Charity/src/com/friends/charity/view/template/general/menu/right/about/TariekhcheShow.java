@@ -22,8 +22,10 @@ public class TariekhcheShow implements Serializable {
 	private Tariekhche tariekhche;
 	
 	private String adminChangePageHome;
-	
-	
+	@PostConstruct
+	public void init(){
+	//	showTarikhche();
+	}
 	public String getAdminChangePageHome() {
 		return adminChangePageHome;
 	}
@@ -51,7 +53,7 @@ public class TariekhcheShow implements Serializable {
 		// gotoTarikhche(actionEvent);
 		setAdminChangePageHome(page);
 	}
-	@PostConstruct
+
 	public String showTarikhche() {
 		
 		List<Tariekhche> tariekhches = new ArrayList<>();

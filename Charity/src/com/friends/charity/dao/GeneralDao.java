@@ -125,6 +125,7 @@ public class GeneralDao {
 	@SuppressWarnings("unchecked")
 	public <T> T select(String queryName, Map<String, Object> params)
 			throws Exception {
+		
 		T t = null;
 		try {
 			Query query = session.getNamedQuery(queryName);
@@ -137,6 +138,9 @@ public class GeneralDao {
 		} finally {
 			session.clear();
 		}
+		
+		
+		
 		return t;
 	}
 
@@ -192,6 +196,7 @@ public class GeneralDao {
 	}
 	@SuppressWarnings("unchecked")
 	public List<Qustion> selectListValue(Integer first , Integer max){
+		 Long start=System.currentTimeMillis();
 		List<Qustion> list = new ArrayList<>();
 		Criteria criteria = session.createCriteria(Qustion.class);
 		criteria.setFirstResult(first).setMaxResults(max);
@@ -199,6 +204,8 @@ public class GeneralDao {
 		list=criteria.list();
 		session.flush();
 		session.close();
+		Long end=System.currentTimeMillis();
+		System.out.println("TTTTTTTTTTTiiiiiiiimeeeeeeeeeeeeee"+(end-start));
 		return list;
 	}
 	// public Login getUsernamePassword(String username, String password) {

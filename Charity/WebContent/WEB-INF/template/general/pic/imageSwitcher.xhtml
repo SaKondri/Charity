@@ -1,21 +1,39 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	<h:form>
-		<div>
-			<p:imageSwitch effect="fade" slideshowSpeed="5000">
-				<ui:repeat var="img" value="#{imageSwitcherPage.event.images}">
-					<p:graphicImage
-						style=" width:700;height:306;/* Make it the same size as your images */
-					background:#fff;
-					margin:0 auto;/*make the image slider center-aligned */
-    				box-shadow: 0px 1px 5px #999999;border:10px solid #DDD;"
-						value="/resources/images/galleria/#{img}" />
-				</ui:repeat>
-			</p:imageSwitch>
+	
+	<div style="width: 600px; height: auto;" >
+		<div class="container clearfix">
+			<div class="flexslider">
+				<ul class="slides">
+				
+					<li>
+						<p:graphicImage value="/resources/images/galleria/test/2.jpg" />
+						<p class="flex-caption"></p>
+					</li>
+					<li>
+						<p:graphicImage value="/resources/images/galleria/test/3.jpg" />
+					</li>
+					<li>
+						<p:graphicImage value="/resources/images/galleria/test/4.jpg" />
+						<p class="flex-caption"></p>
+					</li>
+					<li>
+						<p:graphicImage value="/resources/images/galleria/test/2.jpg" />
+					</li>
+
+					<li>
+						<p:graphicImage value="/resources/images/galleria/test/5.jpg" />
+					</li>
+
+					<li>
+						<p:graphicImage value="/resources/images/galleria/test/6.jpg" />
+					</li>
+				</ul>
+			</div>
 		</div>
-	</h:form>
+	</div>	
 </ui:composition>

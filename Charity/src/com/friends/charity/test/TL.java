@@ -28,7 +28,7 @@ public class TL implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
-	//	new TariekhcheShow();
+	new GeneralService();
 		
 	}
 

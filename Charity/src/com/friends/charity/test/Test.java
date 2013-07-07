@@ -1,5 +1,10 @@
 package com.friends.charity.test;
 
+import java.io.BufferedInputStream;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -17,19 +22,26 @@ import javax.persistence.Persistence;
 import com.friends.charity.business.service.GeneralService;
 import com.friends.charity.model.admin.about.Qustion;
 import com.friends.charity.view.template.admin.menu.addpicture.model.AddPictureModel;
+import com.friends.charity.view.template.admin.menu.addpicture.model.SliderPic;
+import com.lowagie.text.pdf.codec.Base64.InputStream;
 
 
 public class Test  {
 	public static void main(String[] args) throws UnsupportedEncodingException {
-		Qustion qustion = new Qustion();
-		qustion.setTitle("test");
-		GeneralService service = new GeneralService();
-		for(int i= 0 ; i<100;i++){
-		try {
-			service.save(qustion);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
+		SliderPic  sliderPic = new SliderPic();
+		List<SliderPic> list = new ArrayList<>();
+		sliderPic.setName("saeed");
+		sliderPic.setDiscreption("amini");
+		list.add(sliderPic);
+		sliderPic = new SliderPic();
+		sliderPic.setName("sina");
+		sliderPic.setDiscreption("maliki");
+		list.add(sliderPic);
+		for (SliderPic sliderPic2 : list) {
+			if(sliderPic2.getName().equals("sina"))
+				System.out.println(sliderPic2.getDiscreption());
 		}
-	}}
+
+		}
 }
