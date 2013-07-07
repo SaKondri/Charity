@@ -6,39 +6,41 @@
 	xmlns:p="http://primefaces.org/ui">
 	<h:form id="form">
 		<div style="width: 75%">
-			<p:panel header="لیست مدد جویان">
+			<p:fieldset legend="لیست مدد جویان">
 				<p:dataTable id="madTbl" var="mad"
 					value="#{testBean.event.lazyMadadjoDataModel}"
 					selection="#{testBean.event.motaghazil}" selectionMode="single"
 					emptyMessage="هیچ داده ای یافت نشد." paginator="true" rows="10"
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-					rowsPerPageTemplate="5,10,15" lazy="true">
+					rowsPerPageTemplate="5" lazy="true">
 					<!-- style="width: 80%;margin-left: 10%;margin-right: 10%;" -->
 
 					<p:ajax event="rowSelect" listener="#{testBean.event.onRowSelect}"
-						update=":form:ds :growl" oncomplete="carDialog.show()" />
+						update=":form :ds :growl" oncomplete="carDialog.show()" />
 
-					<p:column headerText="s">
+					<p:column style="width:20px">
+						<h:outputText id="dragIcon" styleClass="ui-icon ui-icon-arrow-4"
+							style="کشیدن" />
+						<p:draggable for="dragIcon" revert="true" />
+					</p:column>
+
+					<p:column>
+						<h:outputLabel value="نام:" />
 						<h:outputText value="#{mad.firstname}" />
 					</p:column>
 
+					<p:column>
+						<h:outputLabel value="نام خانوادگی:" />
+						<h:outputText value="#{mad.lastname}" />
+					</p:column>
+
+					<p:column>
+						<h:outputText value="تاریخ تولد:" />
+						<h:outputText value="#{mad.mySelfStrDate}" />
+					</p:column>
+
 				</p:dataTable>
-			</p:panel>
+			</p:fieldset>
 		</div>
-		<p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
-			modal="true" showEffect="explode" hideEffect="explode">
-
-			<h:panelGrid id="ds" columns="2" cellpadding="4">
-
-				<h:outputLabel value="نام:" />
-				<h:outputText value="#{testBean.event.motaghazil.firstname}"
-					style="font-weight:bold" />
-
-				<h:outputLabel value="نام خانوادگی:" />
-				<h:outputText value="#{testBean.event.motaghazil.lastname}"
-					style="font-weight:bold" />
-
-			</h:panelGrid>
-		</p:dialog>
 	</h:form>
 </ui:composition>

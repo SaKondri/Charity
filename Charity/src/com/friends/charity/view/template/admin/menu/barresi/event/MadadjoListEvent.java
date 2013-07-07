@@ -1,25 +1,21 @@
 package com.friends.charity.view.template.admin.menu.barresi.event;
 
+import java.io.ByteArrayInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
-import org.hibernate.event.internal.OnReplicateVisitor;
 import org.primefaces.event.SelectEvent;
+import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.LazyDataModel;
-import org.primefaces.model.SortOrder;
 
-import com.friends.charity.business.service.GeneralService;
 import com.friends.charity.model.MoshakhasateMotaghazi;
+import com.friends.charity.model.UserImage;
 
 @Named
 public class MadadjoListEvent implements Serializable {
@@ -38,9 +34,6 @@ public class MadadjoListEvent implements Serializable {
 	}
 
 	public MoshakhasateMotaghazi getMotaghazil() {
-//		if (motaghazil == null) {
-//			motaghazil = new MoshakhasateMotaghazi();
-//		}
 		return motaghazil;
 	}
 
@@ -49,13 +42,42 @@ public class MadadjoListEvent implements Serializable {
 
 	}
 
+	// private void getPic(UserImage image) {
+	// setBa(image.getImage());
+	// }
+
+	private UserImage ba;
+
+	public UserImage getBa() {
+		if (ba == null) {
+			ba = new UserImage();
+		}
+		return ba;
+	}
+
+	public void setBa(UserImage ba) {
+		this.ba = ba;
+	}
+
+	public final DefaultStreamedContent getImage() {
+		if (getBa() == null) {
+			return new DefaultStreamedContent();
+		} else {
+			DefaultStreamedContent content = new DefaultStreamedContent(
+					new ByteArrayInputStream(getBa().getImage()));
+			return content;
+		}
+	}
+
 	public void onRowSelect(SelectEvent event) {
+		MoshakhasateMotaghazi mo = ((MoshakhasateMotaghazi) event.getObject());
 		FacesMessage msg = new FacesMessage("Car Unselected",
 				((MoshakhasateMotaghazi) event.getObject())
 						.getFirstname()
 						.concat(" ")
 						.concat(((MoshakhasateMotaghazi) event.getObject())
 								.getLastname()));
+		setBa(mo.getUserImage());
 
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}

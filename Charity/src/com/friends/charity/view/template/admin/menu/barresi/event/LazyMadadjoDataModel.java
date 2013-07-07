@@ -144,10 +144,10 @@ public class LazyMadadjoDataModel extends LazyDataModel<MoshakhasateMotaghazi>
 	// return null;
 	// }
 	//
-	// public List<MoshakhasateMotaghazi> getMadadjos() {
-	// return madadjos;
-	// }
-	//
+	public List<MoshakhasateMotaghazi> getMadadjos() {
+		return madadjos;
+	}
+
 	public GeneralService getService() {
 		if (service == null) {
 			service = new GeneralService();
