@@ -11,11 +11,15 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.eclipse.persistence.annotations.HashPartitioning;
+import org.eclipse.persistence.annotations.Partitioned;
+
 import com.friends.charity.business.logic.Utils;
 import com.friends.charity.model.BaseEntity;
 
 @Entity
 @Table(name = "QUSTION")
+
 @NamedQueries({
 		@NamedQuery(name = "allQustions", query = "select q from Qustion q order by q.id"),
 		@NamedQuery(name = "qustionTableSize", query = "select count(q) from Qustion q"),

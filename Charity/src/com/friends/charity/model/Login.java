@@ -1,6 +1,7 @@
 package com.friends.charity.model;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.NamedQueries;
@@ -8,8 +9,15 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.eclipse.persistence.annotations.HashPartitioning;
+import org.eclipse.persistence.annotations.Partitioned;
+import org.eclipse.persistence.annotations.PinnedPartitioning;
+import org.hibernate.annotations.Columns;
+
 @Entity
 @Table(name = "LOGIN")
+
+
 @NamedQueries({
 		@NamedQuery(name = "selectUsernamePassword", query = "select u from Login  u where u.usernamePassword.username=:username"),
 		@NamedQuery(name = "all", query = "select u from Login u"),

@@ -16,7 +16,7 @@
 					<p:commandButton
 						actionListener="#{replyToQustion.event.btnReplyToQustion}"
 						oncomplete="dlgReplyToQustion.hide()" value="پاسخ"
-						update=":growl :mainTemplate :changePage" />
+						update=":growl" process="@form"/>
 				</div>
 			</p:panel>
 		</h:form>

@@ -5,28 +5,35 @@
 	xmlns:p="http://primefaces.org/ui"
 	 xmlns:c="http://java.sun.com/jsp/jstl/core">
 	
-		<div align="center" class="entry">
-		 <f:view>
-			<p:galleria value="#{galleriaPage.images}" var="image"
-				frameWidth="60" frameHeight="40" panelWidth="500" panelHeight="400"
-				effect="slide" effectSpeed="1000" filmstripPosition="top"
-				transitionInterval="3000" showCaptions="true" showOverlays="true">
-
-				<p:graphicImage value="/resources/images/galleria/charity/#{image}">
-				</p:graphicImage>
-				<p:galleriaOverlay>
-					<h:outputText value="World Help"
-						rendered="#{image.equals('charity1.jpg')}" />
-					<h:outputText value="Give"
-						rendered="#{image.equals('charity2.jpg')}" />
-					<h:outputText value="Please Give"
-						rendered="#{image.equals('charity3.jpg')}" />
-					<h:outputText value="Roman"
-						rendered="#{image.equals('charity4.jpg')}" />
-
-				</p:galleriaOverlay>
-			</p:galleria>
-			</f:view>
-		</div>
+		 <div class="bannerbg">
+        <div class="container clearfix">
+                <div class="flexslider" >
+                <ul class="slides">
+                    <li>
+                        <img src="images/fslide01.jpg" alt="" />
+                        <p class="flex-caption">I am Caption!</p>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/fslide02.jpg" alt="" /></a>
+                    </li>
+                    <li>
+                        <img src="images/fslide03.jpg" alt="" />
+                        <p class="flex-caption">I am Caption!</p>
+                    </li>
+                    <li>
+                        <img src="images/fslide04.jpg" alt="" />
+                    </li>
+                    
+                    <li>
+                        <img src="images/fslide05.jpg" alt="" />
+                    </li>
+                    
+                    <li>
+                        <img src="images/fslide06.jpg" alt="" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
 </ui:composition>
