@@ -1,16 +1,25 @@
 package com.friends.charity.view.template.admin.menu.barresi.event;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+
+import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
+import org.primefaces.model.StreamedContent;
 
 import com.friends.charity.business.service.GeneralService;
 import com.friends.charity.model.MoshakhasateMotaghazi;
+import com.friends.charity.model.UserImage;
 
 public class LazyMadadjoDataModel extends LazyDataModel<MoshakhasateMotaghazi>
 		implements Serializable {
@@ -18,6 +27,7 @@ public class LazyMadadjoDataModel extends LazyDataModel<MoshakhasateMotaghazi>
 	private List<MoshakhasateMotaghazi> madadjos;
 	private GeneralService service;
 	private List<MoshakhasateMotaghazi> datasource;
+	private HashMap<Integer, UserImage> params;
 
 	public LazyMadadjoDataModel(List<MoshakhasateMotaghazi> datasource) {
 		this.datasource = datasource;
@@ -33,17 +43,6 @@ public class LazyMadadjoDataModel extends LazyDataModel<MoshakhasateMotaghazi>
 		return null;
 	}
 
-//	@Override
-	//public void setRowIndex(int rowIndex) {
-		//super.setRowIndex(rowIndex);
-	//}
-
-	//@Override
-	//public void setRowCount(int rowCount) {
-		// TODO Auto-generated method stub
-	//	super.setRowCount(rowCount);
-	//}
-
 	@Override
 	public Object getRowKey(MoshakhasateMotaghazi motaghazi) {
 		return motaghazi.getFirstname();
@@ -52,10 +51,17 @@ public class LazyMadadjoDataModel extends LazyDataModel<MoshakhasateMotaghazi>
 	@Override
 	public List<MoshakhasateMotaghazi> load(int first, int pageSize,
 			String sortField, SortOrder sortOrder, Map<String, String> filters) {
+		int index = 0;
+
 		List<MoshakhasateMotaghazi> data = new ArrayList<MoshakhasateMotaghazi>();
 		try {
 			datasource = getService().selectList("selectUsers", null, first,
 					pageSize);
+			for (MoshakhasateMotaghazi m : datasource) {
+				m.getUserImage().setI(index);
+				getParams().put(index, m.getUserImage());
+				index++;
+			}
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -88,62 +94,50 @@ public class LazyMadadjoDataModel extends LazyDataModel<MoshakhasateMotaghazi>
 				data.add(motaghazi);
 			}
 		}
-
-		// // sort
-		// if (sortField != null) {
-		// Collections.sort(data, new LazySorter(sortField, sortOrder));
-		// }
-
-		// rowCount
-		int dataSize = data.size();
-		this.setRowCount(dataSize);
+		int totalSize = (getService().selectList("selectUsers", null)).size();
+		setRowCount(totalSize);
 		setPageSize(pageSize);
+		// int dataSize = data.size();
+		// this.setRowCount(dataSize);
+		// setPageSize(pageSize);
+		//
+		// // paginate
+		// if (dataSize > pageSize) {
+		// try {
+		// return data.subList(first, first + pageSize);
+		// } catch (IndexOutOfBoundsException e) {
+		// return data.subList(first, first + (dataSize % pageSize));
+		// }
+		// } else {
+		return data;
+		// }
+	}
 
-		// paginate
-		if (dataSize > pageSize) {
-			try {
-				return data.subList(first, first + pageSize);
-			} catch (IndexOutOfBoundsException e) {
-				return data.subList(first, first + (dataSize % pageSize));
+	public StreamedContent getImage() {
+		String param = (String) ((HttpServletRequest) FacesContext
+				.getCurrentInstance().getExternalContext().getRequest())
+				.getParameter("param");
+		if (param != null) {
+			if (!getParams().get(Integer.parseInt(param)).isHasPic()) {
+				return nullPic();
+			} else {
+				return new DefaultStreamedContent(new ByteArrayInputStream(
+						(getParams().get(Integer.parseInt(param)).getImage())));
 			}
 		} else {
-			return data;
+
+			return new DefaultStreamedContent();
 		}
 	}
 
-	// @Override
-	// public List<MoshakhasateMotaghazi> load(int startingAt, int maxPerPage,
-	// String sortField, SortOrder sortOrder, Map<String, String> filters) {
-	// try {
-	// madadjos = getService().selectList("selectUsers", null, startingAt,
-	// maxPerPage);
-	//
-	// } catch (Exception e) {
-	// // TODO Auto-generated catch block
-	// e.printStackTrace();
-	// }
-	// setPageSize(maxPerPage);
-	// return getMadadjos();
-	// }
-	//
-	// @Override
-	// public Object getRowKey(MoshakhasateMotaghazi motaghazi) {
-	// return motaghazi.getId();
-	// }
-	//
-	// @Override
-	// public MoshakhasateMotaghazi getRowData(String motaghaziId) {
-	// Integer id = Integer.valueOf(motaghaziId);
-	//
-	// for (MoshakhasateMotaghazi motaghazi : madadjos) {
-	// if (id.equals(motaghazi.getId())) {
-	// return motaghazi;
-	// }
-	// }
-	//
-	// return null;
-	// }
-	//
+	public StreamedContent nullPic() {
+		InputStream inputStream = FacesContext.getCurrentInstance()
+				.getExternalContext()
+				.getResourceAsStream("/resources/images/image2.jpg");
+
+		return new DefaultStreamedContent(inputStream, "image/jpg");
+	}
+
 	public List<MoshakhasateMotaghazi> getMadadjos() {
 		return madadjos;
 	}
@@ -153,6 +147,17 @@ public class LazyMadadjoDataModel extends LazyDataModel<MoshakhasateMotaghazi>
 			service = new GeneralService();
 		}
 		return service;
+	}
+
+	public HashMap<Integer, UserImage> getParams() {
+		if (params == null) {
+			params = new HashMap<>();
+		}
+		return params;
+	}
+
+	public void setParams(HashMap<Integer, UserImage> params) {
+		this.params = params;
 	}
 
 }

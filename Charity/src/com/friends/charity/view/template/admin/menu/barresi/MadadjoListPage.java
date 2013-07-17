@@ -1,14 +1,20 @@
 package com.friends.charity.view.template.admin.menu.barresi;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import java.io.Serializable;
+
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import com.friends.charity.view.template.admin.menu.barresi.event.MadadjoListEvent;
 
-@ManagedBean(name = "testBean")
-@ViewScoped
-public class MadadjoListPage {
+@Named(value = "testBean")
+@SessionScoped
+public class MadadjoListPage implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Inject
 	private MadadjoListEvent event;
 

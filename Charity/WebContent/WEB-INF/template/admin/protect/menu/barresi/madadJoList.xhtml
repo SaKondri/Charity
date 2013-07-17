@@ -6,24 +6,32 @@
 	xmlns:p="http://primefaces.org/ui">
 	<h:form id="form">
 		<p:fieldset legend="لیست مدد جویان">
-			<p:dataTable id="madTbl" var="mad" 
+			<p:dataTable id="madTbl" var="mad"
 				value="#{testBean.event.lazyMadadjoDataModel}"
-				emptyMessage="هیچ داده ای یافت نشد." paginator="true" rows="10"
+				emptyMessage="هیچ داده ای یافت نشد." paginator="true" rows="5"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5" lazy="true">
+				rowsPerPageTemplate="5,10,15" lazy="true">
 				<!-- style="width: 80%;margin-left: 10%;margin-right: 10%;" -->
 
 				<!--<p:ajax event="rowSelect"
 						listener="#{barresiDialogPage.onRowSelect}"
 						update=":form :ds :growl" oncomplete="carDialog.show()" />-->
 
-				<p:column headerText="نمایش تصویر">
+				<!-- <p:column headerText="نمایش تصویر">
 					<p:commandButton update=":form :ds" oncomplete="photo.show()"
 						icon="ui-icon-person">
 						<f:setPropertyActionListener value="#{mad}"
 							target="#{barresiDialogPage.motaghazil}" />
 					</p:commandButton>
+				</p:column> -->
+				<p:column headerText="نمایش تصویر">
+					<p:graphicImage styleClass="photo"
+						value="#{testBean.event.lazyMadadjoDataModel.image}" width="55"
+						height="55">
+						<f:param name="param" value="#{mad.userImage.i}" />
+					</p:graphicImage>
 				</p:column>
+
 
 				<p:column headerText="نام:">
 					<h:outputText value="#{mad.firstname}" />
@@ -96,49 +104,14 @@
 					<h:outputText value="#{mad.codePosti}" />
 				</p:column>
 
-				<p:column headerText="نشانی دقیق منزل:" rowspan="4">
+				<p:column headerText="نشانی منزل:">
 					<h:outputText value="#{mad.homeAddress}" />
 				</p:column>
 
-				<p:column headerText="نشانی دقیق محل کار:" rowspan="4">
+				<p:column headerText="نشانی محل کار:">
 					<h:outputText value="#{mad.jobAddress}" />
 				</p:column>
-
-
 			</p:dataTable>
 		</p:fieldset>
-
-		<!-- 	<p:fieldset id="selectedMad" legend="مددجویان انتخاب شده">
-				<p:outputPanel id="dropArea">
-					<h:outputText value="!!!محل کشیدن و رها کردن مددجو!!!"
-						rendered="#{empty testBean.event.drops}" style="font-size:24px;" />
-					<p:dataTable var="drop" value="#{testBean.event.drops}"
-						rendered="#{not empty testBean.event.drops}">
-
-						<p:column headerText="Model">
-							<h:outputText value="#{drop.firstname}" />
-						</p:column>
-
-						<p:column headerText="Year">
-							<h:outputText value="#{drop.lastname}" />
-						</p:column>
-
-						<p:column headerText="Manufacturer">
-							<h:outputText value="#{drop.mySelfStrDate}" />
-						</p:column>
-
-					</p:dataTable>
-
-
-				</p:outputPanel>
-			</p:fieldset>
-
-
-			<p:droppable for="selectedMad" tolerance="touch"
-				activeStyleClass="ui-state-highlight" datasource="madTbl"
-				onDrop="handleDrop">
-				<p:ajax listener="#{testBean.event.onCarDrop}"
-					update="dropArea madTbl" />
-			</p:droppable> -->
 	</h:form>
 </ui:composition>
