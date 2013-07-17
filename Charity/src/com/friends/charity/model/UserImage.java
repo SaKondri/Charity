@@ -3,10 +3,13 @@ package com.friends.charity.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "USER_IMAGE")
+@NamedQueries({ @NamedQuery(name = "userImages", query = "select ui from UserImage ui where ui.id=:id") })
 public class UserImage extends BaseEntity {
 	@Column(name = "IMAGE")
 	@Lob

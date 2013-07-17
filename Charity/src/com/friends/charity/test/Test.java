@@ -23,7 +23,6 @@ import com.friends.charity.business.service.GeneralService;
 import com.friends.charity.model.admin.about.Qustion;
 import com.friends.charity.view.template.admin.menu.addpicture.model.AddPictureModel;
 import com.friends.charity.view.template.admin.menu.addpicture.model.SliderPic;
-import com.lowagie.text.pdf.codec.Base64.InputStream;
 
 
 public class Test  {

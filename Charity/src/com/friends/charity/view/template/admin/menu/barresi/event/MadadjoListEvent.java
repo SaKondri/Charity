@@ -1,19 +1,21 @@
 package com.friends.charity.view.template.admin.menu.barresi.event;
 
 import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
-import org.primefaces.event.SelectEvent;
+import org.primefaces.event.DragDropEvent;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.LazyDataModel;
+import org.primefaces.model.StreamedContent;
 
+import com.friends.charity.business.service.GeneralService;
 import com.friends.charity.model.MoshakhasateMotaghazi;
 import com.friends.charity.model.UserImage;
 
@@ -21,7 +23,7 @@ import com.friends.charity.model.UserImage;
 public class MadadjoListEvent implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private LazyDataModel<MoshakhasateMotaghazi> lazyMadadjoDataModel;
-	private MoshakhasateMotaghazi motaghazil;
+	private List<MoshakhasateMotaghazi> drops;
 
 	@PostConstruct
 	public void init() {
@@ -33,52 +35,35 @@ public class MadadjoListEvent implements Serializable {
 		return lazyMadadjoDataModel;
 	}
 
-	public MoshakhasateMotaghazi getMotaghazil() {
-		return motaghazil;
-	}
-
-	public void setMotaghazil(MoshakhasateMotaghazi motaghazil) {
-		this.motaghazil = motaghazil;
-
-	}
-
-	// private void getPic(UserImage image) {
-	// setBa(image.getImage());
-	// }
-
-	private UserImage ba;
-
-	public UserImage getBa() {
-		if (ba == null) {
-			ba = new UserImage();
+	public List<MoshakhasateMotaghazi> getDrops() {
+		if (drops == null) {
+			drops = new ArrayList<>();
 		}
-		return ba;
+		return drops;
 	}
 
-	public void setBa(UserImage ba) {
-		this.ba = ba;
+	public void onCarDrop(DragDropEvent ddEvent) {
+		MoshakhasateMotaghazi motaghazi = ((MoshakhasateMotaghazi) ddEvent
+				.getData());
+
+		getDrops().add(motaghazi);
+		// carsSmall.remove(car);
 	}
 
-	public final DefaultStreamedContent getImage() {
-		if (getBa() == null) {
-			return new DefaultStreamedContent();
-		} else {
-			DefaultStreamedContent content = new DefaultStreamedContent(
-					new ByteArrayInputStream(getBa().getImage()));
-			return content;
-		}
-	}
+//	public StreamedContent getContent() {
+//		StreamedContent fileContent;
+//		String param = FacesContext.getCurrentInstance().getExternalContext()
+//				.getRequestParameterMap().get("id");
+//		UserImage userImage;
+//		userImage = new GeneralService().select("userImages",
+//				Integer.parseInt(param));
+//		if (userImage == null) {
+//			return new DefaultStreamedContent();
+//		} else {
+//			fileContent = new DefaultStreamedContent(new ByteArrayInputStream(
+//					userImage.getImage()));
+//		}
+//		return fileContent;
+//	}
 
-	public void onRowSelect(SelectEvent event) {
-		MoshakhasateMotaghazi mo = ((MoshakhasateMotaghazi) event.getObject());
-		FacesMessage msg = new FacesMessage("Car Unselected",
-				((MoshakhasateMotaghazi) event.getObject())
-						.getFirstname()
-						.concat(" ")
-						.concat(((MoshakhasateMotaghazi) event.getObject())
-								.getLastname()));
-		setBa(mo.getUserImage());
-
-		FacesContext.getCurrentInstance().addMessage(null, msg);
-	}
 }

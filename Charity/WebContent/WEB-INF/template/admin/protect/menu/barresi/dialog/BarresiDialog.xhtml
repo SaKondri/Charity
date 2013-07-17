@@ -4,28 +4,20 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	<p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"
+	<p:dialog header="عکس" widgetVar="photo" resizable="false"
 		modal="true" showEffect="explode" hideEffect="explode">
 
 		<h:panelGrid id="ds" columns="2" cellpadding="4">
 
 			<f:facet name="header">
 				<p:graphicImage styleClass="photo"
-					rendered="#{testBean.event.motaghazil.userImage.hasPic}"
-					value="#{testBean.event.image}" width="110" height="110" />
+					rendered="#{barresiDialogPage.motaghazil.userImage.hasPic}"
+					value="#{barresiDialogPage.image}" width="110" height="110" />
 				<p:graphicImage styleClass="photo"
 					value="/resources/images/image2.jpg"
-					rendered="#{!testBean.event.motaghazil.userImage.hasPic}"
+					rendered="#{!barresiDialogPage.motaghazil.userImage.hasPic}"
 					width="110" height="110" />
 			</f:facet>
-
-			<h:outputLabel value="نام:" />
-			<h:outputText value="#{testBean.event.motaghazil.firstname}"
-				style="font-weight:bold" />
-
-			<h:outputLabel value="نام خانوادگی:" />
-			<h:outputText value="#{testBean.event.motaghazil.lastname}"
-				style="font-weight:bold" />
 
 		</h:panelGrid>
 	</p:dialog>

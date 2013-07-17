@@ -80,6 +80,8 @@ public class MoshakhasateMotaghazi extends User {
 	private String mySelfStrDate;
 	@Transient
 	private String myWifeStrDate;
+	@Transient
+	private final String empty = "خالی";
 
 	public String getHamsarFirstname() {
 		return hamsarFirstname;
@@ -280,6 +282,10 @@ public class MoshakhasateMotaghazi extends User {
 
 	public void setUserActive(UserActive userActive) {
 		this.userActive = userActive;
+	}
+
+	public String getEmpty() {
+		return empty;
 	}
 
 }
