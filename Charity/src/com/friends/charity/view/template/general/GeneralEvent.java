@@ -16,7 +16,7 @@ import com.friends.charity.view.template.general.menu.right.about.TariekhcheShow
 public class GeneralEvent implements Serializable {
 	// /WEB-INF/template/general/pic/imageSwitcher.xhtml
 	private static final long serialVersionUID = 1L;
-	private String changePage = "/WEB-INF/template/general/pic/imageSwitcher.xhtml";
+	private String changePage = "/WEB-INF/template/general/pic/slider.xhtml";
 	private String url;
 	private String adminChangePage = "/WEB-INF/template/admin/protect/login/adminLogin.xhtml";
 	private String adminChangePageHome = "";

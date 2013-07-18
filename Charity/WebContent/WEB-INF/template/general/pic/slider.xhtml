@@ -1,26 +1,24 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
-
-	<div style="width: 600px; height: auto;" >
-		<div class="container clearfix">
-			<div class="flexslider">
-				<ul class="slides">
-				<ui:repeat var="pic" value="#{showPicture.names}">
-					<li>
-						<p:graphicImage value="#{showPicture.image(pic)}" />
-						<p class="flex-caption">I am Caption!</p>
-					</li>
-				</ui:repeat>
-				</ul>
-			</div>
-		</div>
-	</div>	
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 
+	<p:imageSwitch effect="fade">
+  
+		<ui:repeat var="pic" value="#{showPicture.picLists}">
 
+			<p:graphicImage value="#{showPicture.pic}" width="700px"
+				height="500px">
+				<f:param value="#{pic.i}" name="param" />
+			</p:graphicImage>
+		</ui:repeat>
+	</p:imageSwitch>
 
 </ui:composition>
+
+
+

@@ -1,0 +1,72 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<div style="width: 50%">
+
+		<p:fieldset legend="عکس های صفحه نخست">
+			<p:fieldset legend=" اضافه کردن عکس به صفحه نخست" toggleable="true">
+				<h:form>
+					<p:fileUpload 
+						fileUploadListener="#{addPicture.fileUpload}"
+						allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+						update="@form :growl :pnlChange" dragDropSupport="true">
+
+					</p:fileUpload>
+					<p:commandButton value="نمایش گالری" onclick="dlgGalliera.show()"/>
+				</h:form>
+			</p:fieldset>
+
+			<p:fieldset legend="ویرایش عکس های صفحه نخست" toggleable="true">
+				<h:form>
+					<p:dataTable id="dataSlide" var="img"
+						value="#{addPicture.showPicture.picLists}">
+
+						<p:column headerText="نام" style="width:24%">
+							<h:outputText value="#{img.name}" />
+						</p:column>
+
+						<p:column style="width:4%">
+							<p:commandButton actionListener="#{addPicture.getRow}"
+								id="selectButton" oncomplete="dlgEditImg.show()"
+								icon="ui-icon-search" title="نمایش عکس"
+								update="@form :pnlChange :EditImg">
+								<f:param name="slider" value="#{img.name}"></f:param>
+							</p:commandButton>
+						</p:column>
+
+					</p:dataTable>
+
+				</h:form>
+			</p:fieldset>
+
+
+
+
+		</p:fieldset>
+	</div>
+	<p:dialog widgetVar="dlgEditImg" id="EditImg" resizable="false">
+		<h:form>
+			<p:graphicImage value="#{addPicture.selectedRowImage}" width="300px"
+				height="200px" />
+				<div align="center">
+			<p:commandButton value="حذف"
+				actionListener="#{addPicture.deleteImage}"
+				update=":growl :pnlChange" onclick="dlgEditImg.hide()" />
+				</div>
+		</h:form>	
+	</p:dialog>
+	<p:dialog  widgetVar="dlgGalliera" resizable="false">
+		<p:imageSwitch effect="fade">
+
+		<ui:repeat var="pic" value="#{showPicture.picLists}">
+
+			<p:graphicImage value="#{showPicture.pic}" width="700px"
+				height="500px">
+				<f:param value="#{pic.i}" name="param" />
+			</p:graphicImage>
+		</ui:repeat>
+	</p:imageSwitch>
+	</p:dialog>
+</ui:composition>
