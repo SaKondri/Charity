@@ -7,10 +7,10 @@
 .photo {
 	width: 110;
 	height: 110; /* Make it the same size as your images */
-	background: #fff;
+	background: #00A7FF;
 	margin: 0 auto; /*make the image slider center-aligned */
-	box-shadow: 0px 1px 5px #999999;
-	border: 10px solid #DDD;
+	box-shadow: 0px 1px 5px #00A7FF;
+	border: 2px solid #00A7FF;
 }
 
 .custom .fileupload-buttonbar {
