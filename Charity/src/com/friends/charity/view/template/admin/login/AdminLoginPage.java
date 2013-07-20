@@ -3,13 +3,12 @@ package com.friends.charity.view.template.admin.login;
 import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import com.friends.charity.view.template.general.GeneralTempPage;
 @Named
@@ -24,6 +23,7 @@ public class AdminLoginPage implements Serializable{
 	public boolean isAdmin() {
 		return isAdmin;
 	}
+
 	public GeneralTempPage getGeneralTempPage() {
 		return generalTempPage;
 	}
@@ -47,8 +47,11 @@ public class AdminLoginPage implements Serializable{
 		if(getUsername().equals("admin") && getPassword().equals("admin")){
 			HttpServletRequest request=(HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
 			request.getSession(true).setAttribute("admin", null);
+			setAdmin(true);
 			getGeneralTempPage().getEvent().setAdminChangePage("/WEB-INF/template/admin/protect/adminHome.xhtml");
+			
 		}
+		setAdmin(false);
 		FacesContext.getCurrentInstance().addMessage("frmAdminLogin", new FacesMessage(FacesMessage.SEVERITY_WARN, "شناسه و کلمه عبور صحیح نمی باشد", ""));
 		return null;
 	}

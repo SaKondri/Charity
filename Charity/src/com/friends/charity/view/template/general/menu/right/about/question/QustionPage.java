@@ -126,6 +126,7 @@ public class QustionPage implements Serializable {
 			getDao().saveOrUpdate(getQustion());
 			getQustionChangePage().btnUpdate();
 		//	getQustionChangePage().listSize();
+			setResponse(null);
 			FacesContext.getCurrentInstance().addMessage(
 					null,
 					new FacesMessage(FacesMessage.SEVERITY_INFO, getQustion()

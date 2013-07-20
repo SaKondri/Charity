@@ -26,7 +26,7 @@
 							escape="false" />
 					</p:fieldset>
 					<p:commandButton value="پاسخ" onclick="dlgRespForQustion.show()"
-						actionListener="#{qustionPage.btnResponce}">
+						actionListener="#{qustionPage.btnResponce}" rendered="#{adminLoginPage.admin}">
 						<f:param name="idRequest" value="#{qu.id}" />
 					</p:commandButton>
 				</p:fieldset>

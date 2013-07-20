@@ -12,9 +12,11 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 @WebFilter(urlPatterns = "/admin/")
+
 public class AdminFilter implements Filter{
 	@SuppressWarnings("unused")
 	private FilterConfig filterConfig;
+	
 	
 	@Override
 	public void destroy() {
@@ -28,6 +30,7 @@ public class AdminFilter implements Filter{
 		HttpServletRequest req= (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
 		if(req.getSession().getAttribute("admin") == null){
+			
 			req.getRequestDispatcher("/pages/home.xhtml").forward(req, resp);
 		}
 	}
