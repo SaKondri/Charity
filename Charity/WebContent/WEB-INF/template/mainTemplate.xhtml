@@ -42,10 +42,22 @@
 
 	</h:head>
 	<h:body>
+		
+		<p:idleMonitor timeout="1800000" onidle="idleDialog.show()"/> 
+		<p:commandButton id="o" value="okey" />
+		<p:dialog header="حافظه از بین رفته" resizable="false"
+			widgetVar="idleDialog" modal="true" width="400">
+			<h:form>
+				<h:outputLabel
+				
+					value="مدت زمان حافظه ای که برای شما از سمت سرور در نظر گرفته شده بود به علت استفاده نکردن از سایت از بین رفته است ,لطفا برای استفاده دوباره از سایت آن را Refresh کنید" />
+				
+			</h:form>
+		</p:dialog>
 		<p:growl id="growl" globalOnly="false" showDetail="true" />
-		
-			<ui:insert name="content" />
-		
+
+		<ui:insert name="content" />
+
 
 		<ui:include
 			src="/WEB-INF/template/general/ajaxStatus/ajaxStatus.xhtml" />

@@ -2,6 +2,7 @@ package com.friends.charity.test;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,9 +19,10 @@ import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
 import com.friends.charity.model.BaseEntity;
+import com.sun.faces.vendor.GlassFishInjectionProvider;
 
 	
-public class Main extends BaseEntity{
-
+public class Main {
 	
+		
 }

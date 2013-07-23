@@ -10,9 +10,10 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 
+import com.friends.charity.business.logic.Utils;
 import com.friends.charity.view.template.general.GeneralTempPage;
 @Named
-@RequestScoped
+@SessionScoped
 public class AdminLoginPage implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String username;
@@ -47,7 +48,7 @@ public class AdminLoginPage implements Serializable{
 		if(getUsername().equals("admin") && getPassword().equals("admin")){
 			HttpServletRequest request=(HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
 			request.getSession(true).setAttribute("admin", null);
-			setAdmin(true);
+			
 			getGeneralTempPage().getEvent().setAdminChangePage("/WEB-INF/template/admin/protect/adminHome.xhtml");
 			
 		}
@@ -55,4 +56,6 @@ public class AdminLoginPage implements Serializable{
 		FacesContext.getCurrentInstance().addMessage("frmAdminLogin", new FacesMessage(FacesMessage.SEVERITY_WARN, "شناسه و کلمه عبور صحیح نمی باشد", ""));
 		return null;
 	}
+	
+	
 }
