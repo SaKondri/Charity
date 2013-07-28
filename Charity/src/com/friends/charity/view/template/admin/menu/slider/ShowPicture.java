@@ -11,6 +11,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.inject.Singleton;
 import javax.servlet.http.HttpServletRequest;
 
 import org.primefaces.model.DefaultStreamedContent;
@@ -20,7 +21,7 @@ import com.friends.charity.business.service.GeneralService;
 import com.friends.charity.view.template.admin.menu.addpicture.model.SliderPic;
 
 @Named
-@ApplicationScoped
+@Singleton
 public class ShowPicture implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private GeneralService generalService;

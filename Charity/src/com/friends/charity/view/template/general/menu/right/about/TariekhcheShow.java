@@ -15,7 +15,7 @@ import com.friends.charity.business.service.GeneralService;
 import com.friends.charity.model.admin.about.Tariekhche;
 
 @Named
-
+@Singleton
 public class TariekhcheShow implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -24,7 +24,7 @@ public class TariekhcheShow implements Serializable {
 	private String adminChangePageHome;
 	@PostConstruct
 	public void init(){
-	//	showTarikhche();
+		showTarikhche();
 	}
 	public String getAdminChangePageHome() {
 		return adminChangePageHome;

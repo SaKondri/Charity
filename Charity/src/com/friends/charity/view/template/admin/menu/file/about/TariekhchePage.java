@@ -60,8 +60,11 @@ public class TariekhchePage implements Serializable{
 			if(getShow().getTariekhche().getId() >0){
 				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"ویرایش","تاریخچه سایت با موفقیت ویرایش شد"));
 				getDao().saveOrUpdate(getTariekhche());
+				getShow().showTarikhche();
 			}else {
 				getDao().saveOrUpdate(getTariekhche());
+				
+				getShow().showTarikhche();
 				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"ذخیره","تاریخچه سایت با موفقیت ذخیره شد"));
 			}
 			
