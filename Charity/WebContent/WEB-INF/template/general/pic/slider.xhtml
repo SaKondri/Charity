@@ -11,7 +11,7 @@
   
 		<ui:repeat var="pic" value="#{showPicture.picLists}">
 
-			<p:graphicImage value="#{showPicture.pic}" width="700px"
+			<p:graphicImage styleClass="gallery" value="#{showPicture.pic}" width="700px"
 				height="500px">
 				<f:param value="#{pic.i}" name="param" />
 			</p:graphicImage>

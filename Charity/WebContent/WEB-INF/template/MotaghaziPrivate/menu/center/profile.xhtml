@@ -24,17 +24,10 @@
 					<p:row>
 						<p:column colspan="6">
 							<p:graphicImage value="#{profilePage.event.image}"
-								style=" width:110;height:110;/* Make it the same size as your images */
-									background:#fff;
-									margin:0 auto;/*make the image slider center-aligned */
-    								box-shadow: 0px 1px 5px #999999;border:10px solid #DDD;"
+								styleClass="profilePic"
 								rendered="#{profilePage.event.motaghazi.userImage.hasPic}"
 								width="110" height="110" />
-							<p:graphicImage
-								style=" width:110;height:110;/* Make it the same size as your images */
-									background:#fff;
-									margin:0 auto;/*make the image slider center-aligned */
-    								box-shadow: 0px 1px 5px #999999;border:10px solid #DDD;"
+							<p:graphicImage styleClass="profilePic"
 								value="/resources/images/image2.jpg"
 								rendered="#{!profilePage.event.motaghazi.userImage.hasPic}"
 								width="110" height="110" />
@@ -48,25 +41,24 @@
 								update=":growl prflId" />
 
 							<h:outputText value="شماره پرونده"
-								style="position:fixed;top:19%;left:40%;" />
+								style="margin:2px 0px 0px 4px;" />
 							<h:outputText
-								style="position:fixed;top:22%;left:42%;color:blue;font-size: 12px"
+								style="margin:2px 0px 0px 6px;font-size: 12px;color:blue;"
 								value="#{profilePage.event.motaghazi.tarikhSabteNameKarbar.id}" />
 
 							<h:outputText value="تاریخ ثبت تقاضا"
-								style="position:fixed;top:25%;left:40%;" />
+								style="margin:2px 0px 0px 8px;" />
 							<h:outputText
-								style="position:fixed;top:28%;left:42%;color:blue;font-size: 12px"
+								style="margin:2px 0px 0px 10px;color:blue;font-size: 12px"
 								value="#{profilePage.event.motaghazi.tarikhSabteNameKarbar.strDate}" />
 
-							<h:outputText value="وضعیت"
-								style="position:fixed;top:31%;left:40%;" />
+							<h:outputText value="وضعیت" style="margin:2px 0px 0px 12px;" />
 							<h:outputText
-								style="position:fixed;top:34%;left:42%;color:blue;font-size: 12px"
+								style="margin:2px 0px 0px 14px;color:blue;font-size: 12px"
 								value="فعال"
 								rendered="#{profilePage.event.motaghazi.userActive.active}" />
 							<h:outputText
-								style="position:fixed;top:34%;left:42%;color:red;font-size: 12px"
+								style="margin:2px 0px 0px 14px;;color:red;font-size: 12px"
 								value="غیر فعال"
 								rendered="#{!profilePage.event.motaghazi.userActive.active}" />
 						</p:column>
@@ -107,7 +99,8 @@
 							<p:inplace editor="true"
 								emptyLabel="#{profilePage.event.motaghazi.mySelfStrDate}">
 								<p:ajax event="save"
-									listener="#{profilePage.event.editCalendar}" update=":growl" />
+									listener="#{profilePage.event.editMySelfCalendar}"
+									update=":growl" />
 								<p:calendar effect="drop" navigator="true" pattern="yyyy/MM/dd"
 									dir="ltr" value="#{profilePage.event.motaghazi.mySelfDate}">
 									<f:converter converterId="CalendarConvertor" />
@@ -152,7 +145,8 @@
 							<p:inplace editor="true"
 								emptyLabel="#{profilePage.event.motaghazi.myWifeStrDate}">
 								<p:ajax event="save"
-									listener="#{profilePage.event.editCalendar}" update=":growl" />
+									listener="#{profilePage.event.editMyWifeCalendar}"
+									update=":growl" />
 								<p:calendar effect="drop" navigator="true" pattern="yyyy/MM/dd"
 									id="brtHasmsar" dir="ltr"
 									value="#{profilePage.event.motaghazi.myWifeDate}">
@@ -197,16 +191,16 @@
 						</p:column>
 
 						<p:column>
-							<p:inplace editor="true">
+							<p:inplace id="inn" editor="true">
 								<p:ajax event="save"
 									listener="#{profilePage.event.savedEditeHandle}"
 									update=":growl" />
+								<p:tooltip for="inn"
+									value="#{profilePage.event.motaghazi.maskanType.type}" />
 								<p:selectOneMenu id="txtMaskan"
 									value="#{profilePage.event.motaghazi.maskanType}">
 									<f:converter converterId="securityRoleConverter" />
-									<f:selectItems
-										value="#{generalTempPage.menuBean
-									.madadJoPage.event.maskanValue}" />
+									<f:selectItems value="#{profilePage.event.maskanValue}" />
 								</p:selectOneMenu>
 							</p:inplace>
 						</p:column>
@@ -302,10 +296,29 @@
 
 					<p:row>
 						<p:column>
+							<h:outputText value="نیاز متقاضی:" />
+						</p:column>
+
+						<p:column>
+							<p:inplace id="inplaceName" editor="true">
+								<p:ajax event="save"
+									listener="#{profilePage.event.savedEditeHandle}"
+									update=":growl" />
+								<p:tooltip for="inplaceName"
+									value="#{profilePage.event.motaghazi.niazMotaghazii.type}" />
+								<p:selectOneMenu id="txtNiaz"
+									value="#{profilePage.event.motaghazi.niazMotaghazii}">
+									<f:converter converterId="NizConv" />
+									<f:selectItems value="#{profilePage.event.niazMotaghazi}" />
+								</p:selectOneMenu>
+							</p:inplace>
+						</p:column>
+
+						<p:column>
 							<h:outputText value="نشانی دقیق محل کار:" />
 						</p:column>
 
-						<p:column colspan="5">
+						<p:column colspan="4">
 							<p:inplace editor="true">
 								<p:ajax event="save"
 									listener="#{profilePage.event.savedEditeHandle}"

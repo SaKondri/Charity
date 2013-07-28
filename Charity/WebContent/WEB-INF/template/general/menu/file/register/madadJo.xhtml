@@ -262,6 +262,15 @@
 							</p:cellEditor>
 						</p:column>
 
+						<p:column headerText="حذف‌">
+							<p:commandButton update="Childs" process="@form"
+								icon="ui-icon-trash">
+								<p:collector value="#{child}"
+									removeFrom="#{generalTempPage.menuBean.madadJoPage
+ 									.event.farzandans}" />
+							</p:commandButton>
+						</p:column>
+
 					</p:dataTable>
 
 				</p:panel>
@@ -320,17 +329,9 @@
 								<p:graphicImage
 									rendered="#{generalTempPage.menuBean.madadJoPage.event.motaghazi.userImage.hasPic}"
 									value="#{generalTempPage.menuBean.madadJoPage.event.confirmationImage}"
-									style=" width:110;height:110;/* Make it the same size as your images */
-									background:#fff;
-									margin:0 auto;/*make the image slider center-aligned */
-    								box-shadow: 0px 1px 5px #999999;border:10px solid #DDD;"
-									width="110" height="110" />
+									styleClass="profilePic" width="110" height="110" />
 
-								<p:graphicImage
-									style=" width:110;height:110;/* Make it the same size as your images */
-									background:#fff;
-									margin:0 auto;/*make the image slider center-aligned */
-    								box-shadow: 0px 1px 5px #999999;border:10px solid #DDD;"
+								<p:graphicImage styleClass="profilePic"
 									value="/resources/images/image2.jpg"
 									rendered="#{!generalTempPage.menuBean.madadJoPage.event.motaghazi.userImage.hasPic}"
 									width="110" height="110" />
