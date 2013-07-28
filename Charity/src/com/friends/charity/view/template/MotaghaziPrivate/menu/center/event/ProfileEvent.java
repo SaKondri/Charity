@@ -2,9 +2,11 @@ package com.friends.charity.view.template.MotaghaziPrivate.menu.center.event;
 
 import java.io.ByteArrayInputStream;
 import java.io.Serializable;
+import java.util.ResourceBundle;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,7 +17,9 @@ import org.primefaces.model.StreamedContent;
 import com.friends.charity.business.logic.CalendarFormat;
 import com.friends.charity.business.service.GeneralService;
 import com.friends.charity.model.Login;
+import com.friends.charity.model.MaskanType;
 import com.friends.charity.model.MoshakhasateMotaghazi;
+import com.friends.charity.model.NiazMotaghazii;
 
 @Named
 public class ProfileEvent implements Serializable {
@@ -53,6 +57,25 @@ public class ProfileEvent implements Serializable {
 
 	public void setGeneralService(GeneralService generalService) {
 		this.generalService = generalService;
+	}
+
+	public SelectItem[] getMaskanValue() {
+		SelectItem items[] = new SelectItem[MaskanType.values().length];
+		int i = 0;
+		for (MaskanType g : MaskanType.values()) {
+			items[i++] = new SelectItem(g, g.getType());
+		}
+		return items;
+	}
+
+	public SelectItem[] getNiazMotaghazi() {
+		SelectItem[] items = new SelectItem[NiazMotaghazii.values().length];
+		int i = 0;
+		for (NiazMotaghazii niazMotaghazii : NiazMotaghazii.values()) {
+			items[i++] = new SelectItem(niazMotaghazii,
+					niazMotaghazii.getType());
+		}
+		return items;
 	}
 
 	public StreamedContent getImage() {
@@ -105,13 +128,31 @@ public class ProfileEvent implements Serializable {
 		}
 	}
 
-	public void editCalendar() {
+	public void editMySelfCalendar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		FacesMessage message = new FacesMessage();
 		try {
 			getMotaghazi().setBirthday(
 					CalendarFormat
 							.getGerigorian(getMotaghazi().getMySelfDate()));
+			getGeneralService().saveOrUpdate(getMotaghazi());
+			message.setDetail(" ویرایش مشخصات.");
+			message.setSummary("ویرایش صورت گرفت.");
+			message.setSeverity(FacesMessage.SEVERITY_INFO);
+			context.addMessage(null, message);
+		} catch (Exception e) {
+			message.setDetail("خطا در ویرایش.");
+			message.setSummary("ویرایش صورت نگرفت.");
+			message.setSeverity(FacesMessage.SEVERITY_ERROR);
+			context.addMessage(null, message);
+			e.printStackTrace();
+		}
+	}
+
+	public void editMyWifeCalendar() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		FacesMessage message = new FacesMessage();
+		try {
 			getMotaghazi().setHamsarBirthday(
 					CalendarFormat
 							.getGerigorian(getMotaghazi().getMyWifeDate()));

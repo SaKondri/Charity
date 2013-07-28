@@ -131,7 +131,8 @@ public class LazyMadadjoDataModel extends LazyDataModel<MoshakhasateMotaghazi>
 	}
 
 	public StreamedContent nullPic() {
-		InputStream inputStream = FacesContext.getCurrentInstance()
+		InputStream inputStream = FacesContext
+				.getCurrentInstance()
 				.getExternalContext()
 				.getResourceAsStream("/resources/images/NO-IMAGE-AVAILABLE.jpg");
 

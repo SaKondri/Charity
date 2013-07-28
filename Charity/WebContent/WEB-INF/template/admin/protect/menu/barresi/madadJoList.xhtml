@@ -11,6 +11,11 @@
 				emptyMessage="هیچ داده ای یافت نشد." paginator="true" rows="5"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15" lazy="true">
+				<f:facet name="header">
+					<div align="right" >
+						<p:commandButton style="color:#009843;" value="بارگذاری مجدد جدول" update="madTbl"/>
+					</div>
+				</f:facet>
 				<!-- style="width: 80%;margin-left: 10%;margin-right: 10%;" -->
 
 				<!--<p:ajax event="rowSelect"
