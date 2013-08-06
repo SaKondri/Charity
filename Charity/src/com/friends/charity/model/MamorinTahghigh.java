@@ -27,6 +27,9 @@ public class MamorinTahghigh extends User {
 	}
 
 	public Date getDate() {
+		if (date == null) {
+			date = new Date();
+		}
 		return date;
 	}
 

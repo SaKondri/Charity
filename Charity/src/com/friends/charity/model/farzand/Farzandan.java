@@ -112,6 +112,9 @@ public class Farzandan extends BaseEntity {
 	}
 
 	public Date getDate() {
+		if (date == null) {
+			date = new Date();
+		}
 		return date;
 	}
 

@@ -31,11 +31,13 @@
 					</p:commandButton>
 				</p:column> -->
 				<p:column headerText="نمایش تصویر" footerText="نمایش تصویر">
-					<p:graphicImage styleClass="photo"
-						value="#{testBean.event.lazyMadadjoDataModel.image}" width="55"
-						height="55">
-						<f:param name="param" value="#{mad.userImage.i}" />
-					</p:graphicImage>
+					<div style="text-align: center;">
+						<p:graphicImage styleClass="photo"
+							value="#{testBean.event.lazyMadadjoDataModel.image}" width="55"
+							height="55">
+							<f:param name="param" value="#{mad.userImage.i}" />
+						</p:graphicImage>
+					</div>
 				</p:column>
 
 
@@ -48,7 +50,9 @@
 				</p:column>
 
 				<p:column headerText="تاریخ تولد:" footerText="تاریخ تولد:">
-					<h:outputText value="#{mad.mySelfStrDate}" />
+					<div style="text-align: left;">
+						<h:outputText value="#{mad.mySelfStrDate}" />
+					</div>
 				</p:column>
 
 				<p:column headerText="نام همسر:" footerText="نام همسر:">
@@ -64,71 +68,79 @@
 
 				<p:column headerText="تاریخ تولد همسر:"
 					footerText="تاریخ تولد همسر:">
-					<h:outputText value="#{mad.myWifeStrDate}" />
+					<div style="text-align: left;">
+						<h:outputText value="#{mad.myWifeStrDate}" />
+					</div>
 				</p:column>
 
 
-				<p:column headerText="درآمد ماهیانه:" footerText="درآمد ماهیانه:">
+				<p:column headerText="شغل:" footerText="شغل:">
 					<h:outputText value="#{mad.shoghl}" />
 				</p:column>
 
 
 				<p:column headerText="درآمد ماهیانه:" footerText="درآمد ماهیانه:">
-					<h:outputText value="#{mad.daramad}" />
+					<div style="text-align: left;">
+						<h:outputText value="#{mad.daramad}" />
+					</div>
 				</p:column>
 
-				<p:column headerText="نوع مسکن:" footerText="نوع مسکن:">
+				<!--<p:column headerText="نوع مسکن:" footerText="نوع مسکن:">
 					<h:outputText
-						value="#{mad.maskanType.type == '--نوع مسکن را وارد کنید--' ? ''  : mad.maskanType.type}" />
-				</p:column>
+						value="#{mad.maskanType.type == 'نوع مسکن را وارد کنید' ? ''  : mad.maskanType.type}" />
+				</p:column> 
+				-->
 
-				<p:column headerText="اجاره ماهیانه:" footerText="اجاره ماهیانه:">
+				<!-- <p:column headerText="اجاره ماهیانه:" footerText="اجاره ماهیانه:">
 					<h:outputText value="#{mad.ejareMahiyaneh}" />
-				</p:column>
+				</p:column> -->
 
 				<p:column headerText="نیاز متقاضی" footerText="نیاز متقاضی">
 					<h:outputText value="#{mad.niazMotaghazii.type}" />
 				</p:column>
 
-				<p:column headerText="نوع بیمه:" footerText="نوع بیمه:">
+				<!--	<p:column headerText="نوع بیمه:" footerText="نوع بیمه:">
 					<h:outputText value="#{mad.noeBimehVaSabegheh}" />
-				</p:column>
+				</p:column> -->
 
 
 				<p:column headerText="تلفن منزل:" footerText="تلفن منزل:">
-					<h:outputText value="#{mad.homeNumber}" />
+					<div style="text-align: left;">
+						<h:outputText value="#{mad.homeNumber}" />
+					</div>
 				</p:column>
 
 
-				<p:column headerText="تلفن محل کار:" footerText="تلفن محل کار:">
+				<!--	<p:column headerText="تلفن محل کار:" footerText="تلفن محل کار:">
 					<h:outputText value="#{mad.jobNumber}" />
-				</p:column>
+				</p:column> -->
 
-				<p:column headerText="کد ملی:" footerText="کد ملی:">
+				<!--	<p:column headerText="کد ملی:" footerText="کد ملی:">
 					<h:outputText value="#{mad.codeMelli}" />
-				</p:column>
+				</p:column> -->
 
-				<p:column headerText="کد پستی:" footerText="کد پستی:">
+				<!--	<p:column headerText="کد پستی:" footerText="کد پستی:">
 					<h:outputText value="#{mad.codePosti}" />
-				</p:column>
+				</p:column> -->
 
 				<p:column headerText="نشانی منزل:" footerText="نشانی منزل:">
 					<h:outputText value="#{mad.homeAddress}" />
 				</p:column>
 
-				<p:column headerText="نشانی محل کار:" footerText="نشانی محل کار:">
+				<!--<p:column headerText="نشانی محل کار:" footerText="نشانی محل کار:">
 					<h:outputText value="#{mad.jobAddress}" />
-				</p:column>
+				</p:column> -->
 
-				<p:column headerText="اطلاعات فرزندان:"
-					footerText="اطلاعات فرزندان:">
-					<p:commandButton actionListener="#{barresiDialogPage.btn}"
-						update=":childerenDlg" oncomplete="childs.show()" value="نمایش">
-						<f:param value="#{mad.id}" name="id" />
+				<p:column headerText="نمایش کامل اطلاعات"
+					footerText="نمایش کامل اطلاعات ">
+					<p:commandButton actionListener="#{fullViewPage.btnInfo}"
+						update=":infoDlg" oncomplete="info.show()" value="نمایش">
+						<f:param value="#{mad.id}" name="ide" />
 						<!--<f:setPropertyActionListener target="#{testBean.event.motaghazil}"
 							value="#{mad}" />-->
 					</p:commandButton>
 				</p:column>
+
 
 			</p:dataTable>
 		</p:fieldset>

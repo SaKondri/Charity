@@ -28,7 +28,9 @@ import com.friends.charity.model.farzand.Farzandan;
 @Entity
 @Table(name = "MOSHAKHASATE_MOTAGHAZI")
 @PrimaryKeyJoinColumn(name = "ID")
-@NamedQueries({ @NamedQuery(name = "selectUsers", query = "Select usr from MoshakhasateMotaghazi usr") })
+@NamedQueries({
+		@NamedQuery(name = "selectUsers", query = "Select usr from MoshakhasateMotaghazi usr"),
+		@NamedQuery(name = "selectUser", query = "select usr from MoshakhasateMotaghazi usr where usr.id=:id") })
 public class MoshakhasateMotaghazi extends User {
 	@Column(name = "HAMSAR_FIRST_NAME")
 	private String hamsarFirstname;
@@ -215,6 +217,9 @@ public class MoshakhasateMotaghazi extends User {
 	}
 
 	public Date getMySelfDate() {
+		if (mySelfDate == null) {
+			mySelfDate = new Date();
+		}
 		return mySelfDate;
 	}
 
@@ -223,6 +228,9 @@ public class MoshakhasateMotaghazi extends User {
 	}
 
 	public Date getMyWifeDate() {
+		if (myWifeDate == null) {
+			myWifeDate = new Date();
+		}
 		return myWifeDate;
 	}
 

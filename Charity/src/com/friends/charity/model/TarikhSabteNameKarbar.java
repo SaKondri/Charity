@@ -32,6 +32,9 @@ public class TarikhSabteNameKarbar extends BaseEntity {
 	}
 
 	public Date getDate() {
+		if (date == null) {
+			date = new Date();
+		}
 		return date;
 	}
 

@@ -29,7 +29,7 @@ import com.friends.charity.model.farzand.Farzandan;
 
 //@ManagedBean(name = "barresiDialogPage")
 @Named
-@SessionScoped
+@RequestScoped
 public class BarresiDialogPage implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private MoshakhasateMotaghazi motaghazil;
