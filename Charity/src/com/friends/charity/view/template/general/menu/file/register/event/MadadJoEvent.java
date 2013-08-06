@@ -213,7 +213,8 @@ public class MadadJoEvent implements Serializable {
 		String str = date.toString();
 		return str;
 	}
-//TODO for setHasPic
+
+	// TODO for setHasPic
 	public void saved(ActionEvent actionEvent) {
 		FacesMessage message = new FacesMessage();
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -229,6 +230,7 @@ public class MadadJoEvent implements Serializable {
 				farzandan.setBirthday(CalendarFormat.getGerigorian(farzandan
 						.getDate()));
 			}
+			farzandan.setMotaghazi(getMotaghazi());
 		}
 		getMotaghazi().setFarzandans(getFarzandans());
 		// sabte tarikheh sabtename karbar.

@@ -4,21 +4,37 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	<p:dialog header="عکس" widgetVar="photo" resizable="false"
-		modal="true" showEffect="explode" hideEffect="explode">
+	<h:form id="childerenDlg">
+		<p:dialog header="مشخصات فرزندان" widgetVar="childs" resizable="false"
+			modal="true" showEffect="explode" hideEffect="explode">
 
-		<h:panelGrid id="ds" columns="2" cellpadding="4">
+			<p:dataTable id="childeren" var="child"
+				value="#{barresiDialogPage.farzandans}">
 
-		<!-- 	<f:facet name="header">
-				<p:graphicImage styleClass="photo"
-					rendered="#{barresiDialogPage.motaghazil.userImage.hasPic}"
-					value="#{barresiDialogPage.image}" width="110" height="110" />
-				<p:graphicImage styleClass="photo"
-					value="/resources/images/image2.jpg"
-					rendered="#{!barresiDialogPage.motaghazil.userImage.hasPic}"
-					width="110" height="110" />
-			</f:facet> -->
+				<f:facet name="header">
+					<h:outputLabel value="مشخصات فرزندان" />
+				</f:facet>
 
-		</h:panelGrid>
-	</p:dialog>
+				<p:column headerText="نام">
+					<h:outputText value="#{child.firstname}" />
+				</p:column>
+
+				<p:column headerText="نام خانوادگی">
+					<h:outputText value="#{child.lastname}" />
+				</p:column>
+
+				<p:column headerText="تاریخ تولد">
+					<h:outputText value="#{child.strDate}" />
+				</p:column>
+
+				<p:column headerText="شغل">
+					<h:outputText value="#{child.shoghl}" />
+				</p:column>
+
+				<p:column headerText="مهارت">
+					<h:outputText value="#{child.maharat}" />
+				</p:column>
+			</p:dataTable>
+		</p:dialog>
+	</h:form>
 </ui:composition>

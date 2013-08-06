@@ -7,8 +7,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -18,11 +23,13 @@ import org.hibernate.annotations.Proxy;
 
 import com.friends.charity.business.logic.CalendarFormat;
 import com.friends.charity.model.BaseEntity;
+import com.friends.charity.model.MoshakhasateMotaghazi;
 
 @Entity
 @Table(name = "FARZANDAN")
 @Inheritance(strategy = InheritanceType.JOINED)
 @Proxy(lazy = false)
+@NamedQueries({ @NamedQuery(name = "selectFarzandan", query = "select f from Farzandan f where f.motaghazi.id=:id") })
 public class Farzandan extends BaseEntity {
 	@Column(name = "FIRST_NAME")
 	private String firstname;
@@ -40,10 +47,21 @@ public class Farzandan extends BaseEntity {
 	private String maharat;
 	// @ManyToOne
 	// private MoshakhasateMotaghazi user;
-	@Transient
+	@Column(name = "MY_DATE")
 	private Date date;
 	@Transient
 	private String strDate;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "MOTAGHAZI_ID")
+	private MoshakhasateMotaghazi motaghazi;
+
+	public MoshakhasateMotaghazi getMotaghazi() {
+		return motaghazi;
+	}
+
+	public void setMotaghazi(MoshakhasateMotaghazi motaghazi) {
+		this.motaghazi = motaghazi;
+	}
 
 	public String getFirstname() {
 		return firstname;

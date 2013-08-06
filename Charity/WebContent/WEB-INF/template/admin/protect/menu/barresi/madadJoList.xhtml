@@ -12,8 +12,9 @@
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15" lazy="true">
 				<f:facet name="header">
-					<div align="right" >
-						<p:commandButton style="color:#009843;" value="بارگذاری مجدد جدول" update="madTbl"/>
+					<div align="right">
+						<p:commandButton style="color:#009843;" value="بارگذاری مجدد جدول"
+							update="madTbl" />
 					</div>
 				</f:facet>
 				<!-- style="width: 80%;margin-left: 10%;margin-right: 10%;" -->
@@ -118,7 +119,19 @@
 				<p:column headerText="نشانی محل کار:" footerText="نشانی محل کار:">
 					<h:outputText value="#{mad.jobAddress}" />
 				</p:column>
+
+				<p:column headerText="اطلاعات فرزندان:"
+					footerText="اطلاعات فرزندان:">
+					<p:commandButton actionListener="#{barresiDialogPage.btn}"
+						update=":childerenDlg" oncomplete="childs.show()" value="نمایش">
+						<f:param value="#{mad.id}" name="id" />
+						<!--<f:setPropertyActionListener target="#{testBean.event.motaghazil}"
+							value="#{mad}" />-->
+					</p:commandButton>
+				</p:column>
+
 			</p:dataTable>
 		</p:fieldset>
+
 	</h:form>
 </ui:composition>
