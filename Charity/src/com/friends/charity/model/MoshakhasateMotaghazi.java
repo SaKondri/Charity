@@ -3,7 +3,9 @@ package com.friends.charity.model;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,6 +14,8 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -30,7 +34,9 @@ import com.friends.charity.model.farzand.Farzandan;
 @PrimaryKeyJoinColumn(name = "ID")
 @NamedQueries({
 		@NamedQuery(name = "selectUsers", query = "Select usr from MoshakhasateMotaghazi usr"),
-		@NamedQuery(name = "selectUser", query = "select usr from MoshakhasateMotaghazi usr where usr.id=:id") })
+		@NamedQuery(name = "selectFetchMamor", query = "Select usr from MoshakhasateMotaghazi usr inner join usr.mamors m where m.firstname=:fn"),
+		@NamedQuery(name = "selectUser", query = "select usr from MoshakhasateMotaghazi usr where usr.id=:id"),
+		@NamedQuery(name = "Mamor_Join", query = "select usr from MoshakhasateMotaghazi usr join usr.mamors as ma where ma.firstname=:fn") })
 public class MoshakhasateMotaghazi extends User {
 	@Column(name = "HAMSAR_FIRST_NAME")
 	private String hamsarFirstname;
@@ -65,8 +71,7 @@ public class MoshakhasateMotaghazi extends User {
 	private String homeNumber;
 	@Column(name = "JOB_NUMBER")
 	private String jobNumber;
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "sarparast_ID", referencedColumnName = "ID")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "motaghazi", cascade = CascadeType.ALL)
 	private List<Farzandan> farzandans;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private UserImage userImage;
@@ -74,6 +79,8 @@ public class MoshakhasateMotaghazi extends User {
 	private TarikhSabteNameKarbar tarikhSabteNameKarbar;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private UserActive userActive;
+	@ManyToMany(mappedBy = "motaghazis",fetch=FetchType.LAZY)
+	private Set<MamorinTahghigh> mamors;
 	@Column(name = "MY_SELF_DATE")
 	private Date mySelfDate;
 	@Column(name = "MY_WIFE_DATE")
@@ -84,6 +91,13 @@ public class MoshakhasateMotaghazi extends User {
 	private String myWifeStrDate;
 	@Transient
 	private final String empty = "خالی";
+
+	public MoshakhasateMotaghazi() {
+	}
+
+	public MoshakhasateMotaghazi(String firstname) {
+		super.setFirstname(firstname);
+	}
 
 	public String getHamsarFirstname() {
 		return hamsarFirstname;
@@ -214,6 +228,17 @@ public class MoshakhasateMotaghazi extends User {
 
 	public void setFarzandans(List<Farzandan> farzandans) {
 		this.farzandans = farzandans;
+	}
+
+	public Set<MamorinTahghigh> getMamors() {
+		if (mamors == null) {
+			mamors = new HashSet<>();
+		}
+		return mamors;
+	}
+
+	public void setMamors(Set<MamorinTahghigh> mamors) {
+		this.mamors = mamors;
 	}
 
 	public Date getMySelfDate() {

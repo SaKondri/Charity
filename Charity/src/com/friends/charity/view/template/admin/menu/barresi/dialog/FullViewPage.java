@@ -10,8 +10,12 @@ import java.util.Map;
 
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.faces.model.DataModel;
+import javax.faces.model.ListDataModel;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,9 +23,12 @@ import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
 import com.friends.charity.business.service.GeneralService;
+import com.friends.charity.model.MamorinTahghigh;
 import com.friends.charity.model.MoshakhasateMotaghazi;
+import com.friends.charity.model.UserImage;
 import com.friends.charity.model.farzand.Farzandan;
 
+//@ManagedBean(name = "fullViewPage")
 @Named
 @SessionScoped
 public class FullViewPage implements Serializable {
@@ -29,6 +36,10 @@ public class FullViewPage implements Serializable {
 	private GeneralService service;
 	private MoshakhasateMotaghazi motaghazi;
 	private List<Farzandan> farzandans;
+
+	private HashMap<Integer, UserImage> map;
+
+	private int index = 0;
 
 	public GeneralService getService() {
 		if (service == null) {
@@ -56,6 +67,17 @@ public class FullViewPage implements Serializable {
 		this.farzandans = farzandans;
 	}
 
+	public HashMap<Integer, UserImage> getMap() {
+		if (map == null) {
+			map = new HashMap<>();
+		}
+		return map;
+	}
+
+	public void setMap(HashMap<Integer, UserImage> map) {
+		this.map = map;
+	}
+
 	public void btnInfo(ActionEvent actionEvent) {
 		String str;
 		str = (String) ((HttpServletRequest) FacesContext.getCurrentInstance()
@@ -65,6 +87,10 @@ public class FullViewPage implements Serializable {
 			MoshakhasateMotaghazi m;
 			m = getService().select("selectUser", id);
 			setMotaghazi(m);
+
+			index++;
+			getMotaghazi().getUserImage().setI(index);
+			getMap().put(index, getMotaghazi().getUserImage());
 
 			Map<String, Object> params = new HashMap<>();
 			params.put("id", id);
@@ -76,7 +102,11 @@ public class FullViewPage implements Serializable {
 	}
 
 	public StreamedContent getImage() {
-		byte[] image = getMotaghazi().getUserImage().getImage();
+		byte[] image;
+		if (index == 0) {
+			return null;
+		}
+		image = (getMap().get(index)).getImage();
 		if (image == null) {
 			InputStream stream = FacesContext
 					.getCurrentInstance()

@@ -14,8 +14,9 @@
 				<f:param name="page"
 					value="/WEB-INF/template/general/pic/slider.xhtml" />
 			</p:menuitem>
-			<p:submenu label="پرونده" icon="ui-icon-document">
-				<p:submenu label="ثبت نام" icon="ui-icon-contact">
+			
+			 <p:submenu label="پرونده" icon="ui-icon-document">
+				<!-- 	<p:submenu label="ثبت نام" icon="ui-icon-contact">
 					<p:menuitem value="نیازمند"
 						actionListener="#{generalTempPage.event.changeCenterPage}"
 						update=":changePage" process="@form">
@@ -23,7 +24,8 @@
 							value="/WEB-INF/template/general/menu/file/register/madadJo.xhtml" />
 					</p:menuitem>
 					<p:menuitem value="خیر" url="#" />
-				</p:submenu>
+				</p:submenu>-->
+				
 				<p:menuitem value="ورود" onclick="loginDlg.show();" />
 			</p:submenu>
 		</p:menubar>

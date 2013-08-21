@@ -6,8 +6,9 @@
 	xmlns:p="http://primefaces.org/ui">
 	<h:form id="infoDlg">
 		<p:dialog header="مشخصات فرزندان" widgetVar="info" resizable="false"
-			modal="true" showEffect="explode" hideEffect="explode">
-			<p:panelGrid>
+			modal="true" showEffect="clip" hideEffect="clip"
+			 maximizable="true">
+			<p:panelGrid style="width:100%;">
 				<f:facet name="header">
 					<p:row>
 						<p:column colspan="6">مشخصات شخصی</p:column>

@@ -1,6 +1,7 @@
 package com.friends.charity.dao;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -13,12 +14,12 @@ import org.hibernate.Criteria;
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Order;
 
 import com.friends.charity.model.admin.about.Qustion;
-
-
 
 public class GeneralDao {
 	private static GeneralDao generalDao;
@@ -31,31 +32,37 @@ public class GeneralDao {
 				.createEntityManagerFactory("charity");
 		entityManager = entityManagerFactory.createEntityManager();
 		session = entityManager.unwrap(Session.class);
-		
+
 	}
+
 	public static synchronized GeneralDao getGeneralDao() {
-		if(generalDao == null){
+		if (generalDao == null) {
 			generalDao = new GeneralDao();
 		}
 		return generalDao;
 	}
-	public <T> T saveOrUpdate(T t)throws Exception{
+
+	public void clear() {
+		session.clear();
+	}
+
+	public <T> T saveOrUpdate(T t) throws Exception {
 		Transaction transaction = null;
 		try {
 			transaction = session.beginTransaction();
 			session.saveOrUpdate(t);
 			transaction.commit();
-			
+
 		} catch (Exception e) {
 			transaction.rollback();
 			throw new Exception();
-		}finally{
+		} finally {
 			session.flush();
 			session.clear();
 		}
 		return t;
 	}
-	
+
 	public <T> T save(T t) throws Exception {
 		Transaction transaction = null;
 		try {
@@ -63,11 +70,11 @@ public class GeneralDao {
 			session.save(t);
 			transaction.commit();
 			session.flush();
-			
+
 		} catch (Exception e) {
 			transaction.rollback();
 			throw new Exception();
-		}finally{
+		} finally {
 			session.clear();
 		}
 		return t;
@@ -113,7 +120,7 @@ public class GeneralDao {
 			Query query = session.getNamedQuery(queryName);
 			query.setParameter("id", id);
 			t = (T) query.uniqueResult();
-			
+
 		} catch (Exception e) {
 		} finally {
 			session.flush();
@@ -125,12 +132,14 @@ public class GeneralDao {
 	@SuppressWarnings("unchecked")
 	public <T> T select(String queryName, Map<String, Object> params)
 			throws Exception {
-		
+
 		T t = null;
 		try {
 			Query query = session.getNamedQuery(queryName);
-			for (Entry<String, Object> entry : params.entrySet()) {
-				query.setParameter(entry.getKey(), entry.getValue());
+			if (params != null) {
+				for (Entry<String, Object> entry : params.entrySet()) {
+					query.setParameter(entry.getKey(), entry.getValue());
+				}
 			}
 			t = (T) query.uniqueResult();
 			session.flush();
@@ -138,24 +147,47 @@ public class GeneralDao {
 		} finally {
 			session.clear();
 		}
-		
-		
-		
+
 		return t;
 	}
 
 	@SuppressWarnings("unchecked")
 	public <T> List<T> selectList(String queryName, Map<String, Object> params) {
 		List<T> result = new ArrayList<>();
-		Query query = session.getNamedQuery(queryName);
-		if (params != null) {
-			for (Entry<String, Object> ent : params.entrySet()) {
-				query.setParameter(ent.getKey(), ent.getValue());
+		try {
+			Query query = session.getNamedQuery(queryName);
+			if (params != null) {
+				for (Entry<String, Object> ent : params.entrySet()) {
+					query.setParameter(ent.getKey(), ent.getValue());
+				}
 			}
+			result = query.list();
+		} catch (Exception exception) {
+
+		} finally {
+			session.flush();
+			session.clear();
 		}
-		result = query.list();
-		session.flush();
-		session.clear();
+		return result;
+	}
+
+	@SuppressWarnings("unchecked")
+	public <T> List<T> selectLazyList(String queryName,
+			Map<String, Object> params) {
+		List<T> result = new ArrayList<>();
+		try {
+			Query query = session.getNamedQuery(queryName);
+			if (params != null) {
+				for (Entry<String, Object> ent : params.entrySet()) {
+					query.setParameter(ent.getKey(), ent.getValue());
+				}
+			}
+			result = query.list();
+		} catch (Exception exception) {
+
+		} finally {
+			session.flush();
+		}
 		return result;
 	}
 
@@ -177,16 +209,17 @@ public class GeneralDao {
 				query.setMaxResults(max);
 			}
 			result = query.list();
-			
+
 		} catch (Exception e) {
 			throw e;
 		} finally {
 			session.flush();
 			session.clear();
 		}
-		return result;	
+		return result;
 	}
-	public <T> Long  tableSize(String namedQuery){
+
+	public <T> Long tableSize(String namedQuery) {
 		session = session.getSessionFactory().openSession();
 		Query query = session.getNamedQuery(namedQuery);
 		Long result = (Long) query.uniqueResult();
@@ -194,20 +227,23 @@ public class GeneralDao {
 		session.clear();
 		return result;
 	}
+
 	@SuppressWarnings("unchecked")
-	public List<Qustion> selectListValue(Integer first , Integer max){
-		 Long start=System.currentTimeMillis();
+	public List<Qustion> selectListValue(Integer first, Integer max) {
+		Long start = System.currentTimeMillis();
 		List<Qustion> list = new ArrayList<>();
 		Criteria criteria = session.createCriteria(Qustion.class);
 		criteria.setFirstResult(first).setMaxResults(max);
 		criteria.addOrder(Order.desc("id"));
-		list=criteria.list();
+		list = criteria.list();
 		session.flush();
 		session.close();
-		Long end=System.currentTimeMillis();
-		System.out.println("TTTTTTTTTTTiiiiiiiimeeeeeeeeeeeeee"+(end-start));
+		Long end = System.currentTimeMillis();
+		System.out
+				.println("TTTTTTTTTTTiiiiiiiimeeeeeeeeeeeeee" + (end - start));
 		return list;
 	}
+
 	// public Login getUsernamePassword(String username, String password) {
 	// Login login = null;
 	//

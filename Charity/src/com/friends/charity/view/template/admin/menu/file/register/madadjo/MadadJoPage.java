@@ -1,4 +1,4 @@
-package com.friends.charity.view.template.general.menu.file.register;
+package com.friends.charity.view.template.admin.menu.file.register.madadjo;
 
 import java.io.Serializable;
 
@@ -7,7 +7,8 @@ import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.friends.charity.view.template.general.menu.file.register.event.MadadJoEvent;
+import com.friends.charity.view.template.admin.menu.file.register.madadjo.event.MadadJoEvent;
+
 
 @Named
 @SessionScoped
@@ -27,5 +28,4 @@ public class MadadJoPage implements Serializable {
 	public void saved(ActionEvent actionEvent) {
 		getEvent().saved(actionEvent);
 	}
-
 }

@@ -1,27 +1,31 @@
-<ui:composition 
-	xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/template/mainTemplate.xhtml">
-	
-		<ui:define name="content">
-			
-				<div align="center">
-					<h:panelGroup id="changePage">
-						<ui:include src="#{generalTempPage.event.adminChangePage}" />
-					</h:panelGroup>
-				</div>
-		</ui:define>
-		
-		<ui:define name="dialog">
-			<ui:insert name="dialog"/>
-			
-			<ui:include src="/WEB-INF/template/admin/protect/menu/file/about/dialog/dialogAdminAbout.xhtml" />
-			<ui:include src="/WEB-INF/template/admin/protect/menu/barresi/dialog/BarresiDialog.xhtml" />
-						<ui:include src="/WEB-INF/template/admin/protect/menu/barresi/dialog/fullView.xhtml" />
-			
-		</ui:define>
-		
+
+	<ui:define name="content">
+
+		<div align="center">
+			<h:panelGroup id="changePage">
+				<ui:include src="#{generalTempPage.event.adminChangePage}" />
+			</h:panelGroup>
+		</div>
+	</ui:define>
+
+	<ui:define name="dialog">
+		<ui:insert name="dialog" />
+
+		<ui:include
+			src="/WEB-INF/template/admin/protect/menu/file/about/dialog/dialogAdminAbout.xhtml" />
+		<ui:include
+			src="/WEB-INF/template/admin/protect/menu/barresi/dialog/BarresiDialog.xhtml" />
+		<ui:include
+			src="/WEB-INF/template/admin/protect/menu/barresi/dialog/fullView.xhtml" />
+		<ui:include
+			src="/WEB-INF/template/admin/protect/menu/barresi/dialog/ersalBeMamor/mamorinDlg.xhtml" />
+
+	</ui:define>
+
 </ui:composition>

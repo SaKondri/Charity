@@ -1,0 +1,540 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form>
+		<p:wizard id="mdWizard" style="width:90%" widgetVar="wiz">
+			<p:tab title="مشخصات متقاضی">
+				<p:panel id="pnl" header="مشخصات متقاضی">
+					<h:panelGrid id="pngrid" columns="9">
+
+
+						<h:outputLabel value="نام:" />
+						<p:inputText id="txtFname" required="true"
+							requiredMessage="نام خود را وارد کنید"
+							value="#{madadJoPage.event.motaghazi.firstname}" />
+						<p:message for="txtFname" />
+
+
+						<h:outputLabel value="نام خانوادگی:" />
+						<p:inputText id="txtLname" required="true"
+							requiredMessage="نام خانوادگی خود را وارد کنید"
+							value="#{madadJoPage.event.motaghazi.lastname}" />
+						<p:message for="txtLname" />
+
+
+						<h:outputLabel value="تاریخ تولد:" />
+						<p:calendar effect="drop" navigator="true" pattern="yyyy/MM/dd"
+							dir="ltr"
+							value="#{madadJoPage.event.motaghazi.mySelfDate}"
+							required="true" id="dateMoteghazi"
+							requiredMessage="تاریخ تولد خود را وارد کنید">
+							<f:converter converterId="CalendarConvertor" />
+						</p:calendar>
+						<p:message for="dateMoteghazi" styleClass="leftDIR" />
+
+						<h:outputLabel value="نام همسر:" />
+						<p:inputText id="txtFhamsar"
+							value="#{madadJoPage.event.motaghazi.hamsarFirstname}" />
+						<h:panelGroup></h:panelGroup>
+
+						<h:outputLabel value="نام خانوادگی همسر:" />
+						<p:inputText id="txtLhamsar"
+							value="#{madadJoPage.event.motaghazi.hamsarLastname}" />
+						<h:panelGroup></h:panelGroup>
+
+						<h:outputLabel value="تاریخ تولد همسر:" />
+						<p:calendar effect="drop" navigator="true" pattern="yyyy/MM/dd"
+							id="brtHasmsar" dir="ltr"
+							value="#{madadJoPage.event.motaghazi.myWifeDate}">
+							<f:converter converterId="CalendarConvertor" />
+						</p:calendar>
+						<h:panelGroup></h:panelGroup>
+
+						<h:outputLabel value="شغل:" />
+						<p:inputText id="txtShogl"
+							value="#{madadJoPage.event.motaghazi.shoghl}" />
+						<p:message for="txtShogl" />
+
+						<h:outputLabel value="درآمد ماهیانه:" />
+						<p:inputText id="txtDaramad" required="true"
+							requiredMessage="درآمد ماهیانه را وارد کنید "
+							value="#{madadJoPage.event.motaghazi.daramad}" />
+						<p:message for="txtDaramad" />
+
+						<h:outputLabel value="نوع مسکن:" />
+						<p:selectOneMenu id="txtMaskan" required="true"
+							requiredMessage="نوع مسکن را وارد کنید"
+							value="#{madadJoPage.event.motaghazi.maskanType}">
+							<f:converter converterId="securityRoleConverter" />
+							<f:selectItems
+								value="#{madadJoPage.event.maskanValue}" />
+						</p:selectOneMenu>
+						<p:message for="txtMaskan" />
+
+						<h:outputLabel value="اجاره ماهیانه:" />
+						<p:inputText id="txtEjareh"
+							value="#{madadJoPage.event.motaghazi.ejareMahiyaneh}" />
+						<h:panelGroup></h:panelGroup>
+
+
+						<h:outputLabel value="نوع بیمه:" />
+						<p:inputText id="txtBemeh"
+							value="#{madadJoPage.event.motaghazi.noeBimehVaSabegheh}" />
+						<h:panelGroup></h:panelGroup>
+
+						<h:outputLabel value="تلفن منزل:" />
+						<p:inputText id="homePhone"
+							value="#{madadJoPage.event.motaghazi.homeNumber}" />
+						<p:message for="homePhone" />
+
+						<h:outputLabel value="تلفن محل کار:" />
+						<p:inputText id="JobPhone"
+							value="#{madadJoPage.event.motaghazi.jobNumber}" />
+						<h:panelGroup></h:panelGroup>
+
+						<h:outputLabel value="کد ملی:" />
+						<p:inputText id="nationalID" required="true"
+							requiredMessage="کد ملی را وارد کنید:"
+							value="#{madadJoPage.event.motaghazi.codeMelli}" />
+						<p:message for="nationalID" />
+
+						<h:outputLabel value="کد پستی:" />
+						<p:inputText id="postalCode"
+							value="#{madadJoPage.event.motaghazi.codePosti}" />
+						<h:panelGroup></h:panelGroup>
+
+						<h:outputLabel value="نشانی دقیق محل کار:" />
+						<p:inputTextarea id="txtJobAdd"
+							value="#{madadJoPage.event.motaghazi.jobAddress}" />
+						<h:panelGroup></h:panelGroup>
+
+						<h:outputLabel value="نشانی دقیق منزل:" />
+						<p:inputTextarea id="txtHomeAdd" required="true" size="20"
+							requiredMessage="نشانی دقیق منزل را وارد کنید"
+							value="#{madadJoPage.event.motaghazi.homeAddress}" />
+						<p:message for="txtHomeAdd" />
+					</h:panelGrid>
+				</p:panel>
+			</p:tab>
+
+			<p:tab title="نیاز متقاضی">
+				<p:panel header="نیاز متقاضی">
+					<h:panelGrid columns="2">
+						<h:outputText value="نیاز متقاضی:" />
+						<p:spacer width="10" height="20" />
+						<p:selectOneMenu id="txtNiaz" style="width: 150px;"
+							value="#{madadJoPage.event.motaghazi.niazMotaghazii}">
+							<f:converter converterId="NizConv" />
+							<f:selectItems
+								value="#{madadJoPage.event.niazMotaghazi}" />
+						</p:selectOneMenu>
+					</h:panelGrid>
+				</p:panel>
+			</p:tab>
+
+			<p:tab title="عکس">
+				<p:panel id="imgPnl" header="عکس">
+					<h:panelGrid columns="1">
+						<p:fileUpload cancelLabel="لغو کردن" uploadLabel="بارگذاری"
+							label="انتخاب عکس"
+							fileUploadListener="#{madadJoPage.event.imageEvent}"
+							mode="advanced" sizeLimit="200000" update=":growl"
+							allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+					</h:panelGrid>
+				</p:panel>
+
+			</p:tab>
+
+			<p:tab title="مشخصات فرزندان متقاضی">
+				<p:panel id="pnll" header="مشخصات فرزندان متقاضی">
+					<h:panelGrid columns="6">
+
+						<h:outputLabel value="نام:" />
+						<p:inputText id="txtFChild"
+							value="#{madadJoPage
+ 									.event.farzandan.firstname}" />
+						<p:message for="txtFChild" />
+
+						<h:outputLabel value="نام خانوادگی:" />
+						<p:inputText id="txtLChild"
+							value="#{madadJoPage
+ 									.event.farzandan.lastname}" />
+						<p:message for="txtLChild" />
+
+						<h:outputLabel value="تاریخ تولد فرزند:" />
+						<p:calendar navigator="true" effect="drop" pattern="yyyy/MM/dd"
+							id="childBirth" dir="ltr"
+							value="#{madadJoPage
+ 									.event.farzandan.date}">
+							<f:converter converterId="CalendarConvertor" />
+						</p:calendar>
+						<p:message for="childBirth" />
+
+						<h:outputLabel value="شغل فرزند:" />
+						<p:inputText styleClass="leftDIR" id="childJob"
+							value="#{madadJoPage
+ 									.event.farzandan.shoghl}" />
+						<p:message for="childJob" />
+
+
+						<h:outputLabel value="مهارت فرزند:" />
+						<p:inputText styleClass="leftDIR" id="childSkill"
+							value="#{madadJoPage
+ 									.event.farzandan.maharat}" />
+						<p:message for="childSkill" />
+
+					</h:panelGrid>
+
+					<div align="center">
+						<p:commandButton value="ثبت"
+							update="Childs,txtLChild,txtFChild,childBirth,childJob,childSkill"
+							process="@form"
+							actionListener="#{madadJoPage.event.btnSubmit}" />
+					</div>
+					<p:dataTable id="Childs" var="child" editable="true"
+						editMode="cell"
+						value="#{madadJoPage
+ 									.event.farzandans}">
+						<f:facet name="header">
+							<h:outputLabel value="مشخصات فرزندان" />
+						</f:facet>
+
+						<p:column headerText="نام">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{child.firstname}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{child.firstname}" style="width:96%" />
+								</f:facet>
+
+							</p:cellEditor>
+						</p:column>
+
+						<p:column headerText="نام خانوادگی">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{child.lastname}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{child.lastname}" style="width:96%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+
+						<p:column headerText="تاریخ تولد">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{child.strDate}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:calendar effect="drop" dir="ltr" id="childBirth"
+										value="#{madadJoPage
+ 											.event.farzandan.birthday.time}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+
+						<p:column headerText="شغل">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{child.shoghl}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{child.shoghl}" style="width:96%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+
+						<p:column headerText="مهارت">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{child.maharat}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{child.maharat}" style="width:96%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+
+						<p:column headerText="حذف‌">
+							<p:commandButton update="Childs" process="@form"
+								icon="ui-icon-trash">
+								<p:collector value="#{child}"
+									removeFrom="#{madadJoPage
+ 									.event.farzandans}" />
+							</p:commandButton>
+						</p:column>
+
+					</p:dataTable>
+
+				</p:panel>
+			</p:tab>
+
+			<p:tab title="شناسه کاربری">
+				<p:panel header="شناسه کاربری">
+
+					<h:panelGrid id="png" columns="3">
+
+						<h:outputLabel value="نام کاربری:" />
+						<p:inputText id="username" dir="ltr" required="true"
+							requiredMessage="نام کاربری را وارد کنید."
+							value="#{madadJoPage.event.username}">
+							<p:ajax event="blur" update=":growl username" />
+						</p:inputText>
+						<p:message for="username" />
+
+						<h:outputLabel value="گذر واژه:" />
+						<p:password id="pass1" dir="ltr"
+							promptLabel="لطفا گذر واژه را وارد کنید."
+							weakLabel=" گذر واژه ضعیف" goodLabel="گذر واژه خوب"
+							strongLabel="گذر واژه قوی" feedback="true" required="true"
+							match="pass2" requiredMessage="گذر واژه را وارد کنید."
+							validatorMessage=" خطا در هماهنگ بودن گذر واژه"
+							value="#{madadJoPage.event.login.usernamePassword.password}" />
+						<p:message for="pass1" />
+
+						<h:outputLabel value="تکرار گذر واژه:" />
+						<p:password id="pass2" dir="ltr" required="true"
+							requiredMessage="گذر واژه را مجدد وارد نمائید."
+							value="#{madadJoPage.event.login.usernamePassword
+							.password}" />
+						<p:message for="pass2" />
+
+					</h:panelGrid>
+				</p:panel>
+			</p:tab>
+
+			<p:tab title="تائیدیه">
+				<p:panel header="تائیدیه">
+					<p:panelGrid styleClass="algRgt" style="margin-top:20px">
+
+						<f:facet name="footer">
+							<p:row>
+								<p:column colspan="6">
+									<p:commandButton value="ذخیره"
+										actionListener="#{madadJoPage.saved}"
+										update=":growl"
+										oncomplete="wiz.loadStep(wiz.cfg.steps[0], true)" />
+								</p:column>
+							</p:row>
+						</f:facet>
+						<p:row>
+							<p:column colspan="6">
+								<p:graphicImage
+									rendered="#{madadJoPage.event.motaghazi.userImage.hasPic}"
+									value="#{madadJoPage.event.confirmationImage}"
+									styleClass="profilePic" width="110" height="110" />
+
+								<p:graphicImage styleClass="profilePic"
+									value="/resources/images/image2.jpg"
+									rendered="#{!madadJoPage.event.motaghazi.userImage.hasPic}"
+									width="110" height="110" />
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column>
+								<h:outputText value="نام:" />
+							</p:column>
+
+							<p:column>
+								<h:outputText
+									value="#{madadJoPage.event.motaghazi.firstname}" />
+							</p:column>
+
+							<p:column>
+								<h:outputText styleClass="leftDIR ‌algRgt" value="نام خانوادگی:" />
+							</p:column>
+
+							<p:column>
+								<h:outputText styleClass="leftDIR"
+									value="#{madadJoPage.event.motaghazi.lastname}" />
+							</p:column>
+
+							<p:column>
+								<h:outputText value="تاریخ تولد:" />
+							</p:column>
+
+							<p:column>
+								<h:outputText styleClass="bold"
+									value="#{madadJoPage.event.motaghazi.mySelfStrDate}" />
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column>
+								<h:outputText value="نام همسر:" />
+							</p:column>
+
+							<p:column>
+								<h:outputText
+									value="#{madadJoPage.event.motaghazi.hamsarFirstname}" />
+							</p:column>
+
+							<p:column>
+								<h:outputText value="نام خانوادگی همسر:" />
+							</p:column>
+
+							<p:column>
+								<h:outputText
+									value="#{madadJoPage.event.motaghazi.hamsarLastname}" />
+							</p:column>
+
+							<p:column>
+								<h:outputText value="تاریخ تولد همسر:" />
+							</p:column>
+
+							<p:column>
+								<h:outputText styleClass="bold"
+									value="#{madadJoPage.event.motaghazi.myWifeStrDate}" />
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column>
+								<h:outputText value="شغل:" />
+							</p:column>
+
+							<p:column>
+								<h:outputText
+									value="#{madadJoPage.event.motaghazi.shoghl}" />
+							</p:column>
+
+							<p:column>
+								<h:outputText value="درآمد ماهیانه:" />
+							</p:column>
+
+							<p:column>
+								<h:outputText
+									value="#{madadJoPage.event.motaghazi.daramad}" />
+							</p:column>
+
+							<p:column>
+								<h:outputText value="نوع مسکن:" />
+							</p:column>
+
+							<p:column>
+								<h:outputText
+									value="#{madadJoPage.event.motaghazi.maskanType.type}" />
+							</p:column>
+						</p:row>
+
+
+						<p:row>
+							<p:column>
+								<h:outputText value="اجاره ماهیانه:" />
+							</p:column>
+
+							<p:column>
+								<h:outputText
+									value="#{madadJoPage.event.motaghazi.ejareMahiyaneh}" />
+							</p:column>
+
+							<p:column>
+								<h:outputText value="نوع بیمه:" />
+							</p:column>
+
+							<p:column>
+								<h:outputText
+									value="#{madadJoPage.event.motaghazi.noeBimehVaSabegheh}" />
+							</p:column>
+
+							<p:column>
+								<h:outputText value="تلفن منزل:" />
+							</p:column>
+
+							<p:column>
+								<h:outputText
+									value="#{madadJoPage.event.motaghazi.homeNumber}" />
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column>
+								<h:outputText value="تلفن محل کار:" />
+							</p:column>
+
+							<p:column>
+								<h:outputText
+									value="#{madadJoPage.event.motaghazi.jobNumber}" />
+							</p:column>
+
+							<p:column>
+								<h:outputText value="کد ملی:" />
+							</p:column>
+
+							<p:column>
+								<h:outputText
+									value="#{madadJoPage.event.motaghazi.codeMelli}" />
+							</p:column>
+
+							<p:column>
+								<h:outputText value="کد پستی:" />
+							</p:column>
+
+							<p:column>
+								<h:outputText
+									value="#{madadJoPage.event.motaghazi.codePosti}" />
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column>
+								<h:outputLabel value="نشانی دقیق منزل:" />
+							</p:column>
+
+							<p:column colspan="5">
+								<h:outputText
+									value="#{madadJoPage.event.motaghazi.homeAddress}" />
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column>
+								<h:outputLabel value="نشانی دقیق محل کار:" />
+							</p:column>
+
+							<p:column colspan="5">
+								<h:outputText
+									value="#{madadJoPage.event.motaghazi.jobAddress}" />
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column>
+								<h:outputLabel value="نام کاربری:" />
+							</p:column>
+
+							<p:column>
+								<h:outputText
+									value="#{madadJoPage.event.login.usernamePassword.username}" />
+							</p:column>
+
+							<p:column>
+								<h:outputLabel value="گذر واژه:" />
+							</p:column>
+
+							<p:column>
+								<h:outputText
+									value="#{madadJoPage.event.login.usernamePassword.password}" />
+							</p:column>
+
+							<p:column>
+								<h:outputLabel value="نیاز متقاضی:" />
+							</p:column>
+
+							<p:column>
+								<h:outputText
+									value="#{madadJoPage.event.motaghazi.niazMotaghazii.type}" />
+							</p:column>
+						</p:row>
+					</p:panelGrid>
+				</p:panel>
+			</p:tab>
+		</p:wizard>
+	</h:form>
+</ui:composition>

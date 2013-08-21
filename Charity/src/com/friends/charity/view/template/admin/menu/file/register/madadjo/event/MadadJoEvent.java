@@ -1,4 +1,5 @@
-package com.friends.charity.view.template.general.menu.file.register.event;
+package com.friends.charity.view.template.admin.menu.file.register.madadjo.event;
+
 
 import java.io.ByteArrayInputStream;
 import java.io.Serializable;
@@ -6,8 +7,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
-import javassist.bytecode.ByteArray;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;

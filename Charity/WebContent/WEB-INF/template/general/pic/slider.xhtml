@@ -7,9 +7,9 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 
-	<p:imageSwitch effect="fade">
+	<p:imageSwitch effect="fade" speed="5000">
   
-		<ui:repeat var="pic" value="#{showPicture.picLists}">
+		<ui:repeat var="pic" value="#{showPicture.picLists}" >
 
 			<p:graphicImage styleClass="gallery" value="#{showPicture.pic}" width="700px"
 				height="500px">

@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form id="mamorDlg">
+		<p:dialog header="ماموران تحقیق" widgetVar="mamorInfo"
+			resizable="false" modal="true" showEffect="clip" hideEffect="clip"
+			maximizable="true">
+			<p:dataTable value="#{mamorinDlgPage.mamorinTahghighs}" var="mamor">
+
+				<f:facet name="header">
+					<h:outputLabel value="مشخصات مأمورین" />
+				</f:facet>
+
+				<f:facet name="footer">
+					<div align="right">
+						<p:commandButton value="ارسال"
+							actionListener="#{mamorinDlgPage.send}" 
+							update=":growl" />
+					</div>
+				</f:facet>
+
+				<p:column headerText="انتخاب">
+					<p:selectBooleanCheckbox value="#{mamor.state}">
+					</p:selectBooleanCheckbox>
+				</p:column>
+
+				<p:column headerText="نام">
+					<h:outputText value="#{mamor.firstname}" />
+				</p:column>
+
+				<p:column headerText="نام خانوادگی">
+					<h:outputText value="#{mamor.lastname}" />
+				</p:column>
+
+				<p:column headerText="کد">
+					<h:outputText value="#{mamor.code}" />
+				</p:column>
+
+				<p:column headerText="تاریخ تولد">
+					<div style="text-align: left;">
+						<h:outputText value="#{mamor.strDate}" />
+					</div>
+				</p:column>
+			</p:dataTable>
+		</p:dialog>
+	</h:form>
+</ui:composition>

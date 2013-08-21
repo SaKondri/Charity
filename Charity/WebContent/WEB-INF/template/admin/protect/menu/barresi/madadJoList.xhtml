@@ -40,46 +40,51 @@
 					</div>
 				</p:column>
 
+				<p:column headerText="وضعیت" footerText="وضعیت">
+					<h:outputText value="فعال" rendered="#{mad.userActive.active}" />
+					<h:outputText value="غیر فعال"
+						style="color:red;font-family:fantasy;"
+						rendered="#{!mad.userActive.active}" />
+				</p:column>
 
-				<p:column headerText="نام:" footerText="نام:">
+				<p:column headerText="نام" footerText="نام">
 					<h:outputText value="#{mad.firstname}" />
 				</p:column>
 
-				<p:column headerText="نام خانوادگی:" footerText="نام خانوادگی:">
+				<p:column headerText="نام خانوادگی" footerText="نام خانوادگی">
 					<h:outputText value="#{mad.lastname}" />
 				</p:column>
 
-				<p:column headerText="تاریخ تولد:" footerText="تاریخ تولد:">
+				<p:column headerText="تاریخ تولد" footerText="تاریخ تولد">
 					<div style="text-align: left;">
 						<h:outputText value="#{mad.mySelfStrDate}" />
 					</div>
 				</p:column>
 
-				<p:column headerText="نام همسر:" footerText="نام همسر:">
+				<p:column headerText="نام همسر" footerText="نام همسر">
 					<h:outputText value="#{mad.hamsarFirstname}" />
 				</p:column>
 
 
-				<p:column headerText="نام خانوادگی همسر:"
-					footerText="نام خانوادگی همسر:">
+				<p:column headerText="نام خانوادگی همسر"
+					footerText="نام خانوادگی همسر">
 					<h:outputText value="#{mad.hamsarLastname}" />
 				</p:column>
 
 
-				<p:column headerText="تاریخ تولد همسر:"
-					footerText="تاریخ تولد همسر:">
+				<p:column headerText="تاریخ تولد همسر" footerText="تاریخ تولد همسر">
 					<div style="text-align: left;">
 						<h:outputText value="#{mad.myWifeStrDate}" />
 					</div>
 				</p:column>
 
 
-				<p:column headerText="شغل:" footerText="شغل:">
+				<p:column headerText="شغل" footerText="شغل">
 					<h:outputText value="#{mad.shoghl}" />
 				</p:column>
 
 
-				<p:column headerText="درآمد ماهیانه:" footerText="درآمد ماهیانه:">
+				<p:column headerText="درآمد ماهیانه" footerText="درآمد ماهیانه">
 					<div style="text-align: left;">
 						<h:outputText value="#{mad.daramad}" />
 					</div>
@@ -104,7 +109,7 @@
 				</p:column> -->
 
 
-				<p:column headerText="تلفن منزل:" footerText="تلفن منزل:">
+				<p:column headerText="تلفن منزل" footerText="تلفن منزل">
 					<div style="text-align: left;">
 						<h:outputText value="#{mad.homeNumber}" />
 					</div>
@@ -123,7 +128,7 @@
 					<h:outputText value="#{mad.codePosti}" />
 				</p:column> -->
 
-				<p:column headerText="نشانی منزل:" footerText="نشانی منزل:">
+				<p:column headerText="نشانی منزل" footerText="نشانی منزل">
 					<h:outputText value="#{mad.homeAddress}" />
 				</p:column>
 
@@ -131,13 +136,18 @@
 					<h:outputText value="#{mad.jobAddress}" />
 				</p:column> -->
 
-				<p:column headerText="نمایش کامل اطلاعات"
-					footerText="نمایش کامل اطلاعات ">
+				<p:column headerText="ارسال به مأمور" footerText="ارسال به مأمور">
+					<p:commandButton value="ارسال"
+						actionListener="#{mamorinDlgPage.btnMamorInfo}" update=":mamorDlg"
+						oncomplete="mamorInfo.show()">
+						<f:param value="#{mad.id}" name="idMar" />	
+					</p:commandButton>
+				</p:column>
+
+				<p:column headerText="نمایش کامل" footerText="نمایش کامل">
 					<p:commandButton actionListener="#{fullViewPage.btnInfo}"
 						update=":infoDlg" oncomplete="info.show()" value="نمایش">
 						<f:param value="#{mad.id}" name="ide" />
-						<!--<f:setPropertyActionListener target="#{testBean.event.motaghazil}"
-							value="#{mad}" />-->
 					</p:commandButton>
 				</p:column>
 

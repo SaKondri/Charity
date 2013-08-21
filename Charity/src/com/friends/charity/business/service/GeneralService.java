@@ -11,6 +11,10 @@ public class GeneralService {
 		return GeneralDao.getGeneralDao().save(t);
 	}
 
+	public void clear() {
+		GeneralDao.getGeneralDao().clear();
+	}
+
 	public <T> T update(T t) {
 		return GeneralDao.getGeneralDao().update(t);
 	}
@@ -23,7 +27,8 @@ public class GeneralService {
 		return GeneralDao.getGeneralDao().select(queryName, id);
 	}
 
-	public <T> T select(String queryName, Map<String, Object> params) throws Exception {
+	public <T> T select(String queryName, Map<String, Object> params)
+			throws Exception {
 		return GeneralDao.getGeneralDao().select(queryName, params);
 	}
 
@@ -31,17 +36,27 @@ public class GeneralService {
 		return GeneralDao.getGeneralDao().selectList(queryName, params);
 	}
 
+	public <T> List<T> selectLazyList(String queryName,
+			Map<String, Object> params) {
+		return GeneralDao.getGeneralDao().selectLazyList(queryName, params);
+
+	}
+
 	public <T> List<T> selectList(String queryName, Map<String, Object> params,
 			Integer first, Integer max) throws Exception {
-		return GeneralDao.getGeneralDao().selectList(queryName, params, first, max);
+		return GeneralDao.getGeneralDao().selectList(queryName, params, first,
+				max);
 	}
-	public <T> T saveOrUpdate(T t)throws Exception{
+
+	public <T> T saveOrUpdate(T t) throws Exception {
 		return GeneralDao.getGeneralDao().saveOrUpdate(t);
 	}
-	public  List<Qustion> selectListValue(Integer first , Integer max){
+
+	public List<Qustion> selectListValue(Integer first, Integer max) {
 		return GeneralDao.getGeneralDao().selectListValue(first, max);
 	}
-	public <T> Long  tableSize(String namedQuery){
+
+	public <T> Long tableSize(String namedQuery) {
 		return GeneralDao.getGeneralDao().tableSize(namedQuery);
 	}
 }

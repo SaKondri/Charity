@@ -14,6 +14,12 @@
 						<f:param name="page"
 							value="/WEB-INF/template/admin/protect/menu/file/register/mamorinTahghigh.xhtml" />
 					</p:menuitem>
+					<p:menuitem value="ثبت درخواست کننده"
+						actionListener="#{generalTempPage.event.changeCenterPageAdminHome}"
+						update=":pnlChange" process="@form">
+						<f:param name="page"
+							value="/WEB-INF/template/admin/protect/menu/file/register/madadJo.xhtml" />
+					</p:menuitem>
 				</p:submenu>
 
 				<p:submenu label="عکس ها">
