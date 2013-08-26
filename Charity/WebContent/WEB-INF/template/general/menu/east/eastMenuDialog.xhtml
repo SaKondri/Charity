@@ -4,7 +4,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<p:dialog resizable="false" header="ایجاد پرسش" widgetVar="dlgQuestion"
+	<p:dialog id="ques" resizable="false" header="ایجاد پرسش" widgetVar="dlgQuestion"
 		modal="true" >
 		<h:form id="frmMenuQuestion">
 			<h:panelGrid columns="2">
@@ -39,7 +39,7 @@
 		</h:form>
 	</p:dialog>
 
-	<p:dialog resizable="false" widgetVar="dlgRespForQustion" modal="true">
+	<p:dialog id="resQue" resizable="false" widgetVar="dlgRespForQustion" modal="true">
 		<h:form>
 			<h:panelGrid columns="2">
 				<h:outputLabel value="پاسخ" />

@@ -27,13 +27,15 @@ import com.friends.charity.business.logic.CalendarFormat;
 @PrimaryKeyJoinColumn(name = "ID")
 @NamedQueries({
 		@NamedQuery(name = "selectMamor", query = "select mamor from MamorinTahghigh as mamor"),
+		@NamedQuery(name = "selectUniqeMamor", query = "select mamor from MamorinTahghigh as mamor where mamor.id=:id"),
+		@NamedQuery(name = "selectJoinFetchMamor", query = "select mamor from MamorinTahghigh as mamor join fetch mamor.motaghazis"),
 		@NamedQuery(name = "selectJoin", query = "select mamor from MamorinTahghigh mamor join mamor.motaghazis m where m.firstname=:name")
 
 })
 public class MamorinTahghigh extends User {
 	@Column(name = "CODE")
 	private String code;
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "MAMOR_MOTA", joinColumns = { @JoinColumn(name = "MAMOR_ID", referencedColumnName = "ID") }, inverseJoinColumns = { @JoinColumn(name = "MOTA_ID", referencedColumnName = "ID") })
 	private Set<MoshakhasateMotaghazi> motaghazis;
 	@Column(name = "My_DATE")

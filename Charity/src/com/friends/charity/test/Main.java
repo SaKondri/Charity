@@ -1,34 +1,13 @@
 package com.friends.charity.test;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Transient;
-import javax.validation.constraints.Past;
-
-import org.primefaces.model.DefaultStreamedContent;
-import org.primefaces.model.StreamedContent;
-
 import com.friends.charity.business.service.GeneralService;
-import com.friends.charity.dao.GeneralDao;
-import com.friends.charity.model.BaseEntity;
 import com.friends.charity.model.MamorinTahghigh;
 import com.friends.charity.model.MoshakhasateMotaghazi;
-import com.friends.charity.test.model.Employee;
-import com.friends.charity.test.model.Meeting;
-import com.sun.faces.vendor.GlassFishInjectionProvider;
 
 public class Main {
 

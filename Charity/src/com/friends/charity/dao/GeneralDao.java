@@ -95,6 +95,20 @@ public class GeneralDao {
 		return t;
 	}
 
+	public <T> T lazyUpdate(T t) {
+		Transaction transaction;
+		try {
+			transaction = session.beginTransaction();
+			session.update(t);
+			transaction.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			session.flush();
+		}
+		return t;
+	}
+
 	public <T> T delete(T t) throws Exception {
 		try {
 			t = load(t);
@@ -146,6 +160,28 @@ public class GeneralDao {
 		} catch (Exception e) {
 		} finally {
 			session.clear();
+		}
+
+		return t;
+	}
+
+	@SuppressWarnings("unchecked")
+	public <T> T LazySelect(String queryName, Map<String, Object> params)
+			throws Exception {
+
+		T t = null;
+		try {
+			Query query = session.getNamedQuery(queryName);
+			if (params != null) {
+				for (Entry<String, Object> entry : params.entrySet()) {
+					query.setParameter(entry.getKey(), entry.getValue());
+				}
+			}
+			t = (T) query.uniqueResult();
+
+		} catch (Exception e) {
+		} finally {
+			session.flush();
 		}
 
 		return t;

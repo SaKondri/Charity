@@ -2,7 +2,9 @@ package com.friends.charity.view.template.admin.menu.barresi.dialog.ersalBeMamor
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javassist.bytecode.stackmap.BasicBlock.Catch;
 
@@ -87,21 +89,32 @@ public class MamorinDlgPage implements Serializable {
 	}
 
 	public void send(ActionEvent actionEvent) {
+		int count = 0;
 		long id = Long.parseLong(getStr());
 		try {
 			MoshakhasateMotaghazi motaghazi = getService().select("selectUser",
 					id);
+			MoshakhasateMotaghazi motgh = motaghazi;
 			for (MamorinTahghigh mamor : getMamorinTahghighs()) {
 				if (mamor.isState()) {
-					mamor.getMotaghazis().add(motaghazi);
-					
+					count++;
+					mamor.getMotaghazis().add(motgh);
 					getService().update(mamor);
-					
-					FacesContext.getCurrentInstance().addMessage(
-							null,
-							new FacesMessage(FacesMessage.SEVERITY_INFO,
-									"ارسال شد", "منتظر جواب باشید!"));
+
 				}
+			}
+			if (count < 2 || count > 2) {
+				FacesContext.getCurrentInstance().addMessage(
+						null,
+						new FacesMessage(FacesMessage.SEVERITY_ERROR,
+								"انتخاب دو مامور الزامی است.",
+								"مجددا سعی کنید."));
+				return;
+			} else {
+				FacesContext.getCurrentInstance().addMessage(
+						null,
+						new FacesMessage(FacesMessage.SEVERITY_INFO,
+								"ارسال شد", "منتظر جواب باشید!"));
 			}
 
 		} catch (Exception exception) {

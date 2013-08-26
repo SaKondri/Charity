@@ -2,7 +2,6 @@ package com.friends.charity.view.template.admin.login;
 
 import java.io.Serializable;
 
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -10,7 +9,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 
-import com.friends.charity.business.logic.Utils;
 import com.friends.charity.view.template.general.GeneralTempPage;
 @Named
 @SessionScoped

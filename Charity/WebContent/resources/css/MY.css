@@ -11,11 +11,11 @@
 .profilePic {
 	width: 110;
 	height: 110;
-	background: #fff; margin : 0 auto;
+	background: #fff;
+	margin: 0 auto;
 	box-shadow: 0px 1px 5px #00A7FF;
 	border: 2px solid #00A7FF;
 	margin-right: 2px;
-	
 }
 
 .gallery {

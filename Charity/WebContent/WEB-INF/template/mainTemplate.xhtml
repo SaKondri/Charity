@@ -8,6 +8,9 @@
 	<h:head>
 		<title>خیریه امام هادی علیه السلام<ui:insert name="title" /></title>
 
+		<meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
+		<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+
 		<h:outputStylesheet name="4.css" library="css" />
 		<h:outputScript name="1.js" library="js" />
 		<h:outputScript name="2.js" library="js" />
@@ -42,8 +45,8 @@
 
 	</h:head>
 	<h:body>
-		
-		<p:idleMonitor timeout="1800000" onidle="idleDialog.show()"/> 
+
+		<p:idleMonitor timeout="1800000" onidle="idleDialog.show()" />
 		<p:dialog header="حافظه از بین رفته" resizable="false"
 			widgetVar="idleDialog" modal="true" width="400">
 			<h:form>

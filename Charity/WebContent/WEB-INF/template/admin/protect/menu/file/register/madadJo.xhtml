@@ -148,8 +148,8 @@
 
 			</p:tab>
 
-			<p:tab title="مشخصات فرزندان متقاضی">
-				<p:panel id="pnll" header="مشخصات فرزندان متقاضی">
+			<p:tab title="مشخصات متکلفین">
+				<p:panel id="pnll" header="مشخصات متکلفین متقاضی">
 					<h:panelGrid columns="6">
 
 						<h:outputLabel value="نام:" />
@@ -164,7 +164,7 @@
  									.event.farzandan.lastname}" />
 						<p:message for="txtLChild" />
 
-						<h:outputLabel value="تاریخ تولد فرزند:" />
+						<h:outputLabel value="تاریخ تولد:" />
 						<p:calendar navigator="true" effect="drop" pattern="yyyy/MM/dd"
 							id="childBirth" dir="ltr"
 							value="#{madadJoPage
@@ -173,14 +173,14 @@
 						</p:calendar>
 						<p:message for="childBirth" />
 
-						<h:outputLabel value="شغل فرزند:" />
+						<h:outputLabel value="شغل:" />
 						<p:inputText styleClass="leftDIR" id="childJob"
 							value="#{madadJoPage
  									.event.farzandan.shoghl}" />
 						<p:message for="childJob" />
 
 
-						<h:outputLabel value="مهارت فرزند:" />
+						<h:outputLabel value="مهارت:" />
 						<p:inputText styleClass="leftDIR" id="childSkill"
 							value="#{madadJoPage
  									.event.farzandan.maharat}" />
@@ -199,7 +199,7 @@
 						value="#{madadJoPage
  									.event.farzandans}">
 						<f:facet name="header">
-							<h:outputLabel value="مشخصات فرزندان" />
+							<h:outputLabel value="مشخصات متکلفین" />
 						</f:facet>
 
 						<p:column headerText="نام">

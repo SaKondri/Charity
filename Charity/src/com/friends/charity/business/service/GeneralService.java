@@ -19,12 +19,20 @@ public class GeneralService {
 		return GeneralDao.getGeneralDao().update(t);
 	}
 
+	public <T> T lazyUpdate(T t) {
+		return GeneralDao.getGeneralDao().lazyUpdate(t);
+	}
+
 	public <T> T delete(T t) throws Exception {
 		return GeneralDao.getGeneralDao().delete(t);
 	}
 
 	public <T> T select(String queryName, long id) {
 		return GeneralDao.getGeneralDao().select(queryName, id);
+	}
+
+	public <T> T LazySelect(String queryName, Map<String, Object> params) throws Exception {
+		return GeneralDao.getGeneralDao().LazySelect(queryName, params);
 	}
 
 	public <T> T select(String queryName, Map<String, Object> params)
