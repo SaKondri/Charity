@@ -50,7 +50,7 @@
 					</p:column>
 
 					<p:column>
-						<h:outputLabel value="#{fullViewPage.motaghazi.firstname}" />
+						<h:outputText value="#{fullViewPage.motaghazi.firstname}" />
 					</p:column>
 
 					<p:column>
@@ -58,7 +58,7 @@
 					</p:column>
 
 					<p:column>
-						<h:outputLabel value="#{fullViewPage.motaghazi.lastname}" />
+						<h:outputText value="#{fullViewPage.motaghazi.lastname}" />
 					</p:column>
 
 					<p:column>
@@ -67,7 +67,7 @@
 
 					<p:column>
 						<div style="text-align: left;">
-							<h:outputLabel value="#{fullViewPage.motaghazi.mySelfStrDate}" />
+							<h:outputText value="#{fullViewPage.motaghazi.mySelfStrDate}" />
 						</div>
 					</p:column>
 				</p:row>
@@ -77,7 +77,7 @@
 					</p:column>
 
 					<p:column>
-						<h:outputLabel styleClass="bold"
+						<h:outputText styleClass="bold"
 							value="#{fullViewPage.motaghazi.hamsarFirstname}" />
 					</p:column>
 
@@ -86,7 +86,7 @@
 					</p:column>
 
 					<p:column>
-						<h:outputLabel styleClass="bold"
+						<h:outputText styleClass="bold"
 							value="#{fullViewPage.motaghazi.hamsarLastname}" />
 					</p:column>
 
@@ -96,7 +96,7 @@
 
 					<p:column>
 						<div style="text-align: left;">
-							<h:outputLabel value="#{fullViewPage.motaghazi.myWifeStrDate}" />
+							<h:outputText value="#{fullViewPage.motaghazi.myWifeStrDate}" />
 						</div>
 
 					</p:column>
@@ -109,7 +109,7 @@
 					</p:column>
 
 					<p:column>
-						<h:outputLabel styleClass="bold"
+						<h:outputText styleClass="bold"
 							value="#{fullViewPage.motaghazi.shoghl}" />
 					</p:column>
 
@@ -119,7 +119,7 @@
 
 					<p:column>
 						<div style="text-align: left;">
-							<h:outputLabel styleClass="bold"
+							<h:outputText styleClass="bold"
 								value="#{fullViewPage.motaghazi.daramad}" />
 						</div>
 					</p:column>
@@ -129,7 +129,7 @@
 					</p:column>
 
 					<p:column>
-						<h:outputLabel value="#{fullViewPage.motaghazi.maskanType.type}" />
+						<h:outputText value="#{fullViewPage.motaghazi.maskanType.type}" />
 					</p:column>
 				</p:row>
 
@@ -140,7 +140,7 @@
 
 					<p:column>
 						<div style="text-align: left;">
-							<h:outputLabel styleClass="bold"
+							<h:outputText styleClass="bold"
 								value="#{fullViewPage.motaghazi.ejareMahiyaneh}" />
 						</div>
 					</p:column>
@@ -150,7 +150,7 @@
 					</p:column>
 
 					<p:column>
-						<h:outputLabel styleClass="bold"
+						<h:outputText styleClass="bold"
 							value="#{fullViewPage.motaghazi.noeBimehVaSabegheh}" />
 					</p:column>
 
@@ -160,7 +160,7 @@
 
 					<p:column>
 						<div style="text-align: left;">
-							<h:outputLabel styleClass="bold"
+							<h:outputText styleClass="bold"
 								value="#{fullViewPage.motaghazi.homeNumber}" />
 						</div>
 					</p:column>
@@ -173,7 +173,7 @@
 
 					<p:column>
 						<div style="text-align: left;">
-							<h:outputLabel styleClass="bold"
+							<h:outputText styleClass="bold"
 								value="#{fullViewPage.motaghazi.jobNumber}" />
 						</div>
 					</p:column>
@@ -184,7 +184,7 @@
 
 					<p:column>
 						<div style="text-align: left;">
-							<h:outputLabel styleClass="bold"
+							<h:outputText styleClass="bold"
 								value="#{fullViewPage.motaghazi.codeMelli}" />
 						</div>
 					</p:column>
@@ -195,7 +195,7 @@
 
 					<p:column>
 						<div style="text-align: left;">
-							<h:outputLabel styleClass="bold"
+							<h:outputText styleClass="bold"
 								value="#{fullViewPage.motaghazi.codePosti}" />
 						</div>
 					</p:column>
@@ -207,7 +207,7 @@
 					</p:column>
 
 					<p:column>
-						<h:outputLabel
+						<h:outputText
 							value="#{fullViewPage.motaghazi.niazMotaghazii.type}" />
 
 					</p:column>
@@ -217,7 +217,7 @@
 					</p:column>
 
 					<p:column colspan="4">
-						<h:outputLabel styleClass="bold"
+						<h:outputText styleClass="bold"
 							value="#{fullViewPage.motaghazi.jobAddress}" />
 					</p:column>
 				</p:row>
@@ -228,7 +228,7 @@
 					</p:column>
 
 					<p:column colspan="5">
-						<h:outputLabel styleClass="bold"
+						<h:outputText styleClass="bold"
 							value="#{fullViewPage.motaghazi.homeAddress}" />
 					</p:column>
 				</p:row>
@@ -236,7 +236,7 @@
 			<p:separator />
 			<p:dataTable value="#{fullViewPage.farzandans}" var="child">
 				<f:facet name="header">
-					<h:outputLabel value="مشخصات فرزندان" />
+					<h:outputText value="مشخصات فرزندان" />
 				</f:facet>
 				<p:column headerText="نام">
 					<h:outputText value="#{child.firstname}" />

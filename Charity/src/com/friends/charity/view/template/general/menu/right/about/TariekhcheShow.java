@@ -15,7 +15,7 @@ import com.friends.charity.business.service.GeneralService;
 import com.friends.charity.model.admin.about.Tariekhche;
 
 @Named
-@Singleton
+//@Singleton
 public class TariekhcheShow implements Serializable {
 
 	private static final long serialVersionUID = 1L;

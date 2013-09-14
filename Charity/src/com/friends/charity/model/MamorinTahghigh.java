@@ -28,16 +28,16 @@ import com.friends.charity.business.logic.CalendarFormat;
 @NamedQueries({
 		@NamedQuery(name = "selectMamor", query = "select mamor from MamorinTahghigh as mamor"),
 		@NamedQuery(name = "selectUniqeMamor", query = "select mamor from MamorinTahghigh as mamor where mamor.id=:id"),
-		@NamedQuery(name = "selectJoinFetchMamor", query = "select mamor from MamorinTahghigh as mamor join fetch mamor.motaghazis"),
-		@NamedQuery(name = "selectJoin", query = "select mamor from MamorinTahghigh mamor join mamor.motaghazis m where m.firstname=:name")
+//		@NamedQuery(name = "selectJoinFetchMamor", query = "select mamor from MamorinTahghigh as mamor join fetch mamor.motaghazis"),
+//		@NamedQuery(name = "selectJoin", query = "select mamor from MamorinTahghigh mamor join mamor.motaghazis m where m.firstname=:name")
 
 })
 public class MamorinTahghigh extends User {
 	@Column(name = "CODE")
 	private String code;
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "MAMOR_MOTA", joinColumns = { @JoinColumn(name = "MAMOR_ID", referencedColumnName = "ID") }, inverseJoinColumns = { @JoinColumn(name = "MOTA_ID", referencedColumnName = "ID") })
-	private Set<MoshakhasateMotaghazi> motaghazis;
+//	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinTable(name = "MAMOR_MOTA", joinColumns = { @JoinColumn(name = "MAMOR_ID", referencedColumnName = "ID") }, inverseJoinColumns = { @JoinColumn(name = "MOTA_ID", referencedColumnName = "ID") })
+//	private Set<MoshakhasateMotaghazi> motaghazis;
 	@Column(name = "My_DATE")
 	private Date date;
 	@Transient
@@ -60,17 +60,17 @@ public class MamorinTahghigh extends User {
 	public void setCode(String code) {
 		this.code = code;
 	}
-
-	public Set<MoshakhasateMotaghazi> getMotaghazis() {
-		if (motaghazis == null) {
-			motaghazis = new HashSet<>();
-		}
-		return motaghazis;
-	}
-
-	public void setMotaghazis(Set<MoshakhasateMotaghazi> motaghazis) {
-		this.motaghazis = motaghazis;
-	}
+//
+//	public Set<MoshakhasateMotaghazi> getMotaghazis() {
+//		if (motaghazis == null) {
+//			motaghazis = new HashSet<>();
+//		}
+//		return motaghazis;
+//	}
+//
+//	public void setMotaghazis(Set<MoshakhasateMotaghazi> motaghazis) {
+//		this.motaghazis = motaghazis;
+//	}
 
 	public Date getDate() {
 		if (date == null) {

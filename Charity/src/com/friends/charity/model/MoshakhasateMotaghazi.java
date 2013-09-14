@@ -34,9 +34,10 @@ import com.friends.charity.model.farzand.Farzandan;
 @PrimaryKeyJoinColumn(name = "ID")
 @NamedQueries({
 		@NamedQuery(name = "selectUsers", query = "Select usr from MoshakhasateMotaghazi usr"),
-		@NamedQuery(name = "selectFetchMamor", query = "Select usr from MoshakhasateMotaghazi usr inner join usr.mamors m where m.firstname=:fn"),
+//		@NamedQuery(name = "selectFetchMamor", query = "Select usr from MoshakhasateMotaghazi usr inner join usr.mamors m where m.firstname=:fn"),
 		@NamedQuery(name = "selectUser", query = "select usr from MoshakhasateMotaghazi usr where usr.id=:id"),
-		@NamedQuery(name = "Mamor_Join", query = "select usr from MoshakhasateMotaghazi usr join usr.mamors as ma where ma.firstname=:fn") })
+//		@NamedQuery(name = "Mamor_Join", query = "select usr from MoshakhasateMotaghazi usr join usr.mamors as ma where ma.firstname=:fn") 
+	})
 public class MoshakhasateMotaghazi extends User {
 	@Column(name = "HAMSAR_FIRST_NAME")
 	private String hamsarFirstname;
@@ -79,8 +80,8 @@ public class MoshakhasateMotaghazi extends User {
 	private TarikhSabteNameKarbar tarikhSabteNameKarbar;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private UserActive userActive;
-	@ManyToMany(mappedBy = "motaghazis",fetch=FetchType.LAZY)
-	private Set<MamorinTahghigh> mamors;
+	// @ManyToMany(mappedBy = "motaghazis",fetch=FetchType.LAZY)
+	// private Set<MamorinTahghigh> mamors;
 	@Column(name = "MY_SELF_DATE")
 	private Date mySelfDate;
 	@Column(name = "MY_WIFE_DATE")
@@ -230,16 +231,16 @@ public class MoshakhasateMotaghazi extends User {
 		this.farzandans = farzandans;
 	}
 
-	public Set<MamorinTahghigh> getMamors() {
-		if (mamors == null) {
-			mamors = new HashSet<>();
-		}
-		return mamors;
-	}
-
-	public void setMamors(Set<MamorinTahghigh> mamors) {
-		this.mamors = mamors;
-	}
+	// public Set<MamorinTahghigh> getMamors() {
+	// if (mamors == null) {
+	// mamors = new HashSet<>();
+	// }
+	// return mamors;
+	// }
+	//
+	// public void setMamors(Set<MamorinTahghigh> mamors) {
+	// this.mamors = mamors;
+	// }
 
 	public Date getMySelfDate() {
 		if (mySelfDate == null) {

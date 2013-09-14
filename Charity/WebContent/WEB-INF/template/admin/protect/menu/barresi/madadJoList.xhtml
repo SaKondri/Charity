@@ -17,19 +17,6 @@
 							update="madTbl" />
 					</div>
 				</f:facet>
-				<!-- style="width: 80%;margin-left: 10%;margin-right: 10%;" -->
-
-				<!--<p:ajax event="rowSelect"
-						listener="#{barresiDialogPage.onRowSelect}"
-						update=":form :ds :growl" oncomplete="carDialog.show()" />-->
-
-				<!-- <p:column headerText="نمایش تصویر">
-					<p:commandButton update=":form :ds" oncomplete="photo.show()"
-						icon="ui-icon-person">
-						<f:setPropertyActionListener value="#{mad}"
-							target="#{barresiDialogPage.motaghazil}" />
-					</p:commandButton>
-				</p:column> -->
 				<p:column headerText="نمایش تصویر" footerText="نمایش تصویر">
 					<div style="text-align: center;">
 						<p:graphicImage styleClass="photo"
@@ -90,24 +77,10 @@
 					</div>
 				</p:column>
 
-				<!--<p:column headerText="نوع مسکن:" footerText="نوع مسکن:">
-					<h:outputText
-						value="#{mad.maskanType.type == 'نوع مسکن را وارد کنید' ? ''  : mad.maskanType.type}" />
-				</p:column> 
-				-->
-
-				<!-- <p:column headerText="اجاره ماهیانه:" footerText="اجاره ماهیانه:">
-					<h:outputText value="#{mad.ejareMahiyaneh}" />
-				</p:column> -->
 
 				<p:column headerText="نیاز متقاضی" footerText="نیاز متقاضی">
 					<h:outputText value="#{mad.niazMotaghazii.type}" />
 				</p:column>
-
-				<!--	<p:column headerText="نوع بیمه:" footerText="نوع بیمه:">
-					<h:outputText value="#{mad.noeBimehVaSabegheh}" />
-				</p:column> -->
-
 
 				<p:column headerText="تلفن منزل" footerText="تلفن منزل">
 					<div style="text-align: left;">
@@ -115,32 +88,15 @@
 					</div>
 				</p:column>
 
-
-				<!--	<p:column headerText="تلفن محل کار:" footerText="تلفن محل کار:">
-					<h:outputText value="#{mad.jobNumber}" />
-				</p:column> -->
-
-				<!--	<p:column headerText="کد ملی:" footerText="کد ملی:">
-					<h:outputText value="#{mad.codeMelli}" />
-				</p:column> -->
-
-				<!--	<p:column headerText="کد پستی:" footerText="کد پستی:">
-					<h:outputText value="#{mad.codePosti}" />
-				</p:column> -->
-
 				<p:column headerText="نشانی منزل" footerText="نشانی منزل">
 					<h:outputText value="#{mad.homeAddress}" />
 				</p:column>
 
-				<!--<p:column headerText="نشانی محل کار:" footerText="نشانی محل کار:">
-					<h:outputText value="#{mad.jobAddress}" />
-				</p:column> -->
-
 				<p:column headerText="ارسال به مأمور" footerText="ارسال به مأمور">
 					<p:commandButton value="ارسال"
-						actionListener="#{mamorinDlgPage.btnMamorInfo}" update=":mamorDlg"
-						oncomplete="mamorInfo.show()">
-						<f:param value="#{mad.id}" name="idMar" />	
+						actionListener="#{fullViewPage.mamorinDlgPage.btnMamorInfo}"
+						update=":mamorDlg" oncomplete="mamorInfo.show()">
+						<f:param value="#{mad.id}" name="idMar" />
 					</p:commandButton>
 				</p:column>
 

@@ -8,43 +8,76 @@
 		<p:dialog header="ماموران تحقیق" widgetVar="mamorInfo"
 			resizable="false" modal="true" showEffect="clip" hideEffect="clip"
 			maximizable="true">
-			<p:dataTable value="#{mamorinDlgPage.mamorinTahghighs}" var="mamor">
 
-				<f:facet name="header">
-					<h:outputLabel value="مشخصات مأمورین" />
-				</f:facet>
+			<p:ajax event="close"
+				listener="#{fullViewPage.mamorinDlgPage.btnClose}"
+				update="fn ln mvBtn" />
 
-				<f:facet name="footer">
-					<div align="right">
-						<p:commandButton value="ارسال"
-							actionListener="#{mamorinDlgPage.send}" 
-							update=":growl" />
-					</div>
-				</f:facet>
+			<h:panelGrid columns="2">
+				<h:panelGroup style="display:block">
+					<p:commandButton value="‌مامور موقت" icon="ui-icon-circle-plus"
+						actionListener="#{fullViewPage.mamorinDlgPage.btnAddTemp}"
+						update="fn ln mvBtn" />
+					<h:panelGrid columns="2">
+						<h:outputText value="نام:" />
+						<p:inputText id="fn"
+							disabled="#{!fullViewPage.mamorinDlgPage.addTemporaryMamor}"
+							value="#{fullViewPage.mamorinDlgPage.mamorMovaghat.firstname}" />
 
-				<p:column headerText="انتخاب">
-					<p:selectBooleanCheckbox value="#{mamor.state}">
-					</p:selectBooleanCheckbox>
-				</p:column>
+						<h:outputText value="نام خانوادگی:" />
+						<p:inputText id="ln"
+							value="#{fullViewPage.mamorinDlgPage.mamorMovaghat.lastname}"
+							disabled="#{!fullViewPage.mamorinDlgPage.addTemporaryMamor}" />
 
-				<p:column headerText="نام">
-					<h:outputText value="#{mamor.firstname}" />
-				</p:column>
+						<p:commandButton id="mvBtn" value="‌ایجاد"
+							icon="ui-icon-circle-check"
+							disabled="#{!fullViewPage.mamorinDlgPage.addTemporaryMamor}"
+							actionListener="#{fullViewPage.mamorinDlgPage.btnAddMovaghat}"
+							update=":growl mamorTbl fn ln">
+						</p:commandButton>
 
-				<p:column headerText="نام خانوادگی">
-					<h:outputText value="#{mamor.lastname}" />
-				</p:column>
+					</h:panelGrid>
+				</h:panelGroup>
 
-				<p:column headerText="کد">
-					<h:outputText value="#{mamor.code}" />
-				</p:column>
+				<p:dataTable id="mamorTbl" style="width:50%;"
+					value="#{fullViewPage.mamorinDlgPage.mamorinTahghighs}" var="mamor">
 
-				<p:column headerText="تاریخ تولد">
-					<div style="text-align: left;">
-						<h:outputText value="#{mamor.strDate}" />
-					</div>
-				</p:column>
-			</p:dataTable>
+					<f:facet name="header">
+						<h:outputText value="مشخصات مأمورین" />
+					</f:facet>
+
+					<f:facet name="footer">
+						<div align="right">
+							<p:commandButton value="ارسال"
+								actionListener="#{fullViewPage.mamorinDlgPage.send}"
+								update=":growl" />
+						</div>
+					</f:facet>
+
+					<p:column headerText="انتخاب">
+						<p:selectBooleanCheckbox value="#{mamor.state}">
+						</p:selectBooleanCheckbox>
+					</p:column>
+
+					<p:column headerText="نام">
+						<h:outputText value="#{mamor.firstname}" />
+					</p:column>
+
+					<p:column headerText="نام خانوادگی">
+						<h:outputText value="#{mamor.lastname}" />
+					</p:column>
+
+					<p:column headerText="کد">
+						<h:outputText value="#{mamor.code}" />
+					</p:column>
+
+					<p:column headerText="تاریخ تولد">
+						<div style="text-align: left;">
+							<h:outputText value="#{mamor.strDate}" />
+						</div>
+					</p:column>
+				</p:dataTable>
+			</h:panelGrid>
 		</p:dialog>
 	</h:form>
 </ui:composition>

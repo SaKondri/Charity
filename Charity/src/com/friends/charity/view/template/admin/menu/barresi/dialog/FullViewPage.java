@@ -16,6 +16,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 
@@ -27,6 +28,7 @@ import com.friends.charity.model.MamorinTahghigh;
 import com.friends.charity.model.MoshakhasateMotaghazi;
 import com.friends.charity.model.UserImage;
 import com.friends.charity.model.farzand.Farzandan;
+import com.friends.charity.view.template.admin.menu.barresi.dialog.ersalBeMamor.MamorinDlgPage;
 
 //@ManagedBean(name = "fullViewPage")
 @Named
@@ -36,6 +38,8 @@ public class FullViewPage implements Serializable {
 	private GeneralService service;
 	private MoshakhasateMotaghazi motaghazi;
 	private List<Farzandan> farzandans;
+	@Inject
+	private MamorinDlgPage mamorinDlgPage;
 
 	private HashMap<Integer, UserImage> map;
 
@@ -76,6 +80,14 @@ public class FullViewPage implements Serializable {
 
 	public void setMap(HashMap<Integer, UserImage> map) {
 		this.map = map;
+	}
+
+	public MamorinDlgPage getMamorinDlgPage() {
+		return mamorinDlgPage;
+	}
+
+	public void setMamorinDlgPage(MamorinDlgPage mamorinDlgPage) {
+		this.mamorinDlgPage = mamorinDlgPage;
 	}
 
 	public void btnInfo(ActionEvent actionEvent) {
