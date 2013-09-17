@@ -30,7 +30,7 @@ public class MamorinDlgPage implements Serializable {
 	private String str;
 	private boolean addTemporaryMamor = false;
 	private MamorMovaghat mamorMovaghat;
-	private MamorMotaghazi mamorMotaghazi;
+	private List<MamorMotaghazi> mamorMotaghazis;
 
 	public List<MamorinTahghigh> getMamorinTahghighs() {
 		if (mamorinTahghighs == null) {
@@ -89,15 +89,15 @@ public class MamorinDlgPage implements Serializable {
 		this.mamorMovaghat = mamorMovaghat;
 	}
 
-	public MamorMotaghazi getMamorMotaghazi() {
-		if (mamorMotaghazi == null) {
-			mamorMotaghazi = new MamorMotaghazi();
+	public List<MamorMotaghazi> getMamorMotaghazis() {
+		if (mamorMotaghazis == null) {
+			mamorMotaghazis = new ArrayList<>();
 		}
-		return mamorMotaghazi;
+		return mamorMotaghazis;
 	}
 
-	public void setMamorMotaghazi(MamorMotaghazi mamorMotaghazi) {
-		this.mamorMotaghazi = mamorMotaghazi;
+	public void setMamorMotaghazis(List<MamorMotaghazi> mamorMotaghazis) {
+		this.mamorMotaghazis = mamorMotaghazis;
 	}
 
 	public void btnAddTemp(ActionEvent actionEvent) {
@@ -156,29 +156,45 @@ public class MamorinDlgPage implements Serializable {
 		// MoshakhasateMotaghazi motgh = motaghazi;
 		for (MamorinTahghigh mamor : getMamorinTahghighs()) {
 			if (mamor.isState()) {
+				MamorMotaghazi mm = new MamorMotaghazi();
+
 				count++;
-				getMamorMotaghazi().setMamorId(mamor.getId());
-				getMamorMotaghazi().setMotaghaziId(motaghazi.getId());
 
-				try {
-					getService().save(getMamorMotaghazi());
-					FacesContext.getCurrentInstance().addMessage(
-							null,
-							new FacesMessage(FacesMessage.SEVERITY_INFO,
-									"sina", "salam"));
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					FacesContext.getCurrentInstance().addMessage(
-							null,
-							new FacesMessage(FacesMessage.SEVERITY_ERROR,
-									"sina", "salam"));
-					e.printStackTrace();
-				}
-				// motaghazi.getMamors().add(mamor);
-				// mamor.getMotaghazis().add(motaghazi);
+				mm.setMamorId(mamor.getId());
+				mm.setMotaghaziId(motaghazi.getId());
 
+				getMamorMotaghazis().add(mm);
 			}
 		}
+		try {
+			if (count < 2 || count > 2) {
+				FacesContext.getCurrentInstance().addMessage(
+						null,
+						new FacesMessage(FacesMessage.SEVERITY_ERROR,
+								"انتخاب دو مامور الزامی است.",
+								"دقیقا دو مامور اتخاب کنید."));
+				setMamorMotaghazis(null);
+				return;
+			} else {
+				for (MamorMotaghazi iterable : getMamorMotaghazis()) {
+					getService().save(iterable);
+				}
+				FacesContext.getCurrentInstance().addMessage(
+						null,
+						new FacesMessage(FacesMessage.SEVERITY_INFO,
+								"ارسال شد.", "منتظر جواب باشید!"));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "خطا",
+							"ارسال نشد!"));
+			e.printStackTrace();
+		}
+		// motaghazi.getMamors().add(mamor);
+		// mamor.getMotaghazis().add(motaghazi);
+
 		// if (count < 2) {
 		//
 		// if (!(getMamorMovaghat().getFirstname() == null) && count == 1) {
