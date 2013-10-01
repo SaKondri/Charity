@@ -1,6 +1,5 @@
 @CHARSET "UTF-8";
 
-
 .custom .fileupload-content {
 	display: inline-table;
 }
@@ -19,6 +18,30 @@
 	margin-right: 2px;
 }
 
+.telAdd {
+	font-family: B Nazanin;
+	position: absolute;
+	right: 10px;
+	top: 5px;
+}
+
+.adminLogin {
+	position: fixed;
+	top: 30%;
+	left: 50%;
+	width: 30em;
+	height: 18em;
+	margin-top: -9em; /*set to a negative number 1/2 of your height*/
+	margin-left: -15em; /*set to a negative number 1/2 of your width*/
+}
+
+.adminHeader {
+	font-size: large;
+	color: #4F5356;
+	font-family: B Nazanin;
+}
+
+}
 .gallery {
 	width: 700px;
 	height: 500px;

@@ -37,6 +37,14 @@
 						<f:param name="page"
 							value="/WEB-INF/template/admin/protect/menu/file/about/tarikhche.xhtml" />
 					</p:menuitem>
+					<p:menuitem value="آدرس و نحوه ارتباط با خیریه"
+						actionListener="#{generalTempPage.event.changeCenterPageAdminHome}"
+						update=":pnlChange" process="@form">
+						<f:param name="page"
+							value="/WEB-INF/template/admin/protect/menu/file/about/telAndAdr/telAndAdr.xhtml" />
+					</p:menuitem>
+				</p:submenu>
+				<p:submenu label="سوالات متداول">
 					<p:submenu label="سوالات">
 						<p:menuitem
 							value="پاسخ به پرسشهای عمومی  #{replyToQustion.event.qustionPublicSize}"
@@ -44,16 +52,11 @@
 							update=":pnlChange" process="@form">
 							<f:param name="page"
 								value="/WEB-INF/template/admin/protect/menu/file/about/replytoqustion/replytoqustion.xhtml" />
-
-
 						</p:menuitem>
 						<p:menuitem value="پاسخ به پرسشهای خصوصی"
 							actionListener="#{generalTempPage.event.changeCenterPageAdminHome}"
 							update=":pnlChange" process="@form">
-							<f:param name="page"
-								value="/WEB-INF/template/admin/protect/menu/file/about/tarikhche.xhtml" />
-
-
+							<f:param name="page" value="" />
 						</p:menuitem>
 					</p:submenu>
 				</p:submenu>

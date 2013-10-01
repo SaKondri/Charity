@@ -4,9 +4,14 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<div align="center">
+	<div class="adminLogin">
 		<h:form id="frmAdminLogin">
-			<div style="width: 25%">
+
+			<div>
+				<h:outputText styleClass="adminHeader"
+					value="به صفحه مدیریت خیریه خوش آمدید." />
+			</div>
+			<div>
 				<p:panel header="ورود مدیر">
 					<f:facet name="footer">
 						<p:messages for="frmAdminLogin" showDetail="true" />

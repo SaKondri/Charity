@@ -1,0 +1,50 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form>
+		<div class="telAdd">
+			<p:panelGrid columns="9">
+				<f:facet name="header">
+				اضافه نمودن آدرس و تلفن
+			</f:facet>
+				<h:outputText value="شماره تلفن:" />
+				<p:inputText id="phTxt" size="20" title="تلفن"
+					value="#{telAndAdrPage.phone.phoneNum}" />
+				<p:commandButton value="اضافه نمودن تلفن"
+					actionListener="#{telAndAdrPage.btnAddPhone}" update="telTbl phTxt"
+					icon="ui-icon-circle-plus" />
+				<p:dataTable value="#{telAndAdrPage.telAdd.phones}" id="telTbl"
+					var="phone">
+					<p:column headerText="تلفن">
+						<h:outputText value="#{phone.phoneNum}" />
+					</p:column>
+				</p:dataTable>
+
+				<p:spacer width="1" height="0" />
+				<h:outputText value="آدرس:" />
+				<p:inputText id="addTxt" size="50" title="آدرس"
+					value="#{telAndAdrPage.address.kheyriehAdr}" />
+				<p:commandButton value="اضافه نمودن تلفن"
+					actionListener="#{telAndAdrPage.btnAddAddress}"
+					update="addTbl addTxt" icon="ui-icon-circle-plus" />
+				<p:dataTable value="#{telAndAdrPage.telAdd.addresses}" id="addTbl"
+					var="address">
+					<p:column headerText="آدرس">
+						<h:outputText value="#{address.kheyriehAdr}" />
+					</p:column>
+				</p:dataTable>
+
+
+				<f:facet name="footer">
+					<p:commandButton value="ذخیره"
+						actionListener="#{telAndAdrPage.btnSaved}"
+						update=":growl addTbl addTxt telTbl phTxt" process="@form" />
+				</f:facet>
+			</p:panelGrid>
+
+		</div>
+	</h:form>
+
+</ui:composition>
