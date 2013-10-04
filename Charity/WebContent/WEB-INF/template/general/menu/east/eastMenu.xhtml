@@ -9,16 +9,21 @@
 		<p:menu>
 
 			<p:submenu label="درباره ی ما">
-				<p:menuitem value="تاریخچه" actionListener="#{generalTempPage.event.changeCenterPage}"
-				
-						update=":changePage" process="@form" >
-						<f:param name="page"
-							value="/WEB-INF/template/general/menu/east/about/tarikhche.xhtml" />
-					
+				<p:menuitem value="تاریخچه"
+					actionListener="#{generalTempPage.event.changeCenterPage}"
+					update=":changePage" process="@form">
+					<f:param name="page"
+						value="/WEB-INF/template/general/menu/east/about/tarikhche.xhtml" />
+
 				</p:menuitem>
 				<p:menuitem value="فعالیت ها" />
 				<p:menuitem value="اهداف" />
-				<p:menuitem value="آدرس و نحوه ارتباط با خیریه" />
+				<p:menuitem value="آدرس و نحوه ارتباط با خیریه"
+					actionListener="#{generalTempPage.event.changeCenterPage}"
+					update=":changePage" process="@form">
+					<f:param name="page"
+						value="/WEB-INF/template/general/menu/east/about/AddressAndTel/generalTellAdd.xhtml" />
+				</p:menuitem>
 				<p:menuitem value="شماره حساب های خیریه" />
 				<p:menuitem value="انتقاد و پیشنهادات" />
 			</p:submenu>
@@ -26,11 +31,11 @@
 			<p:submenu label="سوالات متداول">
 				<p:menuitem value="نکات ذکر شده برای خییرین" />
 				<p:menuitem value="نکات ذکر شده برای نیازمندان" />
-				<p:menuitem value="پرسش و پاسخ" actionListener="#{generalTempPage.event.changeCenterPage}"
-				
-						update=":changePage" process="@form" >
-						<f:param name="page"
-							value="/WEB-INF/template/general/menu/east/about/porseshOpasokh/porseshVaPasokh.xhtml" />
+				<p:menuitem value="پرسش و پاسخ"
+					actionListener="#{generalTempPage.event.changeCenterPage}"
+					update=":changePage" process="@form">
+					<f:param name="page"
+						value="/WEB-INF/template/general/menu/east/about/porseshOpasokh/porseshVaPasokh.xhtml" />
 				</p:menuitem>
 			</p:submenu>
 

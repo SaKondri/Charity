@@ -3,12 +3,17 @@ package com.friends.charity.model.kheyrieConf;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import com.friends.charity.model.BaseEntity;
 
 @Entity
 @Table(name = "PHONE")
+@NamedQueries({ @NamedQuery(name = "phone", query = "select ph from Phone ph where ph.telAdd.id=:telAddId") 
+
+})
 public class Phone extends BaseEntity {
 	@Column(name = "PHONE_NUM")
 	private String phoneNum;

@@ -8,6 +8,17 @@
 	margin-top: 20px;
 }
 
+.tellAdd {
+	width: 400px;
+	height: auto;
+	background-color: #C9E9ED;
+	display: inline-block;
+	margin: 5px;
+	padding: 10px;
+	text-align: right;
+	border-radius: 5px;
+}
+
 .profilePic {
 	width: 110;
 	height: 110;
@@ -37,7 +48,7 @@
 
 .adminHeader {
 	font-size: large;
-	color: #4F5356;
+	color: #27554B;
 	font-family: B Nazanin;
 }
 

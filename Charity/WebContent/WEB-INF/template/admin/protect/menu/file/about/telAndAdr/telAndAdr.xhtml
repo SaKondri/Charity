@@ -15,10 +15,15 @@
 				<p:commandButton value="اضافه نمودن تلفن"
 					actionListener="#{telAndAdrPage.btnAddPhone}" update="telTbl phTxt"
 					icon="ui-icon-circle-plus" />
-				<p:dataTable value="#{telAndAdrPage.telAdd.phones}" id="telTbl"
+				<p:dataTable value="#{telAndAdrPage.phonesModel}" id="telTbl"
 					var="phone">
 					<p:column headerText="تلفن">
 						<h:outputText value="#{phone.phoneNum}" />
+					</p:column>
+					<p:column headerText="عملیات">
+						<p:commandButton icon="ui-icon-trash" title="حذف"
+							update=":growl telTbl"
+							actionListener="#{telAndAdrPage.btnDeletePhone}" />
 					</p:column>
 				</p:dataTable>
 
@@ -29,10 +34,13 @@
 				<p:commandButton value="اضافه نمودن تلفن"
 					actionListener="#{telAndAdrPage.btnAddAddress}"
 					update="addTbl addTxt" icon="ui-icon-circle-plus" />
-				<p:dataTable value="#{telAndAdrPage.telAdd.addresses}" id="addTbl"
+				<p:dataTable value="#{telAndAdrPage.addressesModel}" id="addTbl"
 					var="address">
 					<p:column headerText="آدرس">
 						<h:outputText value="#{address.kheyriehAdr}" />
+					</p:column>
+					<p:column headerText="عملیات">
+						<p:commandButton icon="ui-icon-trash" />
 					</p:column>
 				</p:dataTable>
 

@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -15,6 +17,9 @@ import com.friends.charity.model.BaseEntity;
 
 @Table(name = "TEL_ADD")
 @Entity
+@NamedQueries({
+	@NamedQuery(name="allTelAdd",query="select ta from TelAdd ta")
+})
 public class TelAdd extends BaseEntity {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "telAdd")
 	private List<Phone> phones;

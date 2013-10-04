@@ -11,6 +11,7 @@ import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 
 import com.friends.charity.view.template.general.menu.right.about.TariekhcheShow;
+import com.friends.charity.view.template.general.menu.right.about.addressAndTell.GeneralAddAndTellPage;
 
 @Named
 public class GeneralEvent implements Serializable {
@@ -23,10 +24,6 @@ public class GeneralEvent implements Serializable {
 	@Inject
 	private TariekhcheShow tariekhcheShow;
 
-	// @PostConstruct
-	// public void init() {
-	// getUrlPge();
-	// }
 	public TariekhcheShow getTariekhcheShow() {
 		return tariekhcheShow;
 	}

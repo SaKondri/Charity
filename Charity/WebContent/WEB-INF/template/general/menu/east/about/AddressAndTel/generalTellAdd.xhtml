@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form>
+		<div class="tellAdd">
+			<p:fieldset legend="آدرس" toggleable="true" toggleSpeed="500">
+				<ui:repeat var="add" value="#{generalAddAndTellPage.addresses}">
+					<h:panelGrid columns="1">
+						<h:outputText value="#{add.kheyriehAdr}" />
+					</h:panelGrid>
+				</ui:repeat>
+			</p:fieldset>
+
+			<p:fieldset legend="تلفن" toggleable="true" toggleSpeed="500">
+				<ui:repeat var="ph" value="#{generalAddAndTellPage.phones}">
+					<h:panelGrid columns="1">
+						<h:outputText value="#{ph.phoneNum}" />
+					</h:panelGrid>
+				</ui:repeat>
+
+			</p:fieldset>
+		</div>
+	</h:form>
+
+</ui:composition>
